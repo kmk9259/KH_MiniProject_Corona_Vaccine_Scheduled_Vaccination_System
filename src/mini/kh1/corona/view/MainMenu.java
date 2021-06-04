@@ -64,7 +64,7 @@ public class MainMenu {
 
 				// 예약조회 버튼 클릭 시 이벤트 구현
 				
-				mainPanel.setVisible(false); //예약버튼 누르면 메인화면은 안보임
+				mainPanel.setVisible(false);
 				MFrame.add(checkBook);
 				checkBook.setVisible(true); 
 			}
