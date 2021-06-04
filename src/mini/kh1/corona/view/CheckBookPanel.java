@@ -1,17 +1,15 @@
 package mini.kh1.corona.view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
-import java.awt.GridLayout;
-import java.awt.LayoutManager;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.Renderer;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumnModel;
 
 public class CheckBookPanel extends JPanel {
 
@@ -37,9 +35,16 @@ public class CheckBookPanel extends JPanel {
 		info.setOpaque(true);
 		add(info);
 		
+		Object[] header = {"0", "0"};
+		Object[][] contents = { //나중에 값 가져올 것임
+				{"이름", "0"}
+				, {"주민등록번호", "0"}
+				, {"접종 예정 병원", "0"}
+				, {"접종 일시", "0"}
+		};
 		
-		JTable bookInfo = new JTable(4, 2);
-		bookInfo.setTableHeader(null);
+		JTable bookInfo = new JTable(contents, header);
+//		bookInfo.setTableHeader(null);
 		bookInfo.setLocation(50, 105);
 		bookInfo.setSize(800, 360);
 		
@@ -48,16 +53,17 @@ public class CheckBookPanel extends JPanel {
 		bookInfo.getColumnModel().getColumn(1).setMaxWidth(600);
 		JScrollPane scp = new JScrollPane(bookInfo);
 		
+		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
+	    dtcr.setHorizontalAlignment(SwingConstants.CENTER);
+	     
+	    TableColumnModel tcm = bookInfo.getColumnModel() ;
+	     
+	    //전체 열에 지정
+	    for(int i = 0 ; i < tcm.getColumnCount() ; i++){
+	    tcm.getColumn(i).setCellRenderer(dtcr);  
+	    }
 		
-//		JPanel bookInfo = new JPanel();
-//		bookInfo.setLayout(new GridLayout(4, 2));
-//		bookInfo.setLocation(50, 10);
-//		bookInfo.setSize(800, 400);
-//		bookInfo.setBackground(Color.WHITE);
-//
-//		bookInfo.add(new JLabel("이름"));
-		
-		
+		add(bookInfo);
 		add(scp);
 	}
 
