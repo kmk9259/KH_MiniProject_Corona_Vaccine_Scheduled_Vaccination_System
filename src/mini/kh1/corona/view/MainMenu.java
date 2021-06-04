@@ -7,9 +7,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import mini.kh1.corona.model.vo.Chatbot;
+
 public class MainMenu {
 	
     JPanel selectHospital = new SelectHospital();
+    JPanel chatBotpanel;
 
 	
 
@@ -89,7 +92,15 @@ public class MainMenu {
 			@Override
 			public void mousePressed(MouseEvent e) {
 
-				// 챗봇 버튼 클릭 시 이벤트 구현
+				//MFrame.dispose();
+//				int port = 8500;
+//				Chatbot chatbot = new Chatbot(port);
+//				ChatBotFrame f = chatbot.getFrame();
+//				f.process();
+//				
+				 //예약버튼 누르면 메인화면은 안보임
+				
+				
 			}
 		});
 		mainPanel.add(chatbotButton);//메인패널에 챗봇버튼 추가
