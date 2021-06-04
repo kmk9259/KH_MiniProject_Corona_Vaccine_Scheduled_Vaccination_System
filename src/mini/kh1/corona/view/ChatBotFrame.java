@@ -1,6 +1,5 @@
 package mini.kh1.corona.view;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -9,7 +8,6 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -18,9 +16,8 @@ import javax.swing.JTextField;
 public class ChatBotFrame extends JPanel implements ActionListener{
 	private JTextArea chatting;
 	private JTextField input;
-	private JFrame frame = new JFrame("ChatBot");
 	
-	private JPanel chatPanel = new JPanel();
+	static JPanel chatPanel = new JPanel();
 	private DatagramSocket socket;
 	private DatagramPacket packet;
 	private InetAddress address;
@@ -46,18 +43,10 @@ public class ChatBotFrame extends JPanel implements ActionListener{
 		chatPanel.add(input);
 		chatPanel.add(sendButton);
 		menual();
-		frame.setResizable(false); //화면 크기 조절 잠금
-		frame.setLocationRelativeTo(null);
-		frame.getContentPane().add(BorderLayout.CENTER, chatPanel);
-		frame.setSize(900, 600);
-		frame.setResizable(false);
-		
 		
 		chatPanel.setVisible(true);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 	}
-	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -98,7 +87,7 @@ public class ChatBotFrame extends JPanel implements ActionListener{
 		chatting.append("사용자님, 안녕하세요 :)\n\n");
 		chatting.append("궁금한 사항을 입력해주세요.\n");
 		chatting.append("/FAQ\n");
-		//chatting.append("/사용자 이용안내\n");
+		chatting.append("/메인화면\n");
 		
 		chatting.append("======================================================"+
 				"========================================================\n");
@@ -130,6 +119,11 @@ public class ChatBotFrame extends JPanel implements ActionListener{
 			+"백신을 접종하고 나면 신체가 보호 기능을 구축하고 있다는 정상적인 신호인 부작용이 나타날 수 있습니다.\n"
 			+"일반적인 부작용은 주사 맞은 팔의 통증, 발적, 부기 그리고 몸살, 두통, 근육통, 오한, 발열, 메스꺼움입니다.\n"
 			+"이러한 부작용은 일상 활동에 지장을 주기도 하지만, 며칠 내에 사라질 것입니다.\n");
+		}
+		else if(str.equals("/메인화면") ||str.equals("메인화면"))
+		{
+			chatPanel.setVisible(false); 
+			MainMenu.mainPanel.setVisible(true);
 		}
 		
 		
