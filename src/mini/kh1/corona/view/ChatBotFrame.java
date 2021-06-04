@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
 
 public class ChatBotFrame extends JPanel implements ActionListener{
 	private JTextArea chatting;
@@ -99,8 +98,8 @@ public class ChatBotFrame extends JPanel implements ActionListener{
 		chatting.append("사용자님, 안녕하세요 :)\n\n");
 		chatting.append("궁금한 사항을 입력해주세요.\n");
 		chatting.append("/FAQ\n");
-		chatting.append("/사용자 이용안내\n");
-		chatting.append("/홈으로\n");
+		//chatting.append("/사용자 이용안내\n");
+		
 		chatting.append("======================================================"+
 				"========================================================\n");
 		
@@ -132,6 +131,7 @@ public class ChatBotFrame extends JPanel implements ActionListener{
 			+"일반적인 부작용은 주사 맞은 팔의 통증, 발적, 부기 그리고 몸살, 두통, 근육통, 오한, 발열, 메스꺼움입니다.\n"
 			+"이러한 부작용은 일상 활동에 지장을 주기도 하지만, 며칠 내에 사라질 것입니다.\n");
 		}
+		
 		
 	}
 
