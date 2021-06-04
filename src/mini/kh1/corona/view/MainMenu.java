@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 public class MainMenu {
 	
     JPanel selectHospital = new SelectHospital();
-
+    JPanel checkBook = new CheckBookPanel();
 	
 
 	JFrame MFrame = new JFrame();
@@ -28,7 +28,7 @@ public class MainMenu {
 		MFrame.setSize(900, 600);
 		MFrame.setResizable(false); //화면 크기 조절 잠금
 		MFrame.setLocationRelativeTo(null);
-		MFrame.setVisible(true);
+		
 		MFrame.setDefaultCloseOperation(MFrame.EXIT_ON_CLOSE);
 
 		mainPanel.setLayout(null);
@@ -63,6 +63,10 @@ public class MainMenu {
 			public void mousePressed(MouseEvent e) {
 
 				// 예약조회 버튼 클릭 시 이벤트 구현
+				
+				mainPanel.setVisible(false); //예약버튼 누르면 메인화면은 안보임
+				MFrame.add(checkBook);
+				checkBook.setVisible(true); 
 			}
 		});
 		mainPanel.add(chackBookButton); //메인패널에 예약조회 버튼 추가
@@ -106,9 +110,9 @@ public class MainMenu {
 			}
 		});
 		mainPanel.add(logoutButton); // 메인 패널에 로그아웃 버튼 추가
-
+		
 		MFrame.add(mainPanel); //메인 프레임에 메인 패널 추가
-
+		MFrame.setVisible(true);
 	}
 
 }
