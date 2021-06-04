@@ -50,6 +50,7 @@ public class ChatBotFrame implements ActionListener{
 		menual();
 		frame.getContentPane().add(BorderLayout.CENTER, chatPanel);
 		frame.setSize(900, 600);
+		frame.setResizable(false);
 		
 		
 		chatPanel.setVisible(true);

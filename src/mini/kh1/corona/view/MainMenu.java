@@ -93,14 +93,9 @@ public class MainMenu {
 			@Override
 			public void mousePressed(MouseEvent e) {
 
-				//MFrame.dispose();
-//				int port = 8500;
-//				Chatbot chatbot = new Chatbot(port);
-//				ChatBotFrame f = chatbot.getFrame();
-//				f.process();
-//				
-				 //예약버튼 누르면 메인화면은 안보임
-				
+				MFrame.dispose();
+				new Chatbot(8500);
+
 				
 			}
 		});
