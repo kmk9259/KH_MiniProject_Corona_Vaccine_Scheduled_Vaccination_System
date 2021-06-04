@@ -12,9 +12,7 @@ import mini.kh1.corona.model.vo.Chatbot;
 public class MainMenu {
 	
     JPanel selectHospital = new SelectHospital();
-    JPanel chatBotpanel;
-
-	
+    JPanel chatBotpanel = ChatBotFrame.chatPanel;
 
 	JFrame MFrame = new JFrame();
 	static JPanel mainPanel = new JPanel(); //메인 패널은 자주 호출될 것이므로 일단 static->직접 호출가능하도록
@@ -93,8 +91,10 @@ public class MainMenu {
 			@Override
 			public void mousePressed(MouseEvent e) {
 
-				MFrame.dispose();
+				mainPanel.setVisible(false); //예약버튼 누르면 메인화면은 안보임
+				MFrame.add(chatBotpanel); //메인 프레임에 병원(지역)선택 화면 추가
 				new Chatbot(8500);
+				chatBotpanel.setVisible(true); 
 
 				
 			}
