@@ -16,7 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
-public class ChatBotFrame implements ActionListener{
+public class ChatBotFrame extends JPanel implements ActionListener{
 	private JTextArea chatting;
 	private JTextField input;
 	private JFrame frame = new JFrame("ChatBot");
@@ -25,7 +25,6 @@ public class ChatBotFrame implements ActionListener{
 	private DatagramSocket socket;
 	private DatagramPacket packet;
 	private InetAddress address;
-	private String faq;
 
 	public ChatBotFrame(InetAddress address, DatagramSocket socket) {
 		this.address = address;
@@ -48,6 +47,8 @@ public class ChatBotFrame implements ActionListener{
 		chatPanel.add(input);
 		chatPanel.add(sendButton);
 		menual();
+		frame.setResizable(false); //화면 크기 조절 잠금
+		frame.setLocationRelativeTo(null);
 		frame.getContentPane().add(BorderLayout.CENTER, chatPanel);
 		frame.setSize(900, 600);
 		frame.setResizable(false);
@@ -57,6 +58,7 @@ public class ChatBotFrame implements ActionListener{
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
