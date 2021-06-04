@@ -8,9 +8,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class MainMenu {
+	
+    JPanel selectHospital = new SelectHospital();
+
+	
 
 	JFrame MFrame = new JFrame();
-	JPanel mainPanel = new JPanel();
+	static JPanel mainPanel = new JPanel(); //메인 패널은 자주 호출될 것이므로 일단 static->직접 호출가능하도록
 
 	JButton bookButton = new JButton("예약하기"); // 예약하기 버튼
 	JButton chackBookButton = new JButton("예약조회"); // 예약조회 버튼
@@ -20,9 +24,9 @@ public class MainMenu {
 
 	public MainMenu() {
 
-		MFrame.setTitle("지역 선택");
+		MFrame.setTitle("백신 예약 프로그램");
 		MFrame.setSize(900, 600);
-		MFrame.setResizable(false);
+		MFrame.setResizable(false); //화면 크기 조절 잠금
 		MFrame.setLocationRelativeTo(null);
 		MFrame.setVisible(true);
 		MFrame.setDefaultCloseOperation(MFrame.EXIT_ON_CLOSE);
@@ -36,11 +40,15 @@ public class MainMenu {
 		bookButton.setVisible(true);
 		bookButton.addMouseListener(new MouseAdapter() {
 
+
 			@Override
 			public void mousePressed(MouseEvent e) {
 
-				// 예약하기 버튼 클릭 시 이벤트 구현
-
+				mainPanel.setVisible(false); //예약버튼 누르면 메인화면은 안보임
+				MFrame.add(selectHospital); //메인 프레임에 병원(지역)선택 화면 추가
+				selectHospital.setVisible(true); //병원(지역)선택 화면 노출
+				
+				
 			}
 		});
 		mainPanel.add(bookButton); //메인패널에 예약버튼 추가
