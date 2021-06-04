@@ -37,7 +37,8 @@ public class MainMenu {
 		mainPanel.setLayout(null);
 		mainPanel.setVisible(true);
 
-		
+		MFrame.add(mainPanel); //메인 프레임에 메인 패널 추가
+
 		//예약하기 버튼 설정
 		bookButton.setBounds(180, 280, 200, 50);
 		bookButton.setVisible(true);
@@ -118,8 +119,7 @@ public class MainMenu {
 		});
 		mainPanel.add(logoutButton); // 메인 패널에 로그아웃 버튼 추가
 
-		MFrame.add(mainPanel); //메인 프레임에 메인 패널 추가
-
+	
 	}
 
 }
