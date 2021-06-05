@@ -111,7 +111,6 @@ public class MainMenu {
 		mainPanel.add(logoutButton); // 메인 패널에 로그아웃 버튼 추가
 		
 		MFrame.add(mainPanel); //메인 프레임에 메인 패널 추가
-		MFrame.setVisible(true);
 	}
 
 }
