@@ -94,7 +94,7 @@ public class CheckBookPanel extends JPanel {
 				JButton cancel = (JButton)e.getSource();
 				
 				int result = JOptionPane.showConfirmDialog(null, "예약을 취소하시겠습니까?\n'확인' 시 되돌릴 수 없습니다.", "예약 취소",  JOptionPane.YES_NO_OPTION);
-				if(result == JOptionPane.YES_OPTION) {
+				if(result == JOptionPane.YES_OPTION) {	//"예" 일 때
 					//취소 처리 과정 필요
 					JOptionPane.showMessageDialog(null, "예약이 취소되었습니다.\n홈 화면으로 이동합니다.");
 					MainMenu.mainPanel.setVisible(true);
