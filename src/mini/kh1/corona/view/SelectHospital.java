@@ -60,7 +60,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 		
 		setVisible(false);
 		setLayout(null);
-
+		
 	    choice = new Choice();// 드롭다운 (지역 선택)
 		choice.add("서울 서대문구");
 		choice.add("경기도 고양시");

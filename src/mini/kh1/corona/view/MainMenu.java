@@ -11,7 +11,6 @@ public class MainMenu {
 	
     JPanel selectHospital = new SelectHospital();
     JPanel checkBook = new CheckBookPanel();
-	
 
 	JFrame MFrame = new JFrame();
 	static JPanel mainPanel = new JPanel(); //메인 패널은 자주 호출될 것이므로 일단 static->직접 호출가능하도록
@@ -63,7 +62,7 @@ public class MainMenu {
 			public void mousePressed(MouseEvent e) {
 
 				// 예약조회 버튼 클릭 시 이벤트 구현
-				
+			
 				mainPanel.setVisible(false);
 				MFrame.add(checkBook);
 				checkBook.setVisible(true); 
