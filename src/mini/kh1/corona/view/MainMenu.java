@@ -60,11 +60,15 @@ public class MainMenu {
 		chackBookButton.setBounds(470, 280, 200, 50);
 		chackBookButton.setVisible(true);
 		chackBookButton.addMouseListener(new MouseAdapter() {
-
+			
 			@Override
 			public void mousePressed(MouseEvent e) {
 
 				// 예약조회 버튼 클릭 시 이벤트 구현
+			
+				mainPanel.setVisible(false);
+				MFrame.add(CheckBookPanel.checkBookPanel);
+				CheckBookPanel.checkBookPanel.setVisible(true); 
 			}
 		});
 		mainPanel.add(chackBookButton); //메인패널에 예약조회 버튼 추가
