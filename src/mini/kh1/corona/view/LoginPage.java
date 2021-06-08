@@ -110,15 +110,15 @@ public class LoginPage extends JFrame implements ActionListener {
 			String pwdText;
 			userText = userTextField.getText();
 			pwdText = passwordField.getText();
-			for(int i=0; i<ip.userlist.size(); i++)
-			{
-				if (userText.equals(ip.userlist.get(i).getId())&& pwdText.equals(ip.userlist.get(i).getPassword())) { // 임의 입력 // 나중에 데이터 받아옴
-					JOptionPane.showMessageDialog(this, "로그인에 성공했습니다."); // 성공 메세지!!
-					new MainMenu();
-					
-					frame.setVisible(false);
-				}
-				else if(userText.equalsIgnoreCase("admin") && pwdText.equalsIgnoreCase("12345")){
+			//for(int i=0; i<ip.userlist.size(); i++)
+			//{
+//				if (userText.equals(ip.userlist.get(i).getId())&& pwdText.equals(ip.userlist.get(i).getPassword())) { // 임의 입력 // 나중에 데이터 받아옴
+//					JOptionPane.showMessageDialog(this, "로그인에 성공했습니다."); // 성공 메세지!!
+//					new MainMenu();
+//					
+//					frame.setVisible(false);
+//				}
+				 if(userText.equalsIgnoreCase("admin") && pwdText.equalsIgnoreCase("12345")){
 					JOptionPane.showMessageDialog(this, "관리자 로그인에 성공했습니다."); // 성공 메세지!!
 					new ManagerView();
 					frame.setVisible(false);
@@ -132,7 +132,7 @@ public class LoginPage extends JFrame implements ActionListener {
 				else {
 					JOptionPane.showMessageDialog(this, "아이디, 비밀번호가 일치 하지 않습니다.");
 				}
-			}
+			//}
 			
 
 		}
