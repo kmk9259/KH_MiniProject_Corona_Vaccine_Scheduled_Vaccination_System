@@ -90,9 +90,19 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 					// 재고 감소 처리
 
 					
-					option.showMessageDialog(null, "예약이 완료되셨습니다.");
-					setVisible(false);
-					MainMenu.mainPanel.setVisible(true);		
+					int result =option.showConfirmDialog(null, "예약 신청하시겠습니까?","confirm", JOptionPane.YES_NO_OPTION);
+					if(result == JOptionPane.CLOSED_OPTION || result == JOptionPane.NO_OPTION)
+					{
+						setVisible(false);
+						MainMenu.mainPanel.setVisible(true);	
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null, "예약 신청이 완료되었습니다.\n이메일을 통해 접종 날짜를 알려드리오니, 꼭 이메일을 확인하시기 바랍니다.","공지",JOptionPane.WARNING_MESSAGE);
+						setVisible(false);
+						MainMenu.mainPanel.setVisible(true);
+					}
+						
 //			 }
 		 
 			}
