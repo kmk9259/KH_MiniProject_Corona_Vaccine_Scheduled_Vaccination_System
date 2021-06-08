@@ -110,10 +110,16 @@ public class LoginPage extends JFrame implements ActionListener {
 			userText = userTextField.getText();
 			pwdText = passwordField.getText();
 			if (userText.equalsIgnoreCase("admin") && pwdText.equalsIgnoreCase("12345")) { // 임의 입력 // 나중에 데이터 받아옴
-				JOptionPane.showMessageDialog(this, "로그인에 성공했습니다."); // 성공 메세지!!
+				JOptionPane.showMessageDialog(this, "관리자 로그인에 성공했습니다."); // 성공 메세지!!
 				new ManagerView();
 				frame.setVisible(false);
-			} else {
+			}
+			else if(userText.equalsIgnoreCase("test") && pwdText.equalsIgnoreCase("1234")){
+				JOptionPane.showMessageDialog(this, "로그인에 성공했습니다."); // 성공 메세지!!
+				new MainMenu();
+				frame.setVisible(false);
+				
+			}else {
 				JOptionPane.showMessageDialog(this, "아이디, 비밀번호가 일치 하지 않습니다.");
 			}
 

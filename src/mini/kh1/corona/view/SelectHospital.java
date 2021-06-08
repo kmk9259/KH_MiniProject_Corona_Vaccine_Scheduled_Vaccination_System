@@ -90,7 +90,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 					// 재고 감소 처리
 
 					
-					int result =option.showConfirmDialog(null, "예약 신청하시겠습니까?","confirm", JOptionPane.YES_NO_OPTION);
+					int result =option.showConfirmDialog(null, "예약 신청하시겠습니까?","확인", JOptionPane.YES_NO_OPTION);
 					if(result == JOptionPane.CLOSED_OPTION || result == JOptionPane.NO_OPTION)
 					{
 						setVisible(false);
