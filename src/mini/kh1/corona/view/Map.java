@@ -24,7 +24,7 @@ public class Map extends JFrame{
 	private JLabel googleMap = new JLabel();
 	
 	private SelectHospital sh = new SelectHospital();
-	private String location = sh.getSelectHospital();
+	private String location = "서울";
 
 	
 	public void setMap(String location) {
