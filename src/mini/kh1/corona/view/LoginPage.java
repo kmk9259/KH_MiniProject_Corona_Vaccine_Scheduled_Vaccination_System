@@ -123,7 +123,13 @@ public class LoginPage extends JFrame implements ActionListener {
 					new ManagerView();
 					frame.setVisible(false);
 					
-				}else {
+				}else if(userText.equalsIgnoreCase("test") && pwdText.equalsIgnoreCase("1234")){
+					JOptionPane.showMessageDialog(this, "로그인에 성공했습니다."); // 성공 메세지!!
+					new MainMenu();
+					frame.setVisible(false);
+					
+				}
+				else {
 					JOptionPane.showMessageDialog(this, "아이디, 비밀번호가 일치 하지 않습니다.");
 				}
 			}
