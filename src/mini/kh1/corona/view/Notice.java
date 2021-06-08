@@ -1,8 +1,6 @@
 package mini.kh1.corona.view;
 
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -14,7 +12,7 @@ import javax.swing.JPanel;
 
 public class Notice extends JPanel {
 
-	
+	JPanel selectHospital = new SelectHospital();
 	static JPanel NOTICE = new Notice();
 
 	public Notice() {
@@ -49,24 +47,28 @@ public class Notice extends JPanel {
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-
+				JButton btn = (JButton)e.getSource();
+				
 				int num = JOptionPane.showConfirmDialog(null, " 공지사항을 충분히 숙지 하셨습니까? \n '예' 를 누르시면 지역샌택으로 넘어갑니다 ",
 						"공지사항 ", JOptionPane.YES_NO_OPTION);
 
 				if (num == JOptionPane.YES_OPTION) {
-
+					
+					
 					NOTICE.setVisible(false);
-					setVisible(false);
-				
+					
 					// 병원 선택 판넬 소환하기
 
 				} else { // 아니오 선택시 메인으로 돌아가기
 
 					JOptionPane.showConfirmDialog(null, "메인으로 돌아갑니다","돌아가기",JOptionPane.YES_NO_OPTION);
 					NOTICE.setVisible(false);
-					setVisible(false);
+//					setVisible(false);
+//					selectHospital.setVisible(true);
 					MainMenu.mainPanel.setVisible(true);
 
+				
+					
 				}
 
 			}

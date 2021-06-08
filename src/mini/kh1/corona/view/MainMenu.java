@@ -47,7 +47,12 @@ public class MainMenu {
 			public void mousePressed(MouseEvent e) {
 
 				mainPanel.setVisible(false); //예약버튼 누르면 메인화면은 안보임
+				MFrame.add(Notice.NOTICE);
 				MFrame.add(selectHospital); //메인 프레임에 병원(지역)선택 화면 추가
+				
+//				selectHospital.setVisible(true);
+			
+				Notice.NOTICE.setVisible(true);
 				selectHospital.setVisible(true); //병원(지역)선택 화면 노출
 				
 				
