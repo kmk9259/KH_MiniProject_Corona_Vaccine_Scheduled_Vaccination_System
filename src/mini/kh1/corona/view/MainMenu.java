@@ -82,6 +82,8 @@ public class MainMenu {
 			@Override
 			public void mousePressed(MouseEvent e) {
 
+				new ModifyPage();
+				MFrame.setVisible(false);
 				// 마이페이지 버튼 클릭 시 이벤트 구현
 			}
 		});
@@ -120,5 +122,7 @@ public class MainMenu {
 
 	
 	}
+
+
 
 }
