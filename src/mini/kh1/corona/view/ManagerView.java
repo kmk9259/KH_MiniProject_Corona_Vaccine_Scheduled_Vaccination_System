@@ -97,9 +97,9 @@ public class ManagerView {
 		vc.add(vmButton2);
 		
 		//병원별 재고 현황 테이블
-		Object[][] vmData = {{"연세대세브란스병원", "150개"}, {"일산백병원", "150개"}, {"인제대해운대백병원", "150개"}};//병원 정보는 추후 받아올 것
+		Object[][] vmData = {{"서울특별시 서대문구", "연세대세브란스병원", "150개"}, {"경기도 고양시", "일산백병원", "150개"}, {"부산 해운대구", "인제대해운대백병원", "150개"}};//병원 정보는 추후 받아올 것
 		
-		JTable vmTable = new JTable(vmData, new Object[] {"병원명", "재고 수량"});
+		JTable vmTable = new JTable(vmData, new Object[] {"시/구", "병원명", "재고 수량"});
 		JTableHeader vmTableHd = vmTable.getTableHeader();
 		final JScrollPane vmScrollPane = new JScrollPane(vmTable);//스크롤 있는 테이블로 변경
 		
