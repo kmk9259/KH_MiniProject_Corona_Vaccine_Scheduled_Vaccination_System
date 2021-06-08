@@ -17,8 +17,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class LoginPage extends JFrame implements ActionListener {
-	
-	 
 
 	private JFrame frame = new JFrame();
 	private Container container = getContentPane();
@@ -34,7 +32,6 @@ public class LoginPage extends JFrame implements ActionListener {
 	// 버튼
 	private JButton loginButton = new JButton("로그인");
 	private JButton insertButton = new JButton("회원가입");
-	private JButton Managerbutton = new JButton("관리자");
 
 	// 체크박스
 	private JCheckBox showPassword = new JCheckBox("보이기");
@@ -60,65 +57,53 @@ public class LoginPage extends JFrame implements ActionListener {
 		container.setLayout(null);
 		container.setVisible(true);// 첫 패널만 일단 보이게 해놓음
 
-		/*container.setSize(900, 600);
-		container.setLayout(null);
-		container.setVisible(true);*/
-
 		frame.getContentPane().add(container); // 패널로 컴포넌트를 감싸 놓음.
 
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("NanumGothic", Font.BOLD, 28));
+		label.setFont(new Font("NanumGothic", Font.BOLD, 30));
 		label.setBounds(262, 120, 376, 75);
 
 		container.add(label);
-		
-		panel.setBounds(262, 233, 376, 199);
+
+		panel.setBounds(304, 233, 292, 199);
 
 		container.add(panel);
 		panel.setLayout(null);
-		
-		
+
 		userLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
 		userLabel.setBounds(0, 0, 100, 30);
 		panel.add(userLabel);
-		
+
 		passwordLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
 		passwordLabel.setBounds(0, 46, 100, 30);
 		panel.add(passwordLabel);
-		
+
 		userTextField.setBounds(115, 0, 150, 30);
 		panel.add(userTextField);
-		
+
 		passwordField.setBounds(115, 46, 150, 30);
 		panel.add(passwordField);
-		
-		showPassword.setBounds(297, 46, 150, 30);
+
+		showPassword.setBounds(115, 78, 150, 30);
 		panel.add(showPassword);
-		
-		loginButton.setBounds(0, 108, 100, 30);
-		
+
+		loginButton.setBounds(2, 162, 100, 30);
+
 		panel.add(loginButton);
 
 		// insertButton
-		insertButton.setBounds(165, 108, 100, 30);
+		insertButton.setBounds(167, 162, 100, 30);
 		panel.add(insertButton);
-		
-		//관리자 버튼
-		Managerbutton.setBounds(165, 169, 100, 30);
-		panel.add(Managerbutton);
-		
 
 		// 버튼 이벤트
 		loginButton.addActionListener(this);
 		showPassword.addActionListener(this);
 		insertButton.addActionListener(this);
-		Managerbutton.addActionListener(this);
+
 	}
 
-	
-
 	@Override
-	public void actionPerformed(ActionEvent e) { 
+	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == loginButton) {
 			String userText;
 			String pwdText;
@@ -126,7 +111,7 @@ public class LoginPage extends JFrame implements ActionListener {
 			pwdText = passwordField.getText();
 			if (userText.equalsIgnoreCase("admin") && pwdText.equalsIgnoreCase("12345")) { // 임의 입력 // 나중에 데이터 받아옴
 				JOptionPane.showMessageDialog(this, "로그인에 성공했습니다."); // 성공 메세지!!
-				new MainMenu();
+				new ManagerView();
 				frame.setVisible(false);
 			} else {
 				JOptionPane.showMessageDialog(this, "아이디, 비밀번호가 일치 하지 않습니다.");
@@ -139,16 +124,11 @@ public class LoginPage extends JFrame implements ActionListener {
 		}
 		if (e.getSource() == showPassword) {
 			if (showPassword.isSelected()) { // 비밀번호 보이기 토글 세팅
-				passwordField.setEchoChar((char) 0); 
+				passwordField.setEchoChar((char) 0);
 			} else {
 				passwordField.setEchoChar('*'); // 비밀번호 감추기
 			}
 
-		}
-		
-		if (e.getSource() == Managerbutton) {
-			new ManagerView(); // 클릭시, 관리자 창으로 넘어가게
-			frame.setVisible(false);
 		}
 
 	}
