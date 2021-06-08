@@ -55,7 +55,7 @@ public class InsertPage extends JFrame implements ActionListener {
 	private String ssn = ssnField.getText();
 	private String email = emailField.getText();
 	
-	ArrayList<User> userlist = new ArrayList<User>();
+	static ArrayList<User> userlist = new ArrayList<User>();
 
 	public InsertPage() {
 

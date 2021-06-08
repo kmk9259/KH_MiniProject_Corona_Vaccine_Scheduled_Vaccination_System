@@ -23,16 +23,8 @@ public class User {
 		this.ssn = ssn;
 		this.email = email;
 		
-		
-		
 	}
-	public ArrayList<User> userList()
-	{
-		ArrayList<User> list = new ArrayList<User>();
-		list.add(new User(id, name, password, ssn, email));
-		System.out.println();
-		return list;
-	}
+
 
 	public String getId() {
 		return id;

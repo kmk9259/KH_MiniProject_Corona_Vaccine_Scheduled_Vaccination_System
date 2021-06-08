@@ -1,5 +1,5 @@
 package mini.kh1.corona.controller.user;
 
-public class User {
+public class UserList {
 
 }
