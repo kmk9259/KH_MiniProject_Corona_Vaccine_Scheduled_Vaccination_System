@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JButton;
@@ -21,8 +22,7 @@ import mini.kh1.corona.model.vo.User;
 
 public class InsertPage extends JFrame implements ActionListener {
 	
-	
-	private User u = new User();
+
 	InsertConstroller ic = new InsertConstroller();
 
 	private JFrame frame = new JFrame();
@@ -43,14 +43,19 @@ public class InsertPage extends JFrame implements ActionListener {
 	private JTextField ssnField = new JTextField();
 	private JTextField emailField = new JTextField();
 	
-	
 	private JButton insertButton = new JButton("회원가입");
 	private JButton backButton = new JButton("이전으로");
 	private JButton dupliButton = new JButton("중복확인");
-	
-	
+		
 	private final JLabel label = new JLabel("회원가입");
 	
+	private String id = userTextField.getText();
+	private String pw = passwordField.getText();
+	private String name = nameField.getText();
+	private String ssn = ssnField.getText();
+	private String email = emailField.getText();
+	
+	ArrayList<User> userlist = new ArrayList<User>();
 
 	public InsertPage() {
 
@@ -128,6 +133,9 @@ public class InsertPage extends JFrame implements ActionListener {
 		emailField.setBounds(378, 351, 150, 30);
 		container.add(emailField);
 		
+
+		
+		
 		
 
 		//회원 가입 버튼
@@ -155,6 +163,13 @@ public class InsertPage extends JFrame implements ActionListener {
 		if (e.getSource() == insertButton) {
 			new LoginPage(); // 클릭시, 다시 로그인에 돌아가 접속할 수 있게
 			frame.setVisible(false);
+			id = userTextField.getText();
+			pw = passwordField.getText();
+			name = nameField.getText();
+			ssn = ssnField.getText();
+			email = emailField.getText();
+			userlist.add(new User(id, name, pw, ssn, email));
+			
 		}
 		
 		if (e.getSource() == dupliButton) {
