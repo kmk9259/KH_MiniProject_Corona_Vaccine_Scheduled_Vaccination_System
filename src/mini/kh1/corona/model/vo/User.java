@@ -1,5 +1,7 @@
 package mini.kh1.corona.model.vo;
 
+import java.util.ArrayList;
+
 public class User {
 
 	private String id;
@@ -7,6 +9,7 @@ public class User {
 	private String password;
 	private String ssn;
 	private String email;
+	
 
 	public User() {
 		// TODO Auto-generated constructor stub
@@ -19,6 +22,16 @@ public class User {
 		this.password = password;
 		this.ssn = ssn;
 		this.email = email;
+		
+		
+		
+	}
+	public ArrayList<User> userList()
+	{
+		ArrayList<User> list = new ArrayList<User>();
+		list.add(new User(id, name, password, ssn, email));
+		System.out.println();
+		return list;
 	}
 
 	public String getId() {
@@ -70,5 +83,6 @@ public class User {
 	public String information() {
 		return id + "\n" + password + "\n" + name + "\n" + ssn + "\n" + email;
 	}
+	
 
 }
