@@ -24,11 +24,10 @@ public class Map extends JFrame{
 	private JLabel googleMap = new JLabel();
 	
 	private SelectHospital sh = new SelectHospital();
-	private String location = sh.getSelectHospital();
+
 
 	
 	public void setMap(String location) {
-		
 		
 		googleAPI.downloadMap(location);
 		googleMap.setIcon(googleAPI.getMap(location));
@@ -40,7 +39,7 @@ public class Map extends JFrame{
 	
 	
 	
-	public Map() {
+	public Map(String location) {
 
 		
 		setLayout(new BorderLayout());

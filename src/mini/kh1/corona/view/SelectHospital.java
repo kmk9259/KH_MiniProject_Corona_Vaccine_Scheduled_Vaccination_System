@@ -99,24 +99,26 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 		});
 		add(bookButton); // 패널에 병원위치(지도) 버튼 추가
 
+
+
 		table1.setRowHeight(50);
 		table1.setVisible(false);
-		JScrollPane jscp1 = new JScrollPane(table1); // table은 이런식으로 넘겨줘야 정상출력된다.
+		final JScrollPane jscp1 = new JScrollPane(table1); // table은 이런식으로 넘겨줘야 정상출력된다.
 		jscp1.setLocation(250, 80);
 		jscp1.setSize(500, 210);
 
 		table2.setRowHeight(50);
 		table2.setVisible(false);
-		JScrollPane jscp2 = new JScrollPane(table2); // table은 이런식으로 넘겨줘야 정상출력된다.
+		final JScrollPane jscp2 = new JScrollPane(table2); // table은 이런식으로 넘겨줘야 정상출력된다.
 		jscp2.setLocation(250, 80);
 		jscp2.setSize(500, 210);
 
 		table3.setRowHeight(50);
 		table3.setVisible(false);
-		JScrollPane jscp3 = new JScrollPane(table3); // table은 이런식으로 넘겨줘야 정상출력된다.
+		final JScrollPane jscp3 = new JScrollPane(table3); // table은 이런식으로 넘겨줘야 정상출력된다.
 		jscp3.setLocation(250, 80);
 		jscp3.setSize(500, 210);
-
+		
 		searchButton.setBounds(180, 80, 60, 30);
 		searchButton.setVisible(true);
 		searchButton.addMouseListener(new MouseAdapter() {

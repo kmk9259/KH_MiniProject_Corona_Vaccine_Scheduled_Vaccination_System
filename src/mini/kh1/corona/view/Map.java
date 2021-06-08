@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import mini.kh1.corona.controller.reservation.GoogleAPI;
+
 
 //이 코드는 수정하지 말아주세요
 public class Map extends JFrame{
