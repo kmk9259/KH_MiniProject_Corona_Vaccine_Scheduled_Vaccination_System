@@ -162,7 +162,7 @@ public class InsertPage extends JFrame implements ActionListener {
 			name = nameField.getText();
 			ssn = ssnField.getText();
 			email = emailField.getText();
-			list.addList(id,pw,name,ssn, email);
+			
 			
 			//값이 빈 곳이 있으면 가입이 되지 않게~ 
 			if(id.length() == 0 || pw.length() == 0 || name.length() == 0 || ssn.length() == 0 || email.length() == 0) {
@@ -175,6 +175,7 @@ public class InsertPage extends JFrame implements ActionListener {
 				}
 			}else {
 				JOptionPane.showMessageDialog(this, "가입 되었습니다.");
+				list.addList(id,pw,name,ssn, email);
 				new LoginPage(); // 빈 곳 없이 값이 입력 되면 로그인 할 수 있는 페이지로 이동
 				frame.setVisible(false);
 			}
@@ -208,6 +209,10 @@ public class InsertPage extends JFrame implements ActionListener {
 				if (UserList.UserList().get(i).getId().equals(userText)) {
 					result = 1; // 참 거짓으로 표현하기 위해
 					JOptionPane.showMessageDialog(this, "중복된 아이디 입니다.");
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(this, "사용 가능한 아이디 입니다.");
 				}
 			}
 			return result;

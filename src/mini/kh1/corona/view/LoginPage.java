@@ -118,9 +118,6 @@ public class LoginPage extends JFrame implements ActionListener {
 			String pwdText = passwordField.getText();
 			loginSuccess(userText, pwdText);
 			
-			
-			
-
 		}
 		if (e.getSource() == insertButton) 
 		{

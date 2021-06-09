@@ -179,6 +179,10 @@ public class ModifyPage extends JFrame implements ActionListener {
 				result = 1; // 참 거짓으로 표현하기 위해
 				JOptionPane.showMessageDialog(this, "중복된 아이디 입니다.");
 			}
+			else
+			{
+				JOptionPane.showMessageDialog(this, "사용 가능한 아이디 입니다.");
+			}
 		}
 		return result;
 	}
