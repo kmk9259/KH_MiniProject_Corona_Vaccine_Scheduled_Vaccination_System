@@ -117,8 +117,10 @@ public class MainMenu {
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-
-				// 로그아웃 버튼 클릭 시 이벤트 구현
+				LoginPage.loginSession=false;	//세션종료
+				mainPanel.setVisible(false);
+				new LoginPage();
+				
 			}
 		});
 		mainPanel.add(logoutButton); // 메인 패널에 로그아웃 버튼 추가
