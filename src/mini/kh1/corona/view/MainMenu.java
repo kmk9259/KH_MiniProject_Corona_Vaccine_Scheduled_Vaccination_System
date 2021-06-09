@@ -14,7 +14,7 @@ public class MainMenu {
     JPanel selectHospital = new SelectHospital();
     JPanel chatBotpanel = ChatBotFrame.chatPanel;
 
-	JFrame MFrame = new JFrame();
+	static JFrame MFrame = new JFrame();
 	static JPanel mainPanel = new JPanel(); //메인 패널은 자주 호출될 것이므로 일단 static->직접 호출가능하도록
 
 	JButton bookButton = new JButton("예약하기"); // 예약하기 버튼
@@ -35,26 +35,24 @@ public class MainMenu {
 		mainPanel.setLayout(null);
 		mainPanel.setVisible(true);
 
+		
 		MFrame.add(mainPanel); //메인 프레임에 메인 패널 추가
 
 		//예약하기 버튼 설정
 		bookButton.setBounds(180, 280, 200, 50);
 		bookButton.setVisible(true);
 		bookButton.addMouseListener(new MouseAdapter() {
-
-
+			
+		
 			@Override
 			public void mousePressed(MouseEvent e) {
 
 				mainPanel.setVisible(false); //예약버튼 누르면 메인화면은 안보임
-				MFrame.add(Notice.NOTICE);
-				MFrame.add(selectHospital); //메인 프레임에 병원(지역)선택 화면 추가
+				MFrame.add(Notice.NOTICE);	//메인 프레임에 예약 전 공지사항 추가
+//				MFrame.add(selectHospital); //메인 프레임에 병원(지역)선택 화면 추가
 				
-//				selectHospital.setVisible(true);
-			
 				Notice.NOTICE.setVisible(true);
-				selectHospital.setVisible(true); //병원(지역)선택 화면 노출
-				
+//				selectHospital.setVisible(true); //병원(지역)선택 화면 노출
 				
 			}
 		});
