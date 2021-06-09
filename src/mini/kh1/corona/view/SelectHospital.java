@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import mini.kh1.corona.controller.reservation.sendMail.MailNotification;
+
 //예약하기 -> 공지 -> 지역선택 패널 구현 코드  JPanel상속 
 
 public class SelectHospital extends JPanel { // 병원 선택 화면 패널
@@ -44,6 +46,8 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 	private JOptionPane option = new JOptionPane();
 
 	public String mapLocation; //지도에 입력 될 키워드
+	
+	MailNotification mail = new MailNotification();	//메일 알림클래스
 
 	
 
@@ -89,7 +93,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 					// 로그인한 유저가 해당 병원으로 예약하는 정보를 전달----> 예약배열에 추가 or ArrayList에 추가 --->이메일 단으로 전달 
 					// 재고 감소 처리
 
-					
+					//예약신청 완료 후 메일 알림서비스
 					int result =option.showConfirmDialog(null, "예약 신청하시겠습니까?","확인", JOptionPane.YES_NO_OPTION);
 					if(result == JOptionPane.CLOSED_OPTION || result == JOptionPane.NO_OPTION)
 					{
@@ -99,6 +103,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 					else
 					{
 						JOptionPane.showMessageDialog(null, "예약 신청이 완료되었습니다.\n이메일을 통해 접종 날짜를 알려드리오니, 꼭 이메일을 확인하시기 바랍니다.","공지",JOptionPane.WARNING_MESSAGE);
+						//mail.sendtoUser(); -> (임시적)예약신청이 완료되었을 때 메일 보내기
 						setVisible(false);
 						MainMenu.mainPanel.setVisible(true);
 					}

@@ -24,12 +24,12 @@ public class ChatBotFrame extends JPanel implements ActionListener{
 	private DatagramPacket packet;
 	private InetAddress address;
 	
+	LoginPage loginpage;
 	
-	
-
 	public ChatBotFrame(InetAddress address, DatagramSocket socket) {
 		this.address = address;
 		this.socket = socket;
+		
 		
 		input = new JTextField(60);
 		chatting = new JTextArea(25, 70); // was 15,50
@@ -88,7 +88,7 @@ public class ChatBotFrame extends JPanel implements ActionListener{
 	}
 	public void menual()
 	{
-		//chatting.append(+"님, 안녕하세요 :)\n\n");
+		chatting.append(UserList.UserList().get(loginpage.sessionNum).getName()+"님, 안녕하세요 :)\n\n");
 		chatting.append("궁금한 사항을 입력해주세요.\n");
 		chatting.append("/FAQ\n");
 		chatting.append("/메인화면\n");

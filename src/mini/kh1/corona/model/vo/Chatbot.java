@@ -19,7 +19,7 @@ public class Chatbot {
 			address = InetAddress.getByName("192.168.1.5");
 			socket= new DatagramSocket(port);
 			//cmd에서 netstat -n pid 번호
-			//taskkill /f /pid 
+			//taskkill /f /pid pid번호
 			f=new ChatBotFrame(address,socket);
 			
 		} catch (UnknownHostException e) {
