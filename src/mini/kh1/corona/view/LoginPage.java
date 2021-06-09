@@ -154,7 +154,12 @@ public class LoginPage extends JFrame implements ActionListener {
 		if (userText.equalsIgnoreCase("admin") && pwdText.equalsIgnoreCase("12345")) 
 		{
 			JOptionPane.showMessageDialog(this, "관리자 로그인에 성공했습니다."); // 성공 메세지!!
-			new ManagerView();
+			try {
+				new ManagerView();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			frame.setVisible(false);
 
 		}
