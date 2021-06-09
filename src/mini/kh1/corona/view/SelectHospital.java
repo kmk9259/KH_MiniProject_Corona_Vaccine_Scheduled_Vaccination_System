@@ -14,6 +14,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import mini.kh1.corona.controller.hospital.XSSFTableTest;
+import mini.kh1.corona.controller.user.BookerList;
+import mini.kh1.corona.controller.user.UserList;
 import mini.kh1.corona.model.vo.HospitalVaccine;
 
 //예약하기 -> 공지 -> 지역선택 패널 구현 코드  JPanel상속 
@@ -22,10 +24,9 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 
 	XSSFTableTest XSSFTable = new XSSFTableTest();
 
-	Vector<HospitalVaccine> list = new Vector<HospitalVaccine>();
-	
-	
-	
+	Vector<HospitalVaccine> hospitalList = new Vector<HospitalVaccine>();
+	LoginPage loginpage;
+
 	String excelPath = "./data/HospitalData.xlsx";
 	String sheetName = "Sheet1";
 
@@ -64,18 +65,15 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 		label.setBounds(120, 350, 800, 20);
 		add(label); // 안내 문구 한 줄 표 아래 출력!
 
-		
-		
 		try {
-			list = XSSFTable.callTable();
+			hospitalList = XSSFTable.callTable();
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		
-		String location[] = { "지역 선택", list.get(0).getMainDistrict(), list.get(1).getMainDistrict(),
-				list.get(2).getMainDistrict() }; // 콤보 박스 안에 들어갈 내용
+
+		String location[] = { "지역 선택", hospitalList.get(0).getMainDistrict(), hospitalList.get(1).getMainDistrict(),
+				hospitalList.get(2).getMainDistrict() }; // 콤보 박스 안에 들어갈 내용
 		combo = new JComboBox(location);
 
 		// 병원위치(지도) 버튼 설정
@@ -100,35 +98,54 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 		bookButton.setFont(new Font("고딕", Font.BOLD, 15));
 		bookButton.addMouseListener(new MouseAdapter() {
 
+			String addHName;
+
 			@Override
 			public void mousePressed(MouseEvent e) { // 예약버튼 클릭 시 이벤트 (팝업실행)
-				/*
-				 * if(checkBook().equals("X"))
-				 * 
-				 * { JOptionPane.showMessageDialog(null, "신청 불가",
-				 * "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE); 
-				 * }else{
-				 */
-//				 combo.getSelectedIndex(); 선택 된 병원 이름의 정보를 담고 있음.
-//					예약처리할 메소드 생성 필요
-				// 로그인한 유저가 해당 병원으로 예약하는 정보를 전달----> 예약배열에 추가 or ArrayList에 추가 --->이메일 단으로 전달
-				// 재고 감소 처리
 
-				int result = option.showConfirmDialog(null, "예약 신청하시겠습니까?", "확인", JOptionPane.YES_NO_OPTION);
-				if (result == JOptionPane.CLOSED_OPTION || result == JOptionPane.NO_OPTION) {
-					setVisible(false);
-					MainMenu.mainPanel.setVisible(true);
-				} else {
-					JOptionPane.showMessageDialog(null, "예약 신청이 완료되었습니다.\n이메일을 통해 접종 날짜를 알려드리오니, 꼭 이메일을 확인하시기 바랍니다.",
-							"공지", JOptionPane.WARNING_MESSAGE);
-					setVisible(false);
-					MainMenu.mainPanel.setVisible(true);
+				for (int i = 0; i < hospitalList.size(); i++) {
+					if (hospitalList.get(i).getMainDistrict().equals(combo.getSelectedItem())) {
+
+						addHName = hospitalList.get(i).gethName();
+
+						if (hospitalList.get(i).getVaccine() == 0) {
+							JOptionPane.showMessageDialog(null, "신청 불가", "WARNING_MESSAGE",
+									JOptionPane.WARNING_MESSAGE);
+						} else {
+
+							// 재고 감소 처리
+							
+							
+							
+
+							int result = option.showConfirmDialog(null, "예약 신청하시겠습니까?", "확인",
+									JOptionPane.YES_NO_OPTION);
+							if (result == JOptionPane.CLOSED_OPTION || result == JOptionPane.NO_OPTION) {
+
+								setVisible(false);
+								MainMenu.mainPanel.setVisible(true);
+							} else {
+
+								BookerList.addList(UserList.UserList().get(loginpage.sessionNum).getName(),
+										UserList.UserList().get(loginpage.sessionNum).getSsn(),
+										UserList.UserList().get(loginpage.sessionNum).getEmail(),
+										(String) combo.getSelectedItem(), addHName);
+								
+								System.out.println(BookerList.BookerList());
+								
+								JOptionPane.showMessageDialog(null,
+										"예약 신청이 완료되었습니다.\n이메일을 통해 접종 날짜를 알려드리오니, 꼭 이메일을 확인하시기 바랍니다.", "공지",
+										JOptionPane.WARNING_MESSAGE);
+								setVisible(false);
+								MainMenu.mainPanel.setVisible(true);
+							}
+						}
+
+					}
 				}
-
-//			 }
-
 			}
 		});
+
 		add(bookButton); // 패널에 병원위치(지도) 버튼 추가
 
 		combo.setBounds(60, 80, 120, 30);
@@ -139,13 +156,14 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 		searchButton.addMouseListener(new MouseAdapter() {
 			String[][] table = null;
 			JTable table1 = null;
+
 			@Override
 			public void mousePressed(MouseEvent e) {
-				for (int i = 0; i < list.size(); i++) {
-					if (combo.getSelectedItem().equals(list.get(i).getMainDistrict())) {
+				for (int i = 0; i < hospitalList.size(); i++) {
+					if (combo.getSelectedItem().equals(hospitalList.get(i).getMainDistrict())) {
 						String[][] table = {
-								{ list.get(i).gethName(), list.get(i).getVaccine() + " 개",
-										checkBook(list.get(i).getVaccine()) },
+								{ hospitalList.get(i).gethName(), hospitalList.get(i).getVaccine() + " 개",
+										checkBook(hospitalList.get(i).getVaccine()) },
 								{ "  ", "  ", "  " }, { "  ", "  ", "  " }, { "  ", "  ", "  " } };
 
 						table1 = new JTable(table, header); // 병원의 이름,재고,신청가능여부를 보여줄 표
@@ -170,7 +188,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 
 	}
 
-	public String checkBook(int vaccine) { //백신 개수를 참고해 신청 가능 여부를 보여줌!
+	public String checkBook(int vaccine) { // 백신 개수를 참고해 신청 가능 여부를 보여줌!
 		if (vaccine == 0) {
 			return "X";
 		} else {
