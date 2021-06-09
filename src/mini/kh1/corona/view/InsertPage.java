@@ -151,14 +151,34 @@ public class InsertPage extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == insertButton) {
-			new LoginPage(); // 클릭시, 다시 로그인에 돌아가 접속할 수 있게
-			frame.setVisible(false);
+			
+			
+			String userText = userTextField.getText();
+			int result = dupliCheckID(userText);
+			
 			id = userTextField.getText();
 			pw = passwordField.getText();
 			name = nameField.getText();
 			ssn = ssnField.getText();
 			email = emailField.getText();
 			list.addList(id, name, pw, ssn, email);
+			
+			//값이 빈 곳이 있으면 가입이 되지 않게~ 
+			if(id.length() == 0 || pw.length() == 0 || name.length() == 0 || ssn.length() == 0 || email.length() == 0) {
+				JOptionPane.showMessageDialog(this, "정보를 모두 입력해 주세요");
+				
+			} else if (result == 1) { //굳이 중복 체크 버튼 누르지 않아도... 중복 체크 가능
+				
+				if (result == 1) {
+					userTextField.setText("");
+				}
+			}else {
+				JOptionPane.showMessageDialog(this, "가입 되었습니다.");
+				new LoginPage(); // 빈 곳 없이 값이 입력 되면 로그인 할 수 있는 페이지로 이동
+				frame.setVisible(false);
+			}
+			
+			
 
 		}
 
