@@ -144,24 +144,24 @@ public class ModifyPage extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		
-		
 		if (e.getSource() == modiButton) {
 			JOptionPane.showMessageDialog(this, "수정 되었습니다.");
 			new LoginPage();
 			frame.setVisible(false);
 		}
+	
+		if (e.getSource() == dupliButton) { // 중복이면 필드부 클리어, 아니면 성공해서 입력할 수 있다.
 
-		if (e.getSource() == dupliButton) { //중복이면 필드부 클리어, 아니면 성공해서 입력할 수 있다.
-			
 			String userText = userTextField.getText();
 			int result = dupliCheckID(userText);
-			if(result == 1) {
+			if (result == 1) {
 				userTextField.setText("");
+			} else {
+				JOptionPane.showMessageDialog(this, "사용가능한 아이디 입니다.");
 			}
-			
-		}
 
+		}
+		
 		if (e.getSource() == backButton) {
 			new LoginPage(); // 클릭시, 로그인 화면 으로 돌아감
 			frame.setVisible(false);
