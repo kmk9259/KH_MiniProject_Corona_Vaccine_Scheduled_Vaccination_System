@@ -17,11 +17,11 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import mini.kh1.corona.controller.InsertConstroller;
+import mini.kh1.corona.controller.user.UserList;
 import mini.kh1.corona.model.vo.User;
 
 public class ModifyPage extends JFrame implements ActionListener {
-	
-	
+
 	private User u = new User();
 	InsertConstroller ic = new InsertConstroller();
 
@@ -42,15 +42,12 @@ public class ModifyPage extends JFrame implements ActionListener {
 	private JTextField nameField = new JTextField();
 	private JTextField ssnField = new JTextField();
 	private JTextField emailField = new JTextField();
-	
-	
+
 	private JButton modiButton = new JButton("수정 완료");
 	private JButton backButton = new JButton("이전으로");
 	private JButton dupliButton = new JButton("중복확인");
-	
-	
-	private final JLabel label = new JLabel("회원가입");
-	
+
+	private final JLabel label = new JLabel("마이 페이지");
 
 	public ModifyPage() {
 
@@ -70,110 +67,120 @@ public class ModifyPage extends JFrame implements ActionListener {
 		container.setLayout(null);
 		container.setVisible(true);// 첫 패널만 일단 보이게 해놓음
 
-
 		frame.getContentPane().add(container); // 패널로 컴포넌트를 감싸 놓음.
-		
-		//타이틀 폰트 세팅
+
+		// 타이틀 폰트 세팅
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("NanumGothic", Font.BOLD, 28));
 		label.setBounds(262, 28, 376, 75);
 
-		//아이디 컨테이너
+		// 아이디 컨테이너
 		container.add(label);
 		userLabel.setBounds(274, 150, 100, 30);
 		container.add(userLabel);
 		userLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
-		
-		//비밀번호 컨테이너
+
+		// 비밀번호 컨테이너
 		passwordLabel.setBounds(274, 200, 100, 30);
 		container.add(passwordLabel);
 		passwordLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
-		
-		
-		//이름 컨테이너
+
+		// 이름 컨테이너
 		container.add(label);
 		nameLabel.setBounds(274, 250, 100, 30);
 		container.add(nameLabel);
 		nameLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
-		
-		//주민번호 컨테이너
+
+		// 주민번호 컨테이너
 		ssnLabel.setBounds(274, 300, 100, 30);
 		container.add(ssnLabel);
 		ssnLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
-		
-		//이메일 컨테이너
+
+		// 이메일 컨테이너
 		emailLabel.setBounds(274, 350, 100, 30);
 		container.add(emailLabel);
 		emailLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
-		
-		//사용자 텍스트 필드
+
+		// 사용자 텍스트 필드
 		userTextField.setBounds(378, 150, 150, 30);
 		container.add(userTextField);
-		
-		//비밀번호 텍스트 필드
+
+		// 비밀번호 텍스트 필드
 		passwordField.setBounds(378, 201, 150, 30);
 		container.add(passwordField);
-		
-		
-		//이름 텍스트 필드
+
+		// 이름 텍스트 필드
 		nameField = new JTextField();
 		nameField.setBounds(378, 252, 150, 30);
 		container.add(nameField);
-		
+
 		ssnField = new JTextField();
 		ssnField.setBounds(378, 303, 150, 30);
 		container.add(ssnField);
-		
+
 		emailField = new JTextField();
 		emailField.setBounds(378, 351, 150, 30);
 		container.add(emailField);
-		
-		
 
-		//수정완료 버튼
+		// 수정완료 버튼
 		modiButton.setBounds(378, 421, 150, 40);
 		container.add(modiButton);
-		
-		//이전으로 버튼
+
+		// 이전으로 버튼
 		backButton.setBounds(27, 28, 150, 40);
 		container.add(backButton);
-		
-		//중복확인 버튼
+
+		// 중복확인 버튼
 		dupliButton.setBounds(558, 145, 150, 40);
 		container.add(dupliButton);
-		
-		//버튼 리슨어 
+
+		// 버튼 리슨어
 		modiButton.addActionListener(this);
 		dupliButton.addActionListener(this);
 		backButton.addActionListener(this);
-		
-		
+
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		
+		
 		if (e.getSource() == modiButton) {
-			JOptionPane.showMessageDialog(this, "수정 되었습니다."); 
+			JOptionPane.showMessageDialog(this, "수정 되었습니다.");
 			new LoginPage();
 			frame.setVisible(false);
 		}
-		
-		if (e.getSource() == dupliButton) {
+
+		if (e.getSource() == dupliButton) { //중복이면 필드부 클리어, 아니면 성공해서 입력할 수 있다.
 			
-			JOptionPane.showMessageDialog(this, "중복된 아이디."); 
-			/*if(ic.getId().equals(newId)) {
-			JOptionPane.showMessageDialog(this, "이미 존재하는 아이디 입니다."); // 중복 여부 알림!!
+			String userText = userTextField.getText();
+			int result = dupliCheckID(userText);
+			if(result == 1) {
+				userTextField.setText("");
+			}
 			
-			}else {
-				ic.setId(newId); // 값을 받아 데이터로 저장
-			}*/
 		}
-		
+
 		if (e.getSource() == backButton) {
 			new LoginPage(); // 클릭시, 로그인 화면 으로 돌아감
 			frame.setVisible(false);
 		}
 
 	}
+	
+
+	//중복확인 메소드
+	public int dupliCheckID(String userText) {
+		int result = 0;
+		
+		for (int i = 0; i < UserList.UserList().size(); i++) { // 전체 회원 인덱스를 돌며 확인하기 위해
+			if (UserList.UserList().get(i).getId().equals(userText)) {
+				result = 1; // 참 거짓으로 표현하기 위해
+				JOptionPane.showMessageDialog(this, "중복된 아이디 입니다.");
+			}
+		}
+		return result;
+	}
+	
 }
- 
