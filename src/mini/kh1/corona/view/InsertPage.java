@@ -178,9 +178,7 @@ public class InsertPage extends JFrame implements ActionListener {
 				new LoginPage(); // 빈 곳 없이 값이 입력 되면 로그인 할 수 있는 페이지로 이동
 				frame.setVisible(false);
 			}
-			
-			
-
+	
 		}
 
 		if (e.getSource() == dupliButton) { // 중복이면 필드부 클리어, 아니면 성공해서 입력할 수 있다.
@@ -189,6 +187,8 @@ public class InsertPage extends JFrame implements ActionListener {
 			int result = dupliCheckID(userText);
 			if (result == 1) {
 				userTextField.setText("");
+			} else {
+				JOptionPane.showMessageDialog(this, "사용가능한 아이디 입니다.");
 			}
 
 		}
