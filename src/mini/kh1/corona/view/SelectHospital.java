@@ -103,7 +103,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 					else
 					{
 						JOptionPane.showMessageDialog(null, "예약 신청이 완료되었습니다.\n이메일을 통해 접종 날짜를 알려드리오니, 꼭 이메일을 확인하시기 바랍니다.","공지",JOptionPane.WARNING_MESSAGE);
-						//mail.sendtoUser(); -> (임시적)예약신청이 완료되었을 때 메일 보내기
+						mail.sendtoUser(); //-> (임시적)예약신청이 완료되었을 때 메일 보내기
 						setVisible(false);
 						MainMenu.mainPanel.setVisible(true);
 					}
