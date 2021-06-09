@@ -5,8 +5,10 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import mini.kh1.corona.controller.view_booking.GoToView;
 import mini.kh1.corona.model.vo.Chatbot;
 
 public class MainMenu {
@@ -34,7 +36,6 @@ public class MainMenu {
 
 		mainPanel.setLayout(null);
 		mainPanel.setVisible(true);
-
 		
 		MFrame.add(mainPanel); //메인 프레임에 메인 패널 추가
 
@@ -68,10 +69,22 @@ public class MainMenu {
 			public void mousePressed(MouseEvent e) {
 
 				// 예약조회 버튼 클릭 시 이벤트 구현
-			
-				mainPanel.setVisible(false);
-				MFrame.add(CheckBookPanel.checkBookPanel);
-				CheckBookPanel.checkBookPanel.setVisible(true); 
+				
+				GoToView gtv = new GoToView();
+				
+				int i = gtv.go(0, 0);	//신청인 수, 예약 여부 가져와야 함
+				if(i == 0) {	//예약 완료, 마감 되었을때
+					mainPanel.setVisible(false);
+					MFrame.add(CheckBookPanel.checkBookPanel);
+					CheckBookPanel.checkBookPanel.setVisible(true); 
+				}
+				else if(i == 2){//예약하지 않았을 때
+					JOptionPane.showMessageDialog(null, "접종예약을 하지 않으셨습니다.\n예약하기 먼저 진행해주세요.");
+				}
+				else {	//예약이 마감되지 않았을 때
+					JOptionPane.showMessageDialog(null, "예약이 마감되지 않았습니다.");
+				}
+				
 			}
 		});
 		mainPanel.add(chackBookButton); //메인패널에 예약조회 버튼 추가
