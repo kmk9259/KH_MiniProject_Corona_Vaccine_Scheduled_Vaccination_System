@@ -19,11 +19,14 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import mini.kh1.corona.controller.user.UserList;
+import mini.kh1.corona.model.vo.User;
 
 public class LoginPage extends JFrame implements ActionListener {
 
 	private JFrame frame = new JFrame();
 	private Container container = getContentPane();
+	public static boolean loginSession = false;	//로그인 세션 유지함을 위함
+	public static int sessionNum;
 
 
 	// 레이블
@@ -114,6 +117,9 @@ public class LoginPage extends JFrame implements ActionListener {
 			String userText = userTextField.getText();
 			String pwdText = passwordField.getText();
 			loginSuccess(userText, pwdText);
+			
+			
+			
 
 		}
 		if (e.getSource() == insertButton) 
@@ -127,7 +133,6 @@ public class LoginPage extends JFrame implements ActionListener {
 			} else {
 				passwordField.setEchoChar('*'); // 비밀번호 감추기
 			}
-
 		}
 
 	}// action
@@ -135,11 +140,14 @@ public class LoginPage extends JFrame implements ActionListener {
 	{
 		for(int i=0; i< UserList.UserList().size(); i++)
 		{
-			if(UserList.UserList().get(i).getId().equals(userText) && UserList.UserList().get(i).getId().equals(pwdText))
+			if(UserList.UserList().get(i).getId().equals(userText) && UserList.UserList().get(i).getPassword().equals(pwdText))
 			{
 				JOptionPane.showMessageDialog(this, "로그인에 성공했습니다."); // 성공 메세지!!
 				new MainMenu();
 				frame.setVisible(false);
+				loginSession=true;	//세션유지하기 위해 true 바꿈
+				sessionNum=i;		//arraylist<User>의 i번째 정보를 얻어내기 위한 변수
+				break;
 			}
 			else
 			{
@@ -160,9 +168,17 @@ public class LoginPage extends JFrame implements ActionListener {
 			frame.setVisible(false);
 
 		} 
-		//else 
-			//JOptionPane.showMessageDialog(this, "아이디, 비밀번호가 일치 하지 않습니다.");
+		else if(userText.isEmpty()==true || pwdText.isEmpty()==true)
+			JOptionPane.showMessageDialog(this, "아이디, 비밀번호가 일치 하지 않습니다.");
 			
+	}
+	public int session()
+	{
+		if(loginSession==true)
+			return sessionNum;	//배열의 인덱스값
+		else
+			return 0;
+		
 	}
 
 	

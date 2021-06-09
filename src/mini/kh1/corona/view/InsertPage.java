@@ -34,6 +34,7 @@ public class InsertPage extends JFrame implements ActionListener {
 	private JLabel nameLabel = new JLabel("이름");
 	private JLabel ssnLabel = new JLabel("주민 번호");
 	private JLabel emailLabel = new JLabel("이메일");
+	
 
 	// 필드부
 	private JTextField userTextField = new JTextField();
@@ -161,7 +162,7 @@ public class InsertPage extends JFrame implements ActionListener {
 			name = nameField.getText();
 			ssn = ssnField.getText();
 			email = emailField.getText();
-			list.addList(id, name, pw, ssn, email);
+			list.addList(id,pw,name,ssn, email);
 			
 			//값이 빈 곳이 있으면 가입이 되지 않게~ 
 			if(id.length() == 0 || pw.length() == 0 || name.length() == 0 || ssn.length() == 0 || email.length() == 0) {

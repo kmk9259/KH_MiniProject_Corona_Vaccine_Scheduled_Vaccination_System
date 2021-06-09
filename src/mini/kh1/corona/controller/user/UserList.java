@@ -10,11 +10,12 @@ public class UserList{
 	static public ArrayList<User> UserList() {
 		return list;
 	}
-	public void addList(String id, String name, String password, String ssn, String email)
+	public void addList(String id, String password, String name,  String ssn, String email)
 	{
-		list.add(new User(id, name, password, ssn, email));
+		list.add(new User(id, password,name, ssn, email));
 		System.out.println(list);
 	}
+	//아이딛 비번 이름 주민 이메일
 	
 	
 	
