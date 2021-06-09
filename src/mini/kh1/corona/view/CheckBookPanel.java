@@ -14,9 +14,14 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
+import mini.kh1.corona.controller.view_booking.Cancel;
+import mini.kh1.corona.run.Run;
+
 public class CheckBookPanel extends JPanel {
 
-	static JPanel checkBookPanel = new CheckBookPanel();
+	public static JPanel checkBookPanel = new CheckBookPanel();
+	Cancel rcancel = new Cancel();
+	
 	
 	public CheckBookPanel() {
 		setVisible(false);
@@ -32,11 +37,20 @@ public class CheckBookPanel extends JPanel {
 		info.setOpaque(true);
 		add(info);
 		
+		String iden = "123412-3456789";	//개인정보의 주민번호 가져와서 적용
+		char[] cIden = iden.toCharArray();	//문자열을 char 배열로 변환
+		
+		for(int i = 8; i < cIden.length; i++) {//8~13
+			cIden[i] = '*';	//주민번호 뒷자리 첫번째만 보이고 그 뒤는 안보이게
+		}
+		
+		iden = new String(cIden);	//char 배열을 문자열로 변환
+		
 		//테이블에 값 넣기
 		Object[] header = {"0", "0"};
 		Object[][] contents = { //나중에 값 가져올 것임
 				{"이름", "김아무개"}
-				, {"주민등록번호", "121212-1******"}
+				, {"주민등록번호", iden}
 				, {"접종 예정 병원", "A병원"}
 				, {"접종 일시", "2021-06-05"}
 		};
@@ -60,6 +74,8 @@ public class CheckBookPanel extends JPanel {
 	    tcm.getColumn(i).setCellRenderer(dtcr);  
 	    }
 		
+	    bookInfo.setEnabled(false);
+	    scp.setEnabled(false);
 		add(bookInfo);
 		add(scp);
 		
@@ -72,11 +88,9 @@ public class CheckBookPanel extends JPanel {
 			
 			@Override
 			public void mousePressed(MouseEvent e) {
-				JButton back = (JButton)e.getSource();
 				
-				checkBookPanel.setVisible(false);
+				MainMenu.MFrame.remove(checkBookPanel);
 				MainMenu.mainPanel.setVisible(true);
-//				back.setVisible(false);
 				
 			}
 		});
@@ -95,15 +109,19 @@ public class CheckBookPanel extends JPanel {
 				int result = JOptionPane.showConfirmDialog(null, "예약을 취소하시겠습니까?\n'확인' 시 되돌릴 수 없습니다.", "예약 취소",  JOptionPane.YES_NO_OPTION);
 				if(result == JOptionPane.YES_OPTION) {	//"예" 일 때
 					//취소 처리 과정 필요
+					rcancel.RCancel();
+					
 					JOptionPane.showMessageDialog(null, "예약이 취소되었습니다.\n홈 화면으로 이동합니다.");
-					checkBookPanel.setVisible(false);
+					
+					MainMenu.MFrame.remove(checkBookPanel);
 					MainMenu.mainPanel.setVisible(true);
-//					cancel.setVisible(false);
 				}
 			}
 		});
+		
+		
 	}
 
-
+	
 
 }
