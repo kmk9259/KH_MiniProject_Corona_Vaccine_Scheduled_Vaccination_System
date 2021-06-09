@@ -19,7 +19,7 @@ public class Notice extends JPanel {
 
 		setSize(900, 600);
 		setLayout(null);
-		setEnabled(true);
+		setEnabled(false);
 
 		JLabel label = new JLabel();
 
@@ -54,20 +54,18 @@ public class Notice extends JPanel {
 
 				if (num == JOptionPane.YES_OPTION) {
 					
+					NOTICE.setVisible(false);	//공지 감추기
 					
-					NOTICE.setVisible(false);
-					
+					MainMenu.MFrame.add(selectHospital);	//프레임에 병원선택화면 추가
+					selectHospital.setVisible(true);	//병원선택화면 노출
 					// 병원 선택 판넬 소환하기
 
 				} else { // 아니오 선택시 메인으로 돌아가기
 
 					JOptionPane.showConfirmDialog(null, "메인으로 돌아갑니다","돌아가기",JOptionPane.YES_NO_OPTION);
-					NOTICE.setVisible(false);
-//					setVisible(false);
-//					selectHospital.setVisible(true);
-					MainMenu.mainPanel.setVisible(true);
-
-				
+					
+					NOTICE.setVisible(false);	//공지 감추기
+					MainMenu.mainPanel.setVisible(true);	//메인화면 노출
 					
 				}
 
