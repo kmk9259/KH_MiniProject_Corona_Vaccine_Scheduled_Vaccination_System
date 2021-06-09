@@ -7,7 +7,7 @@ import mini.kh1.corona.model.vo.User;
 public class UserList{
 	static ArrayList<User> list = new ArrayList<User>();
 	
-	public ArrayList<User> UserList() {
+	static public ArrayList<User> UserList() {
 		return list;
 	}
 	public void addList(String id, String name, String password, String ssn, String email)

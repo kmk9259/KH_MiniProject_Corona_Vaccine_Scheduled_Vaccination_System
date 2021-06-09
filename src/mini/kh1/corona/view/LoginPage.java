@@ -24,7 +24,7 @@ public class LoginPage extends JFrame implements ActionListener {
 
 	private JFrame frame = new JFrame();
 	private Container container = getContentPane();
-	UserList userlist = new UserList();
+
 
 	// 레이블
 	private JLabel userLabel = new JLabel("아이디");
@@ -133,10 +133,9 @@ public class LoginPage extends JFrame implements ActionListener {
 	}// action
 	public void loginSuccess(String userText, String pwdText)
 	{
-		
-		for(int i=0; i<userlist.UserList().size(); i++)
+		for(int i=0; i< UserList.UserList().size(); i++)
 		{
-			if(userlist.UserList().get(i).getId().equals(userText) && userlist.UserList().get(i).getPassword().equals(pwdText))
+			if(UserList.UserList().get(i).getId().equals(userText) && UserList.UserList().get(i).getId().equals(pwdText))
 			{
 				JOptionPane.showMessageDialog(this, "로그인에 성공했습니다."); // 성공 메세지!!
 				new MainMenu();
@@ -166,4 +165,5 @@ public class LoginPage extends JFrame implements ActionListener {
 			
 	}
 
+	
 }
