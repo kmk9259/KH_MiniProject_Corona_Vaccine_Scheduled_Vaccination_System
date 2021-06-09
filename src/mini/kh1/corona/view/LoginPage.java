@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -17,10 +18,13 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import mini.kh1.corona.controller.user.UserList;
+
 public class LoginPage extends JFrame implements ActionListener {
 
 	private JFrame frame = new JFrame();
 	private Container container = getContentPane();
+	UserList userlist = new UserList();
 
 	// 레이블
 	private JLabel userLabel = new JLabel("아이디");
@@ -40,7 +44,7 @@ public class LoginPage extends JFrame implements ActionListener {
 	// 메인 타이틀
 	private final JPanel panel = new JPanel();
 	private final JLabel label = new JLabel("코로나 백신 예약 프로그램");
-	InsertPage ip = new InsertPage();
+	
 	public LoginPage() {
 
 		frame.setPreferredSize(new Dimension(900, 600));
@@ -105,38 +109,15 @@ public class LoginPage extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == loginButton) {
-			String userText;
-			String pwdText;
-			userText = userTextField.getText();
-			pwdText = passwordField.getText();
-			//for(int i=0; i<ip.userlist.size(); i++)
-			//{
-//				if (userText.equals(ip.userlist.get(i).getId())&& pwdText.equals(ip.userlist.get(i).getPassword())) { // 임의 입력 // 나중에 데이터 받아옴
-//					JOptionPane.showMessageDialog(this, "로그인에 성공했습니다."); // 성공 메세지!!
-//					new MainMenu();
-//					
-//					frame.setVisible(false);
-//				}
-				 if(userText.equalsIgnoreCase("admin") && pwdText.equalsIgnoreCase("12345")){
-					JOptionPane.showMessageDialog(this, "관리자 로그인에 성공했습니다."); // 성공 메세지!!
-					new ManagerView();
-					frame.setVisible(false);
-					
-				}else if(userText.equalsIgnoreCase("test") && pwdText.equalsIgnoreCase("1234")){
-					JOptionPane.showMessageDialog(this, "로그인에 성공했습니다."); // 성공 메세지!!
-					new MainMenu();
-					frame.setVisible(false);
-					
-				}
-				else {
-					JOptionPane.showMessageDialog(this, "아이디, 비밀번호가 일치 하지 않습니다.");
-				}
-			//}
-			
+		if (e.getSource() == loginButton) 
+		{
+			String userText = userTextField.getText();
+			String pwdText = passwordField.getText();
+			loginSuccess(userText, pwdText);
 
 		}
-		if (e.getSource() == insertButton) {
+		if (e.getSource() == insertButton) 
+		{
 			new InsertPage(); // 클릭시, 회원가입 창으로 넘어가게
 			frame.setVisible(false);
 		}
@@ -149,6 +130,40 @@ public class LoginPage extends JFrame implements ActionListener {
 
 		}
 
+	}// action
+	public void loginSuccess(String userText, String pwdText)
+	{
+		
+		for(int i=0; i<userlist.UserList().size(); i++)
+		{
+			if(userlist.UserList().get(i).getId().equals(userText) && userlist.UserList().get(i).getPassword().equals(pwdText))
+			{
+				JOptionPane.showMessageDialog(this, "로그인에 성공했습니다."); // 성공 메세지!!
+				new MainMenu();
+				frame.setVisible(false);
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(this, "아이디, 비밀번호가 일치 하지 않습니다.");
+			}
+		}
+		if (userText.equalsIgnoreCase("admin") && pwdText.equalsIgnoreCase("12345")) 
+		{
+			JOptionPane.showMessageDialog(this, "관리자 로그인에 성공했습니다."); // 성공 메세지!!
+			new ManagerView();
+			frame.setVisible(false);
+
+		}
+		else if (userText.equalsIgnoreCase("test") && pwdText.equalsIgnoreCase("1234")) 
+		{
+			JOptionPane.showMessageDialog(this, "로그인에 성공했습니다."); // 성공 메세지!!
+			new MainMenu();
+			frame.setVisible(false);
+
+		} 
+		//else 
+			//JOptionPane.showMessageDialog(this, "아이디, 비밀번호가 일치 하지 않습니다.");
+			
 	}
 
 }
