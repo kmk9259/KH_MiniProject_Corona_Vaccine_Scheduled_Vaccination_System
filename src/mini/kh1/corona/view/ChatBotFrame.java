@@ -85,8 +85,8 @@ public class ChatBotFrame extends JPanel implements ActionListener{
 	}
 	public void menual()
 	{
-		;
-		chatting.append(InsertPage.userlist.get(0).getName()+"님, 안녕하세요 :)\n\n");
+		
+		//chatting.append(InsertPage.userlist.get(0).getName()+"님, 안녕하세요 :)\n\n");
 		chatting.append("궁금한 사항을 입력해주세요.\n");
 		chatting.append("/FAQ\n");
 		chatting.append("/메인화면\n");

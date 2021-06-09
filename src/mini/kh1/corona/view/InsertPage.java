@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JButton;
@@ -18,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import mini.kh1.corona.controller.InsertConstroller;
+import mini.kh1.corona.controller.user.UserList;
 import mini.kh1.corona.model.vo.User;
 
 public class InsertPage extends JFrame implements ActionListener {
@@ -55,7 +55,7 @@ public class InsertPage extends JFrame implements ActionListener {
 	private String ssn = ssnField.getText();
 	private String email = emailField.getText();
 	
-	static ArrayList<User> userlist = new ArrayList<User>();
+	UserList list  = new UserList();
 
 	public InsertPage() {
 
@@ -133,11 +133,6 @@ public class InsertPage extends JFrame implements ActionListener {
 		emailField.setBounds(378, 351, 150, 30);
 		container.add(emailField);
 		
-
-		
-		
-		
-
 		//회원 가입 버튼
 		insertButton.setBounds(378, 421, 150, 40);
 		container.add(insertButton);
@@ -155,7 +150,6 @@ public class InsertPage extends JFrame implements ActionListener {
 		dupliButton.addActionListener(this);
 		backButton.addActionListener(this);
 		
-		
 	}
 
 	@Override
@@ -168,7 +162,7 @@ public class InsertPage extends JFrame implements ActionListener {
 			name = nameField.getText();
 			ssn = ssnField.getText();
 			email = emailField.getText();
-			userlist.add(new User(id, name, pw, ssn, email));
+			list.addList(id, name, pw, ssn, email);
 			
 		}
 		
