@@ -13,6 +13,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import mini.kh1.corona.controller.user.UserList;
+
 public class ChatBotFrame extends JPanel implements ActionListener{
 	private JTextArea chatting;
 	private JTextField input;
@@ -21,6 +23,8 @@ public class ChatBotFrame extends JPanel implements ActionListener{
 	private DatagramSocket socket;
 	private DatagramPacket packet;
 	private InetAddress address;
+	
+	
 	
 
 	public ChatBotFrame(InetAddress address, DatagramSocket socket) {
@@ -73,7 +77,6 @@ public class ChatBotFrame extends JPanel implements ActionListener{
 			byte[] buf = new byte[256];
 			packet = new DatagramPacket(buf, buf.length);
 			
-			
 			try {
 				socket.receive(packet);
 				
@@ -85,8 +88,7 @@ public class ChatBotFrame extends JPanel implements ActionListener{
 	}
 	public void menual()
 	{
-		
-		//chatting.append(InsertPage.userlist.get(0).getName()+"님, 안녕하세요 :)\n\n");
+		//chatting.append(+"님, 안녕하세요 :)\n\n");
 		chatting.append("궁금한 사항을 입력해주세요.\n");
 		chatting.append("/FAQ\n");
 		chatting.append("/메인화면\n");
@@ -95,6 +97,8 @@ public class ChatBotFrame extends JPanel implements ActionListener{
 				"========================================================\n");
 		
 	}
+
+	
 	public void faq(String str)
 	{
 		if(str.equals("/faq") || str.equals("/FAQ")) 
