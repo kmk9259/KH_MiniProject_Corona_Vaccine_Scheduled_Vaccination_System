@@ -8,11 +8,6 @@ public class BookerList{
 	
 	static ArrayList<Booker> bookerlist = new ArrayList<Booker>();
 	
-	
-
-	
-	
-	
 	static public ArrayList<Booker> BookerList() {
 		
 		 //이름,주민,이멜,지역구,병원
