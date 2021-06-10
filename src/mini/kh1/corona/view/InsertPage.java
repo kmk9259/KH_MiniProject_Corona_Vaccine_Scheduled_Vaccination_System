@@ -35,6 +35,7 @@ public class InsertPage extends JFrame implements ActionListener {
 	private JLabel ssnLabel = new JLabel("주민 번호");
 	private JLabel emailLabel = new JLabel("이메일");
 	
+	
 
 	// 필드부
 	private JTextField userTextField = new JTextField();
