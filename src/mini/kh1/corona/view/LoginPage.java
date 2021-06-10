@@ -1,4 +1,3 @@
-
 package mini.kh1.corona.view;
 
 import java.awt.Container;
@@ -6,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -19,7 +17,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import mini.kh1.corona.controller.user.UserList;
-import mini.kh1.corona.model.vo.User;
 
 public class LoginPage extends JFrame implements ActionListener {
 

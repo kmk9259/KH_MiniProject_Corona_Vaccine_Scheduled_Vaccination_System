@@ -132,6 +132,7 @@ public class MainMenu {
 			public void mousePressed(MouseEvent e) {
 				LoginPage.loginSession=false;	//세션종료
 				mainPanel.setVisible(false);
+				MFrame.dispose();
 				new LoginPage();
 				
 			}
