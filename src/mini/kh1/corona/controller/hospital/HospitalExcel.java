@@ -122,7 +122,7 @@ public class HospitalExcel {
 	// 백신 재고 수량을 수정하는 메소드
 	public void modifyVaccine(String hName, int vNum) throws Exception {
 
-		FileInputStream fis = new FileInputStream("C:\\Users\\hya20\\git\\MiniProject_Test\\data\\HospitalData.xlsx");
+		FileInputStream fis = new FileInputStream("C:\\Users\\82106\\git\\MiniProject_Test\\data\\HospitalData.xlsx");
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 
 		int rowIndex = 0;
@@ -174,7 +174,7 @@ public class HospitalExcel {
 		sheet.getRow(rowNum).getCell(3).setCellValue(vNum);// 재고 수량 수정
 
 		// 수정한 내용을 다시 엑셀 파일에 입력
-		FileOutputStream fos = new FileOutputStream("C:\\Users\\hya20\\git\\MiniProject_Test\\data\\HospitalData.xlsx");
+		FileOutputStream fos = new FileOutputStream("C:\\Users\\82106\\git\\MiniProject_Test\\data\\HospitalData.xlsx");
 		workbook.write(fos);
 		fos.close();
 
