@@ -5,8 +5,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -18,9 +16,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import mini.kh1.corona.controller.user.AddJoin;
 import mini.kh1.corona.controller.user.UserList;
-import mini.kh1.corona.model.vo.User;
+import mini.kh1.corona.model.vo.user.JoinList;
 
 public class LoginPage extends JFrame implements ActionListener {
 
