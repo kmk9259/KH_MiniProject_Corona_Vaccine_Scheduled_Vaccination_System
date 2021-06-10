@@ -18,26 +18,26 @@ import mini.kh1.corona.view.VaccineModifyFrame;
 public class HospitalExcel {
 
 	private Vector<HospitalVaccine> list = new Vector<HospitalVaccine>(10);
-	private HospitalVaccine hv = new HospitalVaccine();
-	private HospitalDetail hd = new HospitalDetail();
 
 	// JTable 있는 클래스에서 callTable을 소환해 vector 구한 후 이 메소드를 소환해서 JTable에 넣을 수 있게 2차원배열로
 	// 만듬
 	public Object[][] getData(Vector<HospitalVaccine> vector) {
 
-		Object[][] vmData = new Object[vector.size()][3];
+		// 여기서는 메인주소, 병원명, 백신 수량을 가져옴
+		// 얻으려는 데이터가 3개 이므로 열을 3으로 작성
+		Object[][] data = new Object[vector.size()][3];
 		System.out.println("vector 사이즈 : " + vector.size());
 
 		for (int i = 0; i < vector.size(); i++) {
 			for (int j = 0; j < 3; j++) {
 				if (j == 0) {// 메인주소가 있는 열
-					vmData[i][j] = vector.get(i).getMainDistrict();
+					data[i][j] = vector.get(i).getMainDistrict();
 				}
 				if (j == 1) {
-					vmData[i][j] = vector.get(i).gethName();
+					data[i][j] = vector.get(i).gethName();
 				}
 				if (j == 2) {
-					vmData[i][j] = vector.get(i).getVaccine();
+					data[i][j] = vector.get(i).getVaccine();
 				}
 			}
 			// 확인용
@@ -46,7 +46,7 @@ public class HospitalExcel {
 			System.out.println("재고량 : " + vector.get(i).getVaccine());
 		}
 
-		return vmData;
+		return data;
 
 	}
 
@@ -54,8 +54,10 @@ public class HospitalExcel {
 	public Vector<HospitalVaccine> callTable() throws Exception {
 
 		// 엑셀 파일을 불러오는 과정
-		FileInputStream fis = new FileInputStream("C:\\Users\\82106\\git\\MiniProject_Test\\data\\HospitalData.xlsx");
-		// 해당 엑셀파일의 워크북을 불러옴
+
+    FileInputStream fis = new FileInputStream("C:\\Workspace\\HospitalData.xlsx");
+		
+    // 해당 엑셀파일의 워크북을 불러옴
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 		HospitalVaccine hv = new HospitalVaccine();
 
@@ -109,8 +111,8 @@ public class HospitalExcel {
 			hv.sethName(hName);
 			hv.setVaccine(vaccine);
 			list.add(rowIndex - 1, new HospitalVaccine(mainDistrict, hName, vaccine));
-			//위에 엑셀에서는 rowIndex가 1일 때부터 읽어야하지만(rowIndex = 0 은 헤더 내용)
-			//Vector list에 추가할 때는 인덱스 0부터 채워야하기 때문에 -1을 해줌(여기는 for문 안임)
+			// 위에 엑셀에서는 rowIndex가 1일 때부터 읽어야하지만(rowIndex = 0 은 헤더 내용)
+			// Vector list에 추가할 때는 인덱스 0부터 채워야하기 때문에 -1을 해줌(여기는 for문 안임)
 
 		}
 
@@ -122,7 +124,8 @@ public class HospitalExcel {
 	// 백신 재고 수량을 수정하는 메소드
 	public void modifyVaccine(String hName, int vNum) throws Exception {
 
-		FileInputStream fis = new FileInputStream("C:\\Users\\82106\\git\\MiniProject_Test\\data\\HospitalData.xlsx");
+    FileInputStream fis = new FileInputStream("C:\\Workspace\\HospitalData.xlsx");
+    
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 
 		int rowIndex = 0;
@@ -174,7 +177,9 @@ public class HospitalExcel {
 		sheet.getRow(rowNum).getCell(3).setCellValue(vNum);// 재고 수량 수정
 
 		// 수정한 내용을 다시 엑셀 파일에 입력
-		FileOutputStream fos = new FileOutputStream("C:\\Users\\82106\\git\\MiniProject_Test\\data\\HospitalData.xlsx");
+
+    FileOutputStream fos = new FileOutputStream("C:\\Workspace\\HospitalData.xlsx");
+    
 		workbook.write(fos);
 		fos.close();
 
@@ -183,12 +188,12 @@ public class HospitalExcel {
 	public Vector<HospitalVaccine> modifiedTable() throws Exception {
 
 		// 엑셀 파일을 불러오는 과정
-		FileInputStream fis = new FileInputStream("C:\\Users\\hya20\\git\\MiniProject_Test\\data\\HospitalData.xlsx");
+		FileInputStream fis = new FileInputStream("C:\\Workspace\\HospitalData.xlsx");
 		// 해당 엑셀파일의 워크북을 불러옴
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 		HospitalVaccine hv = new HospitalVaccine();
 		Vector<HospitalVaccine> modifiedList = new Vector<HospitalVaccine>();
-		
+
 		// 액셀의 행렬에 대한 인덱스
 		int rowIndex = 0;
 		int columnIndex = 0;
@@ -238,8 +243,8 @@ public class HospitalExcel {
 			hv.setMainDistrict(mainDistrict);
 			hv.sethName(hName);
 			hv.setVaccine(vaccine);
-			modifiedList.add(rowIndex-1, new HospitalVaccine(mainDistrict, hName, vaccine));
-			
+			modifiedList.add(rowIndex - 1, new HospitalVaccine(mainDistrict, hName, vaccine));
+
 		}
 		System.out.println(modifiedList);// 확인용
 
@@ -249,7 +254,7 @@ public class HospitalExcel {
 	// 병원 정보(메인주소 + 상세주소 + 병원명) 출력 시 가져올 메소드
 	public String findHospitalInfo(String hName) throws Exception {
 
-		FileInputStream fis = new FileInputStream("C:\\Workspace\\JAVA\\MiniProject-Test\\data\\HospitalData.xlsx");
+		FileInputStream fis = new FileInputStream("C:\\Workspace\\HospitalData.xlsx");
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 
 		int rowIndex = 0;

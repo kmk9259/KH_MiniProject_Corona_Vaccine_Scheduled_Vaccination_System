@@ -135,8 +135,10 @@ public class LoginPage extends JFrame implements ActionListener {
 	}// action
 	public void loginSuccess(String userText, String pwdText)
 	{
-		int check=0;
+
+    int check=0;
 		if(userText.isEmpty()==true|| pwdText.isEmpty()==true)
+    
 		{
 			check=1;
 			

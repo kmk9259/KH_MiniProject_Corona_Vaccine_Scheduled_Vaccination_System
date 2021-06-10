@@ -9,14 +9,21 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import mini.kh1.corona.controller.hospital.HospitalAddress;
+
 public class HospitalAddFrame extends JFrame {
 
 	private JPanel hafPanel;
-	
+
+	private JTextField hafTextField1;
+	private JTextField hafTextField2;
+	private JTextField hafTextField3;
+
 	public HospitalAddFrame() {
 
 		// 1. 프레임 설정
@@ -62,17 +69,17 @@ public class HospitalAddFrame extends JFrame {
 		hafLabel3.setForeground(Color.white);
 		hafPanel.add(hafLabel3);
 
-		JTextField hafTextField1 = new JTextField(15);// 시/구 텍스트
+		hafTextField1 = new JTextField(15);// 시/구 텍스트
 		hafTextField1.setBounds(200, 50, 310, 40);
 		hafTextField1.setFont(new Font("굴림", Font.PLAIN, 13));
 		hafPanel.add(hafTextField1);
 
-		JTextField hafTextField2 = new JTextField(30);// 상세주소 텍스트
+		hafTextField2 = new JTextField(30);// 상세주소 텍스트
 		hafTextField2.setBounds(200, 110, 310, 40);
 		hafTextField2.setFont(new Font("굴림", Font.PLAIN, 13));
 		hafPanel.add(hafTextField2);
 
-		JTextField hafTextField3 = new JTextField(15);// 병원명 텍스트
+		hafTextField3 = new JTextField(15);// 병원명 텍스트
 		hafTextField3.setBounds(200, 170, 310, 40);
 		hafTextField3.setFont(new Font("굴림", Font.PLAIN, 13));
 		hafPanel.add(hafTextField3);
@@ -90,7 +97,6 @@ public class HospitalAddFrame extends JFrame {
 		add(hafPanel);
 
 		// ==========================================================================
-		// 버튼 1,2 결과가 다르게 출력되도록 추후 설정할 것
 
 		hafButton1.addActionListener(new ActionListener() {
 
@@ -105,9 +111,42 @@ public class HospitalAddFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
+				String mainDistrict = hafTextField1.getText();
+				String detailDistrict = hafTextField2.getText();
+				String hName = hafTextField3.getText();
+				int vaccine = 0;
+
+				try {
+					boolean result = new HospitalAddress().addAddress(mainDistrict, detailDistrict, hName, vaccine);
+					CompleteAdd(result);
+					if (result == true) { // 병원이 추가가 가능하면
+						setVisible(false);
+					} else { // 병원이 추가가 불가능하면
+						// 다시 입력하기 편하게 기존에 입력된 값을 지움
+						hafTextField1.setText("");
+						hafTextField2.setText("");
+						hafTextField3.setText("");
+						setVisible(true);
+					}
+
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 			}
 		});
+	}
+
+	// 알림 박스 출력
+	public void CompleteAdd(boolean result) {
+		if (result == true) {
+			JOptionPane.showMessageDialog(this, "병원 정보 저장이 완료되었습니다.");
+		}
+
+		if (result == false) {
+			JOptionPane.showMessageDialog(this, "이미 존재하거나 잘못된 병원 정보입니다.");
+		}
+
 	}
 }

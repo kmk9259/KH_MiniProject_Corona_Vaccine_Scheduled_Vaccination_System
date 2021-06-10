@@ -5,8 +5,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,14 +15,12 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import mini.kh1.corona.controller.hospital.HospitalExcel;
-import mini.kh1.corona.model.vo.HospitalDetail;
-import mini.kh1.corona.model.vo.HospitalVaccine;
 
 public class VaccineModifyFrame extends JFrame {
 
 	private JPanel vmfPanel1;
 	private JPanel vmfPanel2;
-	private HospitalVaccine hv = new HospitalVaccine();
+	
 	private JTextField vmfTextField1;
 	private JTextField vmfTextField2;
 
@@ -91,9 +87,9 @@ public class VaccineModifyFrame extends JFrame {
 					System.out.println("hName : " + hName);
 					System.out.println("제발 : " + info);
 
-					// 병원명은 있는 값을 입력하면 info에 포함이므로
-					if (info != null) {
-						if (info.contains(hName)) {
+					// 병원명을 가져오는게 아닌 전체 출력문을 가져옴(출력문 안에 병원명이 포함되기 때문에)
+					if (info != null) {// 빈 칸이 아닐 때
+						if (info.contains(hName)) {// info 에 병원 이름이 포함되어있으면 수량 입력으로 넘어감
 							System.out.println("포함되어있음");
 							// 정보를 출력하려면 여기서 라벨을 생성해야하는듯
 							JLabel vmfLabel3 = new JLabel(info);
@@ -165,15 +161,31 @@ public class VaccineModifyFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String hName = vmfTextField1.getText();
-				int vNum = Integer.parseInt(vmfTextField2.getText());//숫자 입력해야 반응하게 만들것
+				//수량 입력 텍스트란에 숫자가 아닌 값을 입력했을 때
+				String vText = vmfTextField2.getText();
+				int vNum = 0;
+				
 				try {
-					new HospitalExcel().modifyVaccine(hName, vNum);
-					//new HospitalExcel().callTable();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					vNum = Integer.parseInt(vmfTextField2.getText());
+					
+					try {
+						new HospitalExcel().modifyVaccine(hName, vNum);
+						//new HospitalExcel().callTable();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					setVisible(false);
+					
+				}catch(NumberFormatException e2) {//만약 입력한 값이 숫자가 아니어서 int 타입으로 변환을 못하는 경우
+					CheckText(vText);
+					setVisible(true);
+					
+				}catch(Exception e2){
+					e2.printStackTrace();
 				}
-				setVisible(false);
+				
+				
 			}
 		});
 
@@ -191,7 +203,7 @@ public class VaccineModifyFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);// 수량이 변경되지 않은 화면으로 이동
+				setVisible(false);
 			}
 		});
 
@@ -200,7 +212,7 @@ public class VaccineModifyFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);// 수량이 변경되지 않은 화면으로 이동
+				setVisible(false);
 
 			}
 		});
@@ -210,5 +222,9 @@ public class VaccineModifyFrame extends JFrame {
 	public void CheckFact(String info) {
 
 		JOptionPane.showMessageDialog(this, "없는 정보입니다.");
+	}
+	
+	public void CheckText(String vText) {
+		JOptionPane.showMessageDialog(this, "숫자가 아닌 값을 입력하였습니다.");
 	}
 }
