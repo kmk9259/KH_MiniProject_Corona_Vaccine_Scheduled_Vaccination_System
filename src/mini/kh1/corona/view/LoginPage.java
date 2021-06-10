@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -17,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import mini.kh1.corona.controller.user.UserList;
+import mini.kh1.corona.model.vo.User;
 
 public class LoginPage extends JFrame implements ActionListener {
 
@@ -132,10 +135,18 @@ public class LoginPage extends JFrame implements ActionListener {
 	}// action
 	public void loginSuccess(String userText, String pwdText)
 	{
-		for(int i=0; i< UserList.UserList().size(); i++)
+		int i;
+		for(i=0; i< UserList.UserList().size(); i++)
 		{
-			
-			if(UserList.UserList().get(i).getId().equals(userText) && UserList.UserList().get(i).getPassword().equals(pwdText))
+			System.out.println(UserList.UserList().get(i).getId()+"####");
+			System.out.println(userText+"!!!!");
+			System.out.println(UserList.UserList().get(i));
+			if(userText.isEmpty()==true || pwdText.isEmpty()==true)
+			{
+				JOptionPane.showMessageDialog(this, "빈 공간을 다 입력해주세요.");
+				break;
+			}
+			else if(UserList.UserList().get(i).getId().equals(userText) && UserList.UserList().get(i).getPassword().equals(pwdText))
 			{
 				JOptionPane.showMessageDialog(this, "로그인에 성공했습니다."); // 성공 메세지!!
 				new MainMenu();
@@ -144,9 +155,16 @@ public class LoginPage extends JFrame implements ActionListener {
 				sessionNum=i;		//arraylist<User>의 i번째 정보를 얻어내기 위한 변수
 				break;
 			}
-		}
-		
-		
+			else 
+			{
+				JOptionPane.showMessageDialog(this, "아이디, 비밀번호가 틀립니다.");
+				userTextField.setText("");
+				passwordField.setText("");
+				continue;
+			
+			}
+			
+		}	
 		
 		if (userText.equalsIgnoreCase("admin") && pwdText.equalsIgnoreCase("12345")) 
 		{
@@ -158,18 +176,9 @@ public class LoginPage extends JFrame implements ActionListener {
 				e.printStackTrace();
 			}
 			frame.setVisible(false);
-
 		}
-		else if (userText.equalsIgnoreCase("test") && pwdText.equalsIgnoreCase("1234")) 
-		{
-			JOptionPane.showMessageDialog(this, "로그인에 성공했습니다."); // 성공 메세지!!
-			new MainMenu();
-			frame.setVisible(false);
-
-		} 
-		else if(userText.isEmpty()==true || pwdText.isEmpty()==true)
-			JOptionPane.showMessageDialog(this, "아이디, 비밀번호가 일치 하지 않습니다.");
-			
+		i=0;
+	
 	}
 	public int session()
 	{
