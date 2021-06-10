@@ -72,7 +72,8 @@ public class MainMenu {
 				
 				GoToView gtv = new GoToView();
 				
-				int i = gtv.go(0, 0);	//신청인 수, 예약 여부 가져와야 함
+				int i = gtv.go(0);	//신청인 수, 예약 여부 가져와야 함
+							//사용자가 신청한 병원의 백신갯수, 예약자리스트에 사용자가 있는지
 				if(i == 0) {	//예약 완료, 마감 되었을때
 					mainPanel.setVisible(false);
 					MFrame.add(CheckBookPanel.checkBookPanel);
