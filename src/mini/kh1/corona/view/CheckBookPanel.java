@@ -3,6 +3,7 @@ package mini.kh1.corona.view;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,14 +15,17 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
+import mini.kh1.corona.controller.user.BookerList;
 import mini.kh1.corona.controller.view_booking.Cancel;
+import mini.kh1.corona.model.vo.Booker;
 import mini.kh1.corona.run.Run;
 
 public class CheckBookPanel extends JPanel {
 
 	public static JPanel checkBookPanel = new CheckBookPanel();
 	Cancel rcancel = new Cancel();
-	
+	private int sNum = LoginPage.sessionNum;
+	private ArrayList<Booker>  bookerlist = BookerList.BookerList();
 	
 	public CheckBookPanel() {
 		setVisible(false);
@@ -37,22 +41,23 @@ public class CheckBookPanel extends JPanel {
 		info.setOpaque(true);
 		add(info);
 		
-		String iden = "123412-3456789";	//개인정보의 주민번호 가져와서 적용
-		char[] cIden = iden.toCharArray();	//문자열을 char 배열로 변환
+		char[] ssn = bookerlist.get(sNum).getSsn().toCharArray();	//문자열을 char 배열로 변환
 		
-		for(int i = 8; i < cIden.length; i++) {//8~13
-			cIden[i] = '*';	//주민번호 뒷자리 첫번째만 보이고 그 뒤는 안보이게
+		ssn[6] = '-';
+		
+		for(int i = 8; i < ssn.length; i++) {//8~13
+			ssn[i] = '*';	//주민번호 뒷자리 첫번째까지만 보이고 그 뒤는 안보이게
 		}
 		
-		iden = new String(cIden);	//char 배열을 문자열로 변환
+		String Ssn = new String(ssn);	//char 배열을 문자열로 변환
 		
 		//테이블에 값 넣기
 		Object[] header = {"0", "0"};
 		Object[][] contents = { //나중에 값 가져올 것임
-				{"이름", "김아무개"}
-				, {"주민등록번호", iden}
-				, {"접종 예정 병원", "A병원"}
-				, {"접종 일시", "2021-06-05"}
+				{"이름", bookerlist.get(sNum).getName()}
+				, {"주민등록번호", Ssn}
+				, {"접종 예정 병원", bookerlist.get(sNum).getLocation() + " " + bookerlist.get(sNum).gethName()}
+				, {"접종 일시", "2021-06-05"}	//값을 가져와야함
 		};
 		
 		JTable bookInfo = new JTable(contents, header);
@@ -110,6 +115,9 @@ public class CheckBookPanel extends JPanel {
 				if(result == JOptionPane.YES_OPTION) {	//"예" 일 때
 					//취소 처리 과정 필요
 					rcancel.RCancel();
+					
+//					BookerList bList = new BookerList();
+//					bList.removeList(sNum);
 					
 					JOptionPane.showMessageDialog(null, "예약이 취소되었습니다.\n홈 화면으로 이동합니다.");
 					
