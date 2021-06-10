@@ -22,7 +22,7 @@ import mini.kh1.corona.model.vo.HospitalVaccine;
 
 public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 
-	HospitalExcel hExtel = new HospitalExcel();
+	HospitalExcel hExcel = new HospitalExcel();
 
 	Vector<HospitalVaccine> hospitalList = new Vector<HospitalVaccine>();
 	LoginPage loginpage;
@@ -66,7 +66,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 		add(label); // 안내 문구 한 줄 표 아래 출력!
 
 		try {
-			hospitalList = hExtel.callTable();
+			hospitalList = hExcel.callTable();
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -119,14 +119,13 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 
 				for (int i = 0; i < hospitalList.size(); i++) {
 					if (hospitalList.get(i).getMainDistrict().equals(combo.getSelectedItem())) {
-
 						addHName = hospitalList.get(i).gethName();
-						if (hospitalList.get(i).getVaccine() == 0) {
-							JOptionPane.showMessageDialog(null, "신청 불가", "WARNING_MESSAGE",
+						
+						
+						if (hospitalList.get(i).getVaccine() == 0) { //재고 백신 체크
+							JOptionPane.showMessageDialog(null, "신청 불가",  "WARNING_MESSAGE",
 									JOptionPane.WARNING_MESSAGE);
-						} else {
-
-							// 재고 감소 처리
+						} else { //재고가 남아있으면
 
 							int result = option.showConfirmDialog(null, "예약 신청하시겠습니까?", "확인",
 									JOptionPane.YES_NO_OPTION);
@@ -134,13 +133,31 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 
 								setVisible(false);
 								MainMenu.mainPanel.setVisible(true);
-							} else {
+							} else { //예약 들어갔을 경우
 
 								BookerList.addList(UserList.UserList().get(loginpage.sessionNum).getName(),
 										UserList.UserList().get(loginpage.sessionNum).getSsn(),
 										UserList.UserList().get(loginpage.sessionNum).getEmail(),
 										(String) combo.getSelectedItem(), addHName);
 
+								int vaccine = 0;
+								for(int j = 0; j<hospitalList.size(); j++) {
+									if(hospitalList.get(i).gethName().equals(addHName)) {
+										vaccine = hospitalList.get(i).getVaccine()-1;
+									}
+								}
+								
+								
+								// 예약된 병원의재고를 감소시켜주는 메소드
+								
+								try {
+									hExcel.modifyVaccine(addHName,vaccine);
+								} catch (Exception e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+								
+								
 								System.out.println(BookerList.BookerList());
 
 								JOptionPane.showMessageDialog(null,
@@ -169,6 +186,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 
 			@Override
 			public void mousePressed(MouseEvent e) {
+				
 				for (int i = 0; i < hospitalList.size(); i++) {
 					if (combo.getSelectedItem().equals(hospitalList.get(i).getMainDistrict())) {
 						String[][] table = {
@@ -205,5 +223,6 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 			return "O";
 		}
 	}
+
 
 }
