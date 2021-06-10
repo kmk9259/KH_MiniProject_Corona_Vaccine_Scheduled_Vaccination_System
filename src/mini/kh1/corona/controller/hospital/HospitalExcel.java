@@ -249,7 +249,7 @@ public class HospitalExcel {
 	// 병원 정보(메인주소 + 상세주소 + 병원명) 출력 시 가져올 메소드
 	public String findHospitalInfo(String hName) throws Exception {
 
-		FileInputStream fis = new FileInputStream("C:\\Users\\hya20\\git\\MiniProject_Test\\data\\HospitalData.xlsx");
+		FileInputStream fis = new FileInputStream("C:\\Workspace\\JAVA\\MiniProject-Test\\data\\HospitalData.xlsx");
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 
 		int rowIndex = 0;
