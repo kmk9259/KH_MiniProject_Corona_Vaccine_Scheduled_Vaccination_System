@@ -26,5 +26,11 @@ public class HospitalDetail extends Hospital{
 		// TODO Auto-generated method stub
 		return super.toString() + "[ 추가 정보 -> 상세 주소 : " + detailDistrict + " ]";
 	}
-
+	
+	public String info() {
+		String main = super.getMainDistrict();
+		String hNa = super.gethName();
+		
+		return main + " " + detailDistrict + " " + hNa;
+	}
 }
