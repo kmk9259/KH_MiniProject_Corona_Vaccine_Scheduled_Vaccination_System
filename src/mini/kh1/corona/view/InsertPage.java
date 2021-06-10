@@ -35,6 +35,7 @@ public class InsertPage extends JFrame implements ActionListener {
 	private JLabel ssnLabel = new JLabel("주민 번호");
 	private JLabel emailLabel = new JLabel("이메일");
 	
+	
 
 	// 필드부
 	private JTextField userTextField = new JTextField();
@@ -168,6 +169,7 @@ public class InsertPage extends JFrame implements ActionListener {
 				
 			}else {
 				JOptionPane.showMessageDialog(this, "가입 되었습니다.");
+				UserList.UserList();
 				list.addList(id,pw,name,ssn, email);
 				new LoginPage(); // 빈 곳 없이 값이 입력 되면 로그인 할 수 있는 페이지로 이동
 				frame.setVisible(false);
