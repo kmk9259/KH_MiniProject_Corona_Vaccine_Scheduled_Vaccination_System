@@ -153,9 +153,7 @@ public class InsertPage extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == insertButton) {
 			
-			
 			String userText = userTextField.getText();
-			int result = dupliCheckID(userText);
 			
 			id = userTextField.getText();
 			pw = passwordField.getText();
@@ -168,11 +166,6 @@ public class InsertPage extends JFrame implements ActionListener {
 			if(id.length() == 0 || pw.length() == 0 || name.length() == 0 || ssn.length() == 0 || email.length() == 0) {
 				JOptionPane.showMessageDialog(this, "정보를 모두 입력해 주세요");
 				
-			} else if (result == 1) { //굳이 중복 체크 버튼 누르지 않아도... 중복 체크 가능
-				
-				if (result == 1) {
-					userTextField.setText("");
-				}
 			}else {
 				JOptionPane.showMessageDialog(this, "가입 되었습니다.");
 				list.addList(id,pw,name,ssn, email);
@@ -185,36 +178,32 @@ public class InsertPage extends JFrame implements ActionListener {
 		if (e.getSource() == dupliButton) { // 중복이면 필드부 클리어, 아니면 성공해서 입력할 수 있다.
 
 			String userText = userTextField.getText();
-			int result = dupliCheckID(userText);
-			if (result == 1) {
-				userTextField.setText("");
-			} else {
-				JOptionPane.showMessageDialog(this, "사용가능한 아이디 입니다.");
-			}
-
+			dupliCheckID(userText);
 		}
-
 		if (e.getSource() == backButton) {
 			new LoginPage(); // 클릭시, 로그인 화면 으로 돌아감
 			frame.setVisible(false);
 		}
-
 	}
 	
 	//중복확인 메소드
-		public int dupliCheckID(String userText) {
-			int result = 0;
-			
-			for (int i = 0; i < UserList.UserList().size(); i++) { // 전체 회원 인덱스를 돌며 확인하기 위해
+		public boolean dupliCheckID(String userText) {
+			boolean check=true;
+			for (int i = 0; i < UserList.UserList().size(); i++) 
+			{ // 전체 회원 인덱스를 돌며 확인하기 위해
 				if (UserList.UserList().get(i).getId().equals(userText)) {
-					result = 1; // 참 거짓으로 표현하기 위해
+					//result = 1; // 참 거짓으로 표현하기 위해
+					check=false;
 					JOptionPane.showMessageDialog(this, "중복된 아이디 입니다.");
+					break;
 				}
 				else
 				{
 					JOptionPane.showMessageDialog(this, "사용 가능한 아이디 입니다.");
+					check=true;
+					break;
 				}
 			}
-			return result;
+			return check;
 		}
 }
