@@ -135,36 +135,86 @@ public class LoginPage extends JFrame implements ActionListener {
 	}// action
 	public void loginSuccess(String userText, String pwdText)
 	{
-		int i;
-		for(i=0; i< UserList.UserList().size(); i++)
+		int check=0;
+		if(userText.isEmpty()==true|| pwdText.isEmpty()==true)
 		{
-			System.out.println(UserList.UserList().get(i).getId()+"####");
-			System.out.println(userText+"!!!!");
-			System.out.println(UserList.UserList().get(i));
-			if(userText.isEmpty()==true || pwdText.isEmpty()==true)
+			check=1;
+			
+		}
+		for(int i=0; i< UserList.UserList().size(); i++)
+		{
+			System.out.println(UserList.UserList().get(i).getId()+"@@");
+			check=2;
+			if(UserList.UserList().get(i).getId().equals(userText) && UserList.UserList().get(i).getPassword().equals(pwdText))
 			{
-				JOptionPane.showMessageDialog(this, "빈 공간을 다 입력해주세요.");
-				break;
-			}
-			else if(UserList.UserList().get(i).getId().equals(userText) && UserList.UserList().get(i).getPassword().equals(pwdText))
-			{
+				
+				sessionNum=i;
 				JOptionPane.showMessageDialog(this, "로그인에 성공했습니다."); // 성공 메세지!!
 				new MainMenu();
 				frame.setVisible(false);
-				loginSession=true;	//세션유지하기 위해 true 바꿈
-				sessionNum=i;		//arraylist<User>의 i번째 정보를 얻어내기 위한 변수
-				break;
+				loginSession=true;
+				return;
 			}
-			else 
+			else {
+				
+			}
+		}
+		for(int i=0; i< UserList.UserList().size(); i++)
+		{
+			System.out.println(UserList.UserList().get(i).getId());
+			
+			if(!UserList.UserList().get(i).getId().equals(userText) || !UserList.UserList().get(i).getPassword().equals(pwdText))
 			{
-				JOptionPane.showMessageDialog(this, "아이디, 비밀번호가 틀립니다.");
-				userTextField.setText("");
-				passwordField.setText("");
-				continue;
-			
+				check=3;
+				System.out.println("우아아아아");
+				
 			}
+			return;
+		}
+		if(check==1)
+		{
+			JOptionPane.showMessageDialog(this, "제대로 입력해주세요");
 			
-		}	
+		}
+		else if(check ==2)
+		{
+			JOptionPane.showMessageDialog(this, "로그인에 성공했습니다."); // 성공 메세지!!
+			new MainMenu();
+			frame.setVisible(false);
+			loginSession=true;	//세션유지하기 위해 true 바꿈
+		}
+		else if(check==3)
+		{
+			JOptionPane.showMessageDialog(this, "아이디와 비밀번호가 틀립니다!!!!");
+		}
+		//포문 각각 돌려보기
+		//포문 하나에 조건문 하나, 리턴
+		//return 값
+//		for(int i=0; i< UserList.UserList().size(); i++)
+//		{
+//			System.out.println(UserList.UserList().get(i).getId()+"!!!!!");
+//			System.out.println(userText);
+//			
+//			if(UserList.UserList().get(i).getId().equals(userText) && UserList.UserList().get(i).getPassword().equals(pwdText))
+//			{
+//				JOptionPane.showMessageDialog(this, "로그인에 성공했습니다."); // 성공 메세지!!
+//				new MainMenu();
+//				frame.setVisible(false);
+//				loginSession=true;	//세션유지하기 위해 true 바꿈
+//				sessionNum=i;		//arraylist<User>의 i번째 정보를 얻어내기 위한 변수
+//				break;
+//			}
+////			if()		변수하나로 체킹 경우에 따른 팝업 
+////			{
+////				//팝업창을 하나만 띄우게
+////				JOptionPane.showMessageDialog(this, "아이디, 비밀번호가 틀립니다.");
+////				userTextField.setText("");
+////				passwordField.setText("");
+////				
+////			}
+//			
+//		}	
+	
 		
 		if (userText.equalsIgnoreCase("admin") && pwdText.equalsIgnoreCase("12345")) 
 		{
@@ -177,7 +227,7 @@ public class LoginPage extends JFrame implements ActionListener {
 			}
 			frame.setVisible(false);
 		}
-		i=0;
+
 	
 	}
 	public int session()
