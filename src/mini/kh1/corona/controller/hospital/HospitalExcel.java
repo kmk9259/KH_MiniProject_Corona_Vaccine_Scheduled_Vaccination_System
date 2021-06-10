@@ -54,7 +54,7 @@ public class HospitalExcel {
 	public Vector<HospitalVaccine> callTable() throws Exception {
 
 		// 엑셀 파일을 불러오는 과정
-		FileInputStream fis = new FileInputStream("C:\\Users\\hya20\\git\\MiniProject_Test\\data\\HospitalData.xlsx");
+		FileInputStream fis = new FileInputStream("C:\\Users\\82106\\git\\MiniProject_Test\\data\\HospitalData.xlsx");
 		// 해당 엑셀파일의 워크북을 불러옴
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 		HospitalVaccine hv = new HospitalVaccine();
