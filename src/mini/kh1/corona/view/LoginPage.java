@@ -144,12 +144,10 @@ public class LoginPage extends JFrame implements ActionListener {
 				sessionNum=i;		//arraylist<User>의 i번째 정보를 얻어내기 위한 변수
 				break;
 			}
-			else
-			{
-				JOptionPane.showMessageDialog(this, "아이디, 비밀번호가 일치 하지 않습니다.");
-				break;
-			}
 		}
+		
+		
+		
 		if (userText.equalsIgnoreCase("admin") && pwdText.equalsIgnoreCase("12345")) 
 		{
 			JOptionPane.showMessageDialog(this, "관리자 로그인에 성공했습니다."); // 성공 메세지!!
