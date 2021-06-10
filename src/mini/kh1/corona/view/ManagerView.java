@@ -24,9 +24,14 @@ public class ManagerView {
 	private JFrame frame = new JFrame();
 	private JPanel ManagerPanel;
 	private JPanel vc;
+	private JPanel vc2;
 	private JPanel hs;
 	private JPanel us;
-
+	private JTable vmTable;
+	private Vector<HospitalVaccine> vector;
+	private Object[][] vmData;
+	private JScrollPane vmScrollPane;
+	
 	public ManagerView() throws Exception {
 
 		// 관리자 모드 프레임
@@ -100,11 +105,17 @@ public class ManagerView {
 		vmButton2.setFont(new Font("굴림", Font.PLAIN, 12));
 		vc.add(vmButton2);
 
+		JButton vmButton3 = new JButton("새로고침");
+		vmButton3.setBounds(290, 418, 90, 40);
+		vmButton3.setFont(new Font("굴림", Font.PLAIN, 12));
+		vc.add(vmButton3);
+
 		// 병원별 재고 현황 테이블
 		// callTable() 메소드를 불러와서 vector에 넣는다.
-		Vector<HospitalVaccine> vector = new HospitalExcel().callTable();
+		vector = new HospitalExcel().callTable();
 
 		// vector 사이즈 : 들어가있는 HospitalVaccine의 객체 수 / 3 : 나타낼 정보가 3개(메인주소, 병원명, 재고수량)니까
+		/* 메소드로 만들어봄
 		Object[][] vmData = new Object[vector.size()][3];
 		System.out.println("vector 사이즈 : " + vector.size());
 
@@ -124,10 +135,14 @@ public class ManagerView {
 			System.out.println("시/구 : " + vector.get(i).getMainDistrict());
 			System.out.println("병원명 : " + vector.get(i).gethName());
 			System.out.println("재고량 : " + vector.get(i).getVaccine());
+			
 		}
-		JTable vmTable = new JTable(vmData, new Object[] {"시/구", "병원명", "재고 수량"});
+		*/
+		vmData = new HospitalExcel().getData(vector);
+		
+		vmTable = new JTable(vmData, new Object[] { "시/구", "병원명", "재고 수량" });
 		JTableHeader vmTableHd = vmTable.getTableHeader();
-		final JScrollPane vmScrollPane = new JScrollPane(vmTable);// 스크롤 있는 테이블로 변경
+		vmScrollPane = new JScrollPane(vmTable);// 스크롤 있는 테이블로 변경
 
 		vmTable.setFont(new Font("굴림", Font.PLAIN, 12));
 
@@ -142,6 +157,125 @@ public class ManagerView {
 
 		frame.add(vc);
 
+		vmButton3.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				vc.setVisible(false);
+				vc.remove(vmScrollPane);//기존에 있던 표를 삭제
+				try {
+					//새로운 표 생성을 위한 코드
+					vector = new HospitalExcel().modifiedTable();
+					vmData = new HospitalExcel().getData(vector);
+					
+					vmTable = new JTable(vmData, new Object[] { "시/구", "병원명", "재고 수량" });
+					JTableHeader vmTableHd = vmTable.getTableHeader();
+					vmScrollPane = new JScrollPane(vmTable);// 스크롤 있는 테이블로 변경
+
+					vmTable.setFont(new Font("굴림", Font.PLAIN, 12));
+
+					vmTableHd.setFont(new Font("굴림", Font.BOLD, 15));
+					vmTableHd.setBackground(Color.cyan);// 나중에 꾸밀 때 변경
+
+					vmScrollPane.setBounds(200, 120, 500, 300);
+					vmScrollPane.setVisible(true);// 패널과 상관없이 보이는듯
+
+					vc.add(vmScrollPane);
+					vc.setVisible(true);
+					
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				vc.setVisible(true);
+				
+			}
+		});
+/*
+		// ==========================================================================
+
+		// 1번기능 - 백신 재고 관리(새로고침 후)
+		vc2 = new JPanel();
+		vc2.setSize(900, 600);
+		vc2.setLayout(null);
+		// 라벨
+		JLabel vmLabel2 = new JLabel("백신 재고 현황");
+		vmLabel2.setBounds(200, 70, 100, 50);
+		vmLabel2.setFont(new Font("굴림", Font.PLAIN, 15));
+		vmLabel2.setHorizontalAlignment(SwingConstants.CENTER);// 라벨 박스에서 가운데 정렬
+		vmLabel2.setOpaque(true);// 라벨 배경색 바꿀 수 있게 만들어주는 기능
+		vmLabel2.setBackground(Color.BLACK);// 추후 변경
+		vmLabel2.setForeground(Color.WHITE);
+		vc2.add(vmLabel2);
+		// 수량 변경 버튼
+		JButton vmButton12 = new JButton("수량 변경");
+		vmButton12.setBounds(200, 418, 90, 40);
+		vmButton12.setFont(new Font("굴림", Font.PLAIN, 12));
+		vc2.add(vmButton12);
+		// 이전으로 버튼
+		JButton vmButton22 = new JButton("이전으로");
+		vmButton22.setBounds(760, 490, 90, 40);
+		vmButton22.setFont(new Font("굴림", Font.PLAIN, 12));
+		vc2.add(vmButton22);
+
+		JButton vmButton32 = new JButton("새로고침");
+		vmButton32.setBounds(760, 70, 90, 40);
+		vmButton32.setFont(new Font("굴림", Font.PLAIN, 12));
+		vc2.add(vmButton32);
+
+//->	vmButton32.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				vc2.setVisible(false);
+				vc.setVisible(true);
+
+			}
+		});
+//<-
+		// 병원별 재고 현황 테이블
+		// callTable() 메소드를 불러와서 vector에 넣는다.
+		Vector<HospitalVaccine> vector2 = new HospitalExcel().callTable();
+
+		// vector 사이즈 : 들어가있는 HospitalVaccine의 객체 수 / 3 : 나타낼 정보가 3개(메인주소, 병원명, 재고수량)니까
+		Object[][] vmData2 = new Object[vector2.size()][3];
+		System.out.println("vector 사이즈 : " + vector2.size());
+
+		for (int i = 0; i < vector2.size(); i++) {
+			for (int j = 0; j < 3; j++) {
+				if (j == 0) {// 메인주소가 있는 열
+					vmData2[i][j] = vector2.get(i).getMainDistrict();
+				}
+				if (j == 1) {
+					vmData2[i][j] = vector2.get(i).gethName();
+				}
+				if (j == 2) {
+					vmData2[i][j] = vector2.get(i).getVaccine();
+				}
+			}
+			// 확인용
+			System.out.println("시/구 : " + vector2.get(i).getMainDistrict());
+			System.out.println("병원명 : " + vector2.get(i).gethName());
+			System.out.println("재고량 : " + vector2.get(i).getVaccine());
+		}
+		JTable vmTable2 = new JTable(vmData2, new Object[] { "시/구", "병원명", "재고 수량" });
+		JTableHeader vmTableHd2 = vmTable2.getTableHeader();
+		final JScrollPane vmScrollPane2 = new JScrollPane(vmTable2);// 스크롤 있는 테이블로 변경
+
+		vmTable2.setFont(new Font("굴림", Font.PLAIN, 12));
+
+		vmTableHd2.setFont(new Font("굴림", Font.BOLD, 15));
+		vmTableHd2.setBackground(Color.cyan);// 나중에 꾸밀 때 변경
+
+		vmScrollPane2.setBounds(200, 120, 500, 300);
+		vmScrollPane2.setVisible(false);// 패널과 상관없이 보이는듯
+
+		vc2.add(vmScrollPane2);
+		vc2.setVisible(false);
+
+		frame.add(vc2);
+*/
 		// ==========================================================================
 
 		// 2번 기능 - 병원 관리
@@ -307,6 +441,15 @@ public class ManagerView {
 		});
 
 		// 로그아웃 버튼 클릭 시
+		managerLgOut.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
+				new LoginPage();
+				
+			}
+		});
 
 		// ==========================================================================
 
@@ -315,7 +458,12 @@ public class ManagerView {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VaccineModifyFrame();
+				try {
+					new VaccineModifyFrame();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 			}
 		});
