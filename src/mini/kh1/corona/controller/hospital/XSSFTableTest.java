@@ -22,7 +22,7 @@ public class XSSFTableTest {
 
 	public Vector<HospitalVaccine> callTable() throws Exception {
 
-		FileInputStream fis = new FileInputStream("C:\\Workspace\\JAVA\\MiniProject-Test2\\data\\HospitalData.xlsx");
+		FileInputStream fis = new FileInputStream("C:\\Workspace\\JAVA\\MiniProject-Test\\data\\HospitalData.xlsx");
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 		HospitalVaccine h = new HospitalVaccine();
 
