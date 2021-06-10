@@ -135,6 +135,8 @@ public class LoginPage extends JFrame implements ActionListener {
 	}// action
 	public void loginSuccess(String userText, String pwdText)
 	{
+		
+		
 		for(int i=0; i< UserList.UserList().size(); i++)
 		{
 			
