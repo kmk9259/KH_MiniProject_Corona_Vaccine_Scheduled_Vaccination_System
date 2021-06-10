@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import mini.kh1.corona.controller.hospital.XSSFTableTest;
+import mini.kh1.corona.controller.hospital.HospitalExcel;
 import mini.kh1.corona.controller.user.BookerList;
 import mini.kh1.corona.controller.user.UserList;
 import mini.kh1.corona.model.vo.HospitalVaccine;
@@ -22,8 +22,9 @@ import mini.kh1.corona.model.vo.HospitalVaccine;
 
 public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 
-	XSSFTableTest XSSFTable = new XSSFTableTest();
-
+	HospitalExcel hExtel = new HospitalExcel();
+	
+	
 	Vector<HospitalVaccine> hospitalList = new Vector<HospitalVaccine>();
 	LoginPage loginpage;
 
@@ -66,7 +67,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 		add(label); // 안내 문구 한 줄 표 아래 출력!
 
 		try {
-			hospitalList = XSSFTable.callTable();
+			hospitalList = hExtel.callTable();
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
