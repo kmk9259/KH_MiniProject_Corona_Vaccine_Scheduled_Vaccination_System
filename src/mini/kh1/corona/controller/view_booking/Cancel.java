@@ -18,26 +18,12 @@ public class Cancel {
 	
 	public ArrayList<Booker> RCancel() {
 		
-		System.out.println(bookerlist.size());
-		
-		for(int i = 0; i < bookerlist.size()/2; i++) {
-			System.out.println(bookerlist.get(i).getName());	
-		}
-		
 		for(int i = 0; i < bookerlist.size()/2; i++) {//현재 접속하고있는 유저의 이름을 가져와서 예약자 명단의 이름과 일치하는 객체를 삭제
 			if(UserList.UserList().get(LoginPage.sessionNum).getName().equals(bookerlist.get(i).getName())) {
 				bookerlist.remove(LoginPage.sessionNum);//접종예약 리스트에서 삭제
 			}
 		}
 		
-		System.out.println("**********");
-//		for(int i = 0; i < bookerlist.size(); i++) {
-//			System.out.println(bookerlist.get(i).getName());	
-//		}
-		
-		for(int i = 0; i < bookerlist.size()/2; i++) {
-			System.out.println(bookerlist.get(i).getName());	
-		}
 		return bookerlist;
 	}
 	
