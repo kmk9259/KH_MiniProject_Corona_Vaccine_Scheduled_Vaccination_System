@@ -18,6 +18,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import mini.kh1.corona.controller.user.AddJoin;
 import mini.kh1.corona.controller.user.UserList;
 import mini.kh1.corona.model.vo.User;
 
@@ -27,6 +28,7 @@ public class LoginPage extends JFrame implements ActionListener {
 	private Container container = getContentPane();
 	public static boolean loginSession = false;	//로그인 세션 유지함을 위함
 	public static int sessionNum;
+	
 
 
 	// 레이블
@@ -107,7 +109,7 @@ public class LoginPage extends JFrame implements ActionListener {
 		loginButton.addActionListener(this);
 		showPassword.addActionListener(this);
 		insertButton.addActionListener(this);
-
+		
 	}
 
 	@Override
@@ -116,6 +118,7 @@ public class LoginPage extends JFrame implements ActionListener {
 		{
 			String userText = userTextField.getText();
 			String pwdText = passwordField.getText();
+			
 			loginSuccess(userText, pwdText);
 			
 		}

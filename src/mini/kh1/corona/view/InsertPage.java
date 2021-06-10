@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.JButton;
@@ -17,6 +19,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import mini.kh1.corona.controller.InsertConstroller;
+import mini.kh1.corona.controller.user.AddJoin;
+import mini.kh1.corona.controller.user.AddSignup;
 import mini.kh1.corona.controller.user.UserList;
 import mini.kh1.corona.model.vo.User;
 
@@ -57,6 +61,9 @@ public class InsertPage extends JFrame implements ActionListener {
 	private String email = emailField.getText();
 
 	UserList list = new UserList();
+	AddSignup addsignup = new AddSignup();
+	AddJoin join = new AddJoin();
+	static List newuser = new ArrayList<User>();
 
 	public InsertPage() {
 
@@ -169,11 +176,16 @@ public class InsertPage extends JFrame implements ActionListener {
 				
 			}else {
 				JOptionPane.showMessageDialog(this, "가입 되었습니다.");
-				UserList.UserList();
-				list.addList(id,pw,name,ssn, email);
+				
+				addsignup.adduser(id, pw, name, ssn, email);	//회원가입
+			
+				newuser = addsignup.addsignup();	//$$$
+				join.abc(newuser);
 				new LoginPage(); // 빈 곳 없이 값이 입력 되면 로그인 할 수 있는 페이지로 이동
 				frame.setVisible(false);
+				
 			}
+			
 	
 		}
 
@@ -208,4 +220,5 @@ public class InsertPage extends JFrame implements ActionListener {
 			}
 			return check;
 		}
+	
 }
