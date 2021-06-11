@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import mini.kh1.corona.controller.InsertConstroller;
+import mini.kh1.corona.controller.reservation.Reservation;
 import mini.kh1.corona.controller.user.AddJoin;
 import mini.kh1.corona.controller.user.AddSignup;
 import mini.kh1.corona.model.vo.user.JoinList;
@@ -172,12 +173,17 @@ public class InsertPage extends JFrame implements ActionListener {
 			ssn = ssnField.getText();
 			email = emailField.getText();
 			
-			
 			//값이 빈 곳이 있으면 가입이 되지 않게~ 
 			if(id.length() == 0 || pw.length() == 0 || name.length() == 0 || ssn.length() == 0 || email.length() == 0) {
 				JOptionPane.showMessageDialog(this, "정보를 모두 입력해 주세요");
 				
-			}else {
+			}
+			else if(ssn.length()<13)
+			{
+				JOptionPane.showMessageDialog(this, "주민등록번호의 자릿수가 틀립니다.");
+				ssnField.setText("");
+			}
+			else {
 				JOptionPane.showMessageDialog(this, "가입 되었습니다.");
 				
 				addsignup.adduser(id, pw, name, ssn, email);	//회원가입
@@ -185,16 +191,16 @@ public class InsertPage extends JFrame implements ActionListener {
 				temp = addjoin.setjoin(newuser);
 				new LoginPage(); // 빈 곳 없이 값이 입력 되면 로그인 할 수 있는 페이지로 이동
 				frame.setVisible(false);
-				
+				Reservation re = new Reservation();		//예약하기 클래스 호출
+				re.orderAge();							//나이 정렬 메소드 호출
 			}
-			
-	
 		}
 
 		if (e.getSource() == dupliButton) { // 중복이면 필드부 클리어, 아니면 성공해서 입력할 수 있다.
 
 			String userText = userTextField.getText();
 			dupliCheckID(userText);
+			
 		}
 		if (e.getSource() == backButton) {
 			new LoginPage(); // 클릭시, 로그인 화면 으로 돌아감

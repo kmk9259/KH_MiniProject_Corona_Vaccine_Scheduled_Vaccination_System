@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import mini.kh1.corona.controller.reservation.Reservation;
+
 public class Notice extends JPanel {
 
 	JPanel selectHospital = new SelectHospital();
@@ -48,7 +50,7 @@ public class Notice extends JPanel {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				JButton btn = (JButton)e.getSource();
-				
+							
 				int num = JOptionPane.showConfirmDialog(null, " 공지사항을 충분히 숙지 하셨습니까? \n '예' 를 누르시면 지역샌택으로 넘어갑니다 ",
 						"공지사항 ", JOptionPane.YES_NO_OPTION);
 
