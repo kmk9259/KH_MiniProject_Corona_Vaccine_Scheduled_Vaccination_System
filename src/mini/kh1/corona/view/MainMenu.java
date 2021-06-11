@@ -1,7 +1,6 @@
 package mini.kh1.corona.view;
 
 
-import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -11,11 +10,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import mini.kh1.corona.controller.user.BookerList;
 import mini.kh1.corona.controller.view_booking.GoToView;
-import mini.kh1.corona.model.vo.Booker;
 import mini.kh1.corona.model.vo.Chatbot;
 import mini.kh1.corona.model.vo.user.User;
+import mini.kh1.corona.view.ChatBot.ChatBotFrame;
 
 public class MainMenu {
 

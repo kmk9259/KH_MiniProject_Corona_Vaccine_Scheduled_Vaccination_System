@@ -165,6 +165,8 @@ public class LoginPage extends JFrame implements ActionListener {
 		if (result == 0) {
 
 			JOptionPane.showMessageDialog(this, "로그인에 실패했습니다.");
+			userTextField.setText("");
+			passwordField.setText("");
 			loginSession=false;
 		}
 		
