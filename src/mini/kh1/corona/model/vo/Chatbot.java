@@ -5,7 +5,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-import mini.kh1.corona.view.ChatBotFrame;
+import mini.kh1.corona.view.ChatBot.ChatBotFrame;
 
 public class Chatbot {
 	private ChatBotFrame f;
