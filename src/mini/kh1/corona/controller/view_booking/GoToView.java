@@ -1,56 +1,80 @@
 package mini.kh1.corona.controller.view_booking;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 
+import mini.kh1.corona.controller.hospital.HospitalExcel;
 import mini.kh1.corona.controller.user.BookerList;
 import mini.kh1.corona.model.vo.Booker;
+import mini.kh1.corona.model.vo.HospitalVaccine;
+import mini.kh1.corona.model.vo.user.User;
 import mini.kh1.corona.view.InsertPage;
 import mini.kh1.corona.view.LoginPage;
 
 public class GoToView {
 	
-	private ArrayList<Booker>  bookerlist = BookerList.BookerList();
-	private int reyn = 1;	//예약이 되어있으면 0, 안되어있으면 1
+	private HospitalExcel hExcel = new HospitalExcel();
 	
-	public int go(int vaccine) { //vaccine : 남은 백신 수 , reyn : 예약 여부
+	private Vector<HospitalVaccine> hospitalList = new Vector<HospitalVaccine>();
+	
+//	private ArrayList<Booker>  bookerlist = BookerList.getBookerList();
+	private boolean reyn = false;	//예약이 되어있으면 true, 안되어있으면 false
+	private int vaccine;
+	private List<User> ulist = InsertPage.temp.getJoinlist();
+	private int sn = LoginPage.getsn();
+	
+	public int go() { //vaccine : 남은 백신 수 , reyn : 예약 여부
 	//신청인원 현황 가져오기
 	//신청인원이 마감되면 진입가능
 		
-		//사용자가 예약자 리스트에 있는지
-		for(int i = 0; i < bookerlist.size()/2; i++) {
-			if(InsertPage.temp.getJoinlist().get(LoginPage.sessionNum).getSsn().equals(bookerlist.get(i).getSsn())) {
-				reyn = 0;
-			}
-			
+		BookerList list111 = new BookerList();
+		ArrayList<Booker> bookerlist = list111.getBookerList();
+		System.out.println("****가입한사람****");
+		for(int i = 0; i < ulist.size(); i++) {
+			System.out.println(ulist.get(i).getName() + "---");
+		}
+		System.out.println("****예약한사람****");
+		for(int i = 0; i < bookerlist.size(); i++) {
+			System.out.println(bookerlist.get(i).getName() + "---" + bookerlist.get(i).getSsn());
 		}
 		
-		if(vaccine == 0) {
-			if(reyn == 0) {
+		try {
+			hospitalList = hExcel.callTable();
+			
+			
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		
+		String hName = "";
+		
+		//사용자가 예약자 리스트에 있는지
+		for(int i = 0; i < bookerlist.size(); i++) {
+			if(ulist.get(sn).getSsn().equals(bookerlist.get(i).getSsn())) {
+				reyn = true;
+				hName = bookerlist.get(i).gethName();
+			}
+		}
+		
+		for(int i = 0; i < bookerlist.size(); i++ ) {
+			if(hName.equals(hospitalList.get(i).gethName())) {
+				vaccine = hospitalList.get(i).getVaccine();
+			}
+		}
+		
+		if(reyn == true) {
+			if(vaccine == 0) {
 				return 0; //신청인원 마감, 신청함
 			}
 			else {
-				return 2;	//신청 안함
+				return 1;	//신청인원 마감 안됨
 			}
 		}
 		else {
-			return 1;	//신청인원 마감 안됨
+			return 2;	//신청 안함
 		}
-	
-	//마감되지 않았으면 
-	//"신청이 마감되지 않았습니다. 신청이 마감되면 알람을 보내드리오니 이메일을 확인해주세요."
-	//메세지 창 띄우고 홈화면에 머무르기
-	
-	
-	//마감되면 
-	//예약 조회 들어가기 전 예약을 했는지 확인
-	//예약자 리스트에 있는지
-	
-	//예약하지 않았으면 
-	//"예약하기"를 먼저 진행해 주세요"
-	//메세지 창 띄우고 홈 화면에 머무르기
-	
-	
-	//예약 했으면 조회 패널로 이동
-//		return 1;
+		
+
 	}
 }

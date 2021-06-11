@@ -4,6 +4,7 @@ package mini.kh1.corona.view;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -15,8 +16,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import mini.kh1.corona.controller.hospital.HospitalExcel;
+import mini.kh1.corona.controller.user.AddSample;
 import mini.kh1.corona.controller.user.BookerList;
+import mini.kh1.corona.controller.view_booking.GoToView;
+import mini.kh1.corona.model.vo.Booker;
 import mini.kh1.corona.model.vo.HospitalVaccine;
+import mini.kh1.corona.model.vo.user.User;
 
 //예약하기 -> 공지 -> 지역선택 패널 구현 코드  JPanel상속 
 
@@ -52,6 +57,12 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 	public String mapLocation; // 지도에 입력 될 키워드
 	public String hName;
 
+	public static ArrayList bookerlist = new ArrayList();
+	public AddSample sample = new AddSample();
+	
+	public BookerList blist = new BookerList();
+	
+	
 	public SelectHospital() {
 
 		repaint();
@@ -134,11 +145,37 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 								MainMenu.mainPanel.setVisible(true);
 								break;
 							} else { // 예약 들어갔을 경우
+								
+								
+								BookerList list111 = new BookerList();
+								System.out.println("list111.getBookerList().size() ["+list111.getBookerList().size()+"]");
+								
 								String loca = combo.getSelectedItem().toString();
-								BookerList.addList(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getName(),
+								Booker booker1 = new Booker(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getName(),
 										InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getSsn(),
 										InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getEmail(), loca, addHName);
 
+								list111.setBookerAdd(booker1);
+								
+								System.out.println("list111.getBookerList().size() ["+list111.getBookerList().size()+"]");
+//								bookerlist = sample.addsample(); //유저샘플리스트를 가져와서 그대로 예약자 샘플리스트로 쓴다.
+//							 User booker = null; //유저리스트 가져왔기 때문에 일단 예약자도 유저객체로 통일시킴.(제네릭을 삭제하긴 했는데 
+//							 									                          	//그래도 캐스트 오류 발생했었음 )
+//							 booker = InsertPage.temp.getJoinlist().get(loginpage.sessionNum);//로그인한 사람 담음
+//								
+//								String loca = combo.getSelectedItem().toString();
+//								
+//								bookerlist.add(booker); //1번 방법 샘플리스트 그대로 복사해온 예약자리스트에 새로운 예약자 추가 
+								
+//								blist.setBookerList(bookerlist); //2번방법 따로 생성해놓은 예약자리스트 클래스도 새로운 리스트로 셋팅 
+								
+							
+//									System.out.println(bookerlist.toString()); // 방법 1 : 이 클래스에 만들어놓은 스태틱 예약자리스트 출력
+//									System.out.println(blist.getBookerList().toString()); //방법 2 : 따로 만들어놓은 예약자리스트 클래스호출 출력
+									
+									
+									//둘다 리스트에 추가 반영은 일단 되는 상태에요 둘다 가져와서 한번 테스트 해보셔야 할듯 해요
+									//전 일단 1번방법으로 사용했어영
 								int vaccine = 0;
 								for (int j = 0; j < hospitalList.size(); j++) {
 									if (hospitalList.get(i).gethName().equals(addHName)) {
@@ -157,7 +194,6 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 
 								// 예약된 병원의재고를 감소시켜주는 메소드
 
-								System.out.println(BookerList.BookerList());
 
 								JOptionPane.showMessageDialog(null,
 										"예약 신청이 완료되었습니다.\n이메일을 통해 접종 날짜를 알려드리오니, 꼭 이메일을 확인하시기 바랍니다.", "공지",

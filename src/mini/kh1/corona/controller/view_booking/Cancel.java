@@ -9,7 +9,7 @@ import mini.kh1.corona.view.LoginPage;
 
 public class Cancel {
 
-	private ArrayList<Booker>  bookerlist = BookerList.BookerList();
+//	private ArrayList<Booker>  bookerlist = BookerList.BookerList();
 	private int sNum = LoginPage.sessionNum;
 	InsertPage insertPage;
 	//사용자의 개인정보, 예약정보 가져오기
@@ -18,6 +18,8 @@ public class Cancel {
 	//사용자의 접종 병원, 접종 날짜 삭제
 	
 	public ArrayList<Booker> RCancel() {
+		BookerList list111 = new BookerList();
+		ArrayList<Booker> bookerlist = list111.getBookerList();
 		
 		for(int i = 0; i < bookerlist.size()/2; i++) {//현재 접속하고있는 유저의 이름을 가져와서 예약자 명단의 이름과 일치하는 객체를 삭제
 			if(InsertPage.temp.getJoinlist().get(LoginPage.sessionNum).getName().equals(bookerlist.get(i).getName())) {
