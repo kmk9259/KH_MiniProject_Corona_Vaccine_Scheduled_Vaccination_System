@@ -25,7 +25,7 @@ public class LoginPage extends JFrame implements ActionListener {
 	private JFrame frame = new JFrame();
 	private Container container = getContentPane();
 	public static boolean loginSession = false;	//로그인 세션 유지함을 위함
-	public static int sessionNum;
+	public static int sessionNum=0;
 
 	// 레이블
 	private JLabel userLabel = new JLabel("아이디");
@@ -114,8 +114,7 @@ public class LoginPage extends JFrame implements ActionListener {
 		{
 			String userText = userTextField.getText();
 			String pwdText = passwordField.getText();
-			
-			System.out.println(InsertPage.temp.getJoinlist()+"제발"); //이렇게 사용하면 됨
+			loginSession = true;
 			loginSuccess(userText, pwdText);
 			
 		}
@@ -156,17 +155,17 @@ public class LoginPage extends JFrame implements ActionListener {
 			}
 
 		}
-		if (result == 1) {
+		if (result == 1 && loginSession==true) {	//로그인
 
 			JOptionPane.showMessageDialog(this, "로그인에 성공했습니다.");
 			new MainMenu();
 			frame.setVisible(false);
-			loginSession = true;
 		}
 
 		if (result == 0) {
 
 			JOptionPane.showMessageDialog(this, "로그인에 실패했습니다.");
+			loginSession=false;
 		}
 		
 		
@@ -185,14 +184,7 @@ public class LoginPage extends JFrame implements ActionListener {
 
 	
 	}
-	public int session()
-	{
-		if(loginSession==true)
-			return sessionNum;	//배열의 인덱스값
-		else
-			return 0;
-		
-	}
+	
 
 	
 }
