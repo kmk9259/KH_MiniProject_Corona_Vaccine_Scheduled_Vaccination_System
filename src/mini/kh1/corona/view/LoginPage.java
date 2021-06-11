@@ -141,7 +141,7 @@ public class LoginPage extends JFrame implements ActionListener {
 		uList = InsertPage.temp.getJoinlist();
 
 		int result = 0;
-
+		
 		for (int i = 0; i < uList.size(); i++) {
 
 			String inputId = uList.get(i).getId();
@@ -156,7 +156,6 @@ public class LoginPage extends JFrame implements ActionListener {
 			}
 
 		}
-
 		if (result == 1) {
 
 			JOptionPane.showMessageDialog(this, "로그인에 성공했습니다.");

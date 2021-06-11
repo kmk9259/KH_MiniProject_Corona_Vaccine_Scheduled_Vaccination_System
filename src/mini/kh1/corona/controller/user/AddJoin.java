@@ -15,8 +15,5 @@ public class AddJoin {
 		
 		return joinlist;
 	}
-	
-	
-	
 
 }

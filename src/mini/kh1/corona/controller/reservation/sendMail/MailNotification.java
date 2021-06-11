@@ -64,11 +64,11 @@ public class MailNotification {
 	}
 	public void sendtoUser()
 	{
-//		for(int i=0; i<InsertPage.temp.getJoinlist().size(); i++)
-//		{
-//			System.out.println(InsertPage.temp.getJoinlist().get(i).getEmail());
-//			MailSend(InsertPage.temp.getJoinlist().get(i).getEmail(), mailTitle(), mailText());
-//		}
+		for(int i=0; i<InsertPage.temp.getJoinlist().size(); i++)
+		{
+			System.out.println(InsertPage.temp.getJoinlist().get(i).getEmail());
+			MailSend(InsertPage.temp.getJoinlist().get(i).getEmail(), mailTitle(), mailText());
+		}
 		
 	}
 
