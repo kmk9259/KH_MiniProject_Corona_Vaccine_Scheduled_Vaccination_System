@@ -63,14 +63,14 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 	public BookerList blist = new BookerList();
 	
 	
-	public SelectHospital() {
+	public SelectHospital() { 
 
 		repaint();
 		setVisible(false);
 		setLayout(null);
 
 		label.setBounds(120, 350, 800, 20);
-		add(label); // 안내 문구 한 줄 표 아래 출력!
+		add(label); // 안내 문구 한 줄 표 아래 출력! 
 
 		try {
 			hospitalList = hExcel.callTable();
