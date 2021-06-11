@@ -7,13 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -25,14 +23,11 @@ import mini.kh1.corona.controller.user.AddSignup;
 import mini.kh1.corona.model.vo.user.JoinList;
 import mini.kh1.corona.model.vo.user.SignupList;
 import mini.kh1.corona.model.vo.user.User;
-import javax.swing.JRadioButton;
 
 public class ModifyPage extends JFrame implements ActionListener {
-	
-	
-	
+
 	SignupList signuplist = new SignupList();
-	
+
 	public static boolean loginSession = true;
 	LoginPage loginpage;
 	public static int sessionNum;
@@ -42,7 +37,6 @@ public class ModifyPage extends JFrame implements ActionListener {
 
 	private JFrame frame = new JFrame();
 	private Container container = getContentPane();
-	private Scanner sc = new Scanner(System.in);
 
 	// 레이블
 	private JLabel userLabel = new JLabel("아이디");
@@ -57,16 +51,15 @@ public class ModifyPage extends JFrame implements ActionListener {
 	private JTextField nameField = new JTextField();
 	private JTextField ssnField = new JTextField();
 	private JTextField emailField = new JTextField();
-	public String id2 =InsertPage.temp.getJoinlist().get(LoginPage.sessionNum).getEmail();
 
-	
 	private JButton modiButton = new JButton("수정 완료");
 	private JButton backButton = new JButton("이전으로");
-	
+	private JButton removeButton = new JButton("회원탈퇴");
+
 	// 체크박스
 	private JCheckBox showPassword = new JCheckBox("보이기");
-	
-	//사용자가 입력한 필드에 값을 받아오기 위한 변수
+
+	// 사용자가 입력한 필드에 값을 받아오기 위한 변수
 	private String id = userTextField.getText();
 	private String password = passwordField.getText();
 	private String name = nameField.getText();
@@ -74,12 +67,12 @@ public class ModifyPage extends JFrame implements ActionListener {
 	private String email = emailField.getText();
 
 	private final JLabel label = new JLabel("마이 페이지");
-	
+
 	//
 	AddSignup addsignup = new AddSignup();
 	AddJoin addjoin = new AddJoin();
-	
-	static List newuser = new ArrayList<User>();	//담아줄 새 회원 리스트
+
+	static List newuser = new ArrayList<User>(); // 담아줄 새 회원 리스트
 	public static JoinList temp = new JoinList();
 	//
 
@@ -163,19 +156,24 @@ public class ModifyPage extends JFrame implements ActionListener {
 		// 이전으로 버튼
 		backButton.setBounds(27, 28, 150, 40);
 		container.add(backButton);
-		
-		// 비밀번호 보이기 
+
+		// 비밀번호 보이기
 		showPassword.setBounds(555, 200, 150, 30);
 		container.add(showPassword);
+
+		// 회원탈퇴
+
+		removeButton.setBounds(378, 477, 150, 40);
+		container.add(removeButton);
 
 		// 버튼 리슨어
 		modiButton.addActionListener(this);
 		backButton.addActionListener(this);
 		showPassword.addActionListener(this);
-		
-		
-		//===========불러온 사용자 정보가 필드에 보여짐
-		
+		removeButton.addActionListener(this);
+
+		// ===========불러온 사용자 정보가 필드에 보여짐
+
 		int i = InsertPage.temp.getJoinlist().size();
 		loginSession = true;
 
@@ -187,36 +185,27 @@ public class ModifyPage extends JFrame implements ActionListener {
 		ssnField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getSsn());
 		ssnField.setEditable(false);
 		emailField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getEmail());
-		
-		
-		}
-	
-	
-	
+
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+
 		if (e.getSource() == modiButton) {
-			
-			//===========새로운 필드값 작성, 버튼 누르면 각 인덱스열에 새 값으로 저장! ===== //
-			
+
+			// ===========새로운 필드값 작성, 버튼 누르면 각 인덱스열에 새 값으로 저장! ===== //
 
 			password = passwordField.getText();
 			email = emailField.getText();
-			
-			
+
 			InsertPage.temp.getJoinlist().get(loginpage.sessionNum).setPassword(password);
 			InsertPage.temp.getJoinlist().get(loginpage.sessionNum).setEmail(email);
-			
-			
 
-			
 			new LoginPage();
 			frame.setVisible(false);
 		}
-		
-		// 비번 토글 
+
+		// 비번 토글
 		if (e.getSource() == showPassword) {
 			if (showPassword.isSelected()) { // 비밀번호 보이기 토글 세팅
 				passwordField.setEchoChar((char) 0);
@@ -224,21 +213,27 @@ public class ModifyPage extends JFrame implements ActionListener {
 				passwordField.setEchoChar('*'); // 비밀번호 감추기
 			}
 		}
-		
-		
-		
-		
-	//====================이전 버튼==========================
-		
-		
+
+		// ====================이전 버튼==========================
+
 		if (e.getSource() == backButton) {
-			
+
 			LoginPage.loginSession = false; // 세션종료
 			frame.setVisible(false);
 			frame.dispose();
 			new LoginPage();
-			
-			
+
+		}
+
+		if (e.getSource() == removeButton) {
+
+			//InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getId()
+			InsertPage.temp.getJoinlist().remove(loginpage.sessionNum);
+			LoginPage.loginSession = false; // 세션종료
+			frame.setVisible(false);
+			frame.dispose();
+			new LoginPage();
+
 		}
 
 	}
