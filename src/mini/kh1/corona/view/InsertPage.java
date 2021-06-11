@@ -21,9 +21,8 @@ import javax.swing.SwingConstants;
 import mini.kh1.corona.controller.InsertConstroller;
 import mini.kh1.corona.controller.user.AddJoin;
 import mini.kh1.corona.controller.user.AddSignup;
-import mini.kh1.corona.controller.user.UserList;
-import mini.kh1.corona.model.vo.User;
 import mini.kh1.corona.model.vo.user.JoinList;
+import mini.kh1.corona.model.vo.user.User;
 
 public class InsertPage extends JFrame implements ActionListener {
 
@@ -61,13 +60,13 @@ public class InsertPage extends JFrame implements ActionListener {
 	private String ssn = ssnField.getText();
 	private String email = emailField.getText();
 
-	UserList list = new UserList();
+	
 	//
 	AddSignup addsignup = new AddSignup();
 	AddJoin addjoin = new AddJoin();
 	
 	static List newuser = new ArrayList<User>();	//담아줄 새 회원 리스트
-	static JoinList temp;
+	public static JoinList temp = new JoinList();
 	//
 	public InsertPage() {
 
@@ -206,9 +205,9 @@ public class InsertPage extends JFrame implements ActionListener {
 	//중복확인 메소드
 		public boolean dupliCheckID(String userText) {
 			boolean check=true;
-			for (int i = 0; i < UserList.UserList().size(); i++) 
+			for (int i = 0; i < InsertPage.temp.getJoinlist().size(); i++) 
 			{ // 전체 회원 인덱스를 돌며 확인하기 위해
-				if (UserList.UserList().get(i).getId().equals(userText)) {
+				if (InsertPage.temp.getJoinlist().get(i).getId().equals(userText)) {
 					//result = 1; // 참 거짓으로 표현하기 위해
 					check=false;
 					JOptionPane.showMessageDialog(this, "중복된 아이디 입니다.");

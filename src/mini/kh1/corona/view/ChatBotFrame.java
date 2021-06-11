@@ -13,8 +13,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import mini.kh1.corona.controller.user.UserList;
-
 public class ChatBotFrame extends JPanel implements ActionListener{
 	private JTextArea chatting;
 	private JTextField input;
@@ -88,7 +86,7 @@ public class ChatBotFrame extends JPanel implements ActionListener{
 	}
 	public void menual()
 	{
-		chatting.append(UserList.UserList().get(loginpage.sessionNum).getName()+"님, 안녕하세요 :)\n\n");
+		chatting.append(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getName()+"님, 안녕하세요 :)\n\n");
 		chatting.append("궁금한 사항을 입력해주세요.\n");
 		chatting.append("/FAQ\n");
 		chatting.append("/메인화면\n");

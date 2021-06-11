@@ -16,9 +16,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import mini.kh1.corona.controller.user.UserList;
-import mini.kh1.corona.model.vo.user.JoinList;
-
 public class LoginPage extends JFrame implements ActionListener {
 
 	private JFrame frame = new JFrame();

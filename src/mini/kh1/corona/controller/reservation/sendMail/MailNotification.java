@@ -1,5 +1,6 @@
 package mini.kh1.corona.controller.reservation.sendMail;
 import java.util.Properties;
+
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -8,7 +9,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import mini.kh1.corona.controller.user.UserList;
+import mini.kh1.corona.view.InsertPage;
 
 public class MailNotification {
 	
@@ -63,11 +64,11 @@ public class MailNotification {
 	}
 	public void sendtoUser()
 	{
-		for(int i=0; i<UserList.UserList().size(); i++)
-		{
-			System.out.println(UserList.UserList().get(i).getEmail());
-			MailSend(UserList.UserList().get(i).getEmail(), mailTitle(), mailText());
-		}
+//		for(int i=0; i<InsertPage.temp.getJoinlist().size(); i++)
+//		{
+//			System.out.println(InsertPage.temp.getJoinlist().get(i).getEmail());
+//			MailSend(InsertPage.temp.getJoinlist().get(i).getEmail(), mailTitle(), mailText());
+//		}
 		
 	}
 
