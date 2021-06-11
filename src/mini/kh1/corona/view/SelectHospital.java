@@ -15,7 +15,6 @@ import javax.swing.JTable;
 
 import mini.kh1.corona.controller.hospital.HospitalExcel;
 import mini.kh1.corona.controller.user.BookerList;
-import mini.kh1.corona.controller.user.UserList;
 import mini.kh1.corona.model.vo.HospitalVaccine;
 
 //예약하기 -> 공지 -> 지역선택 패널 구현 코드  JPanel상속 
@@ -135,9 +134,9 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 								MainMenu.mainPanel.setVisible(true);
 							} else { //예약 들어갔을 경우
 
-								BookerList.addList(UserList.UserList().get(loginpage.sessionNum).getName(),
-										UserList.UserList().get(loginpage.sessionNum).getSsn(),
-										UserList.UserList().get(loginpage.sessionNum).getEmail(),
+								BookerList.addList(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getName(),
+										InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getSsn(),
+										InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getEmail(),
 										(String) combo.getSelectedItem(), addHName);
 
 								int vaccine = 0;

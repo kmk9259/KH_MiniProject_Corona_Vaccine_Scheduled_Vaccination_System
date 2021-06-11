@@ -2,7 +2,7 @@ package mini.kh1.corona.controller;
 
 import java.util.Scanner;
 
-import mini.kh1.corona.model.vo.User;
+import mini.kh1.corona.model.vo.user.User;
 
 public class InsertConstroller {
 

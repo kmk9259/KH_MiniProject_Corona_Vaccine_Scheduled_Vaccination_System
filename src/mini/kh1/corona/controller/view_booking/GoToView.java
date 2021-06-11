@@ -3,8 +3,8 @@ package mini.kh1.corona.controller.view_booking;
 import java.util.ArrayList;
 
 import mini.kh1.corona.controller.user.BookerList;
-import mini.kh1.corona.controller.user.UserList;
 import mini.kh1.corona.model.vo.Booker;
+import mini.kh1.corona.view.InsertPage;
 import mini.kh1.corona.view.LoginPage;
 
 public class GoToView {
@@ -18,7 +18,7 @@ public class GoToView {
 		
 		//사용자가 예약자 리스트에 있는지
 		for(int i = 0; i < bookerlist.size()/2; i++) {
-			if(UserList.UserList().get(LoginPage.sessionNum).getSsn().equals(bookerlist.get(i).getSsn())) {
+			if(InsertPage.temp.getJoinlist().get(LoginPage.sessionNum).getSsn().equals(bookerlist.get(i).getSsn())) {
 				reyn = 0;
 			}
 			
