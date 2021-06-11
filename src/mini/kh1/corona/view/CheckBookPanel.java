@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,6 +19,7 @@ import javax.swing.table.TableColumnModel;
 import mini.kh1.corona.controller.user.BookerList;
 import mini.kh1.corona.controller.view_booking.Cancel;
 import mini.kh1.corona.model.vo.Booker;
+import mini.kh1.corona.model.vo.user.User;
 import mini.kh1.corona.run.Run;
 
 public class CheckBookPanel extends JPanel {
@@ -25,9 +27,15 @@ public class CheckBookPanel extends JPanel {
 	public static JPanel checkBookPanel = new CheckBookPanel();
 	Cancel rcancel = new Cancel();
 	private int sNum = LoginPage.sessionNum;
-	private ArrayList<Booker>  bookerlist = BookerList.BookerList();
+//	private ArrayList<Booker>  bookerlist = BookerList.getBookerList();
+	private List<User> ulist = InsertPage.temp.getJoinlist();
+	private Booker b = null;
+	BookerList list = new BookerList();
+	ArrayList<Booker> bookerlist = list.getBookerList();
 	
 	public CheckBookPanel() {
+	
+		
 		setVisible(false);
 		setLayout(null);
 		setSize(900, 600);
@@ -41,22 +49,42 @@ public class CheckBookPanel extends JPanel {
 		info.setOpaque(true);
 		add(info);
 		
-		char[] ssn = bookerlist.get(sNum).getSsn().toCharArray();	//문자열을 char 배열로 변환
 		
-		ssn[6] = '-';
 		
-		for(int i = 8; i < ssn.length; i++) {//8~13
-			ssn[i] = '*';	//주민번호 뒷자리 첫번째까지만 보이고 그 뒤는 안보이게
+		System.out.println("bookerlist ["+bookerlist.size()+"] ");
+		System.out.println("sNum ["+sNum+"] ");
+		
+		
+		// 사용자의 예약정보(이름, 주민등록번호, 접종 병원, 접종일시)를 보여준다.
+		
+		// 1. ulist에서 정보를 가져와 주민등록 번호를 뽑아 온다. 
+		String s = ulist.get(sNum).getSsn();	//사용자 주민등록 번호
+		
+		// 2. bookerList의 주민등록번호들과   ulist에서 뽑아온 주민등록번호(s)를 비교 --> 일치하는 인덱스 번호No를 가져온다.
+		int No = 0;
+		
+		for(int i = 0; i < bookerlist.size(); i++) {
+			if(s.equals(bookerlist.get(i).getSsn())) {
+				No = i;
+			}
 		}
 		
-		String Ssn = new String(ssn);	//char 배열을 문자열로 변환
+		// 3. bookerlist의 No번째 사람의 정보들을 가져온다.
+		b = bookerlist.get(No);
 		
+		// 4. 가져온 사람의 정보에서 (이름, 주민, 병원, 일시)를 가져온다.
+		
+		String name = b.getName();
+		String str = b.getSsn();	//예약자 주민번호
+		String hName = b.getLocation() + " " + b.gethName();
+	
+		// 5. 가져온 정보를 테이블의 각각의 자리에 입력한다.
 		//테이블에 값 넣기
 		Object[] header = {"0", "0"};
 		Object[][] contents = { //나중에 값 가져올 것임
-				{"이름", bookerlist.get(sNum).getName()}
-				, {"주민등록번호", Ssn}
-				, {"접종 예정 병원", bookerlist.get(sNum).getLocation() + " " + bookerlist.get(sNum).gethName()}
+				{"이름", name}
+				, { "주민등록번호", str}
+				, {"접종 예정 병원", hName}
 				, {"접종 일시", "2021-06-05"}	//값을 가져와야함
 		};
 		
@@ -84,6 +112,7 @@ public class CheckBookPanel extends JPanel {
 		add(bookInfo);
 		add(scp);
 		
+		// 6. "뒤로가기"버튼 눌렀을 때 "메인메뉴"로 이동
 		JButton back = new JButton("이전");
 		back.setBounds(20, 480, 120, 60);
 		back.setVisible(true);
@@ -100,6 +129,7 @@ public class CheckBookPanel extends JPanel {
 			}
 		});
 		
+		// 7. "취소"버튼을 눌렀을 때 취소 메소드 호출
 		JButton cancel = new JButton("예약 취소");
 		cancel.setBounds(745, 480, 120, 60);
 		cancel.setVisible(true);
@@ -113,11 +143,8 @@ public class CheckBookPanel extends JPanel {
 				
 				int result = JOptionPane.showConfirmDialog(null, "예약을 취소하시겠습니까?\n'확인' 시 되돌릴 수 없습니다.", "예약 취소",  JOptionPane.YES_NO_OPTION);
 				if(result == JOptionPane.YES_OPTION) {	//"예" 일 때
-					//취소 처리 과정 필요
-					rcancel.RCancel();
-					
-//					BookerList bList = new BookerList();
-//					bList.removeList(sNum);
+					//취소 처리
+					list.setBookerRemove(b);
 					
 					JOptionPane.showMessageDialog(null, "예약이 취소되었습니다.\n홈 화면으로 이동합니다.");
 					

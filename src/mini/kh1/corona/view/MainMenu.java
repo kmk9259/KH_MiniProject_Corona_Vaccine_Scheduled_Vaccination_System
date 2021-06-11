@@ -1,6 +1,7 @@
 package mini.kh1.corona.view;
 
 
+import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import mini.kh1.corona.controller.user.BookerList;
 import mini.kh1.corona.controller.view_booking.GoToView;
 import mini.kh1.corona.model.vo.Booker;
 import mini.kh1.corona.model.vo.Chatbot;
-import mini.kh1.corona.view.ChatBot.ChatBotFrame;
+import mini.kh1.corona.model.vo.user.User;
 
 public class MainMenu {
 
@@ -22,9 +23,8 @@ public class MainMenu {
 	JPanel chatBotpanel = ChatBotFrame.chatPanel;
 
 	static JFrame MFrame = new JFrame();
-	public static JPanel mainPanel = new JPanel(); // 메인 패널은 자주 호출될 것이므로 일단 static->직접 호출가능하도록
+	static JPanel mainPanel = new JPanel(); // 메인 패널은 자주 호출될 것이므로 일단 static->직접 호출가능하도록
 
-	ArrayList<Booker> bookerList = BookerList.BookerList();
 	boolean isBooker = false;
 
 	JButton bookButton = new JButton("예약하기"); // 예약하기 버튼
@@ -56,15 +56,17 @@ public class MainMenu {
 
 			@Override
 			public void mousePressed(MouseEvent e) {
+				ArrayList bookerList = SelectHospital.bookerlist;
+
 				for (int i = 0; i < bookerList.size(); i++) {
-					if (InsertPage.temp.getJoinlist().get(LoginPage.sessionNum).getName().equals(bookerList.get(i).gethName())) {
+					if (InsertPage.temp.getJoinlist().get(LoginPage.sessionNum).getName().equals(((User) bookerList.get(i)).getName())) {
 						isBooker = true;
 						break;
 					}
 
 				}
 
-				if (isBooker == true) {
+				if (isBooker == false) {
 					mainPanel.setVisible(false); // 예약버튼 누르면 메인화면은 안보임
 					MFrame.add(Notice.NOTICE); // 메인 프레임에 예약 전 공지사항 추가
 //			MFrame.add(selectHospital); //메인 프레임에 병원(지역)선택 화면 추가
@@ -72,7 +74,7 @@ public class MainMenu {
 					Notice.NOTICE.setVisible(true);
 //			selectHospital.setVisible(true); //병원(지역)선택 화면 노출
 				} else {
-					JOptionPane.showMessageDialog(null, "예약이 마감되지 않았습니다.");
+					JOptionPane.showMessageDialog(null, "이미 예약하셨습니다.");
 
 				}
 
@@ -92,7 +94,7 @@ public class MainMenu {
 
 				GoToView gtv = new GoToView();
 
-				int i = gtv.go(0); // 신청인 수, 예약 여부 가져와야 함
+				int i = gtv.go(); // 신청인 수, 예약 여부 가져와야 함
 				// 사용자가 신청한 병원의 백신갯수, 예약자리스트에 사용자가 있는지
 				if (i == 0) { // 예약 완료, 마감 되었을때
 					mainPanel.setVisible(false);
@@ -148,8 +150,6 @@ public class MainMenu {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				LoginPage.loginSession = false; // 세션종료
-				JOptionPane.showMessageDialog(null, InsertPage.temp.getJoinlist().get(LoginPage.sessionNum).getName()+"님, 로그아웃 되셨습니다.");
-				LoginPage.sessionNum=0;
 				mainPanel.setVisible(false);
 				MFrame.dispose();
 				new LoginPage();
