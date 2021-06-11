@@ -5,8 +5,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -18,14 +16,15 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import mini.kh1.corona.model.vo.user.User;
+import mini.kh1.corona.controller.user.AddJoin;
 
 public class LoginPage extends JFrame implements ActionListener {
 
 	private JFrame frame = new JFrame();
 	private Container container = getContentPane();
 	public static boolean loginSession = false;	//로그인 세션 유지함을 위함
-	public static int sessionNum=0;
+	public static int sessionNum = 5 ;
+	AddJoin aj = new AddJoin();
 
 	// 레이블
 	private JLabel userLabel = new JLabel("아이디");
@@ -114,8 +113,13 @@ public class LoginPage extends JFrame implements ActionListener {
 		{
 			String userText = userTextField.getText();
 			String pwdText = passwordField.getText();
-			loginSession = true;
+			
+			System.out.println(InsertPage.temp.getJoinlist()+"제발"); //이렇게 사용하면 됨
+			
+			//System.out.println(InsertPage.temp.getJoinlist().size().ge);
 			loginSuccess(userText, pwdText);
+			
+			
 			
 		}
 		if (e.getSource() == insertButton) 
@@ -134,39 +138,42 @@ public class LoginPage extends JFrame implements ActionListener {
 	}// action
 	public void loginSuccess(String userText, String pwdText)
 	{
+			
+		// InsertPage.temp.getJoinlist(); // 합친 파일 불러오기
 		
-		//기존 가입된 회원 + 새로 가입한 회원 리스트를 받아옴
-		List<User> uList = new ArrayList<User>();
-		uList = InsertPage.temp.getJoinlist();
+		
 
 		int result = 0;
+
 		
-		for (int i = 0; i < uList.size(); i++) {
-
-			String inputId = uList.get(i).getId();
-			String inputPw = uList.get(i).getPassword();
-
-			if (inputId.equals(userText) && inputPw.equals(pwdText)) {
-				result = 1;
-				sessionNum = i;
-				break;
-			} else {// else문 있어도 되고 없어도 됨
-				result = 0;
-			}
-
+		for (int i = 0; i < InsertPage.temp.getJoinlist().size(); i++) {
+			
+			String inputId = InsertPage.temp.getJoinlist().get(i).getId();
+			String inputPw = InsertPage.temp.getJoinlist().get(i).getPassword();
+			
+			result = 1;
+			sessionNum = i;
+			break;
 		}
-		if (result == 1 && loginSession==true) {	//로그인
+			
+			
+		
+
+			
+		if (result == 1) {
 
 			JOptionPane.showMessageDialog(this, "로그인에 성공했습니다.");
 			new MainMenu();
 			frame.setVisible(false);
+			loginSession = true;
 		}
 
 		if (result == 0) {
 
 			JOptionPane.showMessageDialog(this, "로그인에 실패했습니다.");
-			loginSession=false;
 		}
+			
+
 		
 		
 		
@@ -184,7 +191,14 @@ public class LoginPage extends JFrame implements ActionListener {
 
 	
 	}
-	
+	public int session()
+	{
+		if(loginSession==true)
+			return sessionNum;	//배열의 인덱스값
+		else
+			return 0;
+		
+	}
 
 	
 }
