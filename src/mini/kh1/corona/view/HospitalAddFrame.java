@@ -5,7 +5,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -35,7 +38,15 @@ public class HospitalAddFrame extends JFrame {
 		getContentPane().setLayout(null);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// 열려있는 창만 닫음
-
+		/*병원 관리 프레임 아이콘 이미지 추가
+		try {
+			setIconImage(ImageIO.read(new File("C:\\Workspace\\images\\managerIcon.PNG")));
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		*/
+		
 		// 2. 병원 추가 패널 설정
 		hafPanel = new JPanel();
 		hafPanel.setSize(600, 400);

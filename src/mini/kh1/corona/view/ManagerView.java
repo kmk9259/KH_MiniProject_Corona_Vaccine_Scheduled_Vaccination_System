@@ -3,10 +3,14 @@ package mini.kh1.corona.view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.Vector;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -42,6 +46,8 @@ public class ManagerView {
 	private JScrollPane vmScrollPane;
 	private JScrollPane hmScrollPane;
 
+	ImageIcon icon;
+	
 	public ManagerView() throws Exception {
 
 		// 관리자 모드 프레임
@@ -53,13 +59,33 @@ public class ManagerView {
 		frame.getContentPane().setLayout(null);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//프레임 아이콘 이미지 추가
+		//frame.setIconImage(ImageIO.read(new File("C:\\Workspace\\images\\managerIcon.PNG")));
 
 		// 관리자모드 메인 메뉴 패널
-		ManagerPanel = new JPanel();
+		icon = new ImageIcon("C:\\Workspace\\images\\cogWheel.PNG");
+		
+		ManagerPanel = new JPanel() {
+
+			@Override
+			protected void paintComponent(Graphics g) {
+				g.drawImage(icon.getImage(), 0, 0, null);
+				//setOpaque(false);
+				super.paintComponent(g);
+				
+			}
+			
+		};
 
 		ManagerPanel.setSize(900, 600);
 		ManagerPanel.setLayout(null);
 		ManagerPanel.setVisible(true);// 첫 패널만 일단 보이게 해놓음
+		
+		
+		
+		
+		
 
 		JLabel managerMenu = new JLabel("관리자 모드");
 		managerMenu.setBounds(370, 70, 100, 50);
