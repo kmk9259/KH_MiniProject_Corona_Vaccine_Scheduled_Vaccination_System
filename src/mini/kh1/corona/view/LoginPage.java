@@ -170,8 +170,6 @@ public class LoginPage extends JFrame implements ActionListener {
 			loginSession=false;
 		}
 		
-		
-		
 		if (userText.equalsIgnoreCase("admin") && pwdText.equalsIgnoreCase("12345")) 
 		{
 			JOptionPane.showMessageDialog(this, "관리자 로그인에 성공했습니다."); // 성공 메세지!!
@@ -186,6 +184,13 @@ public class LoginPage extends JFrame implements ActionListener {
 
 	
 	}
+	public void setsn(int sNo) {
+	      sessionNum = sNo;
+	   }
+
+	   public static int getsn() {
+	      return sessionNum;
+	   }
 	
 
 	
