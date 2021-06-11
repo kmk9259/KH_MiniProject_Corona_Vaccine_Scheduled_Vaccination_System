@@ -5,7 +5,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -39,7 +41,11 @@ public class VaccineModifyFrame extends JFrame {
 		getContentPane().setLayout(null);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// 열려있는 창만 닫음
-
+		
+		//백신 재고 관리 프레임 아이콘 이미지 추가
+		//setIconImage(ImageIO.read(new File("C:\\Workspace\\images\\managerIcon.PNG")));
+		
+		
 		// 2. 병원명 입력하는 패널 설정
 		vmfPanel1 = new JPanel();
 		vmfPanel1.setSize(550, 350);
