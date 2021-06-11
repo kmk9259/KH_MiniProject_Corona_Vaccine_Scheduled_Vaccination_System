@@ -10,13 +10,11 @@ public class AddSignup {
 	
 	public ArrayList<User> addsignup()
 	{
-		System.out.println(signuplist.getSignuplist()+"$$$");
 		return signuplist.getSignuplist();
 	}
 	public void adduser(String id, String password, String name,  String ssn, String email)
 	{
 		signuplist.getSignuplist().add(new User(id, password, name, ssn, email));
-		System.out.println(signuplist.getSignuplist()+"회원가입");
 	}
 	
 

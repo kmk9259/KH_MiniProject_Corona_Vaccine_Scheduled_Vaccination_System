@@ -1,17 +1,22 @@
 package mini.kh1.corona.model.vo.user;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class JoinList {
-	private ArrayList<User> joinlist = new ArrayList<User>();
+	private List<User> joinlist = new ArrayList<User>();
+	
 
-	public ArrayList<User> getJoinlist() {
+	public List<User> getJoinlist() {
 		return joinlist;
 	}
 
-	public void setJoinlist(ArrayList<User> joinlist) {
-		this.joinlist = joinlist;
+	public void setJoinlist(List list) {
+		this.joinlist = list;
 	}
+
+	
+
 	
 
 }
