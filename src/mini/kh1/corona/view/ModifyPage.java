@@ -5,28 +5,38 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import mini.kh1.corona.controller.InsertConstroller;
+import mini.kh1.corona.controller.user.AddJoin;
+import mini.kh1.corona.controller.user.AddSignup;
+import mini.kh1.corona.model.vo.user.JoinList;
+import mini.kh1.corona.model.vo.user.SignupList;
 import mini.kh1.corona.model.vo.user.User;
 
 public class ModifyPage extends JFrame implements ActionListener {
+
+	SignupList signuplist = new SignupList();
+
+	public static boolean loginSession = true;
+	LoginPage loginpage;
+	public static int sessionNum;
 
 	private User u = new User();
 	InsertConstroller ic = new InsertConstroller();
 
 	private JFrame frame = new JFrame();
 	private Container container = getContentPane();
-	private Scanner sc = new Scanner(System.in);
 
 	// 레이블
 	private JLabel userLabel = new JLabel("아이디");
@@ -44,9 +54,27 @@ public class ModifyPage extends JFrame implements ActionListener {
 
 	private JButton modiButton = new JButton("수정 완료");
 	private JButton backButton = new JButton("이전으로");
-	private JButton dupliButton = new JButton("중복확인");
+	private JButton removeButton = new JButton("회원탈퇴");
+
+	// 체크박스
+	private JCheckBox showPassword = new JCheckBox("보이기");
+
+	// 사용자가 입력한 필드에 값을 받아오기 위한 변수
+	private String id = userTextField.getText();
+	private String password = passwordField.getText();
+	private String name = nameField.getText();
+	private String ssn = ssnField.getText();
+	private String email = emailField.getText();
 
 	private final JLabel label = new JLabel("마이 페이지");
+
+	//
+	AddSignup addsignup = new AddSignup();
+	AddJoin addjoin = new AddJoin();
+
+	static List newuser = new ArrayList<User>(); // 담아줄 새 회원 리스트
+	public static JoinList temp = new JoinList();
+	//
 
 	public ModifyPage() {
 
@@ -129,61 +157,84 @@ public class ModifyPage extends JFrame implements ActionListener {
 		backButton.setBounds(27, 28, 150, 40);
 		container.add(backButton);
 
-		// 중복확인 버튼
-		dupliButton.setBounds(558, 145, 150, 40);
-		container.add(dupliButton);
+		// 비밀번호 보이기
+		showPassword.setBounds(555, 200, 150, 30);
+		container.add(showPassword);
+
+		// 회원탈퇴
+
+		removeButton.setBounds(378, 477, 150, 40);
+		container.add(removeButton);
 
 		// 버튼 리슨어
 		modiButton.addActionListener(this);
-		dupliButton.addActionListener(this);
 		backButton.addActionListener(this);
+		showPassword.addActionListener(this);
+		removeButton.addActionListener(this);
+
+		// ===========불러온 사용자 정보가 필드에 보여짐
+
+		int i = InsertPage.temp.getJoinlist().size();
+		loginSession = true;
+
+		userTextField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getId());
+		userTextField.setEditable(false);
+		passwordField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getPassword());
+		nameField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getName());
+		nameField.setEditable(false);
+		ssnField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getSsn());
+		ssnField.setEditable(false);
+		emailField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getEmail());
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+
 		if (e.getSource() == modiButton) {
-			JOptionPane.showMessageDialog(this, "수정 되었습니다.");
+
+			// ===========새로운 필드값 작성, 버튼 누르면 각 인덱스열에 새 값으로 저장! ===== //
+
+			password = passwordField.getText();
+			email = emailField.getText();
+
+			InsertPage.temp.getJoinlist().get(loginpage.sessionNum).setPassword(password);
+			InsertPage.temp.getJoinlist().get(loginpage.sessionNum).setEmail(email);
+
 			new LoginPage();
 			frame.setVisible(false);
 		}
-	
-		if (e.getSource() == dupliButton) { // 중복이면 필드부 클리어, 아니면 성공해서 입력할 수 있다.
 
-			String userText = userTextField.getText();
-			int result = dupliCheckID(userText);
-			if (result == 1) {
-				userTextField.setText("");
+		// 비번 토글
+		if (e.getSource() == showPassword) {
+			if (showPassword.isSelected()) { // 비밀번호 보이기 토글 세팅
+				passwordField.setEchoChar((char) 0);
 			} else {
-				JOptionPane.showMessageDialog(this, "사용가능한 아이디 입니다.");
+				passwordField.setEchoChar('*'); // 비밀번호 감추기
 			}
-
 		}
-		
+
+		// ====================이전 버튼==========================
+
 		if (e.getSource() == backButton) {
-			new LoginPage(); // 클릭시, 로그인 화면 으로 돌아감
+
+			LoginPage.loginSession = false; // 세션종료
 			frame.setVisible(false);
+			frame.dispose();
+			new LoginPage();
+
+		}
+
+		if (e.getSource() == removeButton) {
+
+			//InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getId()
+			InsertPage.temp.getJoinlist().remove(loginpage.sessionNum);
+			LoginPage.loginSession = false; // 세션종료
+			frame.setVisible(false);
+			frame.dispose();
+			new LoginPage();
+
 		}
 
 	}
-	
-
-	//중복확인 메소드
-	public int dupliCheckID(String userText) {
-		int result = 0;
-		
-		for (int i = 0; i < InsertPage.temp.getJoinlist().size(); i++) { // 전체 회원 인덱스를 돌며 확인하기 위해
-			if (InsertPage.temp.getJoinlist().get(i).getId().equals(userText)) {
-				result = 1; // 참 거짓으로 표현하기 위해
-				JOptionPane.showMessageDialog(this, "중복된 아이디 입니다.");
-			}
-			else
-			{
-				JOptionPane.showMessageDialog(this, "사용 가능한 아이디 입니다.");
-			}
-		}
-		return result;
-	}
-	
 }
