@@ -23,6 +23,7 @@ import mini.kh1.corona.controller.user.AddJoin;
 import mini.kh1.corona.controller.user.AddSignup;
 import mini.kh1.corona.controller.user.UserList;
 import mini.kh1.corona.model.vo.User;
+import mini.kh1.corona.model.vo.user.JoinList;
 
 public class InsertPage extends JFrame implements ActionListener {
 
@@ -61,10 +62,13 @@ public class InsertPage extends JFrame implements ActionListener {
 	private String email = emailField.getText();
 
 	UserList list = new UserList();
+	//
 	AddSignup addsignup = new AddSignup();
-	AddJoin join = new AddJoin();
-	static List newuser = new ArrayList<User>();
-
+	AddJoin addjoin = new AddJoin();
+	
+	static List newuser = new ArrayList<User>();	//담아줄 새 회원 리스트
+	static JoinList temp;
+	//
 	public InsertPage() {
 
 		frame.setPreferredSize(new Dimension(900, 600));
@@ -178,9 +182,8 @@ public class InsertPage extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(this, "가입 되었습니다.");
 				
 				addsignup.adduser(id, pw, name, ssn, email);	//회원가입
-			
-				newuser = addsignup.addsignup();	//$$$
-				join.abc(newuser);
+				newuser = addsignup.addsignup();
+				temp = addjoin.setjoin(newuser);
 				new LoginPage(); // 빈 곳 없이 값이 입력 되면 로그인 할 수 있는 페이지로 이동
 				frame.setVisible(false);
 				
