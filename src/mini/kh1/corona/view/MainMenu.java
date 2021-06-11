@@ -148,6 +148,8 @@ public class MainMenu {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				LoginPage.loginSession = false; // 세션종료
+				JOptionPane.showMessageDialog(null, InsertPage.temp.getJoinlist().get(LoginPage.sessionNum).getName()+"님, 로그아웃 되셨습니다.");
+				LoginPage.sessionNum=0;
 				mainPanel.setVisible(false);
 				MFrame.dispose();
 				new LoginPage();
