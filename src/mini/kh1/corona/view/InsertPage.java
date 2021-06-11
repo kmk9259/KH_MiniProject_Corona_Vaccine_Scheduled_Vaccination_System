@@ -164,7 +164,7 @@ public class InsertPage extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == insertButton) {
 			
-			String userText = userTextField.getText();
+			//String userText = userTextField.getText();
 			
 			id = userTextField.getText();
 			pw = passwordField.getText();

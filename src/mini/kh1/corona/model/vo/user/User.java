@@ -1,6 +1,6 @@
 package mini.kh1.corona.model.vo.user;
 
-public class User {
+public class User implements Comparable<User>{
 	private String id;
 	private String name;
 	private String password;
@@ -51,6 +51,11 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", password=" + password + ", ssn=" + ssn + ", email=" + email
 				+ "]";
+	}
+	@Override
+	public int compareTo(User o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 

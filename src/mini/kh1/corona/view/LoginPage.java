@@ -16,12 +16,18 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import mini.kh1.corona.controller.user.AddJoin;
+import mini.kh1.corona.controller.user.AddSample;
+import mini.kh1.corona.controller.user.AddSignup;
+import mini.kh1.corona.model.vo.user.JoinList;
+
 public class LoginPage extends JFrame implements ActionListener {
 
 	private JFrame frame = new JFrame();
 	private Container container = getContentPane();
 	public static boolean loginSession = false;	//로그인 세션 유지함을 위함
-	public static int sessionNum;
+	public static int sessionNum = 5 ;
+	AddJoin aj = new AddJoin();
 
 	// 레이블
 	private JLabel userLabel = new JLabel("아이디");
@@ -112,7 +118,11 @@ public class LoginPage extends JFrame implements ActionListener {
 			String pwdText = passwordField.getText();
 			
 			System.out.println(InsertPage.temp.getJoinlist()+"제발"); //이렇게 사용하면 됨
+			
+			
 			loginSuccess(userText, pwdText);
+			
+			
 			
 		}
 		if (e.getSource() == insertButton) 
@@ -131,6 +141,43 @@ public class LoginPage extends JFrame implements ActionListener {
 	}// action
 	public void loginSuccess(String userText, String pwdText)
 	{
+			
+		// InsertPage.temp.getJoinlist(); // 합친 파일 불러오기
+		
+		
+
+		int result = 0;
+
+		
+		for (int i = 0; i < InsertPage.temp.getJoinlist().size(); i++) {
+			
+			String inputId = InsertPage.temp.getJoinlist().get(i).getId();
+			String inputPw = InsertPage.temp.getJoinlist().get(i).getPassword();
+			
+			result = 1;
+			sessionNum = i;
+			break;
+		}
+			
+			
+		
+
+			
+		if (result == 1) {
+
+			JOptionPane.showMessageDialog(this, "로그인에 성공했습니다.");
+			new MainMenu();
+			frame.setVisible(false);
+			loginSession = true;
+		}
+
+		if (result == 0) {
+
+			JOptionPane.showMessageDialog(this, "로그인에 실패했습니다.");
+		}
+			
+
+		
 		
 		
 		if (userText.equalsIgnoreCase("admin") && pwdText.equalsIgnoreCase("12345")) 
