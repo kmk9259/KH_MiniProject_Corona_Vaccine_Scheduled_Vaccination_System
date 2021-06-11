@@ -17,9 +17,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import mini.kh1.corona.controller.user.AddJoin;
-import mini.kh1.corona.controller.user.AddSample;
-import mini.kh1.corona.controller.user.AddSignup;
-import mini.kh1.corona.model.vo.user.JoinList;
 
 public class LoginPage extends JFrame implements ActionListener {
 
@@ -119,7 +116,7 @@ public class LoginPage extends JFrame implements ActionListener {
 			
 			System.out.println(InsertPage.temp.getJoinlist()+"제발"); //이렇게 사용하면 됨
 			
-			
+			//System.out.println(InsertPage.temp.getJoinlist().size().ge);
 			loginSuccess(userText, pwdText);
 			
 			

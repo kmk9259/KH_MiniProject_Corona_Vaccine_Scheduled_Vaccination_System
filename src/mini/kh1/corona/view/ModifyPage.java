@@ -173,18 +173,18 @@ public class ModifyPage extends JFrame implements ActionListener {
 		
 		
 		
+		
 		//===========불러온 사용자 정보가 필드에 보여짐
 		
 
-		userTextField.setText(InsertPage.temp.getJoinlist().get(i-1).getId());
+		userTextField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getId());
 		userTextField.setEditable(false);
 		passwordField.setText(InsertPage.temp.getJoinlist().get(i-1).getPassword());
-		nameField.setText(InsertPage.temp.getJoinlist().get(i-1).getName());
+		nameField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getName());
 		nameField.setEditable(false);
-		ssnField.setText(InsertPage.temp.getJoinlist().get(i-1).getSsn());
+		ssnField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getSsn());
 		ssnField.setEditable(false);
-		emailField.setText(InsertPage.temp.getJoinlist().get(i-1).getEmail());
-		
+		emailField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getEmail());
 		
 		
 	
@@ -199,13 +199,12 @@ public class ModifyPage extends JFrame implements ActionListener {
 			//===========새로운 필드값 작성, 버튼 누르면 각 인덱스열에 새 값으로 저장! ===== //
 			
 
-			int i = InsertPage.temp.getJoinlist().size();
 			password = passwordField.getText();
 			email = emailField.getText();
 			
 			
-			InsertPage.temp.getJoinlist().get(i-1).setPassword(password);
-			InsertPage.temp.getJoinlist().get(i-1).setEmail(email);
+			InsertPage.temp.getJoinlist().get(loginpage.sessionNum).setPassword(password);
+			InsertPage.temp.getJoinlist().get(loginpage.sessionNum).setEmail(email);
 			
 			
 
