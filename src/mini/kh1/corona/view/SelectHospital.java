@@ -63,7 +63,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 	public BookerList blist = new BookerList();
 	
 	
-	public SelectHospital() {
+	public SelectHospital() { 
 
 		repaint();
 		setVisible(false);
