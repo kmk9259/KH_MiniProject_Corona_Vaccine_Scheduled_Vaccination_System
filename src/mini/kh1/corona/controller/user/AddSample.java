@@ -15,8 +15,10 @@ public class AddSample {
 		samplelist.getSamplelist().add(new User("C","1234","김은아","3012165291234","my@gmail.com"));
 		samplelist.getSamplelist().add(new User("D","1234","김미소","4004148212345","name@naver.com"));
 		samplelist.getSamplelist().add(new User("E","1234","장준영","7206215912345","is@gmail.com"));
-	
 		return samplelist.getSamplelist();
 	}
+	
+	
+	
 
 }

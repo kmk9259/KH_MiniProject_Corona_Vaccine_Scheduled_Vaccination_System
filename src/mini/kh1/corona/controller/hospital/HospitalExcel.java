@@ -55,7 +55,7 @@ public class HospitalExcel {
 
 		// 엑셀 파일을 불러오는 과정
 
-    FileInputStream fis = new FileInputStream("C:\\Workspace\\HospitalData.xlsx");
+    FileInputStream fis = new FileInputStream("C:\\Users\\kmk92\\git\\MiniProject_Test\\data\\HospitalData.xlsx");
 		
     // 해당 엑셀파일의 워크북을 불러옴
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
