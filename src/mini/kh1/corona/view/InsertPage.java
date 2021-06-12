@@ -192,6 +192,9 @@ public class InsertPage extends JFrame implements ActionListener {
 				addsignup.adduser(id, pw, name, ssn, email);	//회원가입
 				newuser = addsignup.addsignup();
 				temp = addjoin.setjoin(newuser);
+				Reservation r = new Reservation();
+				r.orderAge();
+				r.cutPeople();
 				new LoginPage(); // 빈 곳 없이 값이 입력 되면 로그인 할 수 있는 페이지로 이동
 				frame.setVisible(false);
 

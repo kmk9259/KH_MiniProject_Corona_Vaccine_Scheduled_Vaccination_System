@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import mini.kh1.corona.controller.hospital.HospitalExcel;
+import mini.kh1.corona.controller.reservation.Reservation;
 import mini.kh1.corona.controller.user.AddSample;
 import mini.kh1.corona.controller.user.BookerList;
 import mini.kh1.corona.controller.view_booking.GoToView;
@@ -198,8 +199,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 								JOptionPane.showMessageDialog(null,
 										"예약 신청이 완료되었습니다.\n이메일을 통해 접종 날짜를 알려드리오니, 꼭 이메일을 확인하시기 바랍니다.", "공지",
 										JOptionPane.WARNING_MESSAGE);
-//								Reservation re = new Reservation();		//예약하기 클래스 호출
-//								re.orderAge();							//나이 정렬 메소드 호출
+								
 								setVisible(false);
 								MainMenu.mainPanel.setVisible(true);
 							}
