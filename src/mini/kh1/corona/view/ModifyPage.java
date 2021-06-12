@@ -175,7 +175,7 @@ public class ModifyPage extends JFrame implements ActionListener {
 		// ===========불러온 사용자 정보가 필드에 보여짐
 
 		int i = InsertPage.temp.getJoinlist().size();
-		loginSession = true;
+		
 
 		userTextField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getId());
 		userTextField.setEditable(false);
@@ -185,6 +185,8 @@ public class ModifyPage extends JFrame implements ActionListener {
 		ssnField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getSsn());
 		ssnField.setEditable(false);
 		emailField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getEmail());
+		
+		
 
 	}
 
@@ -201,7 +203,7 @@ public class ModifyPage extends JFrame implements ActionListener {
 			InsertPage.temp.getJoinlist().get(loginpage.sessionNum).setPassword(password);
 			InsertPage.temp.getJoinlist().get(loginpage.sessionNum).setEmail(email);
 
-			new LoginPage();
+			new MainMenu();
 			frame.setVisible(false);
 		}
 
@@ -221,7 +223,8 @@ public class ModifyPage extends JFrame implements ActionListener {
 			LoginPage.loginSession = false; // 세션종료
 			frame.setVisible(false);
 			frame.dispose();
-			new LoginPage();
+			//new LoginPage();
+			new MainMenu();
 
 		}
 

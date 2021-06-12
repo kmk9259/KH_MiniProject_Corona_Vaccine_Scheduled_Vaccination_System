@@ -29,6 +29,12 @@ public class Chatbot {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		finally {
+			if(socket!=null)
+			{
+				socket.close();
+			}
+		}
 	}
 	public ChatBotFrame getFrame()
 	{

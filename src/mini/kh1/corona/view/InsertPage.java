@@ -191,8 +191,8 @@ public class InsertPage extends JFrame implements ActionListener {
 				temp = addjoin.setjoin(newuser);
 				new LoginPage(); // 빈 곳 없이 값이 입력 되면 로그인 할 수 있는 페이지로 이동
 				frame.setVisible(false);
-				Reservation re = new Reservation();		//예약하기 클래스 호출
-				re.orderAge();							//나이 정렬 메소드 호출
+//				Reservation re = new Reservation();		//예약하기 클래스 호출
+//				re.orderAge();							//나이 정렬 메소드 호출
 			}
 		}
 
