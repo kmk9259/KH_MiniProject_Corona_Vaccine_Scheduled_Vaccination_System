@@ -1,44 +1,40 @@
 package mini.kh1.corona.model.vo;
 
-import java.io.IOException;
+import java.net.BindException;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 
-import mini.kh1.corona.view.ChatBot.ChatBotFrame;
+import mini.kh1.corona.view.ChatBot.ChatBotView;
 
 public class Chatbot {
-	private ChatBotFrame f;
-	private DatagramSocket socket;
-	private InetAddress address;
-	private final int PORT;
+	private ChatBotView f;
+	public static DatagramSocket socket;
+	public static InetAddress address;
+	int port=8500;
 
-	public Chatbot(int port) {
-		this.PORT = port;
+	public Chatbot() {
+
 		try {
 			address = InetAddress.getByName("192.168.1.5");
 			socket= new DatagramSocket(port);
 			//cmd에서 netstat -n pid 번호
 			//taskkill /f /pid pid번호
-			f=new ChatBotFrame(address,socket);
+			
 			
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (BindException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SocketException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		finally {
-			if(socket!=null)
-			{
-				socket.close();
-			}
-		}
+
 	}
-	public ChatBotFrame getFrame()
-	{
-		return f;
-	}
+
 
 }

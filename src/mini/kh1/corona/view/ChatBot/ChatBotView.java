@@ -13,24 +13,27 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import mini.kh1.corona.model.vo.Chatbot;
 import mini.kh1.corona.view.InsertPage;
 import mini.kh1.corona.view.LoginPage;
 import mini.kh1.corona.view.MainMenu;
 
-public class ChatBotFrame extends JPanel implements ActionListener{
+public class ChatBotView extends JPanel implements ActionListener{
 	private JTextArea chatting;
 	private JTextField input;
 	
-	public static JPanel chatPanel = new JPanel();
+	//public static JPanel chatPanel = new JPanel();
 	private DatagramSocket socket;
 	private DatagramPacket packet;
 	private InetAddress address;
 	
 	LoginPage loginpage;
 	
-	public ChatBotFrame(InetAddress address, DatagramSocket socket) {
-		this.address = address;
-		this.socket = socket;
+	public ChatBotView() {
+		Chatbot c = new Chatbot();
+		this.address = c.address;
+		this.socket = c.socket;
+		setVisible(false);
 		
 		
 		input = new JTextField(60);
@@ -46,12 +49,12 @@ public class ChatBotFrame extends JPanel implements ActionListener{
 		JButton sendButton = new JButton("Send");
 		sendButton.addActionListener(this);
 		
-		chatPanel.add(scroll);
-		chatPanel.add(input);
-		chatPanel.add(sendButton);
+		add(scroll);
+		add(input);
+		add(sendButton);
 		menual();
 		
-		chatPanel.setVisible(true);
+		setVisible(true);
 		
 	}
 
@@ -86,7 +89,9 @@ public class ChatBotFrame extends JPanel implements ActionListener{
 
 				e.printStackTrace();
 			}
+			chatting.append("RECEIVE : "+new String(buf)+"\n");
 		}
+		
 	}
 	public void menual()
 	{
@@ -130,7 +135,7 @@ public class ChatBotFrame extends JPanel implements ActionListener{
 			+"이러한 부작용은 일상 활동에 지장을 주기도 하지만, 며칠 내에 사라질 것입니다.\n");
 			break;
 		case "/메인화면" :
-			chatPanel.setVisible(false); 
+			setVisible(false); 
 			MainMenu.mainPanel.setVisible(true);
 			break;
 		default :
