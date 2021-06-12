@@ -162,6 +162,22 @@ public class LoginPage extends JFrame implements ActionListener {
 			frame.setVisible(false);
 		}
 
+		if (userText.equals("admin") && pwdText.equals("12345")) 
+		{
+			JOptionPane.showMessageDialog(this, "관리자 로그인에 성공했습니다."); // 성공 메세지!!
+			try {
+				new ManagerView();
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			frame.setVisible(false);
+			return;
+		}
+		
+		
+		
 		if (result == 0) {
 
 			JOptionPane.showMessageDialog(this, "로그인에 실패했습니다.");
@@ -170,17 +186,8 @@ public class LoginPage extends JFrame implements ActionListener {
 			loginSession=false;
 		}
 		
-		if (userText.equalsIgnoreCase("admin") && pwdText.equalsIgnoreCase("12345")) 
-		{
-			JOptionPane.showMessageDialog(this, "관리자 로그인에 성공했습니다."); // 성공 메세지!!
-			try {
-				new ManagerView();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			frame.setVisible(false);
-		}
+		
+		
 
 	
 	}
