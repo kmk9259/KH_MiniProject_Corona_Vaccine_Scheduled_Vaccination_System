@@ -184,6 +184,7 @@ public class LoginPage extends JFrame implements ActionListener {
 			userTextField.setText("");
 			passwordField.setText("");
 			loginSession=false;
+			
 		}
 		
 		
