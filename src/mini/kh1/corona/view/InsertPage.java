@@ -165,8 +165,6 @@ public class InsertPage extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == insertButton) {
 			
-			String userText = userTextField.getText();
-			
 			id = userTextField.getText();
 			pw = passwordField.getText();
 			name = nameField.getText();
@@ -183,6 +181,11 @@ public class InsertPage extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(this, "주민등록번호의 자릿수가 틀립니다.");
 				ssnField.setText("");
 			}
+			else if(!email.contains("@"))
+			{
+				JOptionPane.showMessageDialog(this, "이메일 형식이 올바르지 않습니다.");
+				emailField.setText("");
+			}
 			else {
 				JOptionPane.showMessageDialog(this, "가입 되었습니다.");
 				
@@ -191,15 +194,13 @@ public class InsertPage extends JFrame implements ActionListener {
 				temp = addjoin.setjoin(newuser);
 				new LoginPage(); // 빈 곳 없이 값이 입력 되면 로그인 할 수 있는 페이지로 이동
 				frame.setVisible(false);
-//				Reservation re = new Reservation();		//예약하기 클래스 호출
-//				re.orderAge();							//나이 정렬 메소드 호출
+
 			}
 		}
 
 		if (e.getSource() == dupliButton) { // 중복이면 필드부 클리어, 아니면 성공해서 입력할 수 있다.
 
-			String userText = userTextField.getText();
-			dupliCheckID(userText);
+			dupliCheckID(id);
 			
 		}
 		if (e.getSource() == backButton) {
@@ -209,24 +210,22 @@ public class InsertPage extends JFrame implements ActionListener {
 	}
 	
 	//중복확인 메소드
-		public boolean dupliCheckID(String userText) {
-			boolean check=true;
+		public void dupliCheckID(String id) {
 			for (int i = 0; i < InsertPage.temp.getJoinlist().size(); i++) 
 			{ // 전체 회원 인덱스를 돌며 확인하기 위해
-				if (InsertPage.temp.getJoinlist().get(i).getId().equals(userText)) {
+				if (InsertPage.temp.getJoinlist().get(i).getId().equals(id)) {
 					//result = 1; // 참 거짓으로 표현하기 위해
-					check=false;
+					
 					JOptionPane.showMessageDialog(this, "중복된 아이디 입니다.");
 					break;
 				}
 				else
 				{
 					JOptionPane.showMessageDialog(this, "사용 가능한 아이디 입니다.");
-					check=true;
+					
 					break;
 				}
 			}
-			return check;
 		}
 	
 }
