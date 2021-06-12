@@ -13,12 +13,12 @@ import javax.swing.JPanel;
 import mini.kh1.corona.controller.view_booking.GoToView;
 import mini.kh1.corona.model.vo.Chatbot;
 import mini.kh1.corona.model.vo.user.User;
-import mini.kh1.corona.view.ChatBot.ChatBotFrame;
+import mini.kh1.corona.view.ChatBot.ChatBotView;
 
 public class MainMenu {
 
 	JPanel selectHospital = new SelectHospital();
-	JPanel chatBotpanel = ChatBotFrame.chatPanel;
+	
 
 	static JFrame MFrame = new JFrame();
 	public static JPanel mainPanel = new JPanel(); // 메인 패널은 자주 호출될 것이므로 일단 static->직접 호출가능하도록
@@ -32,7 +32,7 @@ public class MainMenu {
 	JButton logoutButton = new JButton("로그아웃"); // 로그아웃 버튼
 
 	public MainMenu() {
-
+		
 		MFrame.setTitle("백신 예약 프로그램");
 		MFrame.setSize(900, 600);
 		MFrame.setResizable(false); // 화면 크기 조절 잠금
@@ -131,9 +131,9 @@ public class MainMenu {
 			@Override
 			public void mousePressed(MouseEvent e) {
 
+				JPanel chatBotpanel = new ChatBotView();
 				mainPanel.setVisible(false); // 예약버튼 누르면 메인화면은 안보임
 				MFrame.add(chatBotpanel); // 메인 프레임에 병원(지역)선택 화면 추가
-				new Chatbot(8500);
 				chatBotpanel.setVisible(true);
 
 			}
@@ -148,14 +148,16 @@ public class MainMenu {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				LoginPage.loginSession = false; // 세션종료
+				JOptionPane.showMessageDialog(null, InsertPage.temp.getJoinlist().get(LoginPage.sessionNum).getName()+"님 로그아웃 되셨습니다.");
 				mainPanel.setVisible(false);
+				
 				MFrame.dispose();
+				
 				new LoginPage();
 
 			}
 		});
 		mainPanel.add(logoutButton); // 메인 패널에 로그아웃 버튼 추가
-
 	}
 
 }
