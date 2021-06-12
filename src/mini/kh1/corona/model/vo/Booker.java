@@ -21,12 +21,6 @@ public class Booker {
 		this.location = location;
 		this.hName = hName;
 	}
-
-
-
-
-
-
 	@Override
 	public String toString() {
 		return "Booker [name=" + name + ", ssn=" + ssn + ", email=" + email + ", location=" + location + ", hName="

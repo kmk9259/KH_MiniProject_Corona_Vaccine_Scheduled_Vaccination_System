@@ -124,7 +124,7 @@ public class HospitalExcel {
 	// 백신 재고 수량을 수정하는 메소드
 	public void modifyVaccine(String hName, int vNum) throws Exception {
 
-    FileInputStream fis = new FileInputStream("C:\\Workspace\\HospitalData.xlsx");
+    FileInputStream fis = new FileInputStream("C..\\HospitalData.xlsx");
     
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 
@@ -178,7 +178,7 @@ public class HospitalExcel {
 
 		// 수정한 내용을 다시 엑셀 파일에 입력
 
-    FileOutputStream fos = new FileOutputStream("C:\\Workspace\\HospitalData.xlsx");
+    FileOutputStream fos = new FileOutputStream("C:..\\HospitalData.xlsx");
     
 		workbook.write(fos);
 		fos.close();
@@ -188,7 +188,7 @@ public class HospitalExcel {
 	public Vector<HospitalVaccine> modifiedTable() throws Exception {
 
 		// 엑셀 파일을 불러오는 과정
-		FileInputStream fis = new FileInputStream("C:\\Workspace\\HospitalData.xlsx");
+		FileInputStream fis = new FileInputStream("C:..\\HospitalData.xlsx");
 		// 해당 엑셀파일의 워크북을 불러옴
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 		HospitalVaccine hv = new HospitalVaccine();

@@ -140,37 +140,7 @@ public class LoginPage extends JFrame implements ActionListener {
 		uList = InsertPage.temp.getJoinlist();
 
 		int result = 0;
-		
-		for (int i = 0; i < uList.size(); i++) {
-
-			String inputId = uList.get(i).getId();
-			String inputPw = uList.get(i).getPassword();
-
-			if (inputId.equals(userText) && inputPw.equals(pwdText)) {
-				result = 1;
-				sessionNum = i;
-				break;
-			} else {// else문 있어도 되고 없어도 됨
-				result = 0;
-			}
-
-		}
-		if (result == 1 && loginSession==true) {	//로그인
-
-			JOptionPane.showMessageDialog(this, "로그인에 성공했습니다.");
-			new MainMenu();
-			frame.setVisible(false);
-		}
-
-		if (result == 0) {
-
-			JOptionPane.showMessageDialog(this, "로그인에 실패했습니다.");
-			userTextField.setText("");
-			passwordField.setText("");
-			loginSession=false;
-		}
-		
-		if (userText.equalsIgnoreCase("admin") && pwdText.equalsIgnoreCase("12345")) 
+		if (userText.equals("admin") && pwdText.equals("12345")) 
 		{
 			JOptionPane.showMessageDialog(this, "관리자 로그인에 성공했습니다."); // 성공 메세지!!
 			try {
@@ -181,6 +151,47 @@ public class LoginPage extends JFrame implements ActionListener {
 			}
 			frame.setVisible(false);
 		}
+		
+		for (int i = 0; i < uList.size(); i++) 
+		{
+
+			String inputId = uList.get(i).getId();
+			String inputPw = uList.get(i).getPassword();
+			if(userText.equals("admin") && pwdText.equals("12345"))
+			{
+				result=3;
+				break;
+			}
+				
+			else if (inputId.equals(userText) && inputPw.equals(pwdText)) 
+			{
+				result = 1;
+				sessionNum = i;
+				break;
+			}
+			else {// else문 있어도 되고 없어도 됨
+				result = 0;
+			}
+			
+
+		}
+		if (result == 1 && loginSession==true) {	//로그인
+
+			JOptionPane.showMessageDialog(this, "로그인에 성공했습니다.");
+			new MainMenu();
+			frame.setVisible(false);
+		}
+		else if (result == 0 ) {
+
+			JOptionPane.showMessageDialog(this, "로그인에 실패했습니다.");
+			userTextField.setText("");
+			passwordField.setText("");
+			loginSession=false;
+		}
+
+
+		
+		
 
 	
 	}
