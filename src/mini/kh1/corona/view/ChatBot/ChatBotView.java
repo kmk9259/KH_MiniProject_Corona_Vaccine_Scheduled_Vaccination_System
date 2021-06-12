@@ -29,13 +29,13 @@ public class ChatBotView extends JPanel implements ActionListener{
 	
 	LoginPage loginpage;
 	
+	
 	public ChatBotView() {
 		Chatbot c = new Chatbot();
 		this.address = c.address;
 		this.socket = c.socket;
 		setVisible(false);
-		
-		
+
 		input = new JTextField(60);
 		chatting = new JTextArea(25, 70); // was 15,50
 		JScrollPane scroll = new JScrollPane(chatting, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
@@ -70,11 +70,12 @@ public class ChatBotView extends JPanel implements ActionListener{
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
-		faq(str);
+
 		input.setText("");
 		input.requestFocus();
 		input.selectAll();
+		faq(str);
+
 		
 	}
 	public void process() {
@@ -118,12 +119,17 @@ public class ChatBotView extends JPanel implements ActionListener{
 		case "/1" :
 		case "1" :
 		case "1번" :
-			chatting.append("===============================================Question No.1===================================================\n");
-			chatting.append("1. 백신의 보호 기능은 얼마나 오래 지속 됩니까?\n\n"+
-			"백신 접종자의 면역력이 얼마나 오래 지속되는지에 대한 정보는 없습니다.\n"+
-			"우리가 아는 것은 COVID-19가 많은 사람에게 매우 심각한 질병과 사망을 초래했다는 것입니다.\n"+
-			"COVID-19 백신을 접종하는 것이 더 안전한 선택입니다.\n"+
-			"자연 면역과 백신 유도 면역에 관해 더 많이 알아내기 위해 전문가들이 연구 중입니다.\nCDC는 새로운 증거가 확보되는 대로 계속해서 일반에 공개할 것입니다.\n");
+			JPanel faq1 = new FAQ1();
+			setVisible(false);
+			MainMenu.MFrame.add(faq1);
+			faq1.setVisible(true);
+			//faq1.setVisible(true);
+//			chatting.append("===============================================Question No.1===================================================\n");
+//			chatting.append("1. 백신의 보호 기능은 얼마나 오래 지속 됩니까?\n\n"+
+//			"백신 접종자의 면역력이 얼마나 오래 지속되는지에 대한 정보는 없습니다.\n"+
+//			"우리가 아는 것은 COVID-19가 많은 사람에게 매우 심각한 질병과 사망을 초래했다는 것입니다.\n"+
+//			"COVID-19 백신을 접종하는 것이 더 안전한 선택입니다.\n"+
+//			"자연 면역과 백신 유도 면역에 관해 더 많이 알아내기 위해 전문가들이 연구 중입니다.\nCDC는 새로운 증거가 확보되는 대로 계속해서 일반에 공개할 것입니다.\n");
 			break;
 		case "/2" :
 		case "2" :
