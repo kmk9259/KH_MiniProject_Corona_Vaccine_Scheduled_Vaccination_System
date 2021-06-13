@@ -68,7 +68,7 @@ public class MailNotification {
 	}
 	public static String mailText()
 	{
-		System.out.println("=====고투뷰=====");
+		System.out.println("=====고투뷰======");
 		for(int i = 0; i< bookerlist.size(); i++) 
 		{
 			name = bookerlist.get(i).getName();
