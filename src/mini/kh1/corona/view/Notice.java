@@ -1,21 +1,26 @@
 package mini.kh1.corona.view;
 
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
-import mini.kh1.corona.controller.reservation.Reservation;
 
 public class Notice extends JPanel {
 
 	JPanel selectHospital = new SelectHospital();
 	static JPanel NOTICE = new Notice();
+	
+	private Image image;
 
 	public Notice() {
 
@@ -77,4 +82,19 @@ public class Notice extends JPanel {
 
 	}
 
+	@Override
+	protected void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		try {
+			image = ImageIO.read(new File("./image//chat.PNG"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Dimension d = getSize();
+		g.drawImage(image, 0, 0, d.width, d.height, null);
+	}
+
+	
 }

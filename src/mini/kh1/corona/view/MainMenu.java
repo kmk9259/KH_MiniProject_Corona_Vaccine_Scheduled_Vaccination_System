@@ -1,10 +1,16 @@
 package mini.kh1.corona.view;
 
 
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -12,10 +18,8 @@ import javax.swing.JPanel;
 
 import mini.kh1.corona.controller.reservation.sendMail.MailNotification;
 import mini.kh1.corona.controller.view_booking.GoToView;
-import mini.kh1.corona.model.vo.Chatbot;
 import mini.kh1.corona.model.vo.user.User;
 import mini.kh1.corona.view.ChatBot.ChatBotView;
-import mini.kh1.corona.view.ChatBot.FAQ1;
 
 public class MainMenu {
 	MailNotification mail = new MailNotification();
@@ -24,7 +28,7 @@ public class MainMenu {
 	
 
 	public static JFrame MFrame = new JFrame();
-	public static JPanel mainPanel = new JPanel(); // 메인 패널은 자주 호출될 것이므로 일단 static->직접 호출가능하도록
+	public static JPanel mainPanel; // 메인 패널은 자주 호출될 것이므로 일단 static->직접 호출가능하도록
 
 	boolean isBooker = false;
 
@@ -33,6 +37,8 @@ public class MainMenu {
 	JButton myPageButton = new JButton("MyPage"); // 마이페이지 버튼
 	JButton chatbotButton = new JButton("챗봇 FAQ"); // 챗봇 버튼
 	JButton logoutButton = new JButton("로그아웃"); // 로그아웃 버튼
+	
+	private Image image;
 
 	public MainMenu() {
 		
@@ -43,6 +49,24 @@ public class MainMenu {
 		MFrame.setVisible(true);
 		MFrame.setDefaultCloseOperation(MFrame.EXIT_ON_CLOSE);
 
+		try {
+			image = ImageIO.read(new File("./image//image1.jpg"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		mainPanel = new JPanel() {
+
+			@Override
+			protected void paintComponent(Graphics g) {
+				// TODO Auto-generated method stub
+				Dimension d = mainPanel.getSize();
+				g.drawImage(image, 0, 0, d.width, d.height, null);
+			}
+			
+		};
+		
 		mainPanel.setLayout(null);
 		mainPanel.setVisible(true);
 
