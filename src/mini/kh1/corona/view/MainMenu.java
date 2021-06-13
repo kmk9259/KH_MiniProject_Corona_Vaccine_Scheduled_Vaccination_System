@@ -124,7 +124,7 @@ public class MainMenu {
 
 				int i = gtv.go(); // 신청인 수, 예약 여부 가져와야 함
 				// 사용자가 신청한 병원의 백신갯수, 예약자리스트에 사용자가 있는지
-				mail.sendtoUser();
+				mail.mailText();
 				
 				if (i == 0) { // 예약 완료, 마감 되었을때
 					mainPanel.setVisible(false);
