@@ -1,11 +1,14 @@
 package mini.kh1.corona.view;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Vector;
 
@@ -46,71 +49,100 @@ public class ManagerView {
 	private JScrollPane vmScrollPane;
 	private JScrollPane hmScrollPane;
 
-	ImageIcon icon;
-	
+	private BufferedImage image;
+
 	public ManagerView() throws Exception {
 
 		// 관리자 모드 프레임
 		frame.setPreferredSize(new Dimension(900, 600));
 		frame.setSize(900, 600);
 		frame.setTitle("관리자모드");
+		//frame.setUndecorated(true);//프레임 타이틀 바 안보이게 할 수도 있음, 쓰려면 setTitle 삭제
 		frame.setResizable(false);// 창 사이즈 변경 불가
 		frame.setLocationRelativeTo(null);// 모니터 중간에 창 띄우기
 		frame.getContentPane().setLayout(null);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//프레임 아이콘 이미지 추가
-		//frame.setIconImage(ImageIO.read(new File("C:\\Workspace\\images\\managerIcon.PNG")));
+
+		// 프레임 아이콘 이미지 추가
+		// frame.setIconImage(ImageIO.read(new File("C:\\Workspace\\images\\managerIcon.PNG")));
 
 		// 관리자모드 메인 메뉴 패널
-		icon = new ImageIcon("C:\\Workspace\\images\\cogWheel.PNG");
+
 		
+		//image = ImageIO.read(new File("C:\\Workspace\\images\\image7.jpg"));
+		/*
 		ManagerPanel = new JPanel() {
 
 			@Override
 			protected void paintComponent(Graphics g) {
-				g.drawImage(icon.getImage(), 0, 0, null);
-				//setOpaque(false);
-				super.paintComponent(g);
-				
-			}
-			
-		};
 
+				Dimension d = ManagerPanel.getSize();
+				// System.out.println("패널 사이즈 : " + ManagerPanel.getSize());
+				g.drawImage(image, 0, 0, d.width, d.height, null);
+			}
+
+		};*/
+
+		ManagerPanel = new JPanel();//임시
+		
 		ManagerPanel.setSize(900, 600);
 		ManagerPanel.setLayout(null);
 		ManagerPanel.setVisible(true);// 첫 패널만 일단 보이게 해놓음
 		
-		
-		
-		
-		
+		//이미지 크기를 조절해야 하기때문에 Image로 변환해서 크기 조절 후 다시 ImageIcon에 넣어준다.
+		//ImageIcon labelImage = new ImageIcon("C:\\Workspace\\images\\managerIcon.PNG");
+		//Image mainLabel = labelImage.getImage();
+		//Image mainLabel2 = mainLabel.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		//ImageIcon labelImage2 = new ImageIcon(mainLabel2);
 
-		JLabel managerMenu = new JLabel("관리자 모드");
-		managerMenu.setBounds(370, 70, 100, 50);
-		managerMenu.setFont(new Font("굴림", Font.PLAIN, 15));
+		//JLabel managerMenu = new JLabel("관리자 모드", labelImage2, SwingConstants.CENTER);
+		JLabel managerMenu = new JLabel("관리자 모드");//임시
+
+		managerMenu.setBounds(550, 70, 150, 50);
+		managerMenu.setFont(new Font("휴먼엑스포", Font.BOLD, 15));
 		managerMenu.setHorizontalAlignment(SwingConstants.CENTER);
+		managerMenu.setForeground(Color.MAGENTA);
 		ManagerPanel.add(managerMenu);
 		// 1번 기능
 		JButton vcManager = new JButton("백신 재고 관리");
-		vcManager.setBounds(335, 180, 180, 60);
-		vcManager.setFont(new Font("굴림", Font.PLAIN, 15));
+		vcManager.setBounds(550, 180, 180, 60);
+		vcManager.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
+		vcManager.setFocusPainted(false);//버튼 테두리 없애기
+		vcManager.setForeground(Color.WHITE);
+		vcManager.setOpaque(true);
+		vcManager.setBackground(Color.BLACK);
+		vcManager.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ManagerPanel.add(vcManager);
 		// 2번 기능
 		JButton hsManager = new JButton("병원 관리");
-		hsManager.setBounds(335, 280, 180, 60);
-		hsManager.setFont(new Font("굴림", Font.PLAIN, 15));
+		hsManager.setBounds(550, 280, 180, 60);
+		hsManager.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
+		hsManager.setFocusPainted(false);
+		hsManager.setForeground(Color.WHITE);
+		hsManager.setOpaque(true);
+		hsManager.setBackground(Color.BLACK);
+		hsManager.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ManagerPanel.add(hsManager);
 		// 3번 기능
 		JButton userManager = new JButton("회원 관리");
-		userManager.setBounds(335, 380, 180, 60);
-		userManager.setFont(new Font("굴림", Font.PLAIN, 15));
+		userManager.setBounds(550, 380, 180, 60);
+		userManager.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
+		userManager.setFocusPainted(false);
+		userManager.setForeground(Color.WHITE);
+		userManager.setOpaque(true);
+		userManager.setBackground(Color.BLACK);
+		userManager.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ManagerPanel.add(userManager);
 		// 4번 로그아웃 기능
 		JButton managerLgOut = new JButton("로그아웃");
 		managerLgOut.setBounds(760, 490, 90, 40);
-		managerLgOut.setFont(new Font("굴림", Font.PLAIN, 12));
+		managerLgOut.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		managerLgOut.setFocusPainted(false);
+		managerLgOut.setForeground(Color.WHITE);
+		managerLgOut.setOpaque(true);
+		managerLgOut.setBackground(Color.BLACK);
+		managerLgOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ManagerPanel.add(managerLgOut);
 
 		frame.add(ManagerPanel);
@@ -118,32 +150,60 @@ public class ManagerView {
 		// ==========================================================================
 
 		// 1번기능 - 백신 재고 관리
-		vc = new JPanel();
+		/*
+		vc = new JPanel() {
+
+			@Override
+			protected void paintComponent(Graphics g) {
+
+				Dimension d = vc.getSize();
+				// System.out.println("패널 사이즈 : " + ManagerPanel.getSize());
+				g.drawImage(image, 0, 0, d.width, d.height, null);
+			}
+
+		};*/
+		
+		vc = new JPanel();//임시
 		vc.setSize(900, 600);
 		vc.setLayout(null);
 		// 라벨
 		JLabel vmLabel = new JLabel("백신 재고 현황");
-		vmLabel.setBounds(140, 70, 110, 50);
-		vmLabel.setFont(new Font("굴림", Font.PLAIN, 15));
+		vmLabel.setBounds(140, 70, 120, 50);
+		vmLabel.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
 		vmLabel.setHorizontalAlignment(SwingConstants.CENTER);// 라벨 박스에서 가운데 정렬
 		vmLabel.setOpaque(true);// 라벨 배경색 바꿀 수 있게 만들어주는 기능
 		vmLabel.setBackground(Color.BLACK);// 추후 변경
-		vmLabel.setForeground(Color.WHITE);
+		vmLabel.setForeground(Color.PINK);
 		vc.add(vmLabel);
 		// 수량 변경 버튼
 		JButton vmButton1 = new JButton("수량 변경");
-		vmButton1.setBounds(140, 418, 90, 40);
-		vmButton1.setFont(new Font("굴림", Font.PLAIN, 12));
+		vmButton1.setBounds(140, 420, 90, 40);
+		vmButton1.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		vmButton1.setFocusPainted(false);
+		vmButton1.setForeground(Color.WHITE);
+		vmButton1.setOpaque(true);
+		vmButton1.setBackground(Color.BLACK);
+		vmButton1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		vc.add(vmButton1);
 		// 이전으로 버튼
 		JButton vmButton2 = new JButton("이전으로");
 		vmButton2.setBounds(760, 490, 90, 40);
-		vmButton2.setFont(new Font("굴림", Font.PLAIN, 12));
+		vmButton2.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		vmButton2.setFocusPainted(false);
+		vmButton2.setForeground(Color.WHITE);
+		vmButton2.setOpaque(true);
+		vmButton2.setBackground(Color.BLACK);
+		vmButton2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		vc.add(vmButton2);
 
 		JButton vmButton3 = new JButton("새로고침");
-		vmButton3.setBounds(230, 418, 90, 40);
-		vmButton3.setFont(new Font("굴림", Font.PLAIN, 12));
+		vmButton3.setBounds(230, 420, 90, 40);
+		vmButton3.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		vmButton3.setFocusPainted(false);
+		vmButton3.setForeground(Color.WHITE);
+		vmButton3.setOpaque(true);
+		vmButton3.setBackground(Color.BLACK);
+		vmButton3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		vc.add(vmButton3);
 
 		// 병원별 재고 현황 테이블
@@ -173,8 +233,10 @@ public class ManagerView {
 
 		vmTable.setFont(new Font("굴림", Font.PLAIN, 12));
 
-		vmTableHd.setFont(new Font("굴림", Font.BOLD, 15));
-		vmTableHd.setBackground(Color.cyan);// 나중에 꾸밀 때 변경
+		vmTableHd.setFont(new Font("휴먼엑스포", Font.PLAIN, 13));
+		vmTableHd.setOpaque(true);
+		vmTableHd.setBackground(Color.DARK_GRAY);
+		vmTableHd.setForeground(Color.YELLOW);
 
 		vmScrollPane.setBounds(140, 120, 620, 300);
 		vmScrollPane.setVisible(false);// 패널과 상관없이 보이는듯
@@ -203,8 +265,10 @@ public class ManagerView {
 
 					vmTable.setFont(new Font("굴림", Font.PLAIN, 12));
 
-					vmTableHd.setFont(new Font("굴림", Font.BOLD, 15));
-					vmTableHd.setBackground(Color.cyan);// 나중에 꾸밀 때 변경
+					vmTableHd.setFont(new Font("휴먼엑스포", Font.PLAIN, 13));
+					vmTableHd.setOpaque(true);
+					vmTableHd.setBackground(Color.DARK_GRAY);
+					vmTableHd.setForeground(Color.YELLOW);
 
 					vmScrollPane.setBounds(140, 120, 620, 300);
 					vmScrollPane.setVisible(true);// 패널과 상관없이 보이는듯
@@ -224,13 +288,25 @@ public class ManagerView {
 		// ==========================================================================
 
 		// 2번 기능 - 병원 관리
-		hs = new JPanel();
+		/*
+		hs = new JPanel() {
+
+			@Override
+			protected void paintComponent(Graphics g) {
+
+				Dimension d = hs.getSize();
+				// System.out.println("패널 사이즈 : " + ManagerPanel.getSize());
+				g.drawImage(image, 0, 0, d.width, d.height, null);
+			}
+
+		};*/
+		hs = new JPanel();//임시
 		hs.setSize(900, 600);
 		hs.setLayout(null);
 
 		JLabel hmLabel = new JLabel("병원 현황");
 		hmLabel.setBounds(140, 70, 100, 50);
-		hmLabel.setFont(new Font("굴림", Font.PLAIN, 15));
+		hmLabel.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
 		hmLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		hmLabel.setOpaque(true);
 		hmLabel.setBackground(Color.BLACK);
@@ -238,18 +314,33 @@ public class ManagerView {
 		hs.add(hmLabel);
 //버튼 기능 수정=======================================>>>>
 		JButton hmButton1 = new JButton("추가하기");
-		hmButton1.setBounds(140, 418, 90, 40);
-		hmButton1.setFont(new Font("굴림", Font.PLAIN, 12));
+		hmButton1.setBounds(140, 420, 90, 40);
+		hmButton1.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		hmButton1.setFocusPainted(false);
+		hmButton1.setForeground(Color.WHITE);
+		hmButton1.setOpaque(true);
+		hmButton1.setBackground(Color.BLACK);
+		hmButton1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		hs.add(hmButton1);
 
 		JButton hmButton2 = new JButton("새로고침");
-		hmButton2.setBounds(230, 418, 90, 40);
-		hmButton2.setFont(new Font("굴림", Font.PLAIN, 12));
+		hmButton2.setBounds(230, 420, 90, 40);
+		hmButton2.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		hmButton2.setFocusPainted(false);
+		hmButton2.setForeground(Color.WHITE);
+		hmButton2.setOpaque(true);
+		hmButton2.setBackground(Color.BLACK);
+		hmButton2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		hs.add(hmButton2);
 
 		JButton hmButton3 = new JButton("이전으로");
 		hmButton3.setBounds(760, 490, 90, 40);
-		hmButton3.setFont(new Font("굴림", Font.PLAIN, 12));
+		hmButton3.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		hmButton3.setFocusPainted(false);
+		hmButton3.setForeground(Color.WHITE);
+		hmButton3.setOpaque(true);
+		hmButton3.setBackground(Color.BLACK);
+		hmButton3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		hs.add(hmButton3);
 //<<<<=================================================
 		// 병원 정보 현황
@@ -262,8 +353,10 @@ public class ManagerView {
 
 		hmTable.setFont(new Font("굴림", Font.PLAIN, 12));
 
-		hmTableHd.setFont(new Font("굴림", Font.PLAIN, 15));
-		hmTableHd.setBackground(Color.CYAN);
+		hmTableHd.setFont(new Font("휴먼엑스포", Font.PLAIN, 13));
+		hmTableHd.setOpaque(true);
+		hmTableHd.setBackground(Color.DARK_GRAY);
+		hmTableHd.setForeground(Color.YELLOW);
 
 		hmScrollPane.setBounds(140, 120, 620, 300);
 		hmScrollPane.setVisible(false);
@@ -292,8 +385,10 @@ public class ManagerView {
 
 					hmTable.setFont(new Font("굴림", Font.PLAIN, 12));
 
-					hmTableHd.setFont(new Font("굴림", Font.BOLD, 15));
-					hmTableHd.setBackground(Color.cyan);// 나중에 꾸밀 때 변경
+					hmTableHd.setFont(new Font("휴먼엑스포", Font.PLAIN, 13));
+					hmTableHd.setOpaque(true);
+					hmTableHd.setBackground(Color.DARK_GRAY);
+					hmTableHd.setForeground(Color.YELLOW);
 
 					hmScrollPane.setBounds(140, 120, 620, 300);
 					hmScrollPane.setVisible(true);// 패널과 상관없이 보이는듯
@@ -311,13 +406,25 @@ public class ManagerView {
 		// ==========================================================================
 
 		// 3번 기능 - 회원 관리
-		us = new JPanel();
+		/*
+		us = new JPanel() {
+
+			@Override
+			protected void paintComponent(Graphics g) {
+
+				Dimension d = us.getSize();
+				// System.out.println("패널 사이즈 : " + ManagerPanel.getSize());
+				g.drawImage(image, 0, 0, d.width, d.height, null);
+			}
+
+		};*/
+		us = new JPanel();//임시
 		us.setSize(900, 600);
 		us.setLayout(null);
 
 		JLabel usLabel = new JLabel("회원 현황");
 		usLabel.setBounds(100, 70, 100, 50);
-		usLabel.setFont(new Font("굴림", Font.PLAIN, 15));
+		usLabel.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
 		usLabel.setOpaque(true);
 		usLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		usLabel.setBackground(Color.BLACK);
@@ -326,7 +433,12 @@ public class ManagerView {
 
 		JButton usButton = new JButton("이전으로");
 		usButton.setBounds(760, 490, 90, 40);
-		usButton.setFont(new Font("굴림", Font.PLAIN, 12));
+		usButton.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		usButton.setFocusPainted(false);
+		usButton.setForeground(Color.WHITE);
+		usButton.setOpaque(true);
+		usButton.setBackground(Color.BLACK);
+		usButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		us.add(usButton);
 
 		Object[][] usData = { { "abc123", "홍길동", "230101-1******", "99", "hong123@gmail.com" } };// 회원정보
@@ -337,8 +449,10 @@ public class ManagerView {
 
 		usTable.setFont(new Font("굴림", Font.PLAIN, 12));
 
-		usTableHd.setFont(new Font("굴림", Font.BOLD, 15));
-		usTableHd.setBackground(Color.cyan);
+		usTableHd.setFont(new Font("휴먼엑스포", Font.PLAIN, 13));
+		usTableHd.setOpaque(true);
+		usTableHd.setBackground(Color.DARK_GRAY);
+		usTableHd.setForeground(Color.YELLOW);
 
 		usScrollPane.setBounds(100, 120, 700, 320);
 		usScrollPane.setVisible(false);
@@ -454,7 +568,12 @@ public class ManagerView {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new HospitalAddFrame();
+				try {
+					new HospitalAddFrame();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 			}
 		});

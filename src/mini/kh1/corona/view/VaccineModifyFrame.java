@@ -1,8 +1,11 @@
 package mini.kh1.corona.view;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -25,6 +28,8 @@ public class VaccineModifyFrame extends JFrame {
 	
 	private JTextField vmfTextField1;
 	private JTextField vmfTextField2;
+	
+	private Image image;
 
 	public VaccineModifyFrame() throws Exception {
 
@@ -35,7 +40,8 @@ public class VaccineModifyFrame extends JFrame {
 		// 1. 프레임 설정
 		setPreferredSize(new Dimension(550, 350));
 		setSize(550, 350);
-		setTitle("백신 수량 변경");
+		//setTitle("백신 수량 변경");
+		setUndecorated(true);//타이틀바 안보이게
 		setResizable(false);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
@@ -45,36 +51,58 @@ public class VaccineModifyFrame extends JFrame {
 		//백신 재고 관리 프레임 아이콘 이미지 추가
 		//setIconImage(ImageIO.read(new File("C:\\Workspace\\images\\managerIcon.PNG")));
 		
+		//image = ImageIO.read(new File("C:\\Workspace\\images\\image10.jpg"));
 		
 		// 2. 병원명 입력하는 패널 설정
-		vmfPanel1 = new JPanel();
+		/*
+		vmfPanel1 = new JPanel() {
+
+			@Override
+			protected void paintComponent(Graphics g) {
+				Dimension d = vmfPanel1.getSize();
+				System.out.println("수량 입력 패널 사이즈 : " + vmfPanel1.getSize());
+				g.drawImage(image, 0, 0, d.width, d.height, null);
+			}
+			
+		};*/
+		vmfPanel1 = new JPanel();//임시
 		vmfPanel1.setSize(550, 350);
 		vmfPanel1.setLayout(null);
 		vmfPanel1.setVisible(true);
 
 		JLabel vmfLabel1 = new JLabel("병원명을 입력하세요.");
-		vmfLabel1.setBounds(70, 50, 170, 40);
-		vmfLabel1.setFont(new Font("굴림", Font.BOLD, 15));
+		vmfLabel1.setBounds(70, 60, 170, 40);
+		vmfLabel1.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
 		vmfLabel1.setHorizontalAlignment(SwingConstants.CENTER);
-		vmfLabel1.setOpaque(true);
-		vmfLabel1.setBackground(Color.black);
 		vmfLabel1.setForeground(Color.white);
 		vmfPanel1.add(vmfLabel1);
 
 		vmfTextField1 = new JTextField(10);
 		vmfTextField1.setBounds(70, 130, 390, 50);
-		vmfTextField1.setFont(new Font("굴림", Font.PLAIN, 15));
-
+		vmfTextField1.setOpaque(true);
+		vmfTextField1.setBackground(Color.DARK_GRAY);
+		vmfTextField1.setForeground(Color.WHITE);
+		vmfTextField1.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
 		vmfPanel1.add(vmfTextField1);
 
 		JButton vmfButton1 = new JButton("취   소");
-		vmfButton1.setBounds(70, 220, 150, 40);
-		vmfButton1.setFont(new Font("굴림", Font.PLAIN, 12));
+		vmfButton1.setBounds(70, 230, 150, 40);
+		vmfButton1.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		vmfButton1.setFocusPainted(false);
+		vmfButton1.setForeground(Color.WHITE);
+		vmfButton1.setOpaque(true);
+		vmfButton1.setBackground(Color.BLACK);
+		vmfButton1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		vmfPanel1.add(vmfButton1);
 
 		JButton vmfButton2 = new JButton("다   음");
-		vmfButton2.setBounds(310, 220, 150, 40);
-		vmfButton2.setFont(new Font("굴림", Font.PLAIN, 12));
+		vmfButton2.setBounds(310, 230, 150, 40);
+		vmfButton2.setFont(new Font("휴먼엑스포", Font.BOLD, 12));
+		vmfButton2.setFocusPainted(false);
+		vmfButton2.setForeground(Color.WHITE);
+		vmfButton2.setOpaque(true);
+		vmfButton2.setBackground(Color.BLACK);
+		vmfButton2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		vmfPanel1.add(vmfButton2);
 		// 버튼 기능 실현
 		// 1. 첫 번째 패널에서 다음 버튼 클릭 시
@@ -101,11 +129,11 @@ public class VaccineModifyFrame extends JFrame {
 							JLabel vmfLabel3 = new JLabel(info);
 
 							vmfLabel3.setBounds(70, 100, 390, 40);
-							vmfLabel3.setFont(new Font("굴림", Font.PLAIN, 13));
+							vmfLabel3.setFont(new Font("휴먼엑스포", Font.PLAIN, 13));
 							vmfLabel3.setHorizontalAlignment(SwingConstants.CENTER);
 							vmfLabel3.setOpaque(true);
-							vmfLabel3.setBackground(Color.CYAN);
-							vmfLabel3.setForeground(Color.blue);
+							vmfLabel3.setBackground(Color.DARK_GRAY);
+							vmfLabel3.setForeground(Color.YELLOW);
 							vmfPanel2.add(vmfLabel3);
 							vmfPanel2.setVisible(true);// 두 번째 패널로 넘어감
 							// 엑셀에 없는 값을 입력하면 info가 ""임
@@ -128,26 +156,33 @@ public class VaccineModifyFrame extends JFrame {
 		add(vmfPanel1);
 
 		// 3. 백신 수량 입력하는 패널 설정
-		vmfPanel2 = new JPanel();
+		/*
+		vmfPanel2 = new JPanel(){
+
+			@Override
+			protected void paintComponent(Graphics g) {
+				Dimension d = vmfPanel2.getSize();
+				System.out.println("수량 입력 패널 사이즈 : " + vmfPanel1.getSize());
+				g.drawImage(image, 0, 0, d.width, d.height, null);
+			}
+			
+		};*/
+		vmfPanel2 = new JPanel();//임시
 		vmfPanel2.setSize(550, 350);
 		vmfPanel2.setLayout(null);
 		vmfPanel2.setVisible(false);// 첫 화면 아니기때문에 안보이게 설정
 
 		JLabel vmfLabel2 = new JLabel("병원 정보");
 		vmfLabel2.setBounds(70, 50, 150, 40);
-		vmfLabel2.setFont(new Font("굴림", Font.BOLD, 15));
+		vmfLabel2.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
 		vmfLabel2.setHorizontalAlignment(SwingConstants.CENTER);
-		vmfLabel2.setOpaque(true);
-		vmfLabel2.setBackground(Color.black);
 		vmfLabel2.setForeground(Color.white);
 		vmfPanel2.add(vmfLabel2);
 
 		JLabel vmfLabel4 = new JLabel("수량 입력");
 		vmfLabel4.setBounds(70, 160, 150, 40);
-		vmfLabel4.setFont(new Font("굴림", Font.BOLD, 15));
+		vmfLabel4.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
 		vmfLabel4.setHorizontalAlignment(SwingConstants.CENTER);
-		vmfLabel4.setOpaque(true);
-		vmfLabel4.setBackground(Color.black);
 		vmfLabel4.setForeground(Color.white);
 		vmfPanel2.add(vmfLabel4);
 
@@ -157,8 +192,13 @@ public class VaccineModifyFrame extends JFrame {
 
 		// 버튼 1,4,5는 수량에 따라 결과가 달라지므로 추후 기능 또는 코드 추가를 통해 실현할 것
 		JButton vmfButton4 = new JButton("확   인");
-		vmfButton4.setBounds(310, 220, 150, 40);
-		vmfButton4.setFont(new Font("굴림", Font.BOLD, 12));
+		vmfButton4.setBounds(310, 230, 150, 40);
+		vmfButton4.setFont(new Font("휴먼엑스포", Font.BOLD, 12));
+		vmfButton4.setFocusPainted(false);
+		vmfButton4.setForeground(Color.WHITE);
+		vmfButton4.setOpaque(true);
+		vmfButton4.setBackground(Color.BLACK);
+		vmfButton4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		vmfPanel2.add(vmfButton4);
 
 		// 2. 두 번째 패널에서 확인 버튼 클릭 시
@@ -196,8 +236,13 @@ public class VaccineModifyFrame extends JFrame {
 		});
 
 		JButton vmfButton5 = new JButton("취   소");
-		vmfButton5.setBounds(70, 220, 150, 40);
-		vmfButton5.setFont(new Font("굴림", Font.PLAIN, 12));
+		vmfButton5.setBounds(70, 230, 150, 40);
+		vmfButton5.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		vmfButton5.setFocusPainted(false);
+		vmfButton5.setForeground(Color.WHITE);
+		vmfButton5.setOpaque(true);
+		vmfButton5.setBackground(Color.BLACK);
+		vmfButton5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		vmfPanel2.add(vmfButton5);
 
 		add(vmfPanel2);
@@ -226,11 +271,12 @@ public class VaccineModifyFrame extends JFrame {
 	}
 
 	public void CheckFact(String info) {
-
+		
 		JOptionPane.showMessageDialog(this, "없는 정보입니다.");
 	}
 	
 	public void CheckText(String vText) {
+		
 		JOptionPane.showMessageDialog(this, "숫자가 아닌 값을 입력하였습니다.");
 	}
 }

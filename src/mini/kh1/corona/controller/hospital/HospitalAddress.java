@@ -133,27 +133,30 @@ public class HospitalAddress {
 					// 입력 시 값이 일치하는 경우와 텍스트필드가 빈 칸인 경우만 고려
 					switch (columnIndex) {
 					case 0:
-						if (mainDistrict.equals(cell.getStringCellValue()) || mainDistrict == null) {
+						if (mainDistrict.equals(cell.getStringCellValue())) {
 							System.out.println("이미 메인주소 있음");
 							addPossible = false;
+							break;
 						} else {
 							addMD = mainDistrict;
 
 						}
 						break;
 					case 1:
-						if (detailDistrict.equals(cell.getStringCellValue()) || detailDistrict == null) {
+						if (detailDistrict.equals(cell.getStringCellValue())) {
 							System.out.println("이미 상세주소 있음");
 							addPossible = false;
+							break;
 						} else {
 							addDD = detailDistrict;
 
 						}
 						break;
 					case 2:
-						if (hName.equals(cell.getStringCellValue()) || hName == null) {
+						if (hName.equals(cell.getStringCellValue())) {
 							System.out.println("이미 병원명 있음");
 							addPossible = false;
+							break;
 						} else {
 							addHN = hName;
 
