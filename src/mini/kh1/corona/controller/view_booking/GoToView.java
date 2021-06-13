@@ -29,6 +29,9 @@ public class GoToView {
 	int vaccine;
 	Reservation r = new Reservation();
 	ArrayList<Booker> rlist = r.getnBookerList();
+	public static String bName;
+	public static String bDay;
+	public static String bHospital;
 	
 	public int go() { //vaccine : 남은 백신 수 , reyn : 예약 여부
 	//신청인원 현황 가져오기
@@ -71,10 +74,17 @@ public class GoToView {
 //		}
 		
 		r.cutPeople(hName);
+		r.orderAge();
+		
 		
 		System.out.println("=====고투뷰=====");
 		for(int i = 0; i< bookerlist.size(); i++) {
-			System.out.println(bookerlist.get(i).getName() + "=====" + bookerlist.get(i).getRday());
+//			bName = bookerlist.get(i).getName();
+//			bDay = bookerlist.get(i).getRday();
+//			bHospital = bookerlist.get(i).gethName();
+//			System.out.println(bookerlist.get(i).getName() + "=====" + bookerlist.get(i).getRday());
+//			System.out.println(bName + "@@@@@" + bDay);
+			System.out.println(bookerlist.get(i)+"나이 재배치 순서");
 		}
 		
 		if(reyn == true) {

@@ -1,5 +1,6 @@
 package mini.kh1.corona.controller.reservation.sendMail;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -10,8 +11,10 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import mini.kh1.corona.controller.reservation.Reservation;
 import mini.kh1.corona.controller.user.BookerList;
 import mini.kh1.corona.model.vo.Booker;
+import mini.kh1.corona.model.vo.user.User;
 import mini.kh1.corona.view.InsertPage;
 
 public class MailNotification {
@@ -20,7 +23,9 @@ public class MailNotification {
 	static String name ;
 	static String date ;
 	static String hospital ;
-	
+	//static List<User> age = InsertPage.temp.getJoinlist();//bookerlist
+	static BookerList bookerlist2 = new BookerList();
+	static List<Booker> age = bookerlist2.getBookerList();
 	
 	public static void MailSend(String email, String title, String text) { 
 	    String host = "smtp.gmail.com";
@@ -66,29 +71,44 @@ public class MailNotification {
 		String title="[코로나 예방 접종 확인 안내]";
 		return title;
 	}
-	public static String mailText()
+	public static void mailText()
 	{
-		System.out.println("=====고투뷰======");
-		for(int i = 0; i< bookerlist.size(); i++) 
+		System.out.println("=====메일확인======");
+		Reservation r = new Reservation();
+		String[][] dd = new String [age.size()/2][3];
+		dd = r.cut();
+		for(int i=0; i<age.size()/2; i++)
 		{
-			name = bookerlist.get(i).getName();
-			date = bookerlist.get(i).getRday();
-			hospital = bookerlist.get(i).gethName();
-			System.out.println(bookerlist.get(i).getName() + "=====" + bookerlist.get(i).getRday());
-			
+			for(int j=0; j<3; j++)
+			{
+				System.out.println(dd[i][j]+"!!");
+				for(int k=0; k<bookerlist.size(); k++)
+				{
+					if(dd[i][j].equals(bookerlist.get(k).getName()))
+					{
+						hospital = bookerlist.get(k).gethName();
+						name = bookerlist.get(k).getName();
+						date = dd[i][2];
+						String text= name+"님, 이와 같이 예약이 완료되었습니다.\n"
+									 +"-일시 : "+dd[i][2]+"\n"
+									 +"-장소 :"+hospital+ "\n";
+						MailSend(bookerlist.get(k).getEmail(), mailTitle(), text);
+					}
+						
+				}
+				
+				
+			}
 		}
-		String text="이와 같이 예약이 완료되었습니다.\n"
-				+ "-일시 : "+date+"\n" + "-장소 :"+hospital+ "\n";
 		
-		
-		return text;
+		//return dd;
 	}
 	public void sendtoUser()
 	{
 		for(int i=0; i<bookerlist.size(); i++)
 		{
 			System.out.println(bookerlist.get(i).getEmail());
-			MailSend(bookerlist.get(i).getEmail(), mailTitle(), mailText());
+			//MailSend(bookerlist.get(i).getEmail(), mailTitle(), mailText());
 			
 		}
 		

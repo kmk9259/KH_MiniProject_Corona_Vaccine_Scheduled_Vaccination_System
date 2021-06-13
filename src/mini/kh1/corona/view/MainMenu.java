@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import mini.kh1.corona.controller.reservation.Reservation;
 import mini.kh1.corona.controller.reservation.sendMail.MailNotification;
 import mini.kh1.corona.controller.view_booking.GoToView;
 import mini.kh1.corona.model.vo.Chatbot;
@@ -27,6 +28,7 @@ public class MainMenu {
 	public static JPanel mainPanel = new JPanel(); // 메인 패널은 자주 호출될 것이므로 일단 static->직접 호출가능하도록
 
 	boolean isBooker = false;
+	//public boolean isBookOver = false;
 
 	JButton bookButton = new JButton("예약하기"); // 예약하기 버튼
 	JButton chackBookButton = new JButton("예약조회"); // 예약조회 버튼
@@ -97,7 +99,10 @@ public class MainMenu {
 
 				int i = gtv.go(); // 신청인 수, 예약 여부 가져와야 함
 				// 사용자가 신청한 병원의 백신갯수, 예약자리스트에 사용자가 있는지
-				mail.sendtoUser();
+				Reservation r = new Reservation();
+				//r.orderAge();
+				mail.mailText();
+				//mail.sendtoUser();
 				
 				if (i == 0) { // 예약 완료, 마감 되었을때
 					mainPanel.setVisible(false);
