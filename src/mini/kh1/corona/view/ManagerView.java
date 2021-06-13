@@ -4,16 +4,12 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
+import java.util.ArrayList;
 import java.util.Vector;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,8 +21,10 @@ import javax.swing.table.JTableHeader;
 
 import mini.kh1.corona.controller.hospital.HospitalAddress;
 import mini.kh1.corona.controller.hospital.HospitalExcel;
+import mini.kh1.corona.controller.user.AddSample;
 import mini.kh1.corona.model.vo.HospitalDetail;
 import mini.kh1.corona.model.vo.HospitalVaccine;
+import mini.kh1.corona.model.vo.user.User;
 
 public class ManagerView {
 
@@ -51,13 +49,15 @@ public class ManagerView {
 
 	private BufferedImage image;
 
+	private Object[][] usData;
+
 	public ManagerView() throws Exception {
 
 		// 관리자 모드 프레임
 		frame.setPreferredSize(new Dimension(900, 600));
 		frame.setSize(900, 600);
 		frame.setTitle("관리자모드");
-		//frame.setUndecorated(true);//프레임 타이틀 바 안보이게 할 수도 있음, 쓰려면 setTitle 삭제
+		// frame.setUndecorated(true);//프레임 타이틀 바 안보이게 할 수도 있음, 쓰려면 setTitle 삭제
 		frame.setResizable(false);// 창 사이즈 변경 불가
 		frame.setLocationRelativeTo(null);// 모니터 중간에 창 띄우기
 		frame.getContentPane().setLayout(null);
@@ -65,39 +65,39 @@ public class ManagerView {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// 프레임 아이콘 이미지 추가
-		// frame.setIconImage(ImageIO.read(new File("C:\\Workspace\\images\\managerIcon.PNG")));
+		// frame.setIconImage(ImageIO.read(new
+		// File("C:\\Workspace\\images\\managerIcon.PNG")));
 
 		// 관리자모드 메인 메뉴 패널
 
-		
-		//image = ImageIO.read(new File("C:\\Workspace\\images\\image7.jpg"));
+		// image = ImageIO.read(new File("C:\\Workspace\\images\\image7.jpg"));
 		/*
-		ManagerPanel = new JPanel() {
+		 * ManagerPanel = new JPanel() {
+		 * 
+		 * @Override protected void paintComponent(Graphics g) {
+		 * 
+		 * Dimension d = ManagerPanel.getSize(); // System.out.println("패널 사이즈 : " +
+		 * ManagerPanel.getSize()); g.drawImage(image, 0, 0, d.width, d.height, null); }
+		 * 
+		 * };
+		 */
 
-			@Override
-			protected void paintComponent(Graphics g) {
+		ManagerPanel = new JPanel();// 임시
 
-				Dimension d = ManagerPanel.getSize();
-				// System.out.println("패널 사이즈 : " + ManagerPanel.getSize());
-				g.drawImage(image, 0, 0, d.width, d.height, null);
-			}
-
-		};*/
-
-		ManagerPanel = new JPanel();//임시
-		
 		ManagerPanel.setSize(900, 600);
 		ManagerPanel.setLayout(null);
 		ManagerPanel.setVisible(true);// 첫 패널만 일단 보이게 해놓음
-		
-		//이미지 크기를 조절해야 하기때문에 Image로 변환해서 크기 조절 후 다시 ImageIcon에 넣어준다.
-		//ImageIcon labelImage = new ImageIcon("C:\\Workspace\\images\\managerIcon.PNG");
-		//Image mainLabel = labelImage.getImage();
-		//Image mainLabel2 = mainLabel.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-		//ImageIcon labelImage2 = new ImageIcon(mainLabel2);
 
-		//JLabel managerMenu = new JLabel("관리자 모드", labelImage2, SwingConstants.CENTER);
-		JLabel managerMenu = new JLabel("관리자 모드");//임시
+		// 이미지 크기를 조절해야 하기때문에 Image로 변환해서 크기 조절 후 다시 ImageIcon에 넣어준다.
+		// ImageIcon labelImage = new
+		// ImageIcon("C:\\Workspace\\images\\managerIcon.PNG");
+		// Image mainLabel = labelImage.getImage();
+		// Image mainLabel2 = mainLabel.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		// ImageIcon labelImage2 = new ImageIcon(mainLabel2);
+
+		// JLabel managerMenu = new JLabel("관리자 모드", labelImage2,
+		// SwingConstants.CENTER);
+		JLabel managerMenu = new JLabel("관리자 모드");// 임시
 
 		managerMenu.setBounds(550, 70, 150, 50);
 		managerMenu.setFont(new Font("휴먼엑스포", Font.BOLD, 15));
@@ -108,7 +108,7 @@ public class ManagerView {
 		JButton vcManager = new JButton("백신 재고 관리");
 		vcManager.setBounds(550, 180, 180, 60);
 		vcManager.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
-		vcManager.setFocusPainted(false);//버튼 테두리 없애기
+		vcManager.setFocusPainted(false);// 버튼 테두리 없애기
 		vcManager.setForeground(Color.WHITE);
 		vcManager.setOpaque(true);
 		vcManager.setBackground(Color.BLACK);
@@ -151,19 +151,17 @@ public class ManagerView {
 
 		// 1번기능 - 백신 재고 관리
 		/*
-		vc = new JPanel() {
+		 * vc = new JPanel() {
+		 * 
+		 * @Override protected void paintComponent(Graphics g) {
+		 * 
+		 * Dimension d = vc.getSize(); // System.out.println("패널 사이즈 : " +
+		 * ManagerPanel.getSize()); g.drawImage(image, 0, 0, d.width, d.height, null); }
+		 * 
+		 * };
+		 */
 
-			@Override
-			protected void paintComponent(Graphics g) {
-
-				Dimension d = vc.getSize();
-				// System.out.println("패널 사이즈 : " + ManagerPanel.getSize());
-				g.drawImage(image, 0, 0, d.width, d.height, null);
-			}
-
-		};*/
-		
-		vc = new JPanel();//임시
+		vc = new JPanel();// 임시
 		vc.setSize(900, 600);
 		vc.setLayout(null);
 		// 라벨
@@ -289,18 +287,16 @@ public class ManagerView {
 
 		// 2번 기능 - 병원 관리
 		/*
-		hs = new JPanel() {
-
-			@Override
-			protected void paintComponent(Graphics g) {
-
-				Dimension d = hs.getSize();
-				// System.out.println("패널 사이즈 : " + ManagerPanel.getSize());
-				g.drawImage(image, 0, 0, d.width, d.height, null);
-			}
-
-		};*/
-		hs = new JPanel();//임시
+		 * hs = new JPanel() {
+		 * 
+		 * @Override protected void paintComponent(Graphics g) {
+		 * 
+		 * Dimension d = hs.getSize(); // System.out.println("패널 사이즈 : " +
+		 * ManagerPanel.getSize()); g.drawImage(image, 0, 0, d.width, d.height, null); }
+		 * 
+		 * };
+		 */
+		hs = new JPanel();// 임시
 		hs.setSize(900, 600);
 		hs.setLayout(null);
 
@@ -407,18 +403,16 @@ public class ManagerView {
 
 		// 3번 기능 - 회원 관리
 		/*
-		us = new JPanel() {
-
-			@Override
-			protected void paintComponent(Graphics g) {
-
-				Dimension d = us.getSize();
-				// System.out.println("패널 사이즈 : " + ManagerPanel.getSize());
-				g.drawImage(image, 0, 0, d.width, d.height, null);
-			}
-
-		};*/
-		us = new JPanel();//임시
+		 * us = new JPanel() {
+		 * 
+		 * @Override protected void paintComponent(Graphics g) {
+		 * 
+		 * Dimension d = us.getSize(); // System.out.println("패널 사이즈 : " +
+		 * ManagerPanel.getSize()); g.drawImage(image, 0, 0, d.width, d.height, null); }
+		 * 
+		 * };
+		 */
+		us = new JPanel();// 임시
 		us.setSize(900, 600);
 		us.setLayout(null);
 
@@ -441,9 +435,44 @@ public class ManagerView {
 		usButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		us.add(usButton);
 
-		Object[][] usData = { { "abc123", "홍길동", "230101-1******", "99", "hong123@gmail.com" } };// 회원정보
+		ArrayList<User> ar = new AddSample().addsample();
 
-		JTable usTable = new JTable(usData, new Object[] { "아이디", "이름", "주민번호", "나이", "이메일" });
+		usData = new Object[ar.size()][5];
+
+		for (int i = 0; i < ar.size(); i++) {
+			for (int j = 0; j < 5; j++) {
+				switch (j) {
+				case 0:
+					usData[i][j] = ar.get(i).getId();
+					break;
+				case 1:
+					usData[i][j] = ar.get(i).getName();
+					break;
+				case 2:
+					int pwLength = ar.get(i).getPassword().length();
+					String secretCode = "";
+					for (int k = 0; k < pwLength; k++) {
+						secretCode += "*";
+					}
+					System.out.println(secretCode);
+					usData[i][j] = secretCode;
+					System.out.println("비번 길이 : " + ar.get(i).getPassword().length());
+					break;
+				case 3:
+					int ssnLength = ar.get(i).getSsn().length();
+					String secretSsn = ar.get(i).getSsn().substring(ssnLength - 6, ssnLength) + "******";
+					usData[i][j] = secretSsn;
+					break;
+				case 4:
+					usData[i][j] = ar.get(i).getEmail();
+					break;
+				default:
+					break;
+				}
+			}
+		}
+
+		JTable usTable = new JTable(usData, new Object[] { "아이디", "이름", "비밀번호", "주민등록번호", "이메일" });
 		JTableHeader usTableHd = usTable.getTableHeader();
 		final JScrollPane usScrollPane = new JScrollPane(usTable);
 
