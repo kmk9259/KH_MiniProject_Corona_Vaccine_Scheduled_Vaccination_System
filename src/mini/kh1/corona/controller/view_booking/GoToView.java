@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Vector;
 
 import mini.kh1.corona.controller.hospital.HospitalExcel;
+import mini.kh1.corona.controller.reservation.Reservation;
 import mini.kh1.corona.controller.user.BookerList;
 import mini.kh1.corona.model.vo.Booker;
 import mini.kh1.corona.model.vo.HospitalVaccine;
@@ -18,26 +19,30 @@ public class GoToView {
 	
 	private Vector<HospitalVaccine> hospitalList = new Vector<HospitalVaccine>();
 	
-//	private ArrayList<Booker>  bookerlist = BookerList.getBookerList();
-	private boolean reyn = false;	//예약이 되어있으면 true, 안되어있으면 false
-	private int vaccine;
+	BookerList list = new BookerList();
+	ArrayList<Booker> bookerlist = list.getBookerList();
 	private List<User> ulist = InsertPage.temp.getJoinlist();
 	private int sn = LoginPage.getsn();
+	private boolean reyn = false;	//예약이 되어있으면 true, 안되어있으면 false
+	int vaccine;
+	Reservation r = new Reservation();
+	ArrayList<Booker> rlist = r.getnBookerList();
 	
 	public int go() { //vaccine : 남은 백신 수 , reyn : 예약 여부
 	//신청인원 현황 가져오기
 	//신청인원이 마감되면 진입가능
 		
-		BookerList list111 = new BookerList();
-		ArrayList<Booker> bookerlist = list111.getBookerList();
-		System.out.println("****가입한사람****");
-		for(int i = 0; i < ulist.size(); i++) {
-			System.out.println(ulist.get(i).getName() + "---");
-		}
-		System.out.println("****예약한사람****");
-		for(int i = 0; i < bookerlist.size(); i++) {
-			System.out.println(bookerlist.get(i).getName() + "---" + bookerlist.get(i).getSsn());
-		}
+		BookerList list = new BookerList();
+		ArrayList<Booker> bookerlist = list.getBookerList();
+		
+//		System.out.println("****가입한사람****");
+//		for(int i = 0; i < ulist.size(); i++) {
+//			System.out.println(ulist.get(i).getName() + "---");
+//		}
+//		System.out.println("****예약한사람****");
+//		for(int i = 0; i < bookerlist.size(); i++) {
+//			System.out.println(bookerlist.get(i).getName() + "---" + bookerlist.get(i).getSsn());
+//		}
 		
 		try {
 			hospitalList = hExcel.callTable();
@@ -63,6 +68,13 @@ public class GoToView {
 			}
 		}
 		
+		r.cutPeople(hName);
+		
+		System.out.println("=====고투뷰=====");
+		for(int i = 0; i< bookerlist.size(); i++) {
+			System.out.println(bookerlist.get(i).getName() + "=====" + bookerlist.get(i).getRday());
+		}
+		
 		if(reyn == true) {
 			if(vaccine == 0) {
 				return 0; //신청인원 마감, 신청함
@@ -74,7 +86,7 @@ public class GoToView {
 		else {
 			return 2;	//신청 안함
 		}
-		
+
 
 	}
 }
