@@ -140,7 +140,43 @@ public class LoginPage extends JFrame implements ActionListener {
 		uList = InsertPage.temp.getJoinlist();
 
 		int result = 0;
-		if (userText.equals("admin") && pwdText.equals("12345")) 
+
+		for (int i = 0; i < uList.size(); i++) {
+
+			String inputId = uList.get(i).getId();
+			String inputPw = uList.get(i).getPassword();
+
+			if (inputId.equals(userText) && inputPw.equals(pwdText)) {
+				result = 1;
+				sessionNum = i;
+				break;
+			} else {// else문 있어도 되고 없어도 됨
+				result = 0;
+			}
+
+		}
+		
+		System.out.println("result값 : " + result);
+		//result 가 1 이면 로그인 성공
+		if (result == 1) {
+
+			JOptionPane.showMessageDialog(this, "로그인에 성공했습니다.");
+			new MainMenu();
+			frame.setVisible(false);
+			loginSession = true;
+		//입력한 값이 관리자 아이디와 비밀번호면 result 를 2 로 바꿔서 관리자 로그인이 되게 함
+		}else if(userText.equalsIgnoreCase("admin") && pwdText.equalsIgnoreCase("12345")) {
+			result = 2;
+		}
+		
+		//result 가  0 이면 로그인 실패
+		if (result == 0) {
+
+			JOptionPane.showMessageDialog(this, "로그인에 실패했습니다.");
+		}		
+		
+		//result 가 2 이면 관리자 로그인 성공
+		if (result == 2) 
 		{
 			JOptionPane.showMessageDialog(this, "관리자 로그인에 성공했습니다."); // 성공 메세지!!
 			try {
@@ -151,47 +187,6 @@ public class LoginPage extends JFrame implements ActionListener {
 			}
 			frame.setVisible(false);
 		}
-		
-		for (int i = 0; i < uList.size(); i++) 
-		{
-
-			String inputId = uList.get(i).getId();
-			String inputPw = uList.get(i).getPassword();
-			if(userText.equals("admin") && pwdText.equals("12345"))
-			{
-				result=3;
-				break;
-			}
-				
-			else if (inputId.equals(userText) && inputPw.equals(pwdText)) 
-			{
-				result = 1;
-				sessionNum = i;
-				break;
-			}
-			else {// else문 있어도 되고 없어도 됨
-				result = 0;
-			}
-			
-
-		}
-		if (result == 1 && loginSession==true) {	//로그인
-
-			JOptionPane.showMessageDialog(this, "로그인에 성공했습니다.");
-			new MainMenu();
-			frame.setVisible(false);
-		}
-		else if (result == 0 ) {
-
-			JOptionPane.showMessageDialog(this, "로그인에 실패했습니다.");
-			userTextField.setText("");
-			passwordField.setText("");
-			loginSession=false;
-		}
-
-
-		
-		
 
 	
 	}
