@@ -115,35 +115,35 @@ public class InsertPage extends JFrame implements ActionListener {
 
 		// 타이틀 폰트 세팅
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("NanumGothic", Font.BOLD, 28));
+		label.setFont(new Font("휴먼엑스포", Font.BOLD, 28));
 		label.setBounds(262, 28, 376, 75);
 
 		// 아이디 컨테이너
 		container.add(label);
 		userLabel.setBounds(274, 150, 100, 30);
 		container.add(userLabel);
-		userLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
+		userLabel.setFont(new Font("휴먼엑스포", Font.BOLD, 18));
 
 		// 비밀번호 컨테이너
 		passwordLabel.setBounds(274, 200, 100, 30);
 		container.add(passwordLabel);
-		passwordLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
+		passwordLabel.setFont(new Font("휴먼엑스포", Font.BOLD, 18));
 
 		// 이름 컨테이너
 		container.add(label);
 		nameLabel.setBounds(274, 250, 100, 30);
 		container.add(nameLabel);
-		nameLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
+		nameLabel.setFont(new Font("휴먼엑스포", Font.BOLD, 18));
 
 		// 주민번호 컨테이너
 		ssnLabel.setBounds(274, 300, 100, 30);
 		container.add(ssnLabel);
-		ssnLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
+		ssnLabel.setFont(new Font("휴먼엑스포", Font.BOLD, 18));
 
 		// 이메일 컨테이너
 		emailLabel.setBounds(274, 350, 100, 30);
 		container.add(emailLabel);
-		emailLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
+		emailLabel.setFont(new Font("휴먼엑스포", Font.BOLD, 18));
 
 		// 사용자 텍스트 필드
 		userTextField.setBounds(378, 150, 150, 30);

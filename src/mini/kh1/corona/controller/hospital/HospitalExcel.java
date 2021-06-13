@@ -26,7 +26,7 @@ public class HospitalExcel {
 		// 여기서는 메인주소, 병원명, 백신 수량을 가져옴
 		// 얻으려는 데이터가 3개 이므로 열을 3으로 작성
 		Object[][] data = new Object[vector.size()][3];
-		System.out.println("vector 사이즈 : " + vector.size());
+		//System.out.println("vector 사이즈 : " + vector.size());
 
 		for (int i = 0; i < vector.size(); i++) {
 			for (int j = 0; j < 3; j++) {
@@ -41,9 +41,9 @@ public class HospitalExcel {
 				}
 			}
 			// 확인용
-			System.out.println("시/구 : " + vector.get(i).getMainDistrict());
-			System.out.println("병원명 : " + vector.get(i).gethName());
-			System.out.println("재고량 : " + vector.get(i).getVaccine());
+			//System.out.println("시/구 : " + vector.get(i).getMainDistrict());
+			//System.out.println("병원명 : " + vector.get(i).gethName());
+			//System.out.println("재고량 : " + vector.get(i).getVaccine());
 		}
 
 		return data;
@@ -266,7 +266,7 @@ public class HospitalExcel {
 		String mainDistrict = "";
 		String detailDistrict = "";
 
-		System.out.println("hName 1 : " + hName);
+		//System.out.println("hName 1 : " + hName);
 
 		String info = null;
 
@@ -302,10 +302,10 @@ public class HospitalExcel {
 				}
 			}
 		}
-		System.out.println(mainDistrict);
-		System.out.println(detailDistrict);
-		System.out.println("hName 2 : " + hName);
-		System.out.println("메소드 결과 : " + info);
+		//System.out.println(mainDistrict);
+		//System.out.println(detailDistrict);
+		//System.out.println("hName 2 : " + hName);
+		//System.out.println("메소드 결과 : " + info);
 
 		return info;
 	}

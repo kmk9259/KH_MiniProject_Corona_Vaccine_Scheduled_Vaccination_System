@@ -21,7 +21,7 @@ public class HospitalAddress {
 		// 여기서는 메인주소, 상세주소, 병원명을 가져옴
 		// 얻으려는 데이터가 3개 이므로 열을 3으로 작성
 		Object[][] address = new Object[hdVector.size()][3];
-		System.out.println("vector 사이즈 : " + hdVector.size());
+		//System.out.println("vector 사이즈 : " + hdVector.size());
 
 		for (int i = 0; i < hdVector.size(); i++) {
 			for (int j = 0; j < 3; j++) {
@@ -36,9 +36,9 @@ public class HospitalAddress {
 				}
 			}
 			// 확인
-			System.out.println("시/구 : " + hdVector.get(i).getMainDistrict());
-			System.out.println("상세주소 : " + hdVector.get(i).getDetailDistrict());
-			System.out.println("병원명 : " + hdVector.get(i).gethName());
+			//System.out.println("시/구 : " + hdVector.get(i).getMainDistrict());
+			//System.out.println("상세주소 : " + hdVector.get(i).getDetailDistrict());
+			//System.out.println("병원명 : " + hdVector.get(i).gethName());
 		}
 
 		return address;
@@ -134,7 +134,7 @@ public class HospitalAddress {
 					switch (columnIndex) {
 					case 0:
 						if (mainDistrict.equals(cell.getStringCellValue())) {
-							System.out.println("이미 메인주소 있음");
+							//System.out.println("이미 메인주소 있음");
 							addPossible = false;
 							break;
 						} else {
@@ -144,7 +144,7 @@ public class HospitalAddress {
 						break;
 					case 1:
 						if (detailDistrict.equals(cell.getStringCellValue())) {
-							System.out.println("이미 상세주소 있음");
+							//System.out.println("이미 상세주소 있음");
 							addPossible = false;
 							break;
 						} else {
@@ -154,7 +154,7 @@ public class HospitalAddress {
 						break;
 					case 2:
 						if (hName.equals(cell.getStringCellValue())) {
-							System.out.println("이미 병원명 있음");
+							//System.out.println("이미 병원명 있음");
 							addPossible = false;
 							break;
 						} else {
@@ -184,8 +184,6 @@ public class HospitalAddress {
 			fos.close();
 
 		}
-
-		System.out.println("추가해도되냐? : " + addPossible);
 
 		return addPossible;
 	}
