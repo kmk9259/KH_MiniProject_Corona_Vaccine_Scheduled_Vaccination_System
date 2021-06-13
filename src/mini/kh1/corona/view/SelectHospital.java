@@ -77,7 +77,8 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 		setVisible(false);
 		setLayout(null);
 
-		label.setBounds(120, 350, 800, 20);
+		label.setBounds(250, 295, 800, 20);
+		label.setVisible(false);//일단 안 보이게 해놓고 지역 선택하면 문구 보이게
 		add(label); // 안내 문구 한 줄 표 아래 출력! 
 
 		try {
@@ -266,6 +267,8 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 							jscp1.setSize(500, 210);
 
 							jscp1.setVisible(true);
+							
+							label.setVisible(true);//지역 선택 시 안내문구 보이게 설정
 
 							add(jscp1);
 							break;

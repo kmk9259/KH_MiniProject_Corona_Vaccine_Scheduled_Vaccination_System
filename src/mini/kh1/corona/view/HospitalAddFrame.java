@@ -57,7 +57,7 @@ public class HospitalAddFrame extends JFrame {
 			@Override
 			protected void paintComponent(Graphics g) {
 				Dimension d = hafPanel.getSize();
-				System.out.println("수량 입력 패널 사이즈 : " + hafPanel.getSize());
+				//System.out.println("수량 입력 패널 사이즈 : " + hafPanel.getSize());
 				g.drawImage(image, 0, 0, d.width, d.height, null);
 			}
 			
