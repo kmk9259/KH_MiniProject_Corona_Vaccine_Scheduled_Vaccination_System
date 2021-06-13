@@ -4,16 +4,12 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
+import java.util.ArrayList;
 import java.util.Vector;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,8 +21,10 @@ import javax.swing.table.JTableHeader;
 
 import mini.kh1.corona.controller.hospital.HospitalAddress;
 import mini.kh1.corona.controller.hospital.HospitalExcel;
+import mini.kh1.corona.controller.user.AddSample;
 import mini.kh1.corona.model.vo.HospitalDetail;
 import mini.kh1.corona.model.vo.HospitalVaccine;
+import mini.kh1.corona.model.vo.user.User;
 
 public class ManagerView {
 
@@ -50,6 +48,8 @@ public class ManagerView {
 	private JScrollPane hmScrollPane;
 
 	private BufferedImage image;
+	
+	private Object[][] usData;
 
 	public ManagerView() throws Exception {
 
@@ -440,10 +440,45 @@ public class ManagerView {
 		usButton.setBackground(Color.BLACK);
 		usButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		us.add(usButton);
+		
+		ArrayList<User> ar = new AddSample().addsample();
+		
+		usData = new Object[ar.size()][5];
+		
+		for(int i=0; i<ar.size(); i++) {
+			for(int j=0; j<5; j++) {
+				switch(j) {
+				case 0 :
+					usData[i][j] = ar.get(i).getId();
+					break;
+				case 1 :
+					usData[i][j] = ar.get(i).getName();
+					break;
+				case 2 :
+					int pwLength = ar.get(i).getPassword().length();
+					String secretCode = "";
+					for(int k=0; k<pwLength; k++) {
+						secretCode += "*";
+					}
+					System.out.println(secretCode);	 
+					usData[i][j] = secretCode;
+					System.out.println("비번 길이 : " + ar.get(i).getPassword().length());
+					break;
+				case 3 :
+					int ssnLength = ar.get(i).getSsn().length();
+					String secretSsn = ar.get(i).getSsn().substring(ssnLength-6, ssnLength) + "******";
+					usData[i][j] = secretSsn;
+					break;
+				case 4 :
+					usData[i][j] = ar.get(i).getEmail();
+					break;
+				default :
+					break;
+				}
+			}
+		}
 
-		Object[][] usData = { { "abc123", "홍길동", "230101-1******", "99", "hong123@gmail.com" } };// 회원정보
-
-		JTable usTable = new JTable(usData, new Object[] { "아이디", "이름", "주민번호", "나이", "이메일" });
+		JTable usTable = new JTable(usData, new Object[] { "아이디", "이름", "비밀번호", "주민등록번호", "이메일" });
 		JTableHeader usTableHd = usTable.getTableHeader();
 		final JScrollPane usScrollPane = new JScrollPane(usTable);
 
