@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import mini.kh1.corona.controller.reservation.sendMail.MailNotification;
 import mini.kh1.corona.controller.view_booking.GoToView;
 import mini.kh1.corona.model.vo.Chatbot;
 import mini.kh1.corona.model.vo.user.User;
@@ -17,6 +18,7 @@ import mini.kh1.corona.view.ChatBot.ChatBotView;
 import mini.kh1.corona.view.ChatBot.FAQ1;
 
 public class MainMenu {
+	MailNotification mail = new MailNotification();
 
 	JPanel selectHospital = new SelectHospital();
 	
@@ -95,6 +97,8 @@ public class MainMenu {
 
 				int i = gtv.go(); // 신청인 수, 예약 여부 가져와야 함
 				// 사용자가 신청한 병원의 백신갯수, 예약자리스트에 사용자가 있는지
+				mail.sendtoUser();
+				
 				if (i == 0) { // 예약 완료, 마감 되었을때
 					mainPanel.setVisible(false);
 					MFrame.add(CheckBookPanel.checkBookPanel);
