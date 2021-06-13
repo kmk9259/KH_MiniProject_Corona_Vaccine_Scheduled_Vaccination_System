@@ -24,6 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import mini.kh1.corona.model.vo.user.User;
+import java.awt.Color;
 
 public class LoginPage extends JFrame implements ActionListener {
 
@@ -65,7 +66,7 @@ public class LoginPage extends JFrame implements ActionListener {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		try {
-			image = ImageIO.read(new File("./image//image1.jpg"));
+			image = ImageIO.read(new File("./image//background.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -87,6 +88,7 @@ public class LoginPage extends JFrame implements ActionListener {
 		container.setVisible(true);// 첫 패널만 일단 보이게 해놓음
 
 		frame.getContentPane().add(container); // 패널로 컴포넌트를 감싸 놓음.
+		label.setForeground(new Color(25, 25, 112));
 
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("NanumGothic", Font.BOLD, 30));
@@ -94,35 +96,38 @@ public class LoginPage extends JFrame implements ActionListener {
 
 		container.add(label);
 
-		panel.setBounds(304, 233, 292, 199);
+		//panel.setBounds(304, 233, 292, 199);
 
 		container.add(panel);
-		panel.setLayout(null);
+		container.setLayout(null);
+		userLabel.setForeground(new Color(25, 25, 112));
 
 		userLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
-		userLabel.setBounds(0, 0, 100, 30);
-		panel.add(userLabel);
+		userLabel.setBounds(311, 222, 100, 30);
+		container.add(userLabel);
+		passwordLabel.setForeground(new Color(25, 25, 112));
 
 		passwordLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
-		passwordLabel.setBounds(0, 46, 100, 30);
-		panel.add(passwordLabel);
+		passwordLabel.setBounds(311, 268, 100, 30);
+		container.add(passwordLabel);
 
-		userTextField.setBounds(115, 0, 150, 30);
-		panel.add(userTextField);
+		userTextField.setBounds(426, 222, 150, 30);
+		container.add(userTextField);
 
-		passwordField.setBounds(115, 46, 150, 30);
-		panel.add(passwordField);
+		passwordField.setBounds(426, 268, 150, 30);
+		container.add(passwordField);
+		showPassword.setBackground(Color.WHITE);
 
-		showPassword.setBounds(115, 78, 150, 30);
-		panel.add(showPassword);
+		showPassword.setBounds(426, 300, 150, 30);
+		container.add(showPassword);
 
-		loginButton.setBounds(2, 162, 100, 30);
+		loginButton.setBounds(313, 384, 100, 30);
 
-		panel.add(loginButton);
+		container.add(loginButton);
 
 		// insertButton
-		insertButton.setBounds(167, 162, 100, 30);
-		panel.add(insertButton);
+		insertButton.setBounds(478, 384, 100, 30);
+		container.add(insertButton);
 
 		// 버튼 이벤트
 		loginButton.addActionListener(this);
