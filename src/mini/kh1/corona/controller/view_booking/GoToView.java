@@ -71,6 +71,7 @@ public class GoToView {
 //		}
 		
 		r.cutPeople(hName);
+		r.orderAge();
 		
 		System.out.println("=====고투뷰=====");
 		for(int i = 0; i< bookerlist.size(); i++) {
