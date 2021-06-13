@@ -47,7 +47,7 @@ public class HospitalAddress {
 	// 병원 관리 들어가면 출력되게 할 테이블
 	public Vector<HospitalDetail> callAddress() throws Exception {
 
-		FileInputStream fis = new FileInputStream("C:\\Workspace\\HospitalData.xlsx");
+		FileInputStream fis = new FileInputStream("./data//HospitalInfo.xlsx");
 
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 		HospitalDetail hd = new HospitalDetail();
@@ -105,7 +105,7 @@ public class HospitalAddress {
 
 	public boolean addAddress(String mainDistrict, String detailDistrict, String hName, int vaccine) throws Exception {
 
-		FileInputStream fis = new FileInputStream("C:\\Workspace\\HospitalData.xlsx");
+		FileInputStream fis = new FileInputStream("./data//HospitalInfo.xlsx");
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 		XSSFSheet sheet = workbook.getSheet("병원정보");
 		HospitalDetail hd = new HospitalDetail();
@@ -179,7 +179,7 @@ public class HospitalAddress {
 
 		if (addPossible == true) {// 값을 넣을 수 있을 때만 엑셀로 데이터 내보내기
 
-			FileOutputStream fos = new FileOutputStream("C:\\Workspace\\HospitalData.xlsx");
+			FileOutputStream fos = new FileOutputStream("./data//HospitalInfo.xlsx");
 			workbook.write(fos);
 			fos.close();
 
@@ -192,7 +192,7 @@ public class HospitalAddress {
 
 	public Vector<HospitalDetail> modifiedAddress() throws Exception {
 
-		FileInputStream fis = new FileInputStream("C:\\Workspace\\HospitalData.xlsx");
+		FileInputStream fis = new FileInputStream("./data//HospitalInfo.xlsx");
 		HospitalDetail hd = new HospitalDetail();
 		Vector<HospitalDetail> modifiedList = new Vector<HospitalDetail>();
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
