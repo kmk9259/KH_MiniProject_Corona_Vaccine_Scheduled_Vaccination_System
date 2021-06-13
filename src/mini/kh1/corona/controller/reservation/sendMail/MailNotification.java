@@ -1,4 +1,5 @@
 package mini.kh1.corona.controller.reservation.sendMail;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -9,15 +10,24 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import mini.kh1.corona.controller.user.BookerList;
+import mini.kh1.corona.model.vo.Booker;
 import mini.kh1.corona.view.InsertPage;
 
 public class MailNotification {
+	static BookerList list = new BookerList();
+	static ArrayList<Booker> bookerlist = list.getBookerList();
+	static String name ;
+	static String date ;
+	static String hospital ;
+	
 	
 	public static void MailSend(String email, String title, String text) { 
 	    String host = "smtp.gmail.com";
 	    final String user = "alsrud9259@gmail.com"; 
 	    String sender = "alsrud9259@gmail.com";
 	    final String password = "alsrud31017";
+	    
 
 	    Properties props = new Properties(); 
 	    props.put("mail.smtp.starttls.enable", "true");
@@ -58,16 +68,28 @@ public class MailNotification {
 	}
 	public static String mailText()
 	{
+		System.out.println("=====고투뷰======");
+		for(int i = 0; i< bookerlist.size(); i++) 
+		{
+			name = bookerlist.get(i).getName();
+			date = bookerlist.get(i).getRday();
+			hospital = bookerlist.get(i).gethName();
+			System.out.println(bookerlist.get(i).getName() + "=====" + bookerlist.get(i).getRday());
+			
+		}
 		String text="이와 같이 예약이 완료되었습니다.\n"
-				+ "-일시 : 2021년 06월 01일\n" + "-장소 : 서울시 강남구 A병원\n";
+				+ "-일시 : "+date+"\n" + "-장소 :"+hospital+ "\n";
+		
+		
 		return text;
 	}
 	public void sendtoUser()
 	{
-		for(int i=0; i<InsertPage.temp.getJoinlist().size(); i++)
+		for(int i=0; i<bookerlist.size(); i++)
 		{
-			System.out.println(InsertPage.temp.getJoinlist().get(i).getEmail());
-			MailSend(InsertPage.temp.getJoinlist().get(i).getEmail(), mailTitle(), mailText());
+			System.out.println(bookerlist.get(i).getEmail());
+			MailSend(bookerlist.get(i).getEmail(), mailTitle(), mailText());
+			
 		}
 		
 	}
