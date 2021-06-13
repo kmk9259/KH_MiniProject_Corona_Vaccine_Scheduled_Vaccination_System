@@ -12,6 +12,7 @@ import mini.kh1.corona.model.vo.HospitalVaccine;
 import mini.kh1.corona.model.vo.user.User;
 import mini.kh1.corona.view.InsertPage;
 import mini.kh1.corona.view.LoginPage;
+import mini.kh1.corona.view.SelectHospital;
 
 public class GoToView {
 	
@@ -24,6 +25,7 @@ public class GoToView {
 	private List<User> ulist = InsertPage.temp.getJoinlist();
 	private int sn = LoginPage.getsn();
 	private boolean reyn = false;	//예약이 되어있으면 true, 안되어있으면 false
+	private boolean bo = SelectHospital.isBookOver;
 	int vaccine;
 	Reservation r = new Reservation();
 	ArrayList<Booker> rlist = r.getnBookerList();
@@ -58,15 +60,15 @@ public class GoToView {
 		for(int i = 0; i < bookerlist.size(); i++) {
 			if(ulist.get(sn).getSsn().equals(bookerlist.get(i).getSsn())) {
 				reyn = true;
-				hName = bookerlist.get(i).gethName();
+//				hName = bookerlist.get(i).gethName();
 			}
 		}
 		
-		for(int i = 0; i < bookerlist.size(); i++ ) {
-			if(hName.equals(hospitalList.get(i).gethName())) {
-				vaccine = hospitalList.get(i).getVaccine();
-			}
-		}
+//		for(int i = 0; i < bookerlist.size(); i++ ) {
+//			if(hName.equals(hospitalList.get(i).gethName())) {
+//				vaccine = hospitalList.get(i).getVaccine();
+//			}
+//		}
 		
 		r.cutPeople(hName);
 		
@@ -76,7 +78,7 @@ public class GoToView {
 		}
 		
 		if(reyn == true) {
-			if(vaccine == 0) {
+			if(bo == true) {
 				return 0; //신청인원 마감, 신청함
 			}
 			else {
