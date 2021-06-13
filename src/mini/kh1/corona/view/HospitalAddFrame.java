@@ -45,19 +45,14 @@ public class HospitalAddFrame extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// 열려있는 창만 닫음
 		
-		/*병원 관리 프레임 아이콘 이미지 추가(메소드에 throw하면 try-catch 없애도 될듯)
-		try {
-			setIconImage(ImageIO.read(new File("C:\\Workspace\\images\\managerIcon.PNG")));
-		} catch (IOException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
-		*/
+		//병원 관리 프레임 아이콘 이미지 추가(메소드에 throw하면 try-catch 없애도 될듯)
 		
-		//image = ImageIO.read(new File("C:\\Workspace\\images\\image10.jpg"));//메소드에 throws
+		setIconImage(ImageIO.read(new File("./image//managerIcon.PNG")));	
+		
+		image = ImageIO.read(new File("./image//image1.PNG"));//메소드에 throws
 		
 		// 2. 병원 추가 패널 설정
-		hafPanel = new JPanel()/*{
+		hafPanel = new JPanel(){
 
 			@Override
 			protected void paintComponent(Graphics g) {
@@ -66,7 +61,7 @@ public class HospitalAddFrame extends JFrame {
 				g.drawImage(image, 0, 0, d.width, d.height, null);
 			}
 			
-		}*/;
+		};
 		hafPanel.setSize(600, 400);
 		hafPanel.setLayout(null);
 		hafPanel.setVisible(true);

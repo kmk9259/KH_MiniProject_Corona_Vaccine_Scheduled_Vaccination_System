@@ -1,5 +1,6 @@
 package mini.kh1.corona.view.ChatBot;
 
+import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
@@ -8,7 +9,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import java.awt.Color;
 
 public class FAQ1 extends JPanel{
 	Image faq1  =  new ImageIcon("Image/chat.png").getImage();
@@ -23,6 +23,7 @@ public class FAQ1 extends JPanel{
 		add(btn);
 		btn.setBounds(0, 0, 120, 50);
 		btn.setVisible(true);
+		btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		
 		btn.addMouseListener(new MouseAdapter() {
 

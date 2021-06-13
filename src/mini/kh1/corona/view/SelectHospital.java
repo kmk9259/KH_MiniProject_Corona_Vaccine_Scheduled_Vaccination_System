@@ -1,6 +1,7 @@
 package mini.kh1.corona.view;
 
 
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -98,6 +99,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 		combo = new JComboBox(location);
 
 		mapButton.setBounds(80, 450, 180, 35);
+		mapButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		mapButton.setVisible(true);
 		mapButton.setFont(new Font("고딕", Font.BOLD, 15));
 		mapButton.addMouseListener(new MouseAdapter() {
@@ -120,6 +122,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 
 		// 예약하기 버튼 설정
 		bookButton.setBounds(630, 450, 180, 35);
+		bookButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		bookButton.setVisible(true);
 		bookButton.setFont(new Font("고딕", Font.BOLD, 15));
 		bookButton.addMouseListener(new MouseAdapter() {
@@ -228,10 +231,12 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 		add(bookButton); // 패널에 병원위치(지도) 버튼 추가
 
 		combo.setBounds(60, 80, 120, 30);
+		combo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		add(combo);
 		String[][] table = null;
 
 		searchButton.setBounds(180, 80, 60, 30);
+		searchButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		searchButton.setVisible(true);
 
 		searchButton.addMouseListener(new MouseAdapter() {
@@ -291,7 +296,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
 		try {
-			image = ImageIO.read(new File("./image//image1.jpg"));
+			image = ImageIO.read(new File("./image//image1.PNG"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

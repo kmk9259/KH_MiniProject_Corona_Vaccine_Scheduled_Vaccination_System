@@ -1,6 +1,7 @@
 package mini.kh1.corona.view;
 
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -94,7 +95,7 @@ public class ModifyPage extends JFrame implements ActionListener {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		try {
-			image = ImageIO.read(new File("./image//image1.jpg"));
+			image = ImageIO.read(new File("./image//image1.PNG"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -173,10 +174,12 @@ public class ModifyPage extends JFrame implements ActionListener {
 
 		// 수정완료 버튼
 		modiButton.setBounds(378, 421, 150, 40);
+		modiButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		container.add(modiButton);
 
 		// 이전으로 버튼
 		backButton.setBounds(27, 28, 150, 40);
+		backButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		container.add(backButton);
 
 		// 비밀번호 보이기
@@ -186,6 +189,7 @@ public class ModifyPage extends JFrame implements ActionListener {
 		// 회원탈퇴
 
 		removeButton.setBounds(378, 477, 150, 40);
+		removeButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		container.add(removeButton);
 
 		// 버튼 리슨어

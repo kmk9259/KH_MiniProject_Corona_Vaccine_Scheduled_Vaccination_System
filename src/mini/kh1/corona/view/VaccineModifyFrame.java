@@ -49,12 +49,12 @@ public class VaccineModifyFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// 열려있는 창만 닫음
 		
 		//백신 재고 관리 프레임 아이콘 이미지 추가
-		//setIconImage(ImageIO.read(new File("C:\\Workspace\\images\\managerIcon.PNG")));
+		setIconImage(ImageIO.read(new File("./image//managerIcon.PNG")));
 		
-		//image = ImageIO.read(new File("C:\\Workspace\\images\\image10.jpg"));
+		image = ImageIO.read(new File("./image//image1.PNG"));
 		
 		// 2. 병원명 입력하는 패널 설정
-		/*
+		
 		vmfPanel1 = new JPanel() {
 
 			@Override
@@ -64,8 +64,8 @@ public class VaccineModifyFrame extends JFrame {
 				g.drawImage(image, 0, 0, d.width, d.height, null);
 			}
 			
-		};*/
-		vmfPanel1 = new JPanel();//임시
+		};
+	
 		vmfPanel1.setSize(550, 350);
 		vmfPanel1.setLayout(null);
 		vmfPanel1.setVisible(true);
@@ -156,7 +156,7 @@ public class VaccineModifyFrame extends JFrame {
 		add(vmfPanel1);
 
 		// 3. 백신 수량 입력하는 패널 설정
-		/*
+		
 		vmfPanel2 = new JPanel(){
 
 			@Override
@@ -166,8 +166,8 @@ public class VaccineModifyFrame extends JFrame {
 				g.drawImage(image, 0, 0, d.width, d.height, null);
 			}
 			
-		};*/
-		vmfPanel2 = new JPanel();//임시
+		};
+		
 		vmfPanel2.setSize(550, 350);
 		vmfPanel2.setLayout(null);
 		vmfPanel2.setVisible(false);// 첫 화면 아니기때문에 안보이게 설정

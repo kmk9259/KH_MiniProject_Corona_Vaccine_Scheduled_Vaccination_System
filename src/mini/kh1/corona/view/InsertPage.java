@@ -1,6 +1,7 @@
 package mini.kh1.corona.view;
 
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -88,7 +89,7 @@ public class InsertPage extends JFrame implements ActionListener {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		try {
-			image = ImageIO.read(new File("./image//image1.jpg"));
+			image = ImageIO.read(new File("./image//image1.PNG"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -167,14 +168,17 @@ public class InsertPage extends JFrame implements ActionListener {
 
 		// 회원 가입 버튼
 		insertButton.setBounds(378, 421, 150, 40);
+		insertButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		container.add(insertButton);
 
 		// 이전으로 버튼
 		backButton.setBounds(27, 28, 150, 40);
+		backButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		container.add(backButton);
 
 		// 중복확인 버튼
 		dupliButton.setBounds(558, 145, 150, 40);
+		dupliButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		container.add(dupliButton);
 
 		// 버튼 리슨어

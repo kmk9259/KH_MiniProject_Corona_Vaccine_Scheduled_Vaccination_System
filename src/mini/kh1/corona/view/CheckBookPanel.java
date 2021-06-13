@@ -1,6 +1,7 @@
 package mini.kh1.corona.view;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -18,10 +19,8 @@ import javax.swing.table.TableColumnModel;
 
 import mini.kh1.corona.controller.reservation.Reservation;
 import mini.kh1.corona.controller.user.BookerList;
-import mini.kh1.corona.controller.view_booking.Cancel;
 import mini.kh1.corona.model.vo.Booker;
 import mini.kh1.corona.model.vo.user.User;
-import mini.kh1.corona.run.Run;
 
 public class CheckBookPanel extends JPanel {
 
@@ -113,6 +112,7 @@ public class CheckBookPanel extends JPanel {
 		JButton back = new JButton("이전");
 		back.setBounds(20, 480, 120, 60);
 		back.setVisible(true);
+		back.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		add(back);
 		
 		back.addMouseListener(new MouseAdapter() {	//"이전으로" 버튼 눌렀을 때 MainPanel화면으로 이동
@@ -130,6 +130,7 @@ public class CheckBookPanel extends JPanel {
 		JButton cancel = new JButton("예약 취소");
 		cancel.setBounds(745, 480, 120, 60);
 		cancel.setVisible(true);
+		cancel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		add(cancel);
 		cancel.addMouseListener(new MouseAdapter() {
 			
