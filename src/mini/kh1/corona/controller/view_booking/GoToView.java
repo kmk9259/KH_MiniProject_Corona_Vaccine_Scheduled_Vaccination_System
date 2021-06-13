@@ -75,7 +75,7 @@ public class GoToView {
 		
 		System.out.println("=====고투뷰=====");
 		for(int i = 0; i< bookerlist.size(); i++) {
-			System.out.println(bookerlist.get(i).getName() + "=====" + bookerlist.get(i).getRday());
+			System.out.println(bookerlist.get(i)+"나이 재배치 순서");
 		}
 		
 		if(reyn == true) {
