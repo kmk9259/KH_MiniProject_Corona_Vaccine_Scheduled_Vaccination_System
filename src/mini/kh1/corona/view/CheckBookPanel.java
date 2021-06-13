@@ -16,6 +16,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
+import mini.kh1.corona.controller.reservation.Reservation;
 import mini.kh1.corona.controller.user.BookerList;
 import mini.kh1.corona.controller.view_booking.Cancel;
 import mini.kh1.corona.model.vo.Booker;
@@ -25,14 +26,15 @@ import mini.kh1.corona.run.Run;
 public class CheckBookPanel extends JPanel {
 
 	public static JPanel checkBookPanel = new CheckBookPanel();
-	Cancel rcancel = new Cancel();
+	
 	private int sNum = LoginPage.sessionNum;
-//	private ArrayList<Booker>  bookerlist = BookerList.getBookerList();
 	private List<User> ulist = InsertPage.temp.getJoinlist();
-	private Booker b = null;
 	BookerList list = new BookerList();
 	ArrayList<Booker> bookerlist = list.getBookerList();
+	Reservation r = new Reservation();
+	ArrayList<Booker> rlist = r.getnBookerList();
 	
+	private Booker b = null;
 	public CheckBookPanel() {
 	
 		
@@ -49,12 +51,6 @@ public class CheckBookPanel extends JPanel {
 		info.setOpaque(true);
 		add(info);
 		
-		
-		
-		System.out.println("bookerlist ["+bookerlist.size()+"] ");
-		System.out.println("sNum ["+sNum+"] ");
-		
-		
 		// 사용자의 예약정보(이름, 주민등록번호, 접종 병원, 접종일시)를 보여준다.
 		
 		// 1. ulist에서 정보를 가져와 주민등록 번호를 뽑아 온다. 
@@ -63,20 +59,21 @@ public class CheckBookPanel extends JPanel {
 		// 2. bookerList의 주민등록번호들과   ulist에서 뽑아온 주민등록번호(s)를 비교 --> 일치하는 인덱스 번호No를 가져온다.
 		int No = 0;
 		
-		for(int i = 0; i < bookerlist.size(); i++) {
-			if(s.equals(bookerlist.get(i).getSsn())) {
+		for(int i = 0; i < rlist.size(); i++) {
+			if(s.equals(rlist.get(i).getSsn())) {
 				No = i;
 			}
 		}
 		
 		// 3. bookerlist의 No번째 사람의 정보들을 가져온다.
-		b = bookerlist.get(No);
+		b = rlist.get(No);
 		
 		// 4. 가져온 사람의 정보에서 (이름, 주민, 병원, 일시)를 가져온다.
 		
 		String name = b.getName();
 		String str = b.getSsn();	//예약자 주민번호
 		String hName = b.getLocation() + " " + b.gethName();
+		String Rday = b.getRday();
 	
 		// 5. 가져온 정보를 테이블의 각각의 자리에 입력한다.
 		//테이블에 값 넣기
@@ -85,7 +82,7 @@ public class CheckBookPanel extends JPanel {
 				{"이름", name}
 				, { "주민등록번호", str}
 				, {"접종 예정 병원", hName}
-				, {"접종 일시", "2021-06-05"}	//값을 가져와야함
+				, {"접종 일시", Rday}	//값을 가져와야함
 		};
 		
 		JTable bookInfo = new JTable(contents, header);

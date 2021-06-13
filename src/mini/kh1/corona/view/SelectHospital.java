@@ -27,6 +27,8 @@ import mini.kh1.corona.model.vo.user.User;
 //예약하기 -> 공지 -> 지역선택 패널 구현 코드  JPanel상속 
 
 public class SelectHospital extends JPanel { // 병원 선택 화면 패널
+	
+	public static boolean isBookOver = false;
 
 	HospitalExcel hExcel = new HospitalExcel();
 
@@ -154,7 +156,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 								String loca = combo.getSelectedItem().toString();
 								Booker booker1 = new Booker(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getName(),
 										InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getSsn(),
-										InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getEmail(), loca, addHName);
+										InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getEmail(), loca, addHName,"");
 
 								list111.setBookerAdd(booker1);
 								
@@ -181,7 +183,16 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 								for (int j = 0; j < hospitalList.size(); j++) {
 									if (hospitalList.get(i).gethName().equals(addHName)) {
 										vaccine = hospitalList.get(i).getVaccine();
+										
+										if(vaccine == 1) { //사용자가 백신이 1개남았을 때 예약한다면 예약 마감처리해줌. 
+			                                 isBookOver = true;
+			                              }
+			                              
+										
 										hospitalList.get(i).setVaccine(hospitalList.get(i).getVaccine() - 1);
+										
+										
+										
 										try {
 
 											hExcel.modifyVaccine(addHName, vaccine);

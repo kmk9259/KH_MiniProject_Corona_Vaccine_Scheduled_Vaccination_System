@@ -8,19 +8,32 @@ public class Booker {
 	String location; // 지역구
 	String hName; // 병원
 
+	String rday = "";
+	
 	public Booker() {
 		// TODO Auto-generated constructor stub
 	}
 	
-
-	public Booker(String name, String ssn, String email, String location, String hName) {
+	public Booker(String name, String ssn, String email, String location, String hName, String rday) {
 		super();
 		this.name = name;
 		this.ssn = ssn;
 		this.email = email;
 		this.location = location;
 		this.hName = hName;
+		this.rday = rday;
 	}
+	
+	public String getRday() {
+		return rday;
+	}
+
+
+	public void setRday(String rday) {
+		this.rday = rday;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Booker [name=" + name + ", ssn=" + ssn + ", email=" + email + ", location=" + location + ", hName="
