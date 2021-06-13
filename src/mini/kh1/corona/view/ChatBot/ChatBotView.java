@@ -1,12 +1,17 @@
 package mini.kh1.corona.view.ChatBot;
 
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -29,6 +34,7 @@ public class ChatBotView extends JPanel implements ActionListener{
 	
 	LoginPage loginpage;
 	
+	private Image image;
 	
 	public ChatBotView() {
 		Chatbot c = new Chatbot();
@@ -151,5 +157,21 @@ public class ChatBotView extends JPanel implements ActionListener{
 		}
 		
 	}
+
+	@Override
+	protected void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		try {
+			image = ImageIO.read(new File("./image//image1.jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Dimension d = getSize();
+		g.drawImage(image, 0, 0, d.width, d.height, null);
+	}
+	
+	
 
 }

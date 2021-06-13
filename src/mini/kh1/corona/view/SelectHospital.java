@@ -1,12 +1,18 @@
 package mini.kh1.corona.view;
 
 
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -16,13 +22,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import mini.kh1.corona.controller.hospital.HospitalExcel;
-import mini.kh1.corona.controller.reservation.Reservation;
 import mini.kh1.corona.controller.user.AddSample;
 import mini.kh1.corona.controller.user.BookerList;
-import mini.kh1.corona.controller.view_booking.GoToView;
 import mini.kh1.corona.model.vo.Booker;
 import mini.kh1.corona.model.vo.HospitalVaccine;
-import mini.kh1.corona.model.vo.user.User;
 
 //예약하기 -> 공지 -> 지역선택 패널 구현 코드  JPanel상속 
 
@@ -65,6 +68,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 	
 	public BookerList blist = new BookerList();
 	
+	private Image image;
 	
 	public SelectHospital() { 
 
@@ -282,5 +286,21 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 			return "O";
 		}
 	}
+
+	@Override
+	protected void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		try {
+			image = ImageIO.read(new File("./image//image1.jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Dimension d = getSize();
+		g.drawImage(image, 0, 0, d.width, d.height, null);
+	}
+	
+	
 
 }

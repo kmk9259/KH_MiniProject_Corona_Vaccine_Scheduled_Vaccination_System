@@ -3,11 +3,16 @@ package mini.kh1.corona.view;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -75,6 +80,7 @@ public class ModifyPage extends JFrame implements ActionListener {
 	static List newuser = new ArrayList<User>(); // 담아줄 새 회원 리스트
 	public static JoinList temp = new JoinList();
 	//
+	private Image image;
 
 	public ModifyPage() {
 
@@ -87,7 +93,23 @@ public class ModifyPage extends JFrame implements ActionListener {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		container = new JPanel();
+		try {
+			image = ImageIO.read(new File("./image//image1.jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		container = new JPanel() {
+
+			@Override
+			protected void paintComponent(Graphics g) {
+				// TODO Auto-generated method stub
+				Dimension d = container.getSize();
+				g.drawImage(image, 0, 0, d.width, d.height, null);
+			}
+			
+		};
 		container.setLocation(0, 0);
 
 		container.setSize(900, 600);
