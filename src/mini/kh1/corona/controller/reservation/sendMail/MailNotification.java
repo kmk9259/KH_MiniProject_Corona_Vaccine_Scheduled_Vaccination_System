@@ -91,7 +91,7 @@ public class MailNotification {
 						date = dd[i][2];
 						String text= name+"님, 이와 같이 예약이 완료되었습니다.\n"
 									 +"-일시 : "+dd[i][2]+"\n"
-									 +"-장소 :"+hospital+ "\n";
+									 +"-장소 :"+hospital+ "\n\n";
 						MailSend(bookerlist.get(k).getEmail(), mailTitle(), text);
 					}
 						
