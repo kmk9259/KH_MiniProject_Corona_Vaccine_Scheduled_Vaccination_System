@@ -81,7 +81,7 @@ public class MailNotification {
 		{
 			for(int j=0; j<3; j++)
 			{
-				System.out.println(dd[i][j]+"!!");
+				System.out.println(dd[i][j]+"!");
 				for(int k=0; k<bookerlist.size(); k++)
 				{
 					if(dd[i][j].equals(bookerlist.get(k).getName()))
