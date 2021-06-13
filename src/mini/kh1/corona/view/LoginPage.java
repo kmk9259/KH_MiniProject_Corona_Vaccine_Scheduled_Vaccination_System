@@ -1,6 +1,7 @@
 package mini.kh1.corona.view;
 
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -65,7 +66,7 @@ public class LoginPage extends JFrame implements ActionListener {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		try {
-			image = ImageIO.read(new File("./image//image1.jpg"));
+			image = ImageIO.read(new File("./image//image1.PNG"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -117,11 +118,13 @@ public class LoginPage extends JFrame implements ActionListener {
 		panel.add(showPassword);
 
 		loginButton.setBounds(2, 162, 100, 30);
+		loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 
 		panel.add(loginButton);
 
 		// insertButton
 		insertButton.setBounds(167, 162, 100, 30);
+		insertButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		panel.add(insertButton);
 
 		// 버튼 이벤트

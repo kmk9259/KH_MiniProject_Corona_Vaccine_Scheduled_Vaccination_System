@@ -4,12 +4,18 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -65,39 +71,36 @@ public class ManagerView {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// 프레임 아이콘 이미지 추가
-		// frame.setIconImage(ImageIO.read(new
-		// File("C:\\Workspace\\images\\managerIcon.PNG")));
+
+		frame.setIconImage(ImageIO.read(new File("./image//managerIcon.PNG")));
 
 		// 관리자모드 메인 메뉴 패널
 
-		// image = ImageIO.read(new File("C:\\Workspace\\images\\image7.jpg"));
-		/*
-		 * ManagerPanel = new JPanel() {
-		 * 
-		 * @Override protected void paintComponent(Graphics g) {
-		 * 
-		 * Dimension d = ManagerPanel.getSize(); // System.out.println("패널 사이즈 : " +
-		 * ManagerPanel.getSize()); g.drawImage(image, 0, 0, d.width, d.height, null); }
-		 * 
-		 * };
-		 */
+		image = ImageIO.read(new File("./image//image1.PNG"));
 
-		ManagerPanel = new JPanel();// 임시
+		ManagerPanel = new JPanel() {
+
+			@Override
+			protected void paintComponent(Graphics g) {
+
+				Dimension d = ManagerPanel.getSize();
+				System.out.println("메인패널 길이 : " + ManagerPanel.getSize());
+				g.drawImage(image, 0, 0, d.width, d.height, null);
+			}
+
+		};
 
 		ManagerPanel.setSize(900, 600);
 		ManagerPanel.setLayout(null);
 		ManagerPanel.setVisible(true);// 첫 패널만 일단 보이게 해놓음
 
 		// 이미지 크기를 조절해야 하기때문에 Image로 변환해서 크기 조절 후 다시 ImageIcon에 넣어준다.
-		// ImageIcon labelImage = new
-		// ImageIcon("C:\\Workspace\\images\\managerIcon.PNG");
-		// Image mainLabel = labelImage.getImage();
-		// Image mainLabel2 = mainLabel.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-		// ImageIcon labelImage2 = new ImageIcon(mainLabel2);
+		ImageIcon labelImage = new ImageIcon("./image//managerIcon.PNG");
+		Image mainLabel = labelImage.getImage();
+		Image mainLabel2 = mainLabel.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		ImageIcon labelImage2 = new ImageIcon(mainLabel2);
 
-		// JLabel managerMenu = new JLabel("관리자 모드", labelImage2,
-		// SwingConstants.CENTER);
-		JLabel managerMenu = new JLabel("관리자 모드");// 임시
+		JLabel managerMenu = new JLabel("관리자 모드", labelImage2, SwingConstants.CENTER);
 
 		managerMenu.setBounds(550, 70, 150, 50);
 		managerMenu.setFont(new Font("휴먼엑스포", Font.BOLD, 15));
@@ -150,18 +153,18 @@ public class ManagerView {
 		// ==========================================================================
 
 		// 1번기능 - 백신 재고 관리
-		/*
-		 * vc = new JPanel() {
-		 * 
-		 * @Override protected void paintComponent(Graphics g) {
-		 * 
-		 * Dimension d = vc.getSize(); // System.out.println("패널 사이즈 : " +
-		 * ManagerPanel.getSize()); g.drawImage(image, 0, 0, d.width, d.height, null); }
-		 * 
-		 * };
-		 */
 
-		vc = new JPanel();// 임시
+		vc = new JPanel() {
+
+			@Override
+			protected void paintComponent(Graphics g) {
+
+				Dimension d = vc.getSize();
+				g.drawImage(image, 0, 0, d.width, d.height, null);
+			}
+
+		};
+
 		vc.setSize(900, 600);
 		vc.setLayout(null);
 		// 라벨
@@ -206,23 +209,13 @@ public class ManagerView {
 
 		// 병원별 재고 현황 테이블
 		// callTable() 메소드를 불러와서 vector에 넣는다.
-		vector = new HospitalExcel().callTable();
+		try {
+			vector = new HospitalExcel().callTable();
+		} catch (Exception e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
 
-		// vector 사이즈 : 들어가있는 HospitalVaccine의 객체 수 / 3 : 나타낼 정보가 3개(메인주소, 병원명, 재고수량)니까
-		/*
-		 * 메소드로 만들어봄 Object[][] vmData = new Object[vector.size()][3];
-		 * System.out.println("vector 사이즈 : " + vector.size());
-		 * 
-		 * for (int i = 0; i < vector.size(); i++) { for (int j = 0; j < 3; j++) { if (j
-		 * == 0) {// 메인주소가 있는 열 vmData[i][j] = vector.get(i).getMainDistrict(); } if (j
-		 * == 1) { vmData[i][j] = vector.get(i).gethName(); } if (j == 2) { vmData[i][j]
-		 * = vector.get(i).getVaccine(); } } // 확인용 System.out.println("시/구 : " +
-		 * vector.get(i).getMainDistrict()); System.out.println("병원명 : " +
-		 * vector.get(i).gethName()); System.out.println("재고량 : " +
-		 * vector.get(i).getVaccine());
-		 * 
-		 * }
-		 */
 		vmData = new HospitalExcel().getData(vector);// vmData = HospitalExcel getData 메소드에서 얻어온 data 값을 대입
 
 		vmTable = new JTable(vmData, new Object[] { "시/구", "병원명", "재고 수량" });
@@ -286,17 +279,18 @@ public class ManagerView {
 		// ==========================================================================
 
 		// 2번 기능 - 병원 관리
-		/*
-		 * hs = new JPanel() {
-		 * 
-		 * @Override protected void paintComponent(Graphics g) {
-		 * 
-		 * Dimension d = hs.getSize(); // System.out.println("패널 사이즈 : " +
-		 * ManagerPanel.getSize()); g.drawImage(image, 0, 0, d.width, d.height, null); }
-		 * 
-		 * };
-		 */
-		hs = new JPanel();// 임시
+
+		hs = new JPanel() {
+
+			@Override
+			protected void paintComponent(Graphics g) {
+
+				Dimension d = hs.getSize();
+				g.drawImage(image, 0, 0, d.width, d.height, null);
+			}
+
+		};
+
 		hs.setSize(900, 600);
 		hs.setLayout(null);
 
@@ -308,7 +302,7 @@ public class ManagerView {
 		hmLabel.setBackground(Color.BLACK);
 		hmLabel.setForeground(Color.white);
 		hs.add(hmLabel);
-//버튼 기능 수정=======================================>>>>
+
 		JButton hmButton1 = new JButton("추가하기");
 		hmButton1.setBounds(140, 420, 90, 40);
 		hmButton1.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
@@ -338,9 +332,11 @@ public class ManagerView {
 		hmButton3.setBackground(Color.BLACK);
 		hmButton3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		hs.add(hmButton3);
-//<<<<=================================================
+
 		// 병원 정보 현황
+
 		hdVector = new HospitalAddress().callAddress();
+
 		hsData = new HospitalAddress().getAddress(hdVector);
 
 		hmTable = new JTable(hsData, new Object[] { "시/구", "상세주소", "병원명" });
@@ -402,17 +398,18 @@ public class ManagerView {
 		// ==========================================================================
 
 		// 3번 기능 - 회원 관리
-		/*
-		 * us = new JPanel() {
-		 * 
-		 * @Override protected void paintComponent(Graphics g) {
-		 * 
-		 * Dimension d = us.getSize(); // System.out.println("패널 사이즈 : " +
-		 * ManagerPanel.getSize()); g.drawImage(image, 0, 0, d.width, d.height, null); }
-		 * 
-		 * };
-		 */
-		us = new JPanel();// 임시
+
+		us = new JPanel() {
+
+			@Override
+			protected void paintComponent(Graphics g) {
+
+				Dimension d = us.getSize();
+				g.drawImage(image, 0, 0, d.width, d.height, null);
+			}
+
+		};
+
 		us.setSize(900, 600);
 		us.setLayout(null);
 
@@ -582,6 +579,7 @@ public class ManagerView {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				try {
 					new VaccineModifyFrame();
 				} catch (Exception e1) {

@@ -1,6 +1,7 @@
 package mini.kh1.corona.view;
 
 import java.awt.BorderLayout;
+import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -52,6 +53,7 @@ public class Map extends JFrame{
 		
 		panel.add(textField);
 		panel.add(button);
+		button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		button.addMouseListener(new MouseAdapter() {
 
 			@Override

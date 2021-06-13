@@ -1,6 +1,8 @@
 package mini.kh1.corona.view.ChatBot;
 
+import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -50,10 +52,12 @@ public class ChatBotView extends JPanel implements ActionListener{
 		chatting.setLineWrap(true);
 		chatting.setWrapStyleWord(true);
 		chatting.setEditable(false);
+		chatting.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));//######글씨체 변경
 		
 
 		JButton sendButton = new JButton("Send");
 		sendButton.addActionListener(this);
+		sendButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		
 		add(scroll);
 		add(input);
@@ -76,7 +80,8 @@ public class ChatBotView extends JPanel implements ActionListener{
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-
+		
+		input.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));//######글씨체 변경
 		input.setText("");
 		input.requestFocus();
 		input.selectAll();
@@ -162,7 +167,7 @@ public class ChatBotView extends JPanel implements ActionListener{
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
 		try {
-			image = ImageIO.read(new File("./image//image1.jpg"));
+			image = ImageIO.read(new File("./image//image1.PNG"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
