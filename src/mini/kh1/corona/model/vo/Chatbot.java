@@ -6,7 +6,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
-import mini.kh1.corona.view.ChatBot.ChatBotView;
+import mini.kh1.corona.view.ChatBotView;
 
 public class Chatbot {
 	private ChatBotView f;

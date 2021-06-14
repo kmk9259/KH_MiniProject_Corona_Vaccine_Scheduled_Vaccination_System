@@ -24,7 +24,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import mini.kh1.corona.controller.InsertConstroller;
 import mini.kh1.corona.controller.user.AddJoin;
 import mini.kh1.corona.controller.user.AddSignup;
 import mini.kh1.corona.model.vo.user.JoinList;
@@ -40,7 +39,6 @@ public class ModifyPage extends JFrame implements ActionListener {
 	public static int sessionNum;
 
 	private User u = new User();
-	InsertConstroller ic = new InsertConstroller();
 
 	private JFrame frame = new JFrame();
 	private Container container = getContentPane();

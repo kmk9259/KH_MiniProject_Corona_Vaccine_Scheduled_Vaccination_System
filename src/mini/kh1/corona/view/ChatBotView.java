@@ -1,4 +1,4 @@
-package mini.kh1.corona.view.ChatBot;
+package mini.kh1.corona.view;
 
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -21,9 +21,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import mini.kh1.corona.model.vo.Chatbot;
-import mini.kh1.corona.view.InsertPage;
-import mini.kh1.corona.view.LoginPage;
-import mini.kh1.corona.view.MainMenu;
 
 public class ChatBotView extends JPanel implements ActionListener{
 	private JTextArea chatting;

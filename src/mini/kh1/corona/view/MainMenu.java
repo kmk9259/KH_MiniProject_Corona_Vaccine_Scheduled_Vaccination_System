@@ -19,7 +19,6 @@ import javax.swing.JPanel;
 import mini.kh1.corona.controller.reservation.sendMail.MailNotification;
 import mini.kh1.corona.controller.view_booking.GoToView;
 import mini.kh1.corona.model.vo.user.User;
-import mini.kh1.corona.view.ChatBot.ChatBotView;
 
 public class MainMenu {
 	MailNotification mail = new MailNotification();
