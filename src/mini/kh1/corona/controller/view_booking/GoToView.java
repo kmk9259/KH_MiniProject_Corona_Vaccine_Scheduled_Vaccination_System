@@ -20,35 +20,26 @@ public class GoToView {
 	
 	private Vector<HospitalVaccine> hospitalList = new Vector<HospitalVaccine>();
 	
-	BookerList list = new BookerList();
-	ArrayList<Booker> bookerlist = list.getBookerList();
+//	BookerList list;
+//	ArrayList<Booker> bookerlist = list.getBookerList();
 	private List<User> ulist = InsertPage.temp.getJoinlist();
 	private int sn = LoginPage.getsn();
 	private boolean reyn = false;	//예약이 되어있으면 true, 안되어있으면 false
 	private boolean bo = SelectHospital.isBookOver;
 	int vaccine;
-	Reservation r = new Reservation();
-	ArrayList<Booker> rlist = r.getnBookerList();
 	
-	public int go() { //vaccine : 남은 백신 수 , reyn : 예약 여부
-	//신청인원 현황 가져오기
-	//신청인원이 마감되면 진입가능
-		
-		BookerList list = new BookerList();
-		ArrayList<Booker> bookerlist = list.getBookerList();
-		
-//		System.out.println("****가입한사람****");
-//		for(int i = 0; i < ulist.size(); i++) {
-//			System.out.println(ulist.get(i).getName() + "---");
-//		}
-//		System.out.println("****예약한사람****");
-//		for(int i = 0; i < bookerlist.size(); i++) {
-//			System.out.println(bookerlist.get(i).getName() + "---" + bookerlist.get(i).getSsn());
-//		}
+	BookerList list = new BookerList();
+	ArrayList<Booker> bookerlist = list.getBookerList();
+	
+	ArrayList<Booker> d = null;
+	
+	Reservation r = new Reservation();
+	ArrayList<Booker> bb = null;
+	
+	public int go() { 
 		
 		try {
 			hospitalList = hExcel.callTable();
-			
 			
 		} catch (Exception e1) {
 			e1.printStackTrace();
@@ -60,21 +51,8 @@ public class GoToView {
 		for(int i = 0; i < bookerlist.size(); i++) {
 			if(ulist.get(sn).getSsn().equals(bookerlist.get(i).getSsn())) {
 				reyn = true;
-//				hName = bookerlist.get(i).gethName();
+				hName = bookerlist.get(i).gethName();
 			}
-		}
-		
-//		for(int i = 0; i < bookerlist.size(); i++ ) {
-//			if(hName.equals(hospitalList.get(i).gethName())) {
-//				vaccine = hospitalList.get(i).getVaccine();
-//			}
-//		}
-		
-		r.cutPeople(hName);
-		
-		System.out.println("=====고투뷰=====");
-		for(int i = 0; i< bookerlist.size(); i++) {
-			System.out.println(bookerlist.get(i).getName() + "=====" + bookerlist.get(i).getRday());
 		}
 		
 		if(reyn == true) {
@@ -88,7 +66,6 @@ public class GoToView {
 		else {
 			return 2;	//신청 안함
 		}
-
-
 	}
 }
+	

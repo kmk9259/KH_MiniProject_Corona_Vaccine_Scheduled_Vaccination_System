@@ -26,11 +26,10 @@ public class MainMenu {
 
 	JPanel selectHospital = new SelectHospital();
 	
-
 	public static JFrame MFrame = new JFrame();
 	public static JPanel mainPanel; // 메인 패널은 자주 호출될 것이므로 일단 static->직접 호출가능하도록
 
-	boolean isBooker = false;
+	boolean isBookOver = false;
 
 	JButton bookButton = new JButton("예약하기"); // 예약하기 버튼
 	JButton chackBookButton = new JButton("예약조회"); // 예약조회 버튼
@@ -85,13 +84,13 @@ public class MainMenu {
 
 				for (int i = 0; i < bookerList.size(); i++) {
 					if (InsertPage.temp.getJoinlist().get(LoginPage.sessionNum).getName().equals(((User) bookerList.get(i)).getName())) {
-						isBooker = true;
+						isBookOver = true;
 						break;
 					}
 
 				}
 
-				if (isBooker == false) {
+				if (isBookOver == false) {
 					mainPanel.setVisible(false); // 예약버튼 누르면 메인화면은 안보임
 					MFrame.add(Notice.NOTICE); // 메인 프레임에 예약 전 공지사항 추가
 //			MFrame.add(selectHospital); //메인 프레임에 병원(지역)선택 화면 추가
@@ -114,20 +113,21 @@ public class MainMenu {
 
 			@Override
 			public void mousePressed(MouseEvent e) {
+				JPanel checkBookPanel = new CheckBookPanel();
 
 				// 예약조회 버튼 클릭 시 이벤트 구현
 
 				GoToView gtv = new GoToView();
 
-				int i = gtv.go(); // 신청인 수, 예약 여부 가져와야 함
+				int g = gtv.go(); // 신청인 수, 예약 여부 가져와야 함
 				// 사용자가 신청한 병원의 백신갯수, 예약자리스트에 사용자가 있는지
-				mail.sendtoUser();
+//				mail.sendtoUser();
 				
-				if (i == 0) { // 예약 완료, 마감 되었을때
+				if (g == 0) { // 예약 완료, 마감 되었을때
 					mainPanel.setVisible(false);
-					MFrame.add(CheckBookPanel.checkBookPanel);
-					CheckBookPanel.checkBookPanel.setVisible(true);
-				} else if (i == 2) {// 예약하지 않았을 때
+					MFrame.add(checkBookPanel);
+					checkBookPanel.setVisible(true);
+				} else if (g == 2) {// 예약하지 않았을 때
 					JOptionPane.showMessageDialog(null, "접종예약을 하지 않으셨습니다.\n예약하기 먼저 진행해주세요.");
 				} else { // 예약이 마감되지 않았을 때
 					JOptionPane.showMessageDialog(null, "예약이 마감되지 않았습니다.");
