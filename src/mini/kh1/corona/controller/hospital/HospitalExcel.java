@@ -153,7 +153,6 @@ public class HospitalExcel {
 					XSSFCell cell2 = row.getCell(columnIndex);
 
 					if (hName.equals(cell.getStringCellValue())) {
-						System.out.println(rowIndex);
 						rowNum = rowIndex;
 
 						switch (columnIndex) {
@@ -164,7 +163,7 @@ public class HospitalExcel {
 							detailDistrict = cell2.getStringCellValue();
 							break;
 						default:
-							// System.out.println("잘못 입력했음");
+							
 							break;
 						}
 						info = mainDistrict + " " + detailDistrict + " " + hName;

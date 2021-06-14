@@ -102,10 +102,10 @@ public class ManagerView {
 
 		JLabel managerMenu = new JLabel("관리자 모드", labelImage2, SwingConstants.CENTER);
 
-		managerMenu.setBounds(550, 70, 150, 50);
-		managerMenu.setFont(new Font("Nanum Gothic", Font.BOLD, 15));
+		managerMenu.setBounds(456, 65, 329, 50);
+		managerMenu.setFont(new Font("Nanum Gothic", Font.BOLD, 25));
 		managerMenu.setHorizontalAlignment(SwingConstants.CENTER);
-		managerMenu.setForeground(Color.MAGENTA);
+		managerMenu.setForeground(Color.BLACK);
 		ManagerPanel.add(managerMenu);
 		// 1번 기능
 		JButton vcManager = new JButton("백신 재고 관리");
@@ -148,7 +148,8 @@ public class ManagerView {
 		managerLgOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ManagerPanel.add(managerLgOut);
 
-		frame.add(ManagerPanel);
+		frame.setIconImage(ImageIO.read(new File("./image//frameicon3.PNG")));
+		frame.getContentPane().add(ManagerPanel);
 
 		// ==========================================================================
 
@@ -235,7 +236,7 @@ public class ManagerView {
 		vc.add(vmScrollPane);
 		vc.setVisible(false);
 
-		frame.add(vc);
+		frame.getContentPane().add(vc);
 
 		// 새로고침 버튼 클릭 시 표에 있는 데이터가 수정되서 나타나게 만듬
 		vmButton3.addActionListener(new ActionListener() {
@@ -356,7 +357,7 @@ public class ManagerView {
 		hs.add(hmScrollPane);
 		hs.setVisible(false);
 
-		frame.add(hs);
+		frame.getContentPane().add(hs);
 
 		// 새로고침 버튼 클릭 시 표에 추가한 주소가 포함되게 만듬
 		hmButton2.addActionListener(new ActionListener() {
@@ -486,7 +487,7 @@ public class ManagerView {
 		us.add(usScrollPane);
 		us.setVisible(false);
 
-		frame.add(us);
+		frame.getContentPane().add(us);
 
 		// ==========================================================================
 

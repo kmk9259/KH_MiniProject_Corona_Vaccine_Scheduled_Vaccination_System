@@ -105,14 +105,6 @@ public class MailNotification {
 		}
 		
 	}
-	public void sendtoUser()
-	{
-		for(int i=0; i<bookerlist.size(); i++)
-		{
-			System.out.println(bookerlist.get(i).getEmail());
-			
-		}
-		
-	}
+
 
 }

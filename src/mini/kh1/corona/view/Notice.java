@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 public class Notice extends JPanel {
 
 	JPanel selectHospital = new SelectHospital();
-	static JPanel NOTICE = new Notice();
+	//static JPanel NOTIC = new Notice();
 	
 	private Image image;
 
@@ -26,22 +26,6 @@ public class Notice extends JPanel {
 
 		setSize(900, 600);
 		setLayout(null);
-		//setEnabled(false);//이거 지워야 버튼 커서 모양이 바꿔서 주석처리 해놓았습니다.
-
-		/*
-		 * JLabel label = new JLabel();
-		 * 
-		 * label.setHorizontalAlignment(JLabel.CENTER); label.setText(
-		 * "<HTML><body><center>공지사항 <br>" + "선착순으로 신청을 받습니다 <br> " +
-		 * "단, 신청인 중에서 나이에 따른 순차적 접종이 시작되오니 유의해 주시길 바랍니다" +
-		 * "<br> 백신의 순서가 한정적이므로 가급적 예약취소는 삼가해주시길 바랍니다" +
-		 * "<br>이런식으로 출력하면 줄바꿈이되나 <br> 계속 이렇게 하면 줄바굼 할수있삼" +
-		 * "<br> 줄바꿈으로 글을 다 넣어야 하나...이미지로 넣고 싶은디..." + "  </center></body></HTML>");
-		 * 
-		 * label.setFont(new Font("굴림", Font.BOLD, 20));
-		 * 
-		 * label.setSize(900, 600); add(label);
-		 */
 
 		JButton btn = new JButton(" 확  인  ");
 
@@ -51,7 +35,7 @@ public class Notice extends JPanel {
 		btn.setOpaque(true);
 		btn.setBackground(Color.BLACK);
 		btn.setFocusPainted(false);
-		btn.setVisible(true);
+		
 		add(btn);
 
 		btn.addMouseListener(new MouseAdapter() {
@@ -65,7 +49,7 @@ public class Notice extends JPanel {
 
 				if (num == JOptionPane.YES_OPTION) {
 					
-					NOTICE.setVisible(false);	//공지 감추기
+					setVisible(false);	//공지 감추기
 					
 					MainMenu.MFrame.add(selectHospital);	//프레임에 병원선택화면 추가
 					selectHospital.setVisible(true);	//병원선택화면 노출
@@ -75,7 +59,7 @@ public class Notice extends JPanel {
 
 					JOptionPane.showConfirmDialog(null, "메인으로 돌아갑니다","돌아가기",JOptionPane.YES_NO_OPTION);
 					
-					NOTICE.setVisible(false);	//공지 감추기
+					setVisible(false);	//공지 감추기
 					MainMenu.mainPanel.setVisible(true);	//메인화면 노출
 					
 				}
@@ -90,7 +74,7 @@ public class Notice extends JPanel {
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
 		try {
-			image = ImageIO.read(new File("./image//notice.PNG"));
+			image = ImageIO.read(new File("./image//notice.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
