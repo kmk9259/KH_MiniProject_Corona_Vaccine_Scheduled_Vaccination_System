@@ -20,6 +20,7 @@ public class GoToView {
 	
 	private Vector<HospitalVaccine> hospitalList = new Vector<HospitalVaccine>();
 	
+	
 	BookerList list = new BookerList();
 	ArrayList<Booker> bookerlist = list.getBookerList();
 	private List<User> ulist = InsertPage.temp.getJoinlist();
@@ -29,22 +30,13 @@ public class GoToView {
 	int vaccine;
 	Reservation r = new Reservation();
 	ArrayList<Booker> rlist = r.getnBookerList();
-	
+
 	public int go() { //vaccine : 남은 백신 수 , reyn : 예약 여부
 	//신청인원 현황 가져오기
 	//신청인원이 마감되면 진입가능
 		
 		BookerList list = new BookerList();
 		ArrayList<Booker> bookerlist = list.getBookerList();
-		
-//		System.out.println("****가입한사람****");
-//		for(int i = 0; i < ulist.size(); i++) {
-//			System.out.println(ulist.get(i).getName() + "---");
-//		}
-//		System.out.println("****예약한사람****");
-//		for(int i = 0; i < bookerlist.size(); i++) {
-//			System.out.println(bookerlist.get(i).getName() + "---" + bookerlist.get(i).getSsn());
-//		}
 		
 		try {
 			hospitalList = hExcel.callTable();
@@ -60,26 +52,15 @@ public class GoToView {
 		for(int i = 0; i < bookerlist.size(); i++) {
 			if(ulist.get(sn).getSsn().equals(bookerlist.get(i).getSsn())) {
 				reyn = true;
-//				hName = bookerlist.get(i).gethName();
 			}
 		}
 		
-//		for(int i = 0; i < bookerlist.size(); i++ ) {
-//			if(hName.equals(hospitalList.get(i).gethName())) {
-//				vaccine = hospitalList.get(i).getVaccine();
-//			}
-//		}
-		
 		r.cutPeople(hName);
 		r.orderAge();
-		
-		System.out.println("=====고투뷰=====");
-		for(int i = 0; i< bookerlist.size(); i++) {
-			System.out.println(bookerlist.get(i).getName() + "=====" + bookerlist.get(i).getRday());
-		}
-		
-		if(reyn == true) {
-			if(bo == true) {
+
+		if(reyn == true) {	//사용자가 예약자 리스트에 있고
+			if(bo == true) {	//병원의 백신의 재고가 0이되어 신청이 마감되었을 때
+
 				return 0; //신청인원 마감, 신청함
 			}
 			else {

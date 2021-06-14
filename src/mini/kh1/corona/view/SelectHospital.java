@@ -37,7 +37,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 	HospitalExcel hExcel = new HospitalExcel();
 
 	LoginPage loginpage;
-	Vector<HospitalVaccine> hospitalList;
+	public static Vector<HospitalVaccine> hospitalList;
 
 	String excelPath = "../data/HospitalData.xlsx";
 	String sheetName = "병원정보";
@@ -69,6 +69,8 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 	
 	public BookerList blist = new BookerList();
 	
+	public static String addHName;
+	public static String loca;
 	private Image image;
 	
 	public SelectHospital() { 
@@ -128,7 +130,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 		bookButton.setFont(new Font("고딕", Font.BOLD, 15));
 		bookButton.addMouseListener(new MouseAdapter() {
 
-			String addHName;
+			
 
 			@Override
 			public void mousePressed(MouseEvent e) { // 예약버튼 클릭 시 이벤트 (팝업실행)
@@ -138,7 +140,8 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 					e2.printStackTrace();
 				}
 
-				for (int i = 0; i < hospitalList.size(); i++) {
+				for (int i = 0; i < hospitalList.size(); i++) 
+				{
 					if (hospitalList.get(i).getMainDistrict().equals(combo.getSelectedItem())) {
 						addHName = hospitalList.get(i).gethName();
 
@@ -157,18 +160,49 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 								break;
 							} else { // 예약 들어갔을 경우
 								
+								int hospitalIndex1=0;	//병원의 인덱스
+								int hospitalIndex2=0;
+								int hospitalIndex3=0;
 								
-								BookerList list111 = new BookerList();
-								System.out.println("list111.getBookerList().size() ["+list111.getBookerList().size()+"]");
+								//System.out.println("list111.getBookerList().size() ["+list111.getBookerList().size()+"]");
 								
-								String loca = combo.getSelectedItem().toString();
-								Booker booker1 = new Booker(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getName(),
-										InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getSsn(),
-										InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getEmail(), loca, addHName,"");
+								 loca = combo.getSelectedItem().toString();
+								 if(addHName.equals("일산 백병원"))
+								 {
+									 Booker booker1 = new Booker(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getName(),
+												InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getSsn(),
+												InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getEmail(), loca, addHName,"");
+									 BookerList list1 = new BookerList();
+									 list1.setBookerAdd(booker1);
+										
+										System.out.println("첫번째 병원의 예약자 리스트"+ list1.getBookerList().get(hospitalIndex1));
+										hospitalIndex1++;
+								 }
+								 else if(addHName.equals("분당서울대학교병원"))
+								 {
+									 Booker booker2 = new Booker(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getName(),
+												InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getSsn(),
+												InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getEmail(), loca, addHName,"");
+									 BookerList list2 = new BookerList();
+									 list2.setBookerAdd(booker2);
+										System.out.println("2번째 병원의 예약자 리스트"+ list2.getBookerList().get(hospitalIndex2));
+										hospitalIndex2++;
+								 }
+								 else if(addHName.equals("평촌 서울나우병원"))
+								 {
+									 Booker booker3 = new Booker(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getName(),
+												InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getSsn(),
+												InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getEmail(), loca, addHName,"");
+									 BookerList list3 = new BookerList();
+									 list3.setBookerAdd(booker3);
 
-								list111.setBookerAdd(booker1);
+										System.out.println("3번째 병원의 예약자 리스트"+ list3.getBookerList().get(hospitalIndex3));
+										hospitalIndex3++;
+								 }
+								 
 								
-								System.out.println("list111.getBookerList().size() ["+list111.getBookerList().size()+"]");
+								
+								//System.out.println("list111.getBookerList().size() ["+list111.getBookerList().size()+"]");
 //								bookerlist = sample.addsample(); //유저샘플리스트를 가져와서 그대로 예약자 샘플리스트로 쓴다.
 //							 User booker = null; //유저리스트 가져왔기 때문에 일단 예약자도 유저객체로 통일시킴.(제네릭을 삭제하긴 했는데 
 //							 									                          	//그래도 캐스트 오류 발생했었음 )
@@ -213,6 +247,7 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 								}
 
 								// 예약된 병원의재고를 감소시켜주는 메소드
+								
 
 
 								JOptionPane.showMessageDialog(null,
@@ -221,7 +256,9 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 								
 								setVisible(false);
 								MainMenu.mainPanel.setVisible(true);
+								
 							}
+							
 						}
 
 					}

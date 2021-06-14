@@ -87,7 +87,7 @@ public class Notice extends JPanel {
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
 		try {
-			image = ImageIO.read(new File("./image//notice.PNG"));
+			image = ImageIO.read(new File("./image//notice.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

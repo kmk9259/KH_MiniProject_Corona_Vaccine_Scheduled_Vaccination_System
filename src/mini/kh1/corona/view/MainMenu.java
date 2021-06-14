@@ -124,12 +124,13 @@ public class MainMenu {
 
 				int i = gtv.go(); // 신청인 수, 예약 여부 가져와야 함
 				// 사용자가 신청한 병원의 백신갯수, 예약자리스트에 사용자가 있는지
-				mail.sendtoUser();
+				mail.mailText();
 				
 				if (i == 0) { // 예약 완료, 마감 되었을때
+					JPanel checkBookPanel = new CheckBookPanel();
 					mainPanel.setVisible(false);
-					MFrame.add(CheckBookPanel.checkBookPanel);
-					CheckBookPanel.checkBookPanel.setVisible(true);
+					MFrame.add(checkBookPanel);
+					checkBookPanel.setVisible(true);
 				} else if (i == 2) {// 예약하지 않았을 때
 					JOptionPane.showMessageDialog(null, "접종예약을 하지 않으셨습니다.\n예약하기 먼저 진행해주세요.");
 				} else { // 예약이 마감되지 않았을 때
@@ -169,6 +170,8 @@ public class MainMenu {
 				mainPanel.setVisible(false); // 예약버튼 누르면 메인화면은 안보임
 				MFrame.add(chatBotpanel); // 메인 프레임에 병원(지역)선택 화면 추가
 				chatBotpanel.setVisible(true);
+				
+				
 				
 
 			}

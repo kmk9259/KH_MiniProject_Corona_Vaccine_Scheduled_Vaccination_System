@@ -61,7 +61,7 @@ public class InsertPage extends JFrame implements ActionListener {
 
 	private final JLabel label = new JLabel("회원가입");
 
-	private String id = userTextField.getText();
+	private String id = userTextField.getText();	//null값
 	private String pw = passwordField.getText();
 	private String name = nameField.getText();
 	private String ssn = ssnField.getText();
@@ -226,36 +226,52 @@ public class InsertPage extends JFrame implements ActionListener {
 				frame.setVisible(false);
 
 			}
-		}
-
-		if (e.getSource() == dupliButton) { // 중복이면 필드부 클리어, 아니면 성공해서 입력할 수 있다.
-
-			dupliCheckID(id);
+			
 			
 		}
-		if (e.getSource() == backButton) {
+		else if (e.getSource() == dupliButton) { // 중복이면 필드부 클리어, 아니면 성공해서 입력할 수 있다.
+			System.out.println("눌림?");
+			dupliCheckID();
+			
+		}
+		else if (e.getSource() == backButton) {
 			new LoginPage(); // 클릭시, 로그인 화면 으로 돌아감
 			frame.setVisible(false);
 		}
 	}
 	
 	//중복확인 메소드
-		public void dupliCheckID(String id) {
+		public void dupliCheckID() {
+			id = userTextField.getText();
+			int result =0;
+			
 			for (int i = 0; i < InsertPage.temp.getJoinlist().size(); i++) 
 			{ // 전체 회원 인덱스를 돌며 확인하기 위해
-				if (InsertPage.temp.getJoinlist().get(i).getId().equals(id)) {
-					//result = 1; // 참 거짓으로 표현하기 위해
-					
-					JOptionPane.showMessageDialog(this, "중복된 아이디 입니다.");
+				System.out.println();
+				if (InsertPage.temp.getJoinlist().get(i).getId().equals(id)) 
+				{
+					result=1;
 					break;
 				}
 				else
 				{
-					JOptionPane.showMessageDialog(this, "사용 가능한 아이디 입니다.");
-					
-					break;
+					result=2;
 				}
+				
 			}
+			if(result==1)
+			{
+				JOptionPane.showMessageDialog(this, "중복된 아이디 입니다.");
+				userTextField.setText("");
+				result=0;
+			}
+			else if(result==2)
+			{
+				JOptionPane.showMessageDialog(this, "사용가능한 아이디 입니다.");
+				userTextField.setText("");
+				result=0;
+			}
+				
 		}
 	
 }

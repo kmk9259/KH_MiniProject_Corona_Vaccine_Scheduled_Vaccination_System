@@ -93,7 +93,7 @@ public class LoginPage extends JFrame implements ActionListener {
 
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("휴먼엑스포", Font.BOLD, 30));
-		label.setBounds(262, 120, 376, 75);
+		label.setBounds(242, 118, 438, 75);
 
 		container.add(label);
 
@@ -204,6 +204,8 @@ public class LoginPage extends JFrame implements ActionListener {
 		if (result == 0) {
 
 			JOptionPane.showMessageDialog(this, "로그인에 실패했습니다.");
+			userTextField.setText("");
+			passwordField.setText("");
 		}
 
 		// result 가 2 이면 관리자 로그인 성공
