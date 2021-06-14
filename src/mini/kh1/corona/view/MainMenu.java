@@ -1,7 +1,6 @@
 package mini.kh1.corona.view;
 
 
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -27,11 +26,10 @@ public class MainMenu {
 
 	JPanel selectHospital = new SelectHospital();
 	
-
 	public static JFrame MFrame = new JFrame();
 	public static JPanel mainPanel; // 메인 패널은 자주 호출될 것이므로 일단 static->직접 호출가능하도록
 
-	boolean isBooker = false;
+	boolean isBookOver = false;
 
 	JButton bookButton = new JButton("예약하기"); // 예약하기 버튼
 	JButton chackBookButton = new JButton("예약조회"); // 예약조회 버튼
@@ -51,7 +49,7 @@ public class MainMenu {
 		MFrame.setDefaultCloseOperation(MFrame.EXIT_ON_CLOSE);
 
 		try {
-			image = ImageIO.read(new File("./image//image1.PNG"));
+			image = ImageIO.read(new File("./image//image1.jpg"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -77,7 +75,6 @@ public class MainMenu {
 
 		// 예약하기 버튼 설정
 		bookButton.setBounds(180, 280, 200, 50);
-		bookButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		bookButton.setVisible(true);
 		bookButton.addMouseListener(new MouseAdapter() {
 
@@ -87,13 +84,13 @@ public class MainMenu {
 
 				for (int i = 0; i < bookerList.size(); i++) {
 					if (InsertPage.temp.getJoinlist().get(LoginPage.sessionNum).getName().equals(((User) bookerList.get(i)).getName())) {
-						isBooker = true;
+						isBookOver = true;
 						break;
 					}
 
 				}
 
-				if (isBooker == false) {
+				if (isBookOver == false) {
 					mainPanel.setVisible(false); // 예약버튼 누르면 메인화면은 안보임
 					MFrame.add(Notice.NOTICE); // 메인 프레임에 예약 전 공지사항 추가
 //			MFrame.add(selectHospital); //메인 프레임에 병원(지역)선택 화면 추가
@@ -111,26 +108,24 @@ public class MainMenu {
 
 		// 예약조회 버튼 설정
 		chackBookButton.setBounds(470, 280, 200, 50);
-		chackBookButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		chackBookButton.setVisible(true);
 		chackBookButton.addMouseListener(new MouseAdapter() {
 
 			@Override
 			public void mousePressed(MouseEvent e) {
+				JPanel checkBookPanel = new CheckBookPanel();
 
 				// 예약조회 버튼 클릭 시 이벤트 구현
 
 				GoToView gtv = new GoToView();
 
-				int i = gtv.go(); // 신청인 수, 예약 여부 가져와야 함
-				// 사용자가 신청한 병원의 백신갯수, 예약자리스트에 사용자가 있는지
-				mail.mailText();
+				int g = gtv.go(); //
 				
-				if (i == 0) { // 예약 완료, 마감 되었을때
+				if (g == 0) { // 예약 완료, 마감 되었을때
 					mainPanel.setVisible(false);
-					MFrame.add(CheckBookPanel.checkBookPanel);
-					CheckBookPanel.checkBookPanel.setVisible(true);
-				} else if (i == 2) {// 예약하지 않았을 때
+					MFrame.add(checkBookPanel);
+					checkBookPanel.setVisible(true);
+				} else if (g == 2) {// 예약하지 않았을 때
 					JOptionPane.showMessageDialog(null, "접종예약을 하지 않으셨습니다.\n예약하기 먼저 진행해주세요.");
 				} else { // 예약이 마감되지 않았을 때
 					JOptionPane.showMessageDialog(null, "예약이 마감되지 않았습니다.");
@@ -142,7 +137,6 @@ public class MainMenu {
 
 		// 마이페이지 버튼 설정
 		myPageButton.setBounds(180, 380, 200, 50);
-		myPageButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		myPageButton.setVisible(true);
 		myPageButton.addMouseListener(new MouseAdapter() {
 
@@ -158,7 +152,6 @@ public class MainMenu {
 
 		// 챗봇 버튼 설정
 		chatbotButton.setBounds(470, 380, 200, 50);
-		chatbotButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		chatbotButton.setVisible(true);
 		chatbotButton.addMouseListener(new MouseAdapter() {
 
@@ -177,7 +170,6 @@ public class MainMenu {
 
 		// 로그아웃 버튼 설정
 		logoutButton.setBounds(680, 480, 150, 35);
-		logoutButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		logoutButton.setVisible(true);
 		logoutButton.addMouseListener(new MouseAdapter() {
 
