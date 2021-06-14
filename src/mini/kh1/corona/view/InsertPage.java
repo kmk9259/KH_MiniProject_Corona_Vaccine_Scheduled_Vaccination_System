@@ -31,6 +31,8 @@ import mini.kh1.corona.controller.user.AddSignup;
 import mini.kh1.corona.model.vo.user.JoinList;
 import mini.kh1.corona.model.vo.user.User;
 import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class InsertPage extends JFrame implements ActionListener {
 
@@ -145,31 +147,85 @@ public class InsertPage extends JFrame implements ActionListener {
 		ssnLabel.setBounds(274, 312, 100, 30);
 		container.add(ssnLabel);
 		ssnLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
-		emailLabel.setForeground(new Color(25, 25, 112));
+		
 
 		// 이메일 컨테이너
+		emailLabel.setForeground(new Color(25, 25, 112));
 		emailLabel.setBounds(274, 362, 100, 30);
 		container.add(emailLabel);
 		emailLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
+		
+	
 
-		// 사용자 텍스트 필드
+		// 사용자 텍스트 필드 + 텍스트 홀딩
+		userTextField.setText("ID");
 		userTextField.setBounds(378, 162, 150, 30);
 		container.add(userTextField);
+		userTextField.setForeground(Color.LIGHT_GRAY);
+		userTextField.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				userTextField.setText("");
+				userTextField.setForeground(Color.black);
+				
+			}
+		});
+		
 
-		// 비밀번호 텍스트 필드
+		// 비밀번호 텍스트 필드 + 텍스트 홀딩
 		passwordField.setBounds(378, 213, 150, 30);
+		passwordField.setText("password");
+		passwordField.setForeground(Color.LIGHT_GRAY);
+		passwordField.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				passwordField.setText("");
+				passwordField.setForeground(Color.black);
+			}
+		});
 		container.add(passwordField);
 
-		// 이름 텍스트 필드
+		// 이름 텍스트 필드  + 텍스트 홀딩
 		nameField = new JTextField();
+		nameField.setForeground(Color.LIGHT_GRAY);
+		nameField.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				nameField.setText("");
+				nameField.setForeground(Color.black);
+			}
+		});
+		nameField.setText("이름");
 		nameField.setBounds(378, 264, 150, 30);
 		container.add(nameField);
 
+		
+		// 주민번호 텍스트 필드  + 텍스트 홀딩
 		ssnField = new JTextField();
+		ssnField.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				ssnField.setText("");
+				ssnField.setForeground(Color.black);
+			}
+		});
 		ssnField.setBounds(378, 315, 150, 30);
+		ssnField.setForeground(Color.LIGHT_GRAY);
+		ssnField.setText("주민번호");
 		container.add(ssnField);
 
+		
+		// 이메일 텍스트 필드  + 텍스트 홀딩
 		emailField = new JTextField();
+		emailField.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				emailField.setText("");
+				emailField.setForeground(Color.black);
+			}
+		});
+		emailField.setText("email");
+		emailField.setForeground(Color.LIGHT_GRAY);
 		emailField.setBounds(378, 363, 150, 30);
 		container.add(emailField);
 
