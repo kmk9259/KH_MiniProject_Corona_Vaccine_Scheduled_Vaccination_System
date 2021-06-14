@@ -89,7 +89,7 @@ public class HospitalAddFrame extends JFrame {
 		
 		JLabel hafLabel3 = new JLabel("병원명");
 		hafLabel3.setBounds(80, 200, 120, 40);
-		hafLabel3.setFont(new Font("휴먼엑스포", Font.BOLD, 15));
+		hafLabel3.setFont(new Font("Nanum Gothic", Font.BOLD, 15));
 		hafLabel3.setHorizontalAlignment(SwingConstants.CENTER);
 		hafLabel3.setForeground(Color.DARK_GRAY);
 		hafPanel.add(hafLabel3);
