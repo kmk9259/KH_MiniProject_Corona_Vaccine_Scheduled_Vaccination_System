@@ -231,7 +231,7 @@ public class ModifyPage extends JFrame implements ActionListener {
 			InsertPage.temp.getJoinlist().get(loginpage.sessionNum).setPassword(password);
 			InsertPage.temp.getJoinlist().get(loginpage.sessionNum).setEmail(email);
 
-			new MainMenu();
+			new MainMenu().MFrame.setVisible(true);
 			frame.setVisible(false);
 		}
 
@@ -251,7 +251,10 @@ public class ModifyPage extends JFrame implements ActionListener {
 			LoginPage.loginSession = false; // 세션종료
 			frame.setVisible(false);
 			frame.dispose();
-			new MainMenu();
+
+			//new LoginPage();
+			new MainMenu().MFrame.setVisible(true);
+
 
 		}
 
