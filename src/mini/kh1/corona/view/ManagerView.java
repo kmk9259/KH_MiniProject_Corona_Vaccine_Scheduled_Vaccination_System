@@ -84,7 +84,7 @@ public class ManagerView {
 			protected void paintComponent(Graphics g) {
 
 				Dimension d = ManagerPanel.getSize();
-				System.out.println("메인패널 길이 : " + ManagerPanel.getSize());
+				//System.out.println("메인패널 길이 : " + ManagerPanel.getSize());
 				g.drawImage(image, 0, 0, d.width, d.height, null);
 			}
 
@@ -452,9 +452,9 @@ public class ManagerView {
 					for (int k = 0; k < pwLength; k++) {
 						secretCode += "*";
 					}
-					System.out.println(secretCode);
+					//System.out.println(secretCode);
 					usData[i][j] = secretCode;
-					System.out.println("비번 길이 : " + ar.get(i).getPassword().length());
+					//System.out.println("비번 길이 : " + ar.get(i).getPassword().length());
 					break;
 				case 3:
 					int ssnLength = ar.get(i).getSsn().length();
