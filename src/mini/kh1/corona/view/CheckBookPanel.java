@@ -11,7 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -23,13 +22,20 @@ import mini.kh1.corona.model.vo.Booker;
 import mini.kh1.corona.model.vo.user.User;
 
 public class CheckBookPanel extends JPanel {
+	static BookerList list = new BookerList();
+	static ArrayList<Booker> bookerlist = list.getBookerList();
+	static List<Booker> age = list.getBookerList();
+	static String name ;
+	static String date ;
+	static String hospital ;
+	static String ssn;
 
-	public static JPanel checkBookPanel = new CheckBookPanel();
+	//public static JPanel checkBookPanel = new CheckBookPanel();
 	
 	private int sNum = LoginPage.sessionNum;
 	private List<User> ulist = InsertPage.temp.getJoinlist();
-	BookerList list = new BookerList();
-	ArrayList<Booker> bookerlist = list.getBookerList();
+	//BookerList list = new BookerList();
+	//ArrayList<Booker> bookerlist = list.getBookerList();
 	Reservation r = new Reservation();
 	ArrayList<Booker> rlist = r.getnBookerList();
 	
@@ -50,38 +56,62 @@ public class CheckBookPanel extends JPanel {
 		info.setOpaque(true);
 		add(info);
 		
-		// 사용자의 예약정보(이름, 주민등록번호, 접종 병원, 접종일시)를 보여준다.
-		
-		// 1. ulist에서 정보를 가져와 주민등록 번호를 뽑아 온다. 
-		String s = ulist.get(sNum).getSsn();	//사용자 주민등록 번호
-		
-		// 2. bookerList의 주민등록번호들과   ulist에서 뽑아온 주민등록번호(s)를 비교 --> 일치하는 인덱스 번호No를 가져온다.
-		int No = 0;
-		
-		for(int i = 0; i < rlist.size(); i++) {
-			if(s.equals(rlist.get(i).getSsn())) {
-				No = i;
+		Reservation r = new Reservation();
+		String[][] dd = new String [age.size()/2][3];
+		dd = r.cut();
+		for(int i=0; i<age.size()/2; i++)
+		{
+			for(int j=0; j<3; j++)
+			{
+				System.out.println(dd[i][j]+"!");
+				for(int k=0; k<bookerlist.size(); k++)
+				{
+					if(dd[i][j].equals(bookerlist.get(k).getName()))	//예약자 리스트와 날짜를 담은 dd이중배열을 string으로 받아옴
+					{													
+						hospital = bookerlist.get(k).gethName();
+						name = bookerlist.get(k).getName();
+						date = dd[i][2];
+						ssn = bookerlist.get(k).getSsn();
+						
+						
+					}
+						
+				}
 			}
 		}
 		
-		// 3. bookerlist의 No번째 사람의 정보들을 가져온다.
-		b = rlist.get(No);
-		
-		// 4. 가져온 사람의 정보에서 (이름, 주민, 병원, 일시)를 가져온다.
-		
-		String name = b.getName();
-		String str = b.getSsn();	//예약자 주민번호
-		String hName = b.getLocation() + " " + b.gethName();
-		String Rday = b.getRday();
+//		// 사용자의 예약정보(이름, 주민등록번호, 접종 병원, 접종일시)를 보여준다.
+//		
+//		// 1. ulist에서 정보를 가져와 주민등록 번호를 뽑아 온다. 
+//		String s = ulist.get(sNum).getSsn();	//사용자 주민등록 번호
+//		
+//		// 2. bookerList의 주민등록번호들과   ulist에서 뽑아온 주민등록번호(s)를 비교 --> 일치하는 인덱스 번호No를 가져온다.
+//		int No = 0;
+//		
+//		for(int i = 0; i < rlist.size(); i++) {
+//			if(s.equals(rlist.get(i).getSsn())) {
+//				No = i;
+//			}
+//		}
+//		
+//		// 3. bookerlist의 No번째 사람의 정보들을 가져온다.
+//		b = rlist.get(No);
+//		
+//		// 4. 가져온 사람의 정보에서 (이름, 주민, 병원, 일시)를 가져온다.
+//		
+//		String name = b.getName();
+//		String str = b.getSsn();	//예약자 주민번호
+//		String hName = b.getLocation() + " " + b.gethName();
+//		String Rday = b.getRday();
 	
 		// 5. 가져온 정보를 테이블의 각각의 자리에 입력한다.
 		//테이블에 값 넣기
 		Object[] header = {"0", "0"};
 		Object[][] contents = { //나중에 값 가져올 것임
 				{"이름", name}
-				, { "주민등록번호", str}
-				, {"접종 예정 병원", hName}
-				, {"접종 일시", Rday}	//값을 가져와야함
+				, { "주민등록번호", ssn}
+				, {"접종 예정 병원", hospital}
+				, {"접종 일시", date}	//값을 가져와야함
 		};
 		
 		JTable bookInfo = new JTable(contents, header);
@@ -92,7 +122,7 @@ public class CheckBookPanel extends JPanel {
 		bookInfo.setRowHeight(90);
 		bookInfo.getColumnModel().getColumn(0).setMaxWidth(200);
 		bookInfo.getColumnModel().getColumn(1).setMaxWidth(600);
-		JScrollPane scp = new JScrollPane(bookInfo);
+		//JScrollPane scp = new JScrollPane(bookInfo);
 		
 		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
 	    dtcr.setHorizontalAlignment(SwingConstants.CENTER);
@@ -104,9 +134,9 @@ public class CheckBookPanel extends JPanel {
 	    }
 		
 	    bookInfo.setEnabled(false);
-	    scp.setEnabled(false);
+	    //scp.setEnabled(false);
 		add(bookInfo);
-		add(scp);
+		//add(scp);
 		
 		// 6. "뒤로가기"버튼 눌렀을 때 "메인메뉴"로 이동
 		JButton back = new JButton("이전");
@@ -120,7 +150,8 @@ public class CheckBookPanel extends JPanel {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				
-				MainMenu.MFrame.remove(checkBookPanel);
+				//MainMenu.MFrame.remove(checkBookPanel);
+				setVisible(false);
 				MainMenu.mainPanel.setVisible(true);
 				
 			}
@@ -135,23 +166,57 @@ public class CheckBookPanel extends JPanel {
 		cancel.addMouseListener(new MouseAdapter() {
 			
 			@Override
-			public void mousePressed(MouseEvent e) {
+	         public void mousePressed(MouseEvent e) {
 
-				JButton cancel = (JButton)e.getSource();
-				
-				int result = JOptionPane.showConfirmDialog(null, "예약을 취소하시겠습니까?\n'확인' 시 되돌릴 수 없습니다.", "예약 취소",  JOptionPane.YES_NO_OPTION);
-				if(result == JOptionPane.YES_OPTION) {	//"예" 일 때
-					//취소 처리
-					list.setBookerRemove(b);
-					
-					JOptionPane.showMessageDialog(null, "예약이 취소되었습니다.\n홈 화면으로 이동합니다.");
-					
-					MainMenu.MFrame.remove(checkBookPanel);
-					MainMenu.mainPanel.setVisible(true);
-				}
-			}
+	            JButton cancel = (JButton)e.getSource();
+	            
+	            int result = JOptionPane.showConfirmDialog(null, "예약을 취소하시겠습니까?\n'확인' 시 되돌릴 수 없습니다.", "예약 취소",  JOptionPane.YES_NO_OPTION);
+	            if(result == JOptionPane.YES_OPTION) {   //"예" 일 때
+	               //취소 처리
+	               for(int i = 0; i < bookerlist.size(); i++) {
+	                  if(ulist.get(sNum).getSsn().equals(bookerlist.get(i).getSsn())) {
+	                     b = bookerlist.get(i);
+	                  }
+	               }
+	               
+	               list.setBookerRemove(b);
+	               
+	               JOptionPane.showMessageDialog(null, "예약이 취소되었습니다.\n홈 화면으로 이동합니다.");
+	               
+	               //MainMenu.MFrame.remove(checkBookPanel);
+	               setVisible(false);
+	               MainMenu.mainPanel.setVisible(true);
+	            }
+	         }
 		});
 		
+		
+	}
+	public void bookerInfo()
+	{
+		Reservation r = new Reservation();
+		String[][] dd = new String [age.size()/2][3];
+		dd = r.cut();
+		for(int i=0; i<age.size()/2; i++)
+		{
+			for(int j=0; j<3; j++)
+			{
+				System.out.println(dd[i][j]+"!");
+				for(int k=0; k<bookerlist.size(); k++)
+				{
+					if(dd[i][j].equals(bookerlist.get(k).getName()))	//예약자 리스트와 날짜를 담은 dd이중배열을 string으로 받아옴
+					{													
+						hospital = bookerlist.get(k).gethName();
+						name = bookerlist.get(k).getName();
+						date = dd[i][2];
+						ssn = bookerlist.get(k).getSsn();
+						
+						
+					}
+						
+				}
+			}
+		}
 		
 	}
 
