@@ -131,7 +131,7 @@ public class MainMenu {
 
 				int g = gtv.go(); //
 				r.orderAge();
-				//mail.mailText();
+				mail.mailText();
 				
 				
 				

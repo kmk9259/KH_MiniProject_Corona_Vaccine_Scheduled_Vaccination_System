@@ -76,8 +76,6 @@ public class HospitalExcel {
 
 		int maxRowNum = sheet.getPhysicalNumberOfRows();// 해당 시트의 최대 row 번호를 얻어옴
 
-		System.out.println(maxRowNum);
-
 		for (rowIndex = 1; rowIndex < maxRowNum; rowIndex++) {
 
 			XSSFRow row = sheet.getRow(rowIndex);// 시트 해당 인덱스의 row(행)을 받아옴
