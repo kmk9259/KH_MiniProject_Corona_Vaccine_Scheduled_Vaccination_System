@@ -1,3 +1,4 @@
+  
 package mini.kh1.corona.controller.reservation.sendMail;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,18 +15,16 @@ import javax.mail.internet.MimeMessage;
 import mini.kh1.corona.controller.reservation.Reservation;
 import mini.kh1.corona.controller.user.BookerList;
 import mini.kh1.corona.model.vo.Booker;
-import mini.kh1.corona.model.vo.user.User;
-import mini.kh1.corona.view.InsertPage;
 
 public class MailNotification {
 	static BookerList list = new BookerList();
 	static ArrayList<Booker> bookerlist = list.getBookerList();
+	static List<Booker> age = list.getBookerList();
 	static String name ;
 	static String date ;
 	static String hospital ;
-	//static List<User> age = InsertPage.temp.getJoinlist();//bookerlist
-	static BookerList bookerlist2 = new BookerList();
-	static List<Booker> age = bookerlist2.getBookerList();
+	
+	
 	
 	public static void MailSend(String email, String title, String text) { 
 	    String host = "smtp.gmail.com";
@@ -89,15 +88,20 @@ public class MailNotification {
 						hospital = bookerlist.get(k).gethName();
 						name = bookerlist.get(k).getName();
 						date = dd[i][2];
-						String text= name+"님, 이와 같이 예약이 완료되었습니다.\n"
-									 +"-일시 : "+dd[i][2]+"\n"
-									 +"-장소 :"+hospital+ "\n";
+						String temp= name+"님, 이와 같이 예약이 완료되었습니다.\n"
+									 +"√ 일시 : "+dd[i][2]+"\n"
+									 +"√ 장소 : "+hospital+ "\n\n";
+						String temp2 = "☑ 접종 후 유의사항\n\n"
+										+"√ 접종 후 최소 3시간 이상 안정을 취하시고, 내일까지 무리하지 않습니다.\n"
+										+"√ 최소 3일간은 특별한 증상이 나타나는지 주의 깊게 관찰합니다.\n"
+										+"√ 만약 39도 이상의 고열이 있거나 두드러기 등 알레르기 반응이 나타나면 진료를 받도록 합니다.\n"
+										+"√ 마스크 착용, 거리두기 등 코로나19 예방수칙을 계속 지켜주시기 바랍니다.";
+						String text = temp+temp2;
+								
 						MailSend(bookerlist.get(k).getEmail(), mailTitle(), text);
 					}
 						
 				}
-				
-				
 			}
 		}
 		
