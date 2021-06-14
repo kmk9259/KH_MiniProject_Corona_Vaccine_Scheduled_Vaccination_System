@@ -30,6 +30,7 @@ import mini.kh1.corona.controller.user.AddJoin;
 import mini.kh1.corona.controller.user.AddSignup;
 import mini.kh1.corona.model.vo.user.JoinList;
 import mini.kh1.corona.model.vo.user.User;
+import java.awt.Color;
 
 public class InsertPage extends JFrame implements ActionListener {
 
@@ -112,62 +113,68 @@ public class InsertPage extends JFrame implements ActionListener {
 		container.setVisible(true);// 첫 패널만 일단 보이게 해놓음
 
 		frame.getContentPane().add(container); // 패널로 컴포넌트를 감싸 놓음.
+		label.setForeground(new Color(25, 25, 112));
 
 		// 타이틀 폰트 세팅
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("휴먼엑스포", Font.BOLD, 28));
-		label.setBounds(262, 28, 376, 75);
+		label.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 28));
+		label.setBounds(262, 48, 376, 75);
 
 		// 아이디 컨테이너
 		container.add(label);
-		userLabel.setBounds(274, 150, 100, 30);
+		userLabel.setForeground(new Color(25, 25, 112));
+		userLabel.setBounds(274, 162, 100, 30);
 		container.add(userLabel);
-		userLabel.setFont(new Font("휴먼엑스포", Font.BOLD, 18));
+		userLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
+		passwordLabel.setForeground(new Color(25, 25, 112));
 
 		// 비밀번호 컨테이너
-		passwordLabel.setBounds(274, 200, 100, 30);
+		passwordLabel.setBounds(274, 212, 100, 30);
 		container.add(passwordLabel);
-		passwordLabel.setFont(new Font("휴먼엑스포", Font.BOLD, 18));
+		passwordLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
 
 		// 이름 컨테이너
 		container.add(label);
-		nameLabel.setBounds(274, 250, 100, 30);
+		nameLabel.setForeground(new Color(25, 25, 112));
+		nameLabel.setBounds(274, 262, 100, 30);
 		container.add(nameLabel);
-		nameLabel.setFont(new Font("휴먼엑스포", Font.BOLD, 18));
+		nameLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
+		ssnLabel.setForeground(new Color(25, 25, 112));
 
 		// 주민번호 컨테이너
-		ssnLabel.setBounds(274, 300, 100, 30);
+		ssnLabel.setBounds(274, 312, 100, 30);
 		container.add(ssnLabel);
-		ssnLabel.setFont(new Font("휴먼엑스포", Font.BOLD, 18));
+		ssnLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
+		emailLabel.setForeground(new Color(25, 25, 112));
 
 		// 이메일 컨테이너
-		emailLabel.setBounds(274, 350, 100, 30);
+		emailLabel.setBounds(274, 362, 100, 30);
 		container.add(emailLabel);
-		emailLabel.setFont(new Font("휴먼엑스포", Font.BOLD, 18));
+		emailLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
 
 		// 사용자 텍스트 필드
-		userTextField.setBounds(378, 150, 150, 30);
+		userTextField.setBounds(378, 162, 150, 30);
 		container.add(userTextField);
 
 		// 비밀번호 텍스트 필드
-		passwordField.setBounds(378, 201, 150, 30);
+		passwordField.setBounds(378, 213, 150, 30);
 		container.add(passwordField);
 
 		// 이름 텍스트 필드
 		nameField = new JTextField();
-		nameField.setBounds(378, 252, 150, 30);
+		nameField.setBounds(378, 264, 150, 30);
 		container.add(nameField);
 
 		ssnField = new JTextField();
-		ssnField.setBounds(378, 303, 150, 30);
+		ssnField.setBounds(378, 315, 150, 30);
 		container.add(ssnField);
 
 		emailField = new JTextField();
-		emailField.setBounds(378, 351, 150, 30);
+		emailField.setBounds(378, 363, 150, 30);
 		container.add(emailField);
 
 		// 회원 가입 버튼
-		insertButton.setBounds(378, 421, 150, 40);
+		insertButton.setBounds(378, 433, 150, 40);
 		insertButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		container.add(insertButton);
 
@@ -177,7 +184,7 @@ public class InsertPage extends JFrame implements ActionListener {
 		container.add(backButton);
 
 		// 중복확인 버튼
-		dupliButton.setBounds(558, 145, 150, 40);
+		dupliButton.setBounds(558, 157, 150, 40);
 		dupliButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		container.add(dupliButton);
 
