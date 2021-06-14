@@ -96,40 +96,36 @@ public class LoginPage extends JFrame implements ActionListener {
 		label.setBounds(262, 120, 376, 75);
 
 		container.add(label);
-
-		// panel.setBounds(304, 233, 292, 199);
-
 		container.add(panel);
 		container.setLayout(null);
-		userLabel.setForeground(new Color(25, 25, 112));
 
+		userLabel.setForeground(new Color(25, 25, 112));
 		userLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
 		userLabel.setBounds(311, 222, 100, 30);
 		container.add(userLabel);
-		passwordLabel.setForeground(new Color(25, 25, 112));
 
+		passwordLabel.setForeground(new Color(25, 25, 112));
 		passwordLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
 		passwordLabel.setBounds(311, 268, 100, 30);
 		container.add(passwordLabel);
 
+		// 텍스트 필드
 		userTextField.setBounds(426, 222, 150, 30);
 		container.add(userTextField);
 
 		passwordField.setBounds(426, 268, 150, 30);
 		container.add(passwordField);
-		
 
 		showPassword.setBounds(426, 300, 150, 30);
-		showPassword.setOpaque(false);//배경 투명하게 만드는 코드
+		showPassword.setOpaque(false);// 배경 투명하게 만드는 코드
 		container.add(showPassword);
 
+		// 로그인 버튼
 		loginButton.setBounds(313, 384, 100, 30);
 		loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));// ######버튼 커서 변경
-
 		container.add(loginButton);
 
 		// insertButton
-
 		insertButton.setBounds(478, 384, 100, 30);
 		insertButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));// ######버튼 커서 변경
 		container.add(insertButton);
@@ -204,6 +200,8 @@ public class LoginPage extends JFrame implements ActionListener {
 		if (result == 0) {
 
 			JOptionPane.showMessageDialog(this, "로그인에 실패했습니다.");
+			userTextField.setText("");
+			passwordField.setText("");
 		}
 
 		// result 가 2 이면 관리자 로그인 성공
