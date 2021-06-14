@@ -42,6 +42,7 @@ public class StartPage extends JFrame {
 
 		try {
 			image = ImageIO.read(new File("./image//startImage.PNG"));
+			this.setIconImage(ImageIO.read(new File("./image//frameicon3.png")));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

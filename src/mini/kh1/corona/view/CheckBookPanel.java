@@ -25,10 +25,10 @@ public class CheckBookPanel extends JPanel {
 	static BookerList list = new BookerList();
 	static ArrayList<Booker> bookerlist = list.getBookerList();
 	static List<Booker> age = list.getBookerList();
-	static String name ;
-	static String date ;
-	static String hospital ;
-	static String ssn;
+	static String name =null;
+	static String date =null;
+	static String hospital=null;
+	static String ssn=null;
 
 	//public static JPanel checkBookPanel = new CheckBookPanel();
 	

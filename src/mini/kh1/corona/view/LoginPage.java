@@ -68,7 +68,7 @@ public class LoginPage extends JFrame implements ActionListener {
 
 		try {
 			image = ImageIO.read(new File("./image//image1.PNG"));
-			frame.setIconImage(ImageIO.read(new File("./image//frameicon2.png")));
+			frame.setIconImage(ImageIO.read(new File("./image//frameicon3.png")));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
