@@ -59,7 +59,7 @@ public class LoginPage extends JFrame implements ActionListener {
 
 		frame.setPreferredSize(new Dimension(900, 600));
 		frame.setSize(900, 600);
-		frame.setTitle("로그인 페이지");
+		
 		frame.setResizable(false);// 창 사이즈 변경 불가
 		frame.setLocationRelativeTo(null);// 모니터 중간에 창 띄우기
 		frame.getContentPane().setLayout(null);
@@ -68,7 +68,7 @@ public class LoginPage extends JFrame implements ActionListener {
 
 		try {
 			image = ImageIO.read(new File("./image//image1.PNG"));
-			frame.setIconImage(ImageIO.read(new File("./image//FrameIcon.png")));
+			frame.setIconImage(ImageIO.read(new File("./image//frameicon2.png")));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
