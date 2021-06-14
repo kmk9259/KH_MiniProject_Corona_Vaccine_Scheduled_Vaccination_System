@@ -53,9 +53,6 @@ public class GoToView {
 			}
 		}
 
-		r.cutPeople(hName);
-		r.orderAge();
-
 		if (reyn == true) { // 사용자가 예약자 리스트에 있고
 			if (bo == true) { // 병원의 백신의 재고가 0이되어 신청이 마감되었을 때
 
