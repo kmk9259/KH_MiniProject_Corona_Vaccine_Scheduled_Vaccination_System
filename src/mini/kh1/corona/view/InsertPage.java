@@ -314,7 +314,7 @@ public class InsertPage extends JFrame implements ActionListener {
 			result = 0;
 		} else if (result == 2) {
 			JOptionPane.showMessageDialog(this, "사용가능한 아이디 입니다.");
-			userTextField.setText("");
+
 			result = 0;
 		}
 

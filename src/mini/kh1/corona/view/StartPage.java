@@ -54,7 +54,6 @@ public class StartPage extends JFrame {
 			protected void paintComponent(Graphics g) {
 				// TODO Auto-generated method stub
 				Dimension d = startButton.getSize();
-				System.out.println("메인패널 길이 : " + startButton.getSize());
 				g.drawImage(image, 0, 0, d.width, d.height, null);
 			}
 			
@@ -73,7 +72,6 @@ public class StartPage extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("스타트 버튼 클릭");
 				setVisible(false);
 				new LoginPage();
 
@@ -92,7 +90,6 @@ public class StartPage extends JFrame {
 			e1.printStackTrace();
 		}
 		Dimension d = getSize();
-		System.out.println("메인패널 길이 : " + getSize());
 		g.drawImage(image, 0, 0, d.width, d.height, null);
 		
 	}

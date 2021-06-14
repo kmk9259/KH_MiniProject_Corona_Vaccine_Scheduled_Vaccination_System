@@ -97,11 +97,10 @@ public class MainMenu {
 
 				if (isBookOver == false) {
 					mainPanel.setVisible(false); // 예약버튼 누르면 메인화면은 안보임
-					MFrame.add(Notice.NOTICE); // 메인 프레임에 예약 전 공지사항 추가
-//			MFrame.add(selectHospital); //메인 프레임에 병원(지역)선택 화면 추가
-
-					Notice.NOTICE.setVisible(true);
-//			selectHospital.setVisible(true); //병원(지역)선택 화면 노출
+					JPanel notice = new Notice();
+					MFrame.add(notice); 
+					mainPanel.setVisible(false); // 예약버튼 누르면 메인화면은 안보임
+					notice.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(null, "이미 예약하셨습니다.");
 
@@ -129,7 +128,7 @@ public class MainMenu {
 				GoToView gtv = new GoToView();
 
 				int g = gtv.go(); //
-				mail.mailText();
+				
 				if (g == 0) { // 예약 완료, 마감 되었을때
 					mainPanel.setVisible(false);
 					MFrame.add(checkBookPanel);
