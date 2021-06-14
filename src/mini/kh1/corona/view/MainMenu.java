@@ -49,7 +49,7 @@ public class MainMenu {
 
 		try {
 			image = ImageIO.read(new File("./image//image1.jpg"));
-			MFrame.setIconImage(ImageIO.read(new File("./image//FrameIcon.jpg")));
+			MFrame.setIconImage(ImageIO.read(new File("./image//frameicon3.jpg")));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
