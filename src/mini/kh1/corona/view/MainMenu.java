@@ -1,6 +1,7 @@
 package mini.kh1.corona.view;
 
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -48,8 +49,8 @@ public class MainMenu {
 		MFrame.setDefaultCloseOperation(MFrame.EXIT_ON_CLOSE);
 
 		try {
-			image = ImageIO.read(new File("./image//image1.jpg"));
-			MFrame.setIconImage(ImageIO.read(new File("./image//frameicon3.jpg")));
+			image = ImageIO.read(new File("./image//image1.PNG"));
+			MFrame.setIconImage(ImageIO.read(new File("./image//frameicon3.PNG")));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -75,6 +76,10 @@ public class MainMenu {
 
 		// 예약하기 버튼 설정
 		bookButton.setBounds(180, 280, 200, 50);
+		bookButton.setForeground(Color.WHITE);
+		bookButton.setOpaque(true);
+		bookButton.setBackground(Color.BLACK);
+		bookButton.setFocusPainted(false);
 		bookButton.setVisible(true);
 		bookButton.addMouseListener(new MouseAdapter() {
 
@@ -108,6 +113,10 @@ public class MainMenu {
 
 		// 예약조회 버튼 설정
 		chackBookButton.setBounds(470, 280, 200, 50);
+		chackBookButton.setForeground(Color.WHITE);
+		chackBookButton.setOpaque(true);
+		chackBookButton.setBackground(Color.BLACK);
+		chackBookButton.setFocusPainted(false);
 		chackBookButton.setVisible(true);
 		chackBookButton.addMouseListener(new MouseAdapter() {
 
@@ -137,6 +146,10 @@ public class MainMenu {
 
 		// 마이페이지 버튼 설정
 		myPageButton.setBounds(180, 380, 200, 50);
+		myPageButton.setForeground(Color.WHITE);
+		myPageButton.setOpaque(true);
+		myPageButton.setBackground(Color.BLACK);
+		myPageButton.setFocusPainted(false);
 		myPageButton.setVisible(true);
 		myPageButton.addMouseListener(new MouseAdapter() {
 
@@ -152,6 +165,10 @@ public class MainMenu {
 
 		// 챗봇 버튼 설정
 		chatbotButton.setBounds(470, 380, 200, 50);
+		chatbotButton.setForeground(Color.WHITE);
+		chatbotButton.setOpaque(true);
+		chatbotButton.setBackground(Color.BLACK);
+		chatbotButton.setFocusPainted(false);
 		chatbotButton.setVisible(true);
 		chatbotButton.addMouseListener(new MouseAdapter() {
 
@@ -170,6 +187,10 @@ public class MainMenu {
 
 		// 로그아웃 버튼 설정
 		logoutButton.setBounds(680, 480, 150, 35);
+		logoutButton.setForeground(Color.WHITE);
+		logoutButton.setOpaque(true);
+		logoutButton.setBackground(Color.BLACK);
+		logoutButton.setFocusPainted(false);
 		logoutButton.setVisible(true);
 		logoutButton.addMouseListener(new MouseAdapter() {
 

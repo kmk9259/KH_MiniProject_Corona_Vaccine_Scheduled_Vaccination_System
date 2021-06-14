@@ -112,7 +112,7 @@ public class InsertPage extends JFrame implements ActionListener {
 
 		// 타이틀 폰트 세팅
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 28));
+		label.setFont(new Font("Nanum Gothic", Font.BOLD, 28));
 		label.setBounds(262, 48, 376, 75);
 
 		// 아이디 컨테이너
@@ -120,32 +120,32 @@ public class InsertPage extends JFrame implements ActionListener {
 		userLabel.setForeground(new Color(25, 25, 112));
 		userLabel.setBounds(274, 162, 100, 30);
 		container.add(userLabel);
-		userLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
+		userLabel.setFont(new Font("Nanum Gothic", Font.BOLD, 18));
 		passwordLabel.setForeground(new Color(25, 25, 112));
 
 		// 비밀번호 컨테이너
 		passwordLabel.setBounds(274, 212, 100, 30);
 		container.add(passwordLabel);
-		passwordLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
+		passwordLabel.setFont(new Font("Nanum Gothic", Font.BOLD, 18));
 
 		// 이름 컨테이너
 		container.add(label);
 		nameLabel.setForeground(new Color(25, 25, 112));
 		nameLabel.setBounds(274, 262, 100, 30);
 		container.add(nameLabel);
-		nameLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
+		nameLabel.setFont(new Font("Nanum Gothic", Font.BOLD, 18));
 		ssnLabel.setForeground(new Color(25, 25, 112));
 
 		// 주민번호 컨테이너
 		ssnLabel.setBounds(274, 312, 100, 30);
 		container.add(ssnLabel);
-		ssnLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
+		ssnLabel.setFont(new Font("Nanum Gothic", Font.BOLD, 18));
 
 		// 이메일 컨테이너
 		emailLabel.setForeground(new Color(25, 25, 112));
 		emailLabel.setBounds(274, 362, 100, 30);
 		container.add(emailLabel);
-		emailLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
+		emailLabel.setFont(new Font("Nanum Gothic", Font.BOLD, 18));
 
 		// 사용자 텍스트 필드 + 텍스트 홀딩
 		// userTextField.setText("ID");
@@ -219,16 +219,26 @@ public class InsertPage extends JFrame implements ActionListener {
 		// 회원 가입 버튼
 		insertButton.setBounds(378, 433, 150, 40);
 		insertButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));// ######버튼 커서 변경
+		insertButton.setForeground(Color.WHITE);
+		insertButton.setOpaque(true);
+		insertButton.setBackground(Color.BLACK);
 		container.add(insertButton);
 
 		// 이전으로 버튼
 		backButton.setBounds(27, 28, 150, 40);
 		backButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));// ######버튼 커서 변경
+		backButton.setForeground(Color.WHITE);
+		backButton.setOpaque(true);
+		backButton.setBackground(Color.BLACK);
+		backButton.setFocusPainted(false);
 		container.add(backButton);
 
 		// 중복확인 버튼
 		dupliButton.setBounds(558, 157, 150, 40);
 		dupliButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));// ######버튼 커서 변경
+		dupliButton.setForeground(Color.WHITE);
+		dupliButton.setOpaque(true);
+		dupliButton.setBackground(Color.BLACK);
 		container.add(dupliButton);
 
 		// 버튼 리슨어

@@ -143,6 +143,10 @@ public class CheckBookPanel extends JPanel {
 		back.setBounds(20, 480, 120, 60);
 		back.setVisible(true);
 		back.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
+		back.setForeground(Color.WHITE);
+		back.setOpaque(true);
+		back.setBackground(Color.BLACK);
+		back.setFocusPainted(false);
 		add(back);
 		
 		back.addMouseListener(new MouseAdapter() {	//"이전으로" 버튼 눌렀을 때 MainPanel화면으로 이동
@@ -162,6 +166,10 @@ public class CheckBookPanel extends JPanel {
 		cancel.setBounds(745, 480, 120, 60);
 		cancel.setVisible(true);
 		cancel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
+		cancel.setForeground(Color.WHITE);
+		cancel.setOpaque(true);
+		cancel.setBackground(Color.BLACK);
+		cancel.setFocusPainted(false);
 		add(cancel);
 		cancel.addMouseListener(new MouseAdapter() {
 			

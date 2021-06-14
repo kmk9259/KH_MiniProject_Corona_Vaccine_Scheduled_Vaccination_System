@@ -1,6 +1,7 @@
 package mini.kh1.corona.view;
 
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -101,8 +102,12 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 
 		mapButton.setBounds(80, 450, 180, 35);
 		mapButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
+		mapButton.setForeground(Color.WHITE);
+		mapButton.setOpaque(true);
+		mapButton.setBackground(Color.BLACK);
+		mapButton.setFocusPainted(false);
 		mapButton.setVisible(true);
-		mapButton.setFont(new Font("고딕", Font.BOLD, 15));
+		mapButton.setFont(new Font("Nanum Gothic", Font.BOLD, 15));
 		mapButton.addMouseListener(new MouseAdapter() {
 
 			@Override
@@ -124,8 +129,12 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 		// 예약하기 버튼 설정
 		bookButton.setBounds(630, 450, 180, 35);
 		bookButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
+		bookButton.setForeground(Color.WHITE);
+		bookButton.setOpaque(true);
+		bookButton.setBackground(Color.BLACK);
+		bookButton.setFocusPainted(false);
 		bookButton.setVisible(true);
-		bookButton.setFont(new Font("고딕", Font.BOLD, 15));
+		bookButton.setFont(new Font("Nanum Gothic", Font.BOLD, 15));
 		bookButton.addMouseListener(new MouseAdapter() {
 
 			String addHName;
@@ -233,11 +242,18 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 
 		combo.setBounds(60, 80, 120, 30);
 		combo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
+		combo.setForeground(Color.WHITE);
+		combo.setOpaque(true);
+		combo.setBackground(Color.BLACK);
 		add(combo);
 		String[][] table = null;
 
 		searchButton.setBounds(180, 80, 60, 30);
 		searchButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
+		searchButton.setForeground(Color.WHITE);
+		searchButton.setOpaque(true);
+		searchButton.setBackground(Color.BLACK);
+		searchButton.setFocusPainted(false);
 		searchButton.setVisible(true);
 
 		searchButton.addMouseListener(new MouseAdapter() {

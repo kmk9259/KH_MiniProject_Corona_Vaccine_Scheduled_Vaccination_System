@@ -103,14 +103,14 @@ public class ManagerView {
 		JLabel managerMenu = new JLabel("관리자 모드", labelImage2, SwingConstants.CENTER);
 
 		managerMenu.setBounds(550, 70, 150, 50);
-		managerMenu.setFont(new Font("휴먼엑스포", Font.BOLD, 15));
+		managerMenu.setFont(new Font("Nanum Gothic", Font.BOLD, 15));
 		managerMenu.setHorizontalAlignment(SwingConstants.CENTER);
 		managerMenu.setForeground(Color.MAGENTA);
 		ManagerPanel.add(managerMenu);
 		// 1번 기능
 		JButton vcManager = new JButton("백신 재고 관리");
 		vcManager.setBounds(550, 180, 180, 60);
-		vcManager.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
+		vcManager.setFont(new Font("Nanum Gothic", Font.PLAIN, 15));
 		vcManager.setFocusPainted(false);// 버튼 테두리 없애기
 		vcManager.setForeground(Color.WHITE);
 		vcManager.setOpaque(true);
@@ -120,7 +120,7 @@ public class ManagerView {
 		// 2번 기능
 		JButton hsManager = new JButton("병원 관리");
 		hsManager.setBounds(550, 280, 180, 60);
-		hsManager.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
+		hsManager.setFont(new Font("Nanum Gothic", Font.PLAIN, 15));
 		hsManager.setFocusPainted(false);
 		hsManager.setForeground(Color.WHITE);
 		hsManager.setOpaque(true);
@@ -130,7 +130,7 @@ public class ManagerView {
 		// 3번 기능
 		JButton userManager = new JButton("회원 관리");
 		userManager.setBounds(550, 380, 180, 60);
-		userManager.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
+		userManager.setFont(new Font("Nanum Gothic", Font.PLAIN, 15));
 		userManager.setFocusPainted(false);
 		userManager.setForeground(Color.WHITE);
 		userManager.setOpaque(true);
@@ -140,7 +140,7 @@ public class ManagerView {
 		// 4번 로그아웃 기능
 		JButton managerLgOut = new JButton("로그아웃");
 		managerLgOut.setBounds(760, 490, 90, 40);
-		managerLgOut.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		managerLgOut.setFont(new Font("Nanum Gothic", Font.PLAIN, 12));
 		managerLgOut.setFocusPainted(false);
 		managerLgOut.setForeground(Color.WHITE);
 		managerLgOut.setOpaque(true);
@@ -170,7 +170,7 @@ public class ManagerView {
 		// 라벨
 		JLabel vmLabel = new JLabel("백신 재고 현황");
 		vmLabel.setBounds(140, 70, 120, 50);
-		vmLabel.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
+		vmLabel.setFont(new Font("Nanum Gothic", Font.PLAIN, 15));
 		vmLabel.setHorizontalAlignment(SwingConstants.CENTER);// 라벨 박스에서 가운데 정렬
 		vmLabel.setOpaque(true);// 라벨 배경색 바꿀 수 있게 만들어주는 기능
 		vmLabel.setBackground(Color.BLACK);// 추후 변경
@@ -179,7 +179,7 @@ public class ManagerView {
 		// 수량 변경 버튼
 		JButton vmButton1 = new JButton("수량 변경");
 		vmButton1.setBounds(140, 420, 90, 40);
-		vmButton1.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		vmButton1.setFont(new Font("Nanum Gothic", Font.PLAIN, 12));
 		vmButton1.setFocusPainted(false);
 		vmButton1.setForeground(Color.WHITE);
 		vmButton1.setOpaque(true);
@@ -189,7 +189,7 @@ public class ManagerView {
 		// 이전으로 버튼
 		JButton vmButton2 = new JButton("이전으로");
 		vmButton2.setBounds(760, 490, 90, 40);
-		vmButton2.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		vmButton2.setFont(new Font("Nanum Gothic", Font.PLAIN, 12));
 		vmButton2.setFocusPainted(false);
 		vmButton2.setForeground(Color.WHITE);
 		vmButton2.setOpaque(true);
@@ -199,7 +199,7 @@ public class ManagerView {
 
 		JButton vmButton3 = new JButton("새로고침");
 		vmButton3.setBounds(230, 420, 90, 40);
-		vmButton3.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		vmButton3.setFont(new Font("Nanum Gothic", Font.PLAIN, 12));
 		vmButton3.setFocusPainted(false);
 		vmButton3.setForeground(Color.WHITE);
 		vmButton3.setOpaque(true);
@@ -224,7 +224,7 @@ public class ManagerView {
 
 		vmTable.setFont(new Font("굴림", Font.PLAIN, 12));
 
-		vmTableHd.setFont(new Font("휴먼엑스포", Font.PLAIN, 13));
+		vmTableHd.setFont(new Font("Nanum Gothic", Font.PLAIN, 13));
 		vmTableHd.setOpaque(true);
 		vmTableHd.setBackground(Color.DARK_GRAY);
 		vmTableHd.setForeground(Color.YELLOW);
@@ -256,7 +256,7 @@ public class ManagerView {
 
 					vmTable.setFont(new Font("굴림", Font.PLAIN, 12));
 
-					vmTableHd.setFont(new Font("휴먼엑스포", Font.PLAIN, 13));
+					vmTableHd.setFont(new Font("Nanum Gothic", Font.PLAIN, 13));
 					vmTableHd.setOpaque(true);
 					vmTableHd.setBackground(Color.DARK_GRAY);
 					vmTableHd.setForeground(Color.YELLOW);
@@ -296,7 +296,7 @@ public class ManagerView {
 
 		JLabel hmLabel = new JLabel("병원 현황");
 		hmLabel.setBounds(140, 70, 100, 50);
-		hmLabel.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
+		hmLabel.setFont(new Font("Nanum Gothic", Font.PLAIN, 15));
 		hmLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		hmLabel.setOpaque(true);
 		hmLabel.setBackground(Color.BLACK);
@@ -305,7 +305,7 @@ public class ManagerView {
 
 		JButton hmButton1 = new JButton("추가하기");
 		hmButton1.setBounds(140, 420, 90, 40);
-		hmButton1.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		hmButton1.setFont(new Font("Nanum Gothic", Font.PLAIN, 12));
 		hmButton1.setFocusPainted(false);
 		hmButton1.setForeground(Color.WHITE);
 		hmButton1.setOpaque(true);
@@ -315,7 +315,7 @@ public class ManagerView {
 
 		JButton hmButton2 = new JButton("새로고침");
 		hmButton2.setBounds(230, 420, 90, 40);
-		hmButton2.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		hmButton2.setFont(new Font("Nanum Gothic", Font.PLAIN, 12));
 		hmButton2.setFocusPainted(false);
 		hmButton2.setForeground(Color.WHITE);
 		hmButton2.setOpaque(true);
@@ -325,7 +325,7 @@ public class ManagerView {
 
 		JButton hmButton3 = new JButton("이전으로");
 		hmButton3.setBounds(760, 490, 90, 40);
-		hmButton3.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		hmButton3.setFont(new Font("Nanum Gothic", Font.PLAIN, 12));
 		hmButton3.setFocusPainted(false);
 		hmButton3.setForeground(Color.WHITE);
 		hmButton3.setOpaque(true);
@@ -345,7 +345,7 @@ public class ManagerView {
 
 		hmTable.setFont(new Font("굴림", Font.PLAIN, 12));
 
-		hmTableHd.setFont(new Font("휴먼엑스포", Font.PLAIN, 13));
+		hmTableHd.setFont(new Font("Nanum Gothic", Font.PLAIN, 13));
 		hmTableHd.setOpaque(true);
 		hmTableHd.setBackground(Color.DARK_GRAY);
 		hmTableHd.setForeground(Color.YELLOW);
@@ -377,7 +377,7 @@ public class ManagerView {
 
 					hmTable.setFont(new Font("굴림", Font.PLAIN, 12));
 
-					hmTableHd.setFont(new Font("휴먼엑스포", Font.PLAIN, 13));
+					hmTableHd.setFont(new Font("Nanum Gothic", Font.PLAIN, 13));
 					hmTableHd.setOpaque(true);
 					hmTableHd.setBackground(Color.DARK_GRAY);
 					hmTableHd.setForeground(Color.YELLOW);
@@ -415,7 +415,7 @@ public class ManagerView {
 
 		JLabel usLabel = new JLabel("회원 현황");
 		usLabel.setBounds(100, 70, 100, 50);
-		usLabel.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
+		usLabel.setFont(new Font("Nanum Gothic", Font.PLAIN, 15));
 		usLabel.setOpaque(true);
 		usLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		usLabel.setBackground(Color.BLACK);
@@ -424,7 +424,7 @@ public class ManagerView {
 
 		JButton usButton = new JButton("이전으로");
 		usButton.setBounds(760, 490, 90, 40);
-		usButton.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		usButton.setFont(new Font("Nanum Gothic", Font.PLAIN, 12));
 		usButton.setFocusPainted(false);
 		usButton.setForeground(Color.WHITE);
 		usButton.setOpaque(true);
@@ -475,7 +475,7 @@ public class ManagerView {
 
 		usTable.setFont(new Font("굴림", Font.PLAIN, 12));
 
-		usTableHd.setFont(new Font("휴먼엑스포", Font.PLAIN, 13));
+		usTableHd.setFont(new Font("Nanum Gothic", Font.PLAIN, 13));
 		usTableHd.setOpaque(true);
 		usTableHd.setBackground(Color.DARK_GRAY);
 		usTableHd.setForeground(Color.YELLOW);

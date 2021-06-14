@@ -1,8 +1,8 @@
 package mini.kh1.corona.view;
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
@@ -12,7 +12,6 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -48,6 +47,10 @@ public class Notice extends JPanel {
 
 		btn.setBounds(385, 475, 123, 51);
 		btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경	
+		btn.setForeground(Color.WHITE);
+		btn.setOpaque(true);
+		btn.setBackground(Color.BLACK);
+		btn.setFocusPainted(false);
 		btn.setVisible(true);
 		add(btn);
 

@@ -49,7 +49,7 @@ public class HospitalAddFrame extends JFrame {
 		
 		setIconImage(ImageIO.read(new File("./image//managerIcon.PNG")));	
 		
-		image = ImageIO.read(new File("./image//image1.PNG"));//메소드에 throws
+		image = ImageIO.read(new File("./image//manager1.PNG"));//메소드에 throws
 		
 		// 2. 병원 추가 패널 설정
 		hafPanel = new JPanel(){
@@ -68,30 +68,30 @@ public class HospitalAddFrame extends JFrame {
 		
 		JLabel hafLabel0 = new JLabel("병원 정보 입력");
 		hafLabel0.setBounds(80, 20, 120, 40);
-		hafLabel0.setFont(new Font("휴먼엑스포", Font.BOLD, 15));
+		hafLabel0.setFont(new Font("Nanum Gothic", Font.BOLD, 15));
 		hafLabel0.setHorizontalAlignment(SwingConstants.CENTER);		
-		hafLabel0.setForeground(Color.white);
+		hafLabel0.setForeground(Color.BLACK);
 		hafPanel.add(hafLabel0);
 
 		JLabel hafLabel1 = new JLabel("시/구");
 		hafLabel1.setBounds(80, 80, 120, 40);
-		hafLabel1.setFont(new Font("휴먼엑스포", Font.BOLD, 15));
+		hafLabel1.setFont(new Font("Nanum Gothic", Font.BOLD, 15));
 		hafLabel1.setHorizontalAlignment(SwingConstants.CENTER);		
-		hafLabel1.setForeground(Color.white);
+		hafLabel1.setForeground(Color.DARK_GRAY);
 		hafPanel.add(hafLabel1);
 		
 		JLabel hafLabel2 = new JLabel("상세주소");
 		hafLabel2.setBounds(80, 140, 120, 40);
-		hafLabel2.setFont(new Font("휴먼엑스포", Font.BOLD, 15));
+		hafLabel2.setFont(new Font("Nanum Gothic", Font.BOLD, 15));
 		hafLabel2.setHorizontalAlignment(SwingConstants.CENTER);	
-		hafLabel2.setForeground(Color.white);
+		hafLabel2.setForeground(Color.DARK_GRAY);
 		hafPanel.add(hafLabel2);
 		
 		JLabel hafLabel3 = new JLabel("병원명");
 		hafLabel3.setBounds(80, 200, 120, 40);
 		hafLabel3.setFont(new Font("휴먼엑스포", Font.BOLD, 15));
 		hafLabel3.setHorizontalAlignment(SwingConstants.CENTER);
-		hafLabel3.setForeground(Color.white);
+		hafLabel3.setForeground(Color.DARK_GRAY);
 		hafPanel.add(hafLabel3);
 
 		hafTextField1 = new JTextField(15);// 시/구 텍스트
@@ -99,7 +99,7 @@ public class HospitalAddFrame extends JFrame {
 		hafTextField1.setOpaque(true);
 		hafTextField1.setBackground(Color.DARK_GRAY);
 		hafTextField1.setForeground(Color.WHITE);
-		hafTextField1.setFont(new Font("휴먼엑스포", Font.PLAIN, 13));
+		hafTextField1.setFont(new Font("Nanum Gothic", Font.PLAIN, 13));
 		hafPanel.add(hafTextField1);
 
 		hafTextField2 = new JTextField(30);// 상세주소 텍스트
@@ -107,7 +107,7 @@ public class HospitalAddFrame extends JFrame {
 		hafTextField2.setOpaque(true);
 		hafTextField2.setBackground(Color.DARK_GRAY);
 		hafTextField2.setForeground(Color.WHITE);
-		hafTextField2.setFont(new Font("휴먼엑스포", Font.PLAIN, 13));
+		hafTextField2.setFont(new Font("Nanum Gothic", Font.PLAIN, 13));
 		hafPanel.add(hafTextField2);
 
 		hafTextField3 = new JTextField(15);// 병원명 텍스트
@@ -115,12 +115,12 @@ public class HospitalAddFrame extends JFrame {
 		hafTextField3.setOpaque(true);
 		hafTextField3.setBackground(Color.DARK_GRAY);
 		hafTextField3.setForeground(Color.WHITE);
-		hafTextField3.setFont(new Font("휴먼엑스포", Font.PLAIN, 13));
+		hafTextField3.setFont(new Font("Nanum Gothic", Font.PLAIN, 13));
 		hafPanel.add(hafTextField3);
 
 		JButton hafButton1 = new JButton("취   소");
 		hafButton1.setBounds(80, 280, 170, 40);
-		hafButton1.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		hafButton1.setFont(new Font("Nanum Gothic", Font.PLAIN, 12));
 		hafButton1.setFocusPainted(false);
 		hafButton1.setForeground(Color.WHITE);
 		hafButton1.setOpaque(true);
@@ -130,7 +130,7 @@ public class HospitalAddFrame extends JFrame {
 
 		JButton hafButton2 = new JButton("추   가");
 		hafButton2.setBounds(340, 280, 170, 40);
-		hafButton2.setFont(new Font("휴먼엑스포", Font.BOLD, 12));
+		hafButton2.setFont(new Font("Nanum Gothic", Font.BOLD, 12));
 		hafButton2.setFocusPainted(false);
 		hafButton2.setForeground(Color.WHITE);
 		hafButton2.setOpaque(true);

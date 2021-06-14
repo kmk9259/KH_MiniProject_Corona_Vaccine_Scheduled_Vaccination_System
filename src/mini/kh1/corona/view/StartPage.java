@@ -41,13 +41,13 @@ public class StartPage extends JFrame {
 		*/
 
 		try {
-			image = ImageIO.read(new File("./image//image2.jpg"));
+			image = ImageIO.read(new File("./image//startImage.PNG"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
-		startButton = new JButton("다   음") {
+		startButton = new JButton() {
 
 			@Override
 			protected void paintComponent(Graphics g) {
@@ -59,7 +59,6 @@ public class StartPage extends JFrame {
 			
 		};
 		startButton.setBounds(0, 0, 900, 600);
-		startButton.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
 		startButton.setFocusPainted(false);// 버튼 테두리 없애기
 		
 		
@@ -86,7 +85,7 @@ public class StartPage extends JFrame {
 	public void paint(Graphics g) {
 		// TODO Auto-generated method stub
 		try {
-			image = ImageIO.read(new File("./image//image2.jpg"));
+			image = ImageIO.read(new File("./image//startImage.PNG"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
