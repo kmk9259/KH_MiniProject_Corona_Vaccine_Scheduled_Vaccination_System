@@ -18,7 +18,6 @@ import javax.swing.JPanel;
 public class Notice extends JPanel {
 
 	JPanel selectHospital = new SelectHospital();
-	//static JPanel NOTIC = new Notice();
 	
 	private Image image;
 
@@ -44,7 +43,7 @@ public class Notice extends JPanel {
 			public void mousePressed(MouseEvent e) {
 				JButton btn = (JButton)e.getSource();
 					
-				int num = JOptionPane.showConfirmDialog(null, " 공지사항을 충분히 숙지 하셨습니까? \n '예' 를 누르시면 지역샌택으로 넘어갑니다 ",
+				int num = JOptionPane.showConfirmDialog(null, " 공지사항을 충분히 숙지 하셨습니까? \n '예' 를 누르시면 지역선택으로 넘어갑니다 ",
 						"공지사항 ", JOptionPane.YES_NO_OPTION);
 
 				if (num == JOptionPane.YES_OPTION) {

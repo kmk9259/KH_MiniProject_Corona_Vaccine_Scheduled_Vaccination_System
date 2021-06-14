@@ -29,20 +29,16 @@ public class CheckBookPanel extends JPanel {
 	static String date =null;
 	static String hospital=null;
 	static String ssn=null;
-
-	//public static JPanel checkBookPanel = new CheckBookPanel();
-	
+	private Booker b = null;
 	private int sNum = LoginPage.sessionNum;
 	private List<User> ulist = InsertPage.temp.getJoinlist();
-	//BookerList list = new BookerList();
-	//ArrayList<Booker> bookerlist = list.getBookerList();
+	
 	Reservation r = new Reservation();
 	ArrayList<Booker> rlist = r.getnBookerList();
 	
-	private Booker b = null;
+	
 	public CheckBookPanel() {
 	
-		
 		setVisible(false);
 		setLayout(null);
 		setSize(900, 600);
@@ -79,31 +75,7 @@ public class CheckBookPanel extends JPanel {
 				}
 			}
 		}
-		
-//		// 사용자의 예약정보(이름, 주민등록번호, 접종 병원, 접종일시)를 보여준다.
-//		
-//		// 1. ulist에서 정보를 가져와 주민등록 번호를 뽑아 온다. 
-//		String s = ulist.get(sNum).getSsn();	//사용자 주민등록 번호
-//		
-//		// 2. bookerList의 주민등록번호들과   ulist에서 뽑아온 주민등록번호(s)를 비교 --> 일치하는 인덱스 번호No를 가져온다.
-//		int No = 0;
-//		
-//		for(int i = 0; i < rlist.size(); i++) {
-//			if(s.equals(rlist.get(i).getSsn())) {
-//				No = i;
-//			}
-//		}
-//		
-//		// 3. bookerlist의 No번째 사람의 정보들을 가져온다.
-//		b = rlist.get(No);
-//		
-//		// 4. 가져온 사람의 정보에서 (이름, 주민, 병원, 일시)를 가져온다.
-//		
-//		String name = b.getName();
-//		String str = b.getSsn();	//예약자 주민번호
-//		String hName = b.getLocation() + " " + b.gethName();
-//		String Rday = b.getRday();
-	
+			
 		// 5. 가져온 정보를 테이블의 각각의 자리에 입력한다.
 		//테이블에 값 넣기
 		Object[] header = {"0", "0"};
@@ -115,7 +87,6 @@ public class CheckBookPanel extends JPanel {
 		};
 		
 		JTable bookInfo = new JTable(contents, header);
-//		bookInfo.setTableHeader(null);
 		bookInfo.setLocation(50, 105);
 		bookInfo.setSize(800, 360);
 		
@@ -134,9 +105,7 @@ public class CheckBookPanel extends JPanel {
 	    }
 		
 	    bookInfo.setEnabled(false);
-	    //scp.setEnabled(false);
 		add(bookInfo);
-		//add(scp);
 		
 		// 6. "뒤로가기"버튼 눌렀을 때 "메인메뉴"로 이동
 		JButton back = new JButton("이전");
@@ -154,7 +123,6 @@ public class CheckBookPanel extends JPanel {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				
-				//MainMenu.MFrame.remove(checkBookPanel);
 				setVisible(false);
 				MainMenu.mainPanel.setVisible(true);
 				
@@ -191,7 +159,6 @@ public class CheckBookPanel extends JPanel {
 	               
 	               JOptionPane.showMessageDialog(null, "예약이 취소되었습니다.\n홈 화면으로 이동합니다.");
 	               
-	               //MainMenu.MFrame.remove(checkBookPanel);
 	               setVisible(false);
 	               MainMenu.mainPanel.setVisible(true);
 	            }

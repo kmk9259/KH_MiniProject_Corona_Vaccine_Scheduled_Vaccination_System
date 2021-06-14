@@ -118,13 +118,10 @@ public class VaccineModifyFrame extends JFrame {
 					// 입력한 텍스트를 메소드에 넘겨줌
 					String info = new HospitalExcel().findHospitalInfo(hName);
 
-					//System.out.println("hName : " + hName);
-					//System.out.println("제발 : " + info);
-
 					// 병원명을 가져오는게 아닌 전체 출력문을 가져옴(출력문 안에 병원명이 포함되기 때문에)
 					if (info != null) {// 빈 칸이 아닐 때
 						if (info.contains(hName)) {// info 에 병원 이름이 포함되어있으면 수량 입력으로 넘어감
-							//System.out.println("포함되어있음");
+				
 							// 정보를 출력하려면 여기서 라벨을 생성해야하는듯
 							JLabel vmfLabel3 = new JLabel(info);
 
@@ -139,7 +136,6 @@ public class VaccineModifyFrame extends JFrame {
 							// 엑셀에 없는 값을 입력하면 info가 ""임
 						}
 					} else {
-						//System.out.println("포함안되어있음");
 						CheckFact(info);
 						vmfPanel1.setVisible(true);
 					}

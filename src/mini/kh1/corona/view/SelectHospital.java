@@ -95,8 +95,6 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 			location[i + 1] = hospitalList.get(i).getMainDistrict();
 		}
 
-//		String location[] = { "지역 선택", hospitalList.get(0).getMainDistrict(), hospitalList.get(1).getMainDistrict(),
-//				hospitalList.get(2).getMainDistrict() }; // 콤보 박스 안에 들어갈 내용
 
 		combo = new JComboBox(location);
 
@@ -168,7 +166,6 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 								
 								
 								BookerList list111 = new BookerList();
-								System.out.println("list111.getBookerList().size() ["+list111.getBookerList().size()+"]");
 								
 								String loca = combo.getSelectedItem().toString();
 								Booker booker1 = new Booker(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getName(),
@@ -177,22 +174,6 @@ public class SelectHospital extends JPanel { // 병원 선택 화면 패널
 
 								list111.setBookerAdd(booker1);
 								
-								System.out.println("list111.getBookerList().size() ["+list111.getBookerList().size()+"]");
-//								bookerlist = sample.addsample(); //유저샘플리스트를 가져와서 그대로 예약자 샘플리스트로 쓴다.
-//							 User booker = null; //유저리스트 가져왔기 때문에 일단 예약자도 유저객체로 통일시킴.(제네릭을 삭제하긴 했는데 
-//							 									                          	//그래도 캐스트 오류 발생했었음 )
-//							 booker = InsertPage.temp.getJoinlist().get(loginpage.sessionNum);//로그인한 사람 담음
-//								
-//								String loca = combo.getSelectedItem().toString();
-//								
-//								bookerlist.add(booker); //1번 방법 샘플리스트 그대로 복사해온 예약자리스트에 새로운 예약자 추가 
-								
-//								blist.setBookerList(bookerlist); //2번방법 따로 생성해놓은 예약자리스트 클래스도 새로운 리스트로 셋팅 
-								
-							
-//									System.out.println(bookerlist.toString()); // 방법 1 : 이 클래스에 만들어놓은 스태틱 예약자리스트 출력
-//									System.out.println(blist.getBookerList().toString()); //방법 2 : 따로 만들어놓은 예약자리스트 클래스호출 출력
-									
 									
 									//둘다 리스트에 추가 반영은 일단 되는 상태에요 둘다 가져와서 한번 테스트 해보셔야 할듯 해요
 									//전 일단 1번방법으로 사용했어영

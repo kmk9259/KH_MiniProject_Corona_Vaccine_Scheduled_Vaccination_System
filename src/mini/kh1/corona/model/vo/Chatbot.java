@@ -28,7 +28,7 @@ public class Chatbot {
 			address = InetAddress.getByName("192.168.1.1");
 			
 			socket= new DatagramSocket(8500);
-			//runCMD();
+			
 			//cmd에서 netstat -n pid 번호
 			//taskkill /f /pid pid번호
 		
@@ -45,39 +45,5 @@ public class Chatbot {
 		
 
 	}
-
-
-//	public void runCMD()
-//	{
-//		Runtime re = Runtime.getRuntime();
-//		Process p;
-//		try {
-//			p=re.exec("cmd /c netstat -ano  | findstr 8500");
-//			InputStream in = p.getInputStream();
-//			InputStreamReader isr = new InputStreamReader(in);
-//			//System.out.println(isr.getEncoding()+"d");
-//			
-//			BufferedReader br = new BufferedReader(isr);
-//			String line;
-//			while((line = br.readLine())!=null)
-//			{
-//				//System.out.println(line+"자르기 전");
-//				if(line.contains("0:8500"))
-//				{
-//					line = line.substring(70, 75);	//0~3까지 
-//					//line = line.trim();
-//					System.out.println(line);
-//					p=re.exec("cmd /c taskkill /f /pid"+line);
-//				}
-//				
-//			}
-//			in.close();
-//		}catch (IOException e) {
-//			e.printStackTrace();
-//			// TODO: handle exception
-//		}
-//		
-//	}
-
 
 }

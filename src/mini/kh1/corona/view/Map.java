@@ -26,8 +26,6 @@ public class Map extends JFrame{
 	
 	private SelectHospital sh = new SelectHospital();
 
-
-	
 	public void setMap(String location) {
 		
 		googleAPI.downloadMap(location);
@@ -37,8 +35,6 @@ public class Map extends JFrame{
 		pack();
 
 	}
-	
-	
 	
 	public Map(String location) {
 
