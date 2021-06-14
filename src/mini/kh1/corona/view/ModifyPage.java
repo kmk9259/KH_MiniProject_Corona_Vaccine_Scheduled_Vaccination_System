@@ -29,6 +29,8 @@ import mini.kh1.corona.controller.user.AddSignup;
 import mini.kh1.corona.model.vo.user.JoinList;
 import mini.kh1.corona.model.vo.user.SignupList;
 import mini.kh1.corona.model.vo.user.User;
+import java.awt.Color;
+import java.awt.SystemColor;
 
 public class ModifyPage extends JFrame implements ActionListener {
 
@@ -118,38 +120,44 @@ public class ModifyPage extends JFrame implements ActionListener {
 		container.setVisible(true);// 첫 패널만 일단 보이게 해놓음
 
 		frame.getContentPane().add(container); // 패널로 컴포넌트를 감싸 놓음.
+		label.setForeground(new Color(25, 25, 112));
 
 		// 타이틀 폰트 세팅
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("NanumGothic", Font.BOLD, 28));
-		label.setBounds(262, 28, 376, 75);
+		label.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 28));
+		label.setBounds(262, 48, 376, 75);
 
 		// 아이디 컨테이너
 		container.add(label);
+		userLabel.setForeground(new Color(25, 25, 112));
 		userLabel.setBounds(274, 150, 100, 30);
 		container.add(userLabel);
-		userLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
+		userLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
+		passwordLabel.setForeground(new Color(25, 25, 112));
 
 		// 비밀번호 컨테이너
 		passwordLabel.setBounds(274, 200, 100, 30);
 		container.add(passwordLabel);
-		passwordLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
+		passwordLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
 
 		// 이름 컨테이너
 		container.add(label);
+		nameLabel.setForeground(new Color(25, 25, 112));
 		nameLabel.setBounds(274, 250, 100, 30);
 		container.add(nameLabel);
-		nameLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
+		nameLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
+		ssnLabel.setForeground(new Color(25, 25, 112));
 
 		// 주민번호 컨테이너
 		ssnLabel.setBounds(274, 300, 100, 30);
 		container.add(ssnLabel);
-		ssnLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
+		ssnLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
+		emailLabel.setForeground(new Color(25, 25, 112));
 
 		// 이메일 컨테이너
 		emailLabel.setBounds(274, 350, 100, 30);
 		container.add(emailLabel);
-		emailLabel.setFont(new Font("NanumGothic", Font.BOLD, 18));
+		emailLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
 
 		// 사용자 텍스트 필드
 		userTextField.setBounds(378, 150, 150, 30);
@@ -173,7 +181,7 @@ public class ModifyPage extends JFrame implements ActionListener {
 		container.add(emailField);
 
 		// 수정완료 버튼
-		modiButton.setBounds(378, 421, 150, 40);
+		modiButton.setBounds(378, 420, 150, 40);
 		modiButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		container.add(modiButton);
 
@@ -181,9 +189,10 @@ public class ModifyPage extends JFrame implements ActionListener {
 		backButton.setBounds(27, 28, 150, 40);
 		backButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		container.add(backButton);
+		
 
 		// 비밀번호 보이기
-		showPassword.setBounds(555, 200, 150, 30);
+		showPassword.setBounds(548, 200, 150, 30);
 		container.add(showPassword);
 
 		// 회원탈퇴
@@ -200,7 +209,7 @@ public class ModifyPage extends JFrame implements ActionListener {
 
 		// ===========불러온 사용자 정보가 필드에 보여짐
 
-		int i = InsertPage.temp.getJoinlist().size();
+		//int i = InsertPage.temp.getJoinlist().size();
 		
 
 		userTextField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getId());

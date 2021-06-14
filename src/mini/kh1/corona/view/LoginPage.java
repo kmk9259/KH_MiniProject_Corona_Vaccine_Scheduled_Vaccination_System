@@ -92,7 +92,7 @@ public class LoginPage extends JFrame implements ActionListener {
 		label.setForeground(new Color(25, 25, 112));
 
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("휴먼엑스포", Font.BOLD, 30));
+		label.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 30));
 		label.setBounds(262, 120, 376, 75);
 
 		container.add(label);
@@ -103,12 +103,12 @@ public class LoginPage extends JFrame implements ActionListener {
 		container.setLayout(null);
 		userLabel.setForeground(new Color(25, 25, 112));
 
-		userLabel.setFont(new Font("휴먼엑스포", Font.BOLD, 18));
+		userLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
 		userLabel.setBounds(311, 222, 100, 30);
 		container.add(userLabel);
 		passwordLabel.setForeground(new Color(25, 25, 112));
 
-		passwordLabel.setFont(new Font("휴먼엑스포", Font.BOLD, 18));
+		passwordLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
 		passwordLabel.setBounds(311, 268, 100, 30);
 		container.add(passwordLabel);
 
