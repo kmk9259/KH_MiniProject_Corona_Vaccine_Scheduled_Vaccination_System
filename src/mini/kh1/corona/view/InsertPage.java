@@ -1,5 +1,6 @@
 package mini.kh1.corona.view;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -8,11 +9,12 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -24,23 +26,16 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import mini.kh1.corona.controller.InsertConstroller;
 import mini.kh1.corona.controller.reservation.Reservation;
 import mini.kh1.corona.controller.user.AddJoin;
 import mini.kh1.corona.controller.user.AddSignup;
 import mini.kh1.corona.model.vo.user.JoinList;
 import mini.kh1.corona.model.vo.user.User;
-import java.awt.Color;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 
 public class InsertPage extends JFrame implements ActionListener {
 
-	InsertConstroller ic = new InsertConstroller();
-
 	private JFrame frame = new JFrame();
 	private Container container = getContentPane();
-	private Scanner sc = new Scanner(System.in);
 
 	// 레이블
 	private JLabel userLabel = new JLabel("아이디");
@@ -48,8 +43,6 @@ public class InsertPage extends JFrame implements ActionListener {
 	private JLabel nameLabel = new JLabel("이름");
 	private JLabel ssnLabel = new JLabel("주민 번호");
 	private JLabel emailLabel = new JLabel("이메일");
-	
-	
 
 	// 필드부
 	private JTextField userTextField = new JTextField();
@@ -69,16 +62,16 @@ public class InsertPage extends JFrame implements ActionListener {
 	private String name = nameField.getText();
 	private String ssn = ssnField.getText();
 	private String email = emailField.getText();
-	
+
 	private Image image;
 
-	
 	//
 	AddSignup addsignup = new AddSignup();
 	AddJoin addjoin = new AddJoin();
-	
-	static List newuser = new ArrayList<User>();	//담아줄 새 회원 리스트
+
+	static List newuser = new ArrayList<User>(); // 담아줄 새 회원 리스트
 	public static JoinList temp = new JoinList();
+
 	//
 	public InsertPage() {
 
@@ -97,7 +90,7 @@ public class InsertPage extends JFrame implements ActionListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		container = new JPanel() {
 
 			@Override
@@ -106,7 +99,7 @@ public class InsertPage extends JFrame implements ActionListener {
 				Dimension d = container.getSize();
 				g.drawImage(image, 0, 0, d.width, d.height, null);
 			}
-			
+
 		};
 		container.setLocation(0, 0);
 
@@ -147,30 +140,26 @@ public class InsertPage extends JFrame implements ActionListener {
 		ssnLabel.setBounds(274, 312, 100, 30);
 		container.add(ssnLabel);
 		ssnLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
-		
 
 		// 이메일 컨테이너
 		emailLabel.setForeground(new Color(25, 25, 112));
 		emailLabel.setBounds(274, 362, 100, 30);
 		container.add(emailLabel);
 		emailLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
-		
-	
 
 		// 사용자 텍스트 필드 + 텍스트 홀딩
-		userTextField.setText("ID");
+		// userTextField.setText("ID");
 		userTextField.setBounds(378, 162, 150, 30);
 		container.add(userTextField);
 		userTextField.setForeground(Color.LIGHT_GRAY);
 		userTextField.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				userTextField.setText("");
+				// userTextField.setText("");
 				userTextField.setForeground(Color.black);
-				
+
 			}
 		});
-		
 
 		// 비밀번호 텍스트 필드 + 텍스트 홀딩
 		passwordField.setBounds(378, 213, 150, 30);
@@ -185,7 +174,7 @@ public class InsertPage extends JFrame implements ActionListener {
 		});
 		container.add(passwordField);
 
-		// 이름 텍스트 필드  + 텍스트 홀딩
+		// 이름 텍스트 필드 + 텍스트 홀딩
 		nameField = new JTextField();
 		nameField.setForeground(Color.LIGHT_GRAY);
 		nameField.addFocusListener(new FocusAdapter() {
@@ -199,8 +188,7 @@ public class InsertPage extends JFrame implements ActionListener {
 		nameField.setBounds(378, 264, 150, 30);
 		container.add(nameField);
 
-		
-		// 주민번호 텍스트 필드  + 텍스트 홀딩
+		// 주민번호 텍스트 필드 + 텍스트 홀딩
 		ssnField = new JTextField();
 		ssnField.addFocusListener(new FocusAdapter() {
 			@Override
@@ -214,8 +202,7 @@ public class InsertPage extends JFrame implements ActionListener {
 		ssnField.setText("주민번호");
 		container.add(ssnField);
 
-		
-		// 이메일 텍스트 필드  + 텍스트 홀딩
+		// 이메일 텍스트 필드 + 텍스트 홀딩
 		emailField = new JTextField();
 		emailField.addFocusListener(new FocusAdapter() {
 			@Override
@@ -231,17 +218,17 @@ public class InsertPage extends JFrame implements ActionListener {
 
 		// 회원 가입 버튼
 		insertButton.setBounds(378, 433, 150, 40);
-		insertButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
+		insertButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));// ######버튼 커서 변경
 		container.add(insertButton);
 
 		// 이전으로 버튼
 		backButton.setBounds(27, 28, 150, 40);
-		backButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
+		backButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));// ######버튼 커서 변경
 		container.add(backButton);
 
 		// 중복확인 버튼
 		dupliButton.setBounds(558, 157, 150, 40);
-		dupliButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
+		dupliButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));// ######버튼 커서 변경
 		container.add(dupliButton);
 
 		// 버튼 리슨어
@@ -254,71 +241,73 @@ public class InsertPage extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == insertButton) {
-			
+
 			id = userTextField.getText();
 			pw = passwordField.getText();
 			name = nameField.getText();
 			ssn = ssnField.getText();
 			email = emailField.getText();
-			
-			//값이 빈 곳이 있으면 가입이 되지 않게~ 
-			if(id.length() == 0 || pw.length() == 0 || name.length() == 0 || ssn.length() == 0 || email.length() == 0) {
+
+			// 값이 빈 곳이 있으면 가입이 되지 않게~
+			if (id.length() == 0 || pw.length() == 0 || name.length() == 0 || ssn.length() == 0
+					|| email.length() == 0) {
 				JOptionPane.showMessageDialog(this, "정보를 모두 입력해 주세요");
-				
-			}
-			else if(ssn.length()<13)
-			{
+
+			} else if (ssn.length() < 13) {
 				JOptionPane.showMessageDialog(this, "주민등록번호의 자릿수가 틀립니다.");
 				ssnField.setText("");
-			}
-			else if(!email.contains("@"))
-			{
+			} else if (!email.contains("@")) {
 				JOptionPane.showMessageDialog(this, "이메일 형식이 올바르지 않습니다.");
 				emailField.setText("");
-			}
-			else {
+			} else {
 				JOptionPane.showMessageDialog(this, "가입 되었습니다.");
-				
-				addsignup.adduser(id, pw, name, ssn, email);	//회원가입
+
+				addsignup.adduser(id, pw, name, ssn, email); // 회원가입
 				newuser = addsignup.addsignup();
 				temp = addjoin.setjoin(newuser);
 				Reservation r = new Reservation();
-//				r.orderAge();
-//				r.cutPeople();
+//	            r.orderAge();
+//	            r.cutPeople();
 				new LoginPage(); // 빈 곳 없이 값이 입력 되면 로그인 할 수 있는 페이지로 이동
 				frame.setVisible(false);
 
 			}
-		}
 
-		if (e.getSource() == dupliButton) { // 중복이면 필드부 클리어, 아니면 성공해서 입력할 수 있다.
-
-			dupliCheckID(id);
+		} else if (e.getSource() == dupliButton) { // 중복이면 필드부 클리어, 아니면 성공해서 입력할 수 있다.
 			
-		}
-		if (e.getSource() == backButton) {
+			dupliCheckID();
+
+		} else if (e.getSource() == backButton) {
 			new LoginPage(); // 클릭시, 로그인 화면 으로 돌아감
 			frame.setVisible(false);
 		}
 	}
-	
-	//중복확인 메소드
-		public void dupliCheckID(String id) {
-			for (int i = 0; i < InsertPage.temp.getJoinlist().size(); i++) 
-			{ // 전체 회원 인덱스를 돌며 확인하기 위해
-				if (InsertPage.temp.getJoinlist().get(i).getId().equals(id)) {
-					//result = 1; // 참 거짓으로 표현하기 위해
-					
-					JOptionPane.showMessageDialog(this, "중복된 아이디 입니다.");
-					break;
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(this, "사용 가능한 아이디 입니다.");
-					
-					break;
-				}
+
+	// 중복확인 메소드
+	public void dupliCheckID() {
+		id = userTextField.getText();
+		int result = 0;
+
+		for (int i = 0; i < InsertPage.temp.getJoinlist().size(); i++) { // 전체 회원 인덱스를 돌며 확인하기 위해
+			System.out.println();
+			if (InsertPage.temp.getJoinlist().get(i).getId().equals(id)) {
+				result = 1;
+				break;
+			} else {
+				result = 2;
 			}
+
 		}
-	
+		if (result == 1) {
+			JOptionPane.showMessageDialog(this, "중복된 아이디 입니다.");
+			userTextField.setText("");
+			result = 0;
+		} else if (result == 2) {
+			JOptionPane.showMessageDialog(this, "사용가능한 아이디 입니다.");
+			userTextField.setText("");
+			result = 0;
+		}
+
+	}
+
 }

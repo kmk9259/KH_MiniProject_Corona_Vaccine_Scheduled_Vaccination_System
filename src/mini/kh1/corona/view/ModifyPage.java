@@ -1,5 +1,6 @@
 package mini.kh1.corona.view;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -29,8 +30,6 @@ import mini.kh1.corona.controller.user.AddSignup;
 import mini.kh1.corona.model.vo.user.JoinList;
 import mini.kh1.corona.model.vo.user.SignupList;
 import mini.kh1.corona.model.vo.user.User;
-import java.awt.Color;
-import java.awt.SystemColor;
 
 public class ModifyPage extends JFrame implements ActionListener {
 
@@ -102,7 +101,7 @@ public class ModifyPage extends JFrame implements ActionListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		container = new JPanel() {
 
 			@Override
@@ -111,7 +110,7 @@ public class ModifyPage extends JFrame implements ActionListener {
 				Dimension d = container.getSize();
 				g.drawImage(image, 0, 0, d.width, d.height, null);
 			}
-			
+
 		};
 		container.setLocation(0, 0);
 
@@ -182,14 +181,13 @@ public class ModifyPage extends JFrame implements ActionListener {
 
 		// 수정완료 버튼
 		modiButton.setBounds(378, 420, 150, 40);
-		modiButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
+		modiButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));// ######버튼 커서 변경
 		container.add(modiButton);
 
 		// 이전으로 버튼
 		backButton.setBounds(27, 28, 150, 40);
-		backButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
+		backButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));// ######버튼 커서 변경
 		container.add(backButton);
-		
 
 		// 비밀번호 보이기
 		showPassword.setBounds(548, 200, 150, 30);
@@ -198,7 +196,7 @@ public class ModifyPage extends JFrame implements ActionListener {
 		// 회원탈퇴
 
 		removeButton.setBounds(378, 477, 150, 40);
-		removeButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
+		removeButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));// ######버튼 커서 변경
 		container.add(removeButton);
 
 		// 버튼 리슨어
@@ -209,9 +207,6 @@ public class ModifyPage extends JFrame implements ActionListener {
 
 		// ===========불러온 사용자 정보가 필드에 보여짐
 
-		//int i = InsertPage.temp.getJoinlist().size();
-		
-
 		userTextField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getId());
 		userTextField.setEditable(false);
 		passwordField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getPassword());
@@ -220,8 +215,6 @@ public class ModifyPage extends JFrame implements ActionListener {
 		ssnField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getSsn());
 		ssnField.setEditable(false);
 		emailField.setText(InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getEmail());
-		
-		
 
 	}
 
@@ -258,14 +251,12 @@ public class ModifyPage extends JFrame implements ActionListener {
 			LoginPage.loginSession = false; // 세션종료
 			frame.setVisible(false);
 			frame.dispose();
-			//new LoginPage();
 			new MainMenu();
 
 		}
 
 		if (e.getSource() == removeButton) {
 
-			//InsertPage.temp.getJoinlist().get(loginpage.sessionNum).getId()
 			InsertPage.temp.getJoinlist().remove(loginpage.sessionNum);
 			LoginPage.loginSession = false; // 세션종료
 			frame.setVisible(false);
