@@ -93,7 +93,7 @@ public class LoginPage extends JFrame implements ActionListener {
 		label.setForeground(new Color(25, 25, 112));
 
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 30));
+		label.setFont(new Font("Nanum Gothic", Font.BOLD, 30));
 		label.setBounds(262, 120, 376, 75);
 
 		container.add(label);
@@ -101,12 +101,12 @@ public class LoginPage extends JFrame implements ActionListener {
 		container.setLayout(null);
 
 		userLabel.setForeground(new Color(25, 25, 112));
-		userLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
+		userLabel.setFont(new Font("Nanum Gothic", Font.BOLD, 18));
 		userLabel.setBounds(311, 222, 100, 30);
 		container.add(userLabel);
 
 		passwordLabel.setForeground(new Color(25, 25, 112));
-		passwordLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
+		passwordLabel.setFont(new Font("Nanum Gothic", Font.BOLD, 18));
 		passwordLabel.setBounds(311, 268, 100, 30);
 		container.add(passwordLabel);
 
@@ -124,11 +124,19 @@ public class LoginPage extends JFrame implements ActionListener {
 		// 로그인 버튼
 		loginButton.setBounds(313, 384, 100, 30);
 		loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));// ######버튼 커서 변경
+		loginButton.setForeground(Color.WHITE);
+		loginButton.setOpaque(true);
+		loginButton.setBackground(Color.BLACK);
+		loginButton.setFocusPainted(false);
 		container.add(loginButton);
 
 		// insertButton
 		insertButton.setBounds(478, 384, 100, 30);
 		insertButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));// ######버튼 커서 변경
+		insertButton.setForeground(Color.WHITE);
+		insertButton.setOpaque(true);
+		insertButton.setBackground(Color.BLACK);
+		insertButton.setFocusPainted(false);
 		container.add(insertButton);
 
 		// 버튼 이벤트

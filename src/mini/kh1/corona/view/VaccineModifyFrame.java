@@ -51,7 +51,7 @@ public class VaccineModifyFrame extends JFrame {
 		//백신 재고 관리 프레임 아이콘 이미지 추가
 		setIconImage(ImageIO.read(new File("./image//managerIcon.PNG")));
 		
-		image = ImageIO.read(new File("./image//image1.PNG"));
+		image = ImageIO.read(new File("./image//manager1.PNG"));
 		
 		// 2. 병원명 입력하는 패널 설정
 		
@@ -72,9 +72,9 @@ public class VaccineModifyFrame extends JFrame {
 
 		JLabel vmfLabel1 = new JLabel("병원명을 입력하세요.");
 		vmfLabel1.setBounds(70, 60, 170, 40);
-		vmfLabel1.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
+		vmfLabel1.setFont(new Font("Nanum Gothic", Font.PLAIN, 15));
 		vmfLabel1.setHorizontalAlignment(SwingConstants.CENTER);
-		vmfLabel1.setForeground(Color.white);
+		vmfLabel1.setForeground(Color.DARK_GRAY);
 		vmfPanel1.add(vmfLabel1);
 
 		vmfTextField1 = new JTextField(10);
@@ -82,12 +82,12 @@ public class VaccineModifyFrame extends JFrame {
 		vmfTextField1.setOpaque(true);
 		vmfTextField1.setBackground(Color.DARK_GRAY);
 		vmfTextField1.setForeground(Color.WHITE);
-		vmfTextField1.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
+		vmfTextField1.setFont(new Font("Nanum Gothic", Font.PLAIN, 15));
 		vmfPanel1.add(vmfTextField1);
 
 		JButton vmfButton1 = new JButton("취   소");
 		vmfButton1.setBounds(70, 230, 150, 40);
-		vmfButton1.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		vmfButton1.setFont(new Font("Nanum Gothic", Font.PLAIN, 12));
 		vmfButton1.setFocusPainted(false);
 		vmfButton1.setForeground(Color.WHITE);
 		vmfButton1.setOpaque(true);
@@ -97,7 +97,7 @@ public class VaccineModifyFrame extends JFrame {
 
 		JButton vmfButton2 = new JButton("다   음");
 		vmfButton2.setBounds(310, 230, 150, 40);
-		vmfButton2.setFont(new Font("휴먼엑스포", Font.BOLD, 12));
+		vmfButton2.setFont(new Font("Nanum Gothic", Font.BOLD, 12));
 		vmfButton2.setFocusPainted(false);
 		vmfButton2.setForeground(Color.WHITE);
 		vmfButton2.setOpaque(true);
@@ -129,7 +129,7 @@ public class VaccineModifyFrame extends JFrame {
 							JLabel vmfLabel3 = new JLabel(info);
 
 							vmfLabel3.setBounds(70, 100, 390, 40);
-							vmfLabel3.setFont(new Font("휴먼엑스포", Font.PLAIN, 13));
+							vmfLabel3.setFont(new Font("Nanum Gothic", Font.PLAIN, 13));
 							vmfLabel3.setHorizontalAlignment(SwingConstants.CENTER);
 							vmfLabel3.setOpaque(true);
 							vmfLabel3.setBackground(Color.DARK_GRAY);
@@ -174,16 +174,16 @@ public class VaccineModifyFrame extends JFrame {
 
 		JLabel vmfLabel2 = new JLabel("병원 정보");
 		vmfLabel2.setBounds(70, 50, 150, 40);
-		vmfLabel2.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
+		vmfLabel2.setFont(new Font("Nanum Gothic", Font.PLAIN, 15));
 		vmfLabel2.setHorizontalAlignment(SwingConstants.CENTER);
-		vmfLabel2.setForeground(Color.white);
+		vmfLabel2.setForeground(Color.DARK_GRAY);
 		vmfPanel2.add(vmfLabel2);
 
 		JLabel vmfLabel4 = new JLabel("수량 입력");
 		vmfLabel4.setBounds(70, 160, 150, 40);
-		vmfLabel4.setFont(new Font("휴먼엑스포", Font.PLAIN, 15));
+		vmfLabel4.setFont(new Font("Nanum Gothic", Font.PLAIN, 15));
 		vmfLabel4.setHorizontalAlignment(SwingConstants.CENTER);
-		vmfLabel4.setForeground(Color.white);
+		vmfLabel4.setForeground(Color.DARK_GRAY);
 		vmfPanel2.add(vmfLabel4);
 
 		vmfTextField2 = new JTextField(10);
@@ -237,7 +237,7 @@ public class VaccineModifyFrame extends JFrame {
 
 		JButton vmfButton5 = new JButton("취   소");
 		vmfButton5.setBounds(70, 230, 150, 40);
-		vmfButton5.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));
+		vmfButton5.setFont(new Font("Nanum Gothic", Font.PLAIN, 12));
 		vmfButton5.setFocusPainted(false);
 		vmfButton5.setForeground(Color.WHITE);
 		vmfButton5.setOpaque(true);

@@ -1,5 +1,6 @@
 package mini.kh1.corona.view;
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -67,6 +68,10 @@ public class ChatBotView extends JPanel implements ActionListener{
 		sendButton.setLocation(713, 510);
 		sendButton.addActionListener(this);
 		sendButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
+		sendButton.setForeground(Color.WHITE);
+		sendButton.setOpaque(true);
+		sendButton.setBackground(Color.BLACK);
+		sendButton.setFocusPainted(false);
 		
 		add(scroll);
 		add(input);
