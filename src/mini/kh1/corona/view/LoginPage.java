@@ -92,7 +92,7 @@ public class LoginPage extends JFrame implements ActionListener {
 		label.setForeground(new Color(25, 25, 112));
 
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 30));
+		label.setFont(new Font("Nanum Gothic", Font.BOLD, 30));
 		label.setBounds(262, 120, 376, 75);
 
 		container.add(label);
@@ -103,12 +103,12 @@ public class LoginPage extends JFrame implements ActionListener {
 		container.setLayout(null);
 		userLabel.setForeground(new Color(25, 25, 112));
 
-		userLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
+		userLabel.setFont(new Font("Nanum Gothic", Font.BOLD, 18));
 		userLabel.setBounds(311, 222, 100, 30);
 		container.add(userLabel);
 		passwordLabel.setForeground(new Color(25, 25, 112));
 
-		passwordLabel.setFont(new Font("Noto Sans CJK KR Medium", Font.BOLD, 18));
+		passwordLabel.setFont(new Font("Nanum Gothic", Font.BOLD, 18));
 		passwordLabel.setBounds(311, 268, 100, 30);
 		container.add(passwordLabel);
 
@@ -120,10 +120,17 @@ public class LoginPage extends JFrame implements ActionListener {
 		
 
 		showPassword.setBounds(426, 300, 150, 30);
+		showPassword.setFont(new Font("Nanum Gothic", Font.BOLD, 13));
 		showPassword.setOpaque(false);//배경 투명하게 만드는 코드
 		container.add(showPassword);
 
 		loginButton.setBounds(313, 384, 100, 30);
+		loginButton.setFont(new Font("Nanum Gothic", Font.BOLD, 13));
+		loginButton.setForeground(Color.WHITE);
+		loginButton.setOpaque(true);
+		loginButton.setBackground(Color.BLACK);
+		loginButton.setFocusPainted(false);
+
 		loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));// ######버튼 커서 변경
 
 		container.add(loginButton);
@@ -131,6 +138,12 @@ public class LoginPage extends JFrame implements ActionListener {
 		// insertButton
 
 		insertButton.setBounds(478, 384, 100, 30);
+		insertButton.setFont(new Font("Nanum Gothic", Font.BOLD, 13));
+		insertButton.setForeground(Color.WHITE);
+		insertButton.setOpaque(true);
+		insertButton.setBackground(Color.BLACK);
+		insertButton.setFocusPainted(false);
+
 		insertButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));// ######버튼 커서 변경
 		container.add(insertButton);
 

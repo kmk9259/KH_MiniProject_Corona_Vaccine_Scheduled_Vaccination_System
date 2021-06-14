@@ -1,5 +1,6 @@
 package mini.kh1.corona.view.ChatBot;
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -52,12 +53,16 @@ public class ChatBotView extends JPanel implements ActionListener{
 		chatting.setLineWrap(true);
 		chatting.setWrapStyleWord(true);
 		chatting.setEditable(false);
-		chatting.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));//######글씨체 변경
+		chatting.setFont(new Font("Nanum Gothic", Font.PLAIN, 12));//######글씨체 변경
 		
 
 		JButton sendButton = new JButton("Send");
 		sendButton.addActionListener(this);
 		sendButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
+		sendButton.setForeground(Color.WHITE);
+		sendButton.setOpaque(true);
+		sendButton.setBackground(Color.BLACK);
+		sendButton.setFocusPainted(false);
 		
 		add(scroll);
 		add(input);
@@ -81,7 +86,7 @@ public class ChatBotView extends JPanel implements ActionListener{
 			e1.printStackTrace();
 		}
 		
-		input.setFont(new Font("휴먼엑스포", Font.PLAIN, 12));//######글씨체 변경
+		input.setFont(new Font("Nanum Gothic", Font.PLAIN, 12));//######글씨체 변경
 		input.setText("");
 		input.requestFocus();
 		input.selectAll();

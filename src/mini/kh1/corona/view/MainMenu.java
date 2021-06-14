@@ -1,6 +1,7 @@
 package mini.kh1.corona.view;
 
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -77,6 +78,11 @@ public class MainMenu {
 
 		// 예약하기 버튼 설정
 		bookButton.setBounds(180, 280, 200, 50);
+		bookButton.setForeground(Color.WHITE);
+		bookButton.setOpaque(true);
+		bookButton.setBackground(Color.BLACK);
+		bookButton.setFocusPainted(false);
+
 		bookButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		bookButton.setVisible(true);
 		bookButton.addMouseListener(new MouseAdapter() {
@@ -111,6 +117,11 @@ public class MainMenu {
 
 		// 예약조회 버튼 설정
 		chackBookButton.setBounds(470, 280, 200, 50);
+		chackBookButton.setForeground(Color.WHITE);
+		chackBookButton.setOpaque(true);
+		chackBookButton.setBackground(Color.BLACK);
+		chackBookButton.setFocusPainted(false);
+
 		chackBookButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		chackBookButton.setVisible(true);
 		chackBookButton.addMouseListener(new MouseAdapter() {
@@ -142,6 +153,11 @@ public class MainMenu {
 
 		// 마이페이지 버튼 설정
 		myPageButton.setBounds(180, 380, 200, 50);
+		myPageButton.setForeground(Color.WHITE);
+		myPageButton.setOpaque(true);
+		myPageButton.setBackground(Color.BLACK);
+		myPageButton.setFocusPainted(false);
+
 		myPageButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		myPageButton.setVisible(true);
 		myPageButton.addMouseListener(new MouseAdapter() {
@@ -158,6 +174,11 @@ public class MainMenu {
 
 		// 챗봇 버튼 설정
 		chatbotButton.setBounds(470, 380, 200, 50);
+		chatbotButton.setForeground(Color.WHITE);
+		chatbotButton.setOpaque(true);
+		chatbotButton.setBackground(Color.BLACK);
+		chatbotButton.setFocusPainted(false);
+
 		chatbotButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		chatbotButton.setVisible(true);
 		chatbotButton.addMouseListener(new MouseAdapter() {
@@ -177,6 +198,11 @@ public class MainMenu {
 
 		// 로그아웃 버튼 설정
 		logoutButton.setBounds(680, 480, 150, 35);
+		logoutButton.setForeground(Color.WHITE);
+		logoutButton.setOpaque(true);
+		logoutButton.setBackground(Color.BLACK);
+		logoutButton.setFocusPainted(false);
+
 		logoutButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경
 		logoutButton.setVisible(true);
 		logoutButton.addMouseListener(new MouseAdapter() {

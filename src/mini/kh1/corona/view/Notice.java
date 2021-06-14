@@ -1,5 +1,6 @@
 package mini.kh1.corona.view;
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -48,6 +49,10 @@ public class Notice extends JPanel {
 
 		btn.setBounds(385, 475, 123, 51);
 		btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));//######버튼 커서 변경	
+		btn.setForeground(Color.WHITE);
+		btn.setOpaque(true);
+		btn.setBackground(Color.BLACK);
+		btn.setFocusPainted(false);
 		btn.setVisible(true);
 		add(btn);
 
