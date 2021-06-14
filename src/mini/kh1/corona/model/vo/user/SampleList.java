@@ -4,9 +4,7 @@ import java.util.ArrayList;
 
 public class SampleList {
 	private ArrayList<User> samplelist = new ArrayList<User>();
-	public SampleList() {
-		// TODO Auto-generated constructor stub
-	}
+
 	public ArrayList<User> getSamplelist() {
 		return samplelist;
 	}

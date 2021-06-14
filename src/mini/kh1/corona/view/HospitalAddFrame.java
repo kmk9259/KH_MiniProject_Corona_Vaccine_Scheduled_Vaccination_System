@@ -37,7 +37,6 @@ public class HospitalAddFrame extends JFrame {
 		// 1. 프레임 설정
 		setPreferredSize(new Dimension(600, 400));
 		setSize(600, 400);
-		//setTitle("병원 추가");
 		setUndecorated(true);//타이틀바 안보이게
 		setResizable(false);
 		setLocationRelativeTo(null);
@@ -57,7 +56,6 @@ public class HospitalAddFrame extends JFrame {
 			@Override
 			protected void paintComponent(Graphics g) {
 				Dimension d = hafPanel.getSize();
-				//System.out.println("수량 입력 패널 사이즈 : " + hafPanel.getSize());
 				g.drawImage(image, 0, 0, d.width, d.height, null);
 			}
 			
@@ -140,7 +138,6 @@ public class HospitalAddFrame extends JFrame {
 
 		add(hafPanel);
 
-		// ==========================================================================
 
 		hafButton1.addActionListener(new ActionListener() {
 

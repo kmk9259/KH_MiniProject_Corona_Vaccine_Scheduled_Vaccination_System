@@ -31,14 +31,6 @@ public class StartPage extends JFrame {
 		getContentPane().setLayout(null);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
-		/*
-		startPanel = new JPanel();
-
-		startPanel.setSize(900, 600);
-		startPanel.setLayout(null);
-		startPanel.setVisible(false);
-		startPanel.setOpaque(false);
-		*/
 
 		try {
 			image = ImageIO.read(new File("./image//startImage.PNG"));

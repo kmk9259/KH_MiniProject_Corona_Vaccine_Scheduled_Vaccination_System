@@ -26,8 +26,6 @@ import mini.kh1.corona.model.vo.Chatbot;
 public class ChatBotView extends JPanel implements ActionListener{
 	private static JTextArea chatting;
 	private JTextField input;
-	
-	//public static JPanel chatPanel = new JPanel();
 	private static DatagramSocket socket;
 	private static DatagramPacket packet;
 	private static InetAddress address;
@@ -108,9 +106,7 @@ public class ChatBotView extends JPanel implements ActionListener{
 			
 			try {
 				socket.receive(packet);
-				
-				//chatting.append(new String(buf)+"\n");
-				
+								
 			} catch (IOException e) {
 
 				e.printStackTrace();

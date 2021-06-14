@@ -17,15 +17,9 @@ public class BookerList{
 	public void setBookerAdd(Booker booker1) {
 		list.add(booker1);
 	}
-	
-	
-	////////////////////////////////
+
 	public void setBookerRemove(Booker booker) {
 		list.remove(booker);
 	}
-	/////////////////////////////////
-//	public void setBookerList(ArrayList list) {
-//		this.list.addAll(list);
-//	}
-		
+	
 }

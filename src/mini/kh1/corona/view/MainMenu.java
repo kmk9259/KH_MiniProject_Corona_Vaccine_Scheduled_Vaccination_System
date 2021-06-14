@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import mini.kh1.corona.controller.reservation.Reservation;
 import mini.kh1.corona.controller.reservation.sendMail.MailNotification;
 import mini.kh1.corona.controller.view_booking.GoToView;
 import mini.kh1.corona.model.vo.user.User;
@@ -122,12 +123,17 @@ public class MainMenu {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				JPanel checkBookPanel = new CheckBookPanel();
+				Reservation r = new Reservation();
 
 				// 예약조회 버튼 클릭 시 이벤트 구현
 
 				GoToView gtv = new GoToView();
 
 				int g = gtv.go(); //
+				r.orderAge();
+				//mail.mailText();
+				
+				
 				
 				if (g == 0) { // 예약 완료, 마감 되었을때
 					mainPanel.setVisible(false);

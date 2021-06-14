@@ -63,7 +63,7 @@ public class MailNotification {
 	        System.out.println("메일 전송 성공");
 	    } catch (MessagingException e) {
 	        e.printStackTrace(); 
-	    } 
+	    }
 	}
 	public static String mailTitle()
 	{
