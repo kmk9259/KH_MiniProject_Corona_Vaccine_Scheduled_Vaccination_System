@@ -129,7 +129,7 @@ public class MainMenu {
 				GoToView gtv = new GoToView();
 
 				int g = gtv.go(); //
-				
+				mail.mailText();
 				if (g == 0) { // 예약 완료, 마감 되었을때
 					mainPanel.setVisible(false);
 					MFrame.add(checkBookPanel);

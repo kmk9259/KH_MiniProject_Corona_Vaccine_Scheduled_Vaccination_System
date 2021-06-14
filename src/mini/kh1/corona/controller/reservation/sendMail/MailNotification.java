@@ -72,7 +72,6 @@ public class MailNotification {
 	}
 	public static void mailText()
 	{
-		System.out.println("=====메일확인======");
 		Reservation r = new Reservation();
 		String[][] dd = new String [age.size()/2][3];
 		dd = r.cut();
@@ -105,14 +104,12 @@ public class MailNotification {
 			}
 		}
 		
-		//return dd;
 	}
 	public void sendtoUser()
 	{
 		for(int i=0; i<bookerlist.size(); i++)
 		{
 			System.out.println(bookerlist.get(i).getEmail());
-			//MailSend(bookerlist.get(i).getEmail(), mailTitle(), mailText());
 			
 		}
 		
