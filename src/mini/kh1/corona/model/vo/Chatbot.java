@@ -16,8 +16,6 @@ public class Chatbot {
 	private ChatBotView f;
 	public static DatagramSocket socket;
 	public static InetAddress address;
-	
-	//cmd
 	private StringBuffer buffer;
 	private Process process;
 	private BufferedReader bufferedReader;
@@ -28,9 +26,9 @@ public class Chatbot {
 			address = InetAddress.getByName("192.168.1.1");
 			
 			socket= new DatagramSocket(8500);
-			
+			//8500 PORT 이미 사용하고 있을 시
 			//cmd에서 netstat -n pid 번호
-			//taskkill /f /pid pid번호
+			//taskkill /f /pid pid번호로 프로세스 kill
 		
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
