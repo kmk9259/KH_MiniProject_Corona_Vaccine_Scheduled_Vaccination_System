@@ -191,7 +191,6 @@ public class LoginPage extends JFrame implements ActionListener {
 			}
 
 		}
-
 		// result 가 1 이면 로그인 성공
 		if (result == 1) {
 

@@ -23,25 +23,33 @@ public class MailNotification {
 	static String name ;
 	static String date ;
 	static String hospital ;
-	
-	
-	
-	public static void MailSend(String email, String title, String text) { 
+	/*1. Session
+	 * 2. port
+	 * 3. message
+	 * 4. Properties
+	 * 5. SSL/TLS , Starttls
+	 * SMTP : 인터넷에서 이메일을 보내기 위해 사용되는 프로토콜
+	 * */
+	public static void MailSend(String email, String title, String text) {
+		//지메일을 이용한 메일전송
+		//메일 전송 사람의 이메일과 비밀번호 세팅
 	    String host = "smtp.gmail.com";
 	    final String user = "alsrud9259@gmail.com"; 
 	    String sender = "alsrud9259@gmail.com";
 	    final String password = "alsrud31017";
 	    
-
+	    //properties :키와 값을 String 타입 제한
 	    Properties props = new Properties(); 
+	    //starttls : 명시적 보안 설정, 자바메일에 tls모드 시작
 	    props.put("mail.smtp.starttls.enable", "true");
 	    props.put("mail.smtp.host", host); 	
 	    props.put("mail.smtp.port", 587); 
 	    props.put("mail.smtp.auth", "true"); 
+	    //ssl : 전송된 데이터 암호화 후 보안 유지
 	    props.put("mail.smtp.ssl.trust", "smtp.gmail.com");	//ssl설정 안하면 convert안됨
 	    props.put("mail.smtp.ssl.protocols", "TLSv1.2");
                                                                              
-        //인증	    
+        //session - sender
 	    Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() { 
 	        protected javax.mail.PasswordAuthentication getPasswordAuthentication() { 
 	            return new PasswordAuthentication(user, password); 

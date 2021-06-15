@@ -36,7 +36,6 @@ public class ChatBotView extends JPanel implements ActionListener{
 	
 	public ChatBotView() {
 		Chatbot c = new Chatbot();
-	
 		this.address = c.address;
 		this.socket = c.socket;
 		setVisible(false);
@@ -123,8 +122,7 @@ public class ChatBotView extends JPanel implements ActionListener{
 		chatting.append(" "+"/메인화면\n");
 		
 		chatting.append("=================================="+
-				"=====================================================\n");
-		
+				"=====================================================\n");	
 	}
 
 	
