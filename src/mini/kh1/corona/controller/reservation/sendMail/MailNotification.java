@@ -34,9 +34,9 @@ public class MailNotification {
 		//지메일을 이용한 메일전송
 		//메일 전송 사람의 이메일과 비밀번호 세팅
 	    String host = "smtp.gmail.com";
-	    final String user = "alsrud9259@gmail.com"; 
-	    String sender = "alsrud9259@gmail.com";
-	    final String password = "alsrud31017";
+	    final String user = "이메일"; 
+	    String sender = "이메일";
+	    final String password = "비밀번호";
 	    
 	    //properties :키와 값을 String 타입 제한
 	    Properties props = new Properties(); 
